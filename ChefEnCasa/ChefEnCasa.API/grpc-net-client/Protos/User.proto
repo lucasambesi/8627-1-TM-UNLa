@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option java_package = "grpc";
+
+
+/* METODOS PARA CONSUMIR */
+service UserController{
+  rpc addUser(UserDTO) returns (UserObjDTO);
+  rpc getUser(GetUserRequest)returns (UserObjDTO);
+}
+
+/* MODEL */
+message UserDTO{
+  int32 idUser = 1;
+  string name = 2;
+  string last_name = 3;
+  string dni = 4;
+  string email = 5;
+  string username = 6;
+  string password = 7;
+}
+
+/* REQUEST */
+message GetUserRequest{
+  int32 idUser=1;
+}
+
+/* RESPUESTA */
+message UserServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+/* DEVUELVE USUARIO */
+message UserObjDTO{
+  UserDTO user = 1;
+  UserServerResponse serverResponse = 2;
+}
+
+/* DEVUELVE LISTA DE USUARIOS */
+message ListUserDTO{
+  repeated UserDTO users = 1;
+  UserServerResponse serverResponse = 2;
+}
