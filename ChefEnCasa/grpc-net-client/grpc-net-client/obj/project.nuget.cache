@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iZRfzp4UN763N1Ihbk/f46tVv1nLZihExMoF23HBQM7fpMoxnR+zHtJ9AyK7H4rvUaUyv2fX/QjMYYqeQq4dYw==",
+  "dgSpecHash": "ydYhO9B8Y/JIHMshcqLxg+txGr/uTEKtuLjvjdFed6/ckf0Q5LYsxwQ+gIw0ctrzns+wOkdurhgPqS0I9IXgzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\ChefEnCasa.API\\grpc-net-client\\grpc-net-client.csproj",
+  "projectFilePath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\grpc-net-client\\grpc-net-client\\grpc-net-client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\google.protobuf\\3.24.2\\google.protobuf.3.24.2.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\grpc.aspnetcore\\2.49.0\\grpc.aspnetcore.2.49.0.nupkg.sha512",

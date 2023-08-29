@@ -7296,11 +7296,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\ChefEnCasa.API\\grpc-net-client\\grpc-net-client.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\grpc-net-client\\grpc-net-client\\grpc-net-client.csproj",
       "projectName": "grpc-net-client",
-      "projectPath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\ChefEnCasa.API\\grpc-net-client\\grpc-net-client.csproj",
+      "projectPath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\grpc-net-client\\grpc-net-client\\grpc-net-client.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\ChefEnCasa.API\\grpc-net-client\\obj\\",
+      "outputPath": "C:\\Users\\lucas\\Documents\\ProyectosGit\\UNLa\\8627-1-TM-UNLa\\ChefEnCasa\\grpc-net-client\\grpc-net-client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
