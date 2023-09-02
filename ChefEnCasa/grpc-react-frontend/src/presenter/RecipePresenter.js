@@ -1,21 +1,21 @@
 import axios from "axios"
-import {userPresenterMock} from './Mocks/UserMock'
+import {recipePresenterMock} from './Mocks/RecipeMock'
 
-export const userPresenter = () => {
+export const recipePresenter = () => {
 
     const useMock = import.meta.env.VITE_REACT_BACKEND_MOCK
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
 
-    const {getByIdMock} = userPresenterMock()
+    const {getMock} = recipePresenterMock()
 
-    const getById = async (idUser) => {
+    const getRecipes = async (idUser) => {
         try {
 
             if(useMock == 'true'){
-                return getByIdMock()
+                return getMock()
             }
 
-            const res = await axios.get(`${baseUrl}/user`, {
+            const res = await axios.get(`${baseUrl}/recipes`, {
                 params: {
                   idUser: idUser
                 }
@@ -30,6 +30,6 @@ export const userPresenter = () => {
     }
 
     return {
-        getById,
+        getRecipes,
     }
 }
