@@ -11,10 +11,10 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Iniciando servidor grpc");
+        System.out.println("Server grpc starting");
         Server server = ServerBuilder.forPort(9001).addService(new UserController()).build();
         server.start();
-        System.out.println("Servidor escuchando en puerto " + server.getPort());
+        System.out.println("Server listening on port " + server.getPort());
         server.awaitTermination();
     }
 }

@@ -5,6 +5,7 @@ option java_package = "grpc";
 service UserController{
   rpc addUser(UserDTO) returns (UserObjDTO);
   rpc getUser(GetUserRequest)returns (UserObjDTO);
+  rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
 }
 
 message UserDTO{
@@ -24,6 +25,11 @@ message GetUserRequest{
 message UserServerResponse{
   int32 code = 1;
   string msg = 2;
+}
+
+message GetByUserIdAndPasswordRequest{
+  string user = 1;
+  string password = 2;
 }
 
 message UserObjDTO{

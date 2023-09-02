@@ -2,14 +2,12 @@
 
 option java_package = "grpc";
 
-
-/* METODOS PARA CONSUMIR */
 service UserController{
   rpc addUser(UserDTO) returns (UserObjDTO);
   rpc getUser(GetUserRequest)returns (UserObjDTO);
+  rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
 }
 
-/* MODEL */
 message UserDTO{
   int32 idUser = 1;
   string name = 2;
@@ -20,24 +18,25 @@ message UserDTO{
   string password = 7;
 }
 
-/* REQUEST */
 message GetUserRequest{
   int32 idUser=1;
 }
 
-/* RESPUESTA */
 message UserServerResponse{
   int32 code = 1;
   string msg = 2;
 }
 
-/* DEVUELVE USUARIO */
+message GetByUserIdAndPasswordRequest{
+  string user = 1;
+  string password = 2;
+}
+
 message UserObjDTO{
   UserDTO user = 1;
   UserServerResponse serverResponse = 2;
 }
 
-/* DEVUELVE LISTA DE USUARIOS */
 message ListUserDTO{
   repeated UserDTO users = 1;
   UserServerResponse serverResponse = 2;

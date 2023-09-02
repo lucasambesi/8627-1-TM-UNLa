@@ -91,6 +91,38 @@ public final class UserControllerGrpc {
      return getGetUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.User.GetByUserIdAndPasswordRequest,
+      grpc.User.UserObjDTO> getGetByUserAndPasswordRequestMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getByUserAndPasswordRequest",
+      requestType = grpc.User.GetByUserIdAndPasswordRequest.class,
+      responseType = grpc.User.UserObjDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.GetByUserIdAndPasswordRequest,
+      grpc.User.UserObjDTO> getGetByUserAndPasswordRequestMethod() {
+    io.grpc.MethodDescriptor<grpc.User.GetByUserIdAndPasswordRequest, grpc.User.UserObjDTO> getGetByUserAndPasswordRequestMethod;
+    if ((getGetByUserAndPasswordRequestMethod = UserControllerGrpc.getGetByUserAndPasswordRequestMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getGetByUserAndPasswordRequestMethod = UserControllerGrpc.getGetByUserAndPasswordRequestMethod) == null) {
+          UserControllerGrpc.getGetByUserAndPasswordRequestMethod = getGetByUserAndPasswordRequestMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.GetByUserIdAndPasswordRequest, grpc.User.UserObjDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "getByUserAndPasswordRequest"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.GetByUserIdAndPasswordRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.UserObjDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("getByUserAndPasswordRequest"))
+                  .build();
+          }
+        }
+     }
+     return getGetByUserAndPasswordRequestMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,6 +164,13 @@ public final class UserControllerGrpc {
       asyncUnimplementedUnaryCall(getGetUserMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getByUserAndPasswordRequest(grpc.User.GetByUserIdAndPasswordRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetByUserAndPasswordRequestMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -148,6 +187,13 @@ public final class UserControllerGrpc {
                 grpc.User.GetUserRequest,
                 grpc.User.UserObjDTO>(
                   this, METHODID_GET_USER)))
+          .addMethod(
+            getGetByUserAndPasswordRequestMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.GetByUserIdAndPasswordRequest,
+                grpc.User.UserObjDTO>(
+                  this, METHODID_GET_BY_USER_AND_PASSWORD_REQUEST)))
           .build();
     }
   }
@@ -185,6 +231,14 @@ public final class UserControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getByUserAndPasswordRequest(grpc.User.GetByUserIdAndPasswordRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetByUserAndPasswordRequestMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -217,6 +271,13 @@ public final class UserControllerGrpc {
     public grpc.User.UserObjDTO getUser(grpc.User.GetUserRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.UserObjDTO getByUserAndPasswordRequest(grpc.User.GetByUserIdAndPasswordRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetByUserAndPasswordRequestMethod(), getCallOptions(), request);
     }
   }
 
@@ -253,10 +314,19 @@ public final class UserControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.UserObjDTO> getByUserAndPasswordRequest(
+        grpc.User.GetByUserIdAndPasswordRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetByUserAndPasswordRequestMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_USER = 0;
   private static final int METHODID_GET_USER = 1;
+  private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -281,6 +351,10 @@ public final class UserControllerGrpc {
           break;
         case METHODID_GET_USER:
           serviceImpl.getUser((grpc.User.GetUserRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.UserObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_BY_USER_AND_PASSWORD_REQUEST:
+          serviceImpl.getByUserAndPasswordRequest((grpc.User.GetByUserIdAndPasswordRequest) request,
               (io.grpc.stub.StreamObserver<grpc.User.UserObjDTO>) responseObserver);
           break;
         default:
@@ -346,6 +420,7 @@ public final class UserControllerGrpc {
               .setSchemaDescriptor(new UserControllerFileDescriptorSupplier())
               .addMethod(getAddUserMethod())
               .addMethod(getGetUserMethod())
+              .addMethod(getGetByUserAndPasswordRequestMethod())
               .build();
         }
       }

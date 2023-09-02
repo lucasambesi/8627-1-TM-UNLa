@@ -31,13 +31,13 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     }
 
     public void getUser(User.GetUserRequest request, StreamObserver<User.UserObjDTO> responseObserver) {
-        com.chefencasa.Model.User usuario = null;
+        com.chefencasa.Model.User user = null;
         User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
         User.UserObjDTO.Builder response = User.UserObjDTO.newBuilder();
 
         try {
-            usuario = this.userService.getById(request.getIdUser());
-            response.setUser(this.mapUserDTO(usuario));
+            user = this.userService.getById(request.getIdUser());
+            response.setUser(this.mapUserDTO(user));
             serverResponse.setCode(200);
             serverResponse.setMsg("User found");
         } catch (Exception var7) {
@@ -48,6 +48,33 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
+    }
+
+    public void getByUserAndPasswordRequest(User.GetByUserIdAndPasswordRequest request, StreamObserver<User.UserObjDTO> responseObserver) {
+
+        String username = request.getUser();
+        String password = request.getPassword();
+
+        com.chefencasa.Model.User user = null;
+
+        User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
+        User.UserObjDTO.Builder response = User.UserObjDTO.newBuilder();
+
+        try{
+            user = this.userService.getByUserIdAndPassword(username, password);
+            response.setUser(mapUserDTO(user));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("User found");
+        }
+        catch(Exception e){
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+
     }
 
     public User.UserDTO.Builder mapUserDTO (com.chefencasa.Model.User u){

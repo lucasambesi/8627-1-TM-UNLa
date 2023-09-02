@@ -27,6 +27,18 @@ public class UserService {
         return userRepository.getById(isUser);
     }
 
+    public User getByUserIdAndPassword(String userName, String password) throws Exception{
+        User user = null;
+        try{
+            user = userRepository.getByUserIdAndPassword(userName, password);
+            return user;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("Error:" + e.getMessage());
+        }
+    }
+
     private User mapToEntity (UserDTO dto) throws Exception{
         User u = new User();
         u.setIdUser(dto.getIdUser());

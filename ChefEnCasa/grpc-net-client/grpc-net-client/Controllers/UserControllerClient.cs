@@ -42,7 +42,25 @@ namespace grpc_net_client.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        // POST api/<UserController>
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult> Login([FromBody] GetByUserIdAndPasswordRequest request)
+        {
+            try
+            {
+                var response = await _service.getByUserAndPasswordRequestAsync(request);
+                if (response.User == null) return NotFound();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response.User);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserDTO user)
         {

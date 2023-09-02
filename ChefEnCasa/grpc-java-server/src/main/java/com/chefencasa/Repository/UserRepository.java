@@ -60,4 +60,30 @@ public class UserRepository {
 
         return user;
     }
+
+    public User getByUserIdAndPassword(String userName, String password) throws Exception{
+
+        User user = null;
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+
+        String query = "SELECT u FROM User u WHERE u.username=:userName AND u.password=:password";
+
+        TypedQuery<User> tq = em.createQuery(query, User.class);
+        tq.setParameter("userName", userName);
+        tq.setParameter("password", password);
+
+        try {
+            user = tq.getSingleResult();
+        }
+        catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("Error: " + e.getMessage());
+        }
+        finally {
+            em.close();
+        }
+
+        return user;
+    }
 }

@@ -7,9 +7,6 @@
 
 using grpc = global::Grpc.Core;
 
-/// <summary>
-/// METODOS PARA CONSUMIR 
-/// </summary>
 public static partial class UserController
 {
   static readonly string __ServiceName = "UserController";
@@ -53,6 +50,8 @@ public static partial class UserController
   static readonly grpc::Marshaller<global::UserObjDTO> __Marshaller_UserObjDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UserObjDTO.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::GetUserRequest> __Marshaller_GetUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetUserRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::GetByUserIdAndPasswordRequest> __Marshaller_GetByUserIdAndPasswordRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetByUserIdAndPasswordRequest.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::UserDTO, global::UserObjDTO> __Method_addUser = new grpc::Method<global::UserDTO, global::UserObjDTO>(
@@ -68,6 +67,14 @@ public static partial class UserController
       __ServiceName,
       "getUser",
       __Marshaller_GetUserRequest,
+      __Marshaller_UserObjDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::GetByUserIdAndPasswordRequest, global::UserObjDTO> __Method_getByUserAndPasswordRequest = new grpc::Method<global::GetByUserIdAndPasswordRequest, global::UserObjDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "getByUserAndPasswordRequest",
+      __Marshaller_GetByUserIdAndPasswordRequest,
       __Marshaller_UserObjDTO);
 
   /// <summary>Service descriptor</summary>
@@ -142,6 +149,26 @@ public static partial class UserController
     public virtual grpc::AsyncUnaryCall<global::UserObjDTO> getUserAsync(global::GetUserRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_getUser, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::UserObjDTO getByUserAndPasswordRequest(global::GetByUserIdAndPasswordRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getByUserAndPasswordRequest(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::UserObjDTO getByUserAndPasswordRequest(global::GetByUserIdAndPasswordRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_getByUserAndPasswordRequest, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::UserObjDTO> getByUserAndPasswordRequestAsync(global::GetByUserIdAndPasswordRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getByUserAndPasswordRequestAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::UserObjDTO> getByUserAndPasswordRequestAsync(global::GetByUserIdAndPasswordRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_getByUserAndPasswordRequest, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
