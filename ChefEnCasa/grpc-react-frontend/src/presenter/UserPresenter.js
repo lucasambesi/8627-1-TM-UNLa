@@ -6,13 +6,13 @@ export const userPresenter = () => {
     const useMock = import.meta.env.VITE_REACT_BACKEND_MOCK
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
 
-    const {getByIdMock} = userPresenterMock()
+    const { getMock } = userPresenterMock()
 
     const getById = async (idUser) => {
         try {
 
             if(useMock == 'true'){
-                return getByIdMock()
+                return getMock()
             }
 
             const res = await axios.get(`${baseUrl}/user`, {
@@ -29,7 +29,29 @@ export const userPresenter = () => {
         }
     }
 
+    const login = async (username, password) => {
+        try {
+            if(useMock == 'true'){
+                return getMock()
+            }
+
+            const body = {
+                user: username,
+                password: password
+            }
+            console.log(`${baseUrl}/user/login`, body)
+            const res = await axios.post(`${baseUrl}/user/login`, body);
+            const user = await res.data;
+            
+            console.log('res => ' , res)
+            return user;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     return {
         getById,
+        login
     }
 }

@@ -23,7 +23,7 @@ const Login = (props) => {
   // const { traerIdUsuario } = useUsuarioPresenter()
   const navigate = useNavigate();
 
-  const {getById} = userPresenter()
+  const {login} = userPresenter()
   const [visible, setVisible] = useState(false);
 
   const [username, setUsername] = useState("");
@@ -74,12 +74,11 @@ const Login = (props) => {
 
       if(valid){
         try {          
-            const res = await getById(1);
-
+            const res = await login(username, password);          
             if(res){
-              setUser(res.user)
-              localStorage.setItem("user", res.user)
-
+              console.log('entroooo =>', res)
+              setUser(res)
+              localStorage.setItem("user", res)
               navigate({
                 pathname:"/home",
                   }) 
