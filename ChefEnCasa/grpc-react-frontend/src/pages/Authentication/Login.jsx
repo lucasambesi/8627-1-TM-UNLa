@@ -17,6 +17,7 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Link } from 'react-router-dom';
 import { userPresenter } from '../../presenter/UserPresenter'
+// import { useLocalStorage } from './helpers/useLocalStorage';
 
 const Login = (props) => {
   const { user, setUser } = props;
@@ -64,21 +65,14 @@ const Login = (props) => {
     event.preventDefault();
   }
 
-  const goHome = ()=>{
-      clear()
-      navigate("/")
-  }
-
   const send = async () => {
       const valid = validate();
 
       if(valid){
         try {          
-            const res = await login(username, password);          
-            if(res){
-              console.log('entroooo =>', res)
-              setUser(res)
-              localStorage.setItem("user", res)
+            const res = await login(username, password);
+            if(res.user){
+              setUser(res.user)
               navigate({
                 pathname:"/home",
                   }) 

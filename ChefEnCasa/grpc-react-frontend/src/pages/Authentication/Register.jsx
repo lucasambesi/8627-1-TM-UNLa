@@ -22,7 +22,7 @@ import {
 
 export const Register = () => {
 
-    const history = useNavigate();
+    const navigate = useNavigate();
   
     const [tipoUsuario, setTipoUsuario] = useState(0);
     const [errTipoUsuario, setErrTipoUsuario] = useState("");
@@ -190,7 +190,7 @@ export const Register = () => {
           }
         //   await altaUsuario(newUser)
           alert("Usuario Creado")
-          history("/login")
+          navigate("/login")
         } catch (error) {
           console.log(error)
           setAlertSeverity("error")
@@ -199,9 +199,9 @@ export const Register = () => {
   
       }
     }
-    const goHome = () => {
+    const goLogin = () => {
       clear()
-      history("/")
+      navigate("/login")
     }
   
     return (
@@ -317,7 +317,7 @@ export const Register = () => {
               }
             </Box>
             <Box pb={2} display="flex" justifyContent="space-around" alignItems="center">
-              <Button onClick={goHome} variant="outlined" color="primary">
+              <Button onClick={goLogin} variant="outlined" color="primary">
                 Cancelar
               </Button>
               <Button onClick={send} variant="contained" color="primary">

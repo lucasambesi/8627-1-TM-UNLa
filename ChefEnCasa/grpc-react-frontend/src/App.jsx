@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import './styles/App.css'
-import { MyAppBar } from "./components/Shared/AppBar";
-import { ProtectedRoute } from "./components/ProtectedRoute";
+import { NavBar } from "./components/Shared/NavBar";
 import Login from './pages/Authentication/Login'
 import Home from './pages/Home'
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
+import { Profile } from './pages/Profile/Profile';
+import { Recipes } from './pages/Recipes/Recipes';
 
 function App() {
 
@@ -15,17 +16,14 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <MyAppBar user={user} setUser={setUser} />
-
+      <NavBar user={user} setUser={setUser} />
       <Routes>
-        <Route index element={<Login user={user} setUser={setUser}/>} />
+        <Route index element={user ? <Home /> : <Login user={user} setUser={setUser}/>} />
         <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={
-          <ProtectedRoute user={user}>
-            <Home user={user}/>
-          </ProtectedRoute>
-        } />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/recipes" element={<Recipes />} />        
       </Routes>
     </BrowserRouter>
     </>

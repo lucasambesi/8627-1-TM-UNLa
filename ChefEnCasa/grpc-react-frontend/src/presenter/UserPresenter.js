@@ -41,10 +41,8 @@ export const userPresenter = () => {
             }
             console.log(`${baseUrl}/user/login`, body)
             const res = await axios.post(`${baseUrl}/user/login`, body);
-            const user = await res.data;
             
-            console.log('res => ' , res)
-            return user;
+            return res;
         } catch (err) {
             console.log('err => ' , err)
         }
