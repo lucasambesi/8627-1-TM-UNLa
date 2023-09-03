@@ -1,8 +1,13 @@
 import { Avatar, Box, Container, Divider, Grid, Paper, Stack, Typography } from "@mui/material";
 import { deepOrange } from '@mui/material/colors';
 import { Link } from "react-router-dom";
+import { useLocalStorage } from '../../helpers/useLocalStorage';
+
 export const Profile = (props) => {
   
+
+    const [user, setUser] = useLocalStorage('user', '')
+
     return (
         <Container maxWidth="sm" >
             <Box display="flex" justifyContent="center" m={8} >
@@ -10,18 +15,25 @@ export const Profile = (props) => {
                     <Grid container spacing={2}>
                         <Grid container item justifyContent="center" >
                             <Box>
-                                <Avatar sx={{ bgcolor: deepOrange[500], width:100, height: 100 }}>L</Avatar>
+                                <Avatar sx={{ bgcolor: deepOrange[500], width:100, height: 100 }}>
+                                    {`${user.name.substring(0,1)}`}
+                                </Avatar>
                             </Box>    
                         </Grid>
                         <Grid container item justifyContent="center" >
                             <Box>
-                                <Typography variant="h5" color="initial">Lucas Ambesi</Typography>
+                                <Typography variant="h5" color="initial">{`${user.name} ${user.lastName}`}</Typography>
+                            </Box>    
+                        </Grid>
+                        <Grid container item justifyContent="center" >
+                            <Box>
+                                <Typography variant="h6" color="gray">{`@${user.username}`}</Typography>
                             </Box>    
                         </Grid>
                         <Grid container item justifyContent="center" >
                             <Box>
                                 <Link>
-                                    {'Sigues a 10 personas'}
+                                {`siguen a ${10} personas`}
                                 </Link> 
                             </Box>   
                         </Grid>         
