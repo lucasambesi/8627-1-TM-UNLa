@@ -14,6 +14,418 @@ public final class Recipe {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface EmptyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Empty)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code Empty}
+   */
+  public  static final class Empty extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:Empty)
+      EmptyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Empty.newBuilder() to construct.
+    private Empty(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Empty() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Empty(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Recipe.internal_static_Empty_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Recipe.internal_static_Empty_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Recipe.Empty.class, grpc.Recipe.Empty.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Recipe.Empty)) {
+        return super.equals(obj);
+      }
+      grpc.Recipe.Empty other = (grpc.Recipe.Empty) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Recipe.Empty parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.Empty parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.Empty parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.Empty parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.Empty parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.Empty parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Recipe.Empty prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Empty}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Empty)
+        grpc.Recipe.EmptyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Recipe.internal_static_Empty_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Recipe.internal_static_Empty_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Recipe.Empty.class, grpc.Recipe.Empty.Builder.class);
+      }
+
+      // Construct using grpc.Recipe.Empty.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Recipe.internal_static_Empty_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.Empty getDefaultInstanceForType() {
+        return grpc.Recipe.Empty.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.Empty build() {
+        grpc.Recipe.Empty result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.Empty buildPartial() {
+        grpc.Recipe.Empty result = new grpc.Recipe.Empty(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Recipe.Empty) {
+          return mergeFrom((grpc.Recipe.Empty)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Recipe.Empty other) {
+        if (other == grpc.Recipe.Empty.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Recipe.Empty parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Recipe.Empty) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Empty)
+    }
+
+    // @@protoc_insertion_point(class_scope:Empty)
+    private static final grpc.Recipe.Empty DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Recipe.Empty();
+    }
+
+    public static grpc.Recipe.Empty getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Empty>
+        PARSER = new com.google.protobuf.AbstractParser<Empty>() {
+      @java.lang.Override
+      public Empty parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Empty(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Empty> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Empty> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Recipe.Empty getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface RecipeServerResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:RecipeServerResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -622,6 +1034,985 @@ public final class Recipe {
 
     @java.lang.Override
     public grpc.Recipe.RecipeServerResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RecipesDTOOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RecipesDTO)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    java.util.List<grpc.Recipe.RecipeDTO> 
+        getRecipesList();
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    grpc.Recipe.RecipeDTO getRecipes(int index);
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    int getRecipesCount();
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    java.util.List<? extends grpc.Recipe.RecipeDTOOrBuilder> 
+        getRecipesOrBuilderList();
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    grpc.Recipe.RecipeDTOOrBuilder getRecipesOrBuilder(
+        int index);
+
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    boolean hasServerResponse();
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    grpc.Recipe.RecipeServerResponse getServerResponse();
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    grpc.Recipe.RecipeServerResponseOrBuilder getServerResponseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code RecipesDTO}
+   */
+  public  static final class RecipesDTO extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:RecipesDTO)
+      RecipesDTOOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RecipesDTO.newBuilder() to construct.
+    private RecipesDTO(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RecipesDTO() {
+      recipes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RecipesDTO(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                recipes_ = new java.util.ArrayList<grpc.Recipe.RecipeDTO>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              recipes_.add(
+                  input.readMessage(grpc.Recipe.RecipeDTO.parser(), extensionRegistry));
+              break;
+            }
+            case 18: {
+              grpc.Recipe.RecipeServerResponse.Builder subBuilder = null;
+              if (serverResponse_ != null) {
+                subBuilder = serverResponse_.toBuilder();
+              }
+              serverResponse_ = input.readMessage(grpc.Recipe.RecipeServerResponse.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(serverResponse_);
+                serverResponse_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          recipes_ = java.util.Collections.unmodifiableList(recipes_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Recipe.internal_static_RecipesDTO_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Recipe.internal_static_RecipesDTO_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Recipe.RecipesDTO.class, grpc.Recipe.RecipesDTO.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int RECIPES_FIELD_NUMBER = 1;
+    private java.util.List<grpc.Recipe.RecipeDTO> recipes_;
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    public java.util.List<grpc.Recipe.RecipeDTO> getRecipesList() {
+      return recipes_;
+    }
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    public java.util.List<? extends grpc.Recipe.RecipeDTOOrBuilder> 
+        getRecipesOrBuilderList() {
+      return recipes_;
+    }
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    public int getRecipesCount() {
+      return recipes_.size();
+    }
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    public grpc.Recipe.RecipeDTO getRecipes(int index) {
+      return recipes_.get(index);
+    }
+    /**
+     * <code>repeated .RecipeDTO recipes = 1;</code>
+     */
+    public grpc.Recipe.RecipeDTOOrBuilder getRecipesOrBuilder(
+        int index) {
+      return recipes_.get(index);
+    }
+
+    public static final int SERVERRESPONSE_FIELD_NUMBER = 2;
+    private grpc.Recipe.RecipeServerResponse serverResponse_;
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    public boolean hasServerResponse() {
+      return serverResponse_ != null;
+    }
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    public grpc.Recipe.RecipeServerResponse getServerResponse() {
+      return serverResponse_ == null ? grpc.Recipe.RecipeServerResponse.getDefaultInstance() : serverResponse_;
+    }
+    /**
+     * <code>.RecipeServerResponse serverResponse = 2;</code>
+     */
+    public grpc.Recipe.RecipeServerResponseOrBuilder getServerResponseOrBuilder() {
+      return getServerResponse();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < recipes_.size(); i++) {
+        output.writeMessage(1, recipes_.get(i));
+      }
+      if (serverResponse_ != null) {
+        output.writeMessage(2, getServerResponse());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < recipes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, recipes_.get(i));
+      }
+      if (serverResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getServerResponse());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Recipe.RecipesDTO)) {
+        return super.equals(obj);
+      }
+      grpc.Recipe.RecipesDTO other = (grpc.Recipe.RecipesDTO) obj;
+
+      boolean result = true;
+      result = result && getRecipesList()
+          .equals(other.getRecipesList());
+      result = result && (hasServerResponse() == other.hasServerResponse());
+      if (hasServerResponse()) {
+        result = result && getServerResponse()
+            .equals(other.getServerResponse());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getRecipesCount() > 0) {
+        hash = (37 * hash) + RECIPES_FIELD_NUMBER;
+        hash = (53 * hash) + getRecipesList().hashCode();
+      }
+      if (hasServerResponse()) {
+        hash = (37 * hash) + SERVERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getServerResponse().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.RecipesDTO parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.RecipesDTO parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.RecipesDTO parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Recipe.RecipesDTO prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RecipesDTO}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RecipesDTO)
+        grpc.Recipe.RecipesDTOOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Recipe.internal_static_RecipesDTO_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Recipe.internal_static_RecipesDTO_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Recipe.RecipesDTO.class, grpc.Recipe.RecipesDTO.Builder.class);
+      }
+
+      // Construct using grpc.Recipe.RecipesDTO.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getRecipesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (recipesBuilder_ == null) {
+          recipes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          recipesBuilder_.clear();
+        }
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Recipe.internal_static_RecipesDTO_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.RecipesDTO getDefaultInstanceForType() {
+        return grpc.Recipe.RecipesDTO.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.RecipesDTO build() {
+        grpc.Recipe.RecipesDTO result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.RecipesDTO buildPartial() {
+        grpc.Recipe.RecipesDTO result = new grpc.Recipe.RecipesDTO(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (recipesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            recipes_ = java.util.Collections.unmodifiableList(recipes_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.recipes_ = recipes_;
+        } else {
+          result.recipes_ = recipesBuilder_.build();
+        }
+        if (serverResponseBuilder_ == null) {
+          result.serverResponse_ = serverResponse_;
+        } else {
+          result.serverResponse_ = serverResponseBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Recipe.RecipesDTO) {
+          return mergeFrom((grpc.Recipe.RecipesDTO)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Recipe.RecipesDTO other) {
+        if (other == grpc.Recipe.RecipesDTO.getDefaultInstance()) return this;
+        if (recipesBuilder_ == null) {
+          if (!other.recipes_.isEmpty()) {
+            if (recipes_.isEmpty()) {
+              recipes_ = other.recipes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureRecipesIsMutable();
+              recipes_.addAll(other.recipes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.recipes_.isEmpty()) {
+            if (recipesBuilder_.isEmpty()) {
+              recipesBuilder_.dispose();
+              recipesBuilder_ = null;
+              recipes_ = other.recipes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              recipesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRecipesFieldBuilder() : null;
+            } else {
+              recipesBuilder_.addAllMessages(other.recipes_);
+            }
+          }
+        }
+        if (other.hasServerResponse()) {
+          mergeServerResponse(other.getServerResponse());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Recipe.RecipesDTO parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Recipe.RecipesDTO) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<grpc.Recipe.RecipeDTO> recipes_ =
+        java.util.Collections.emptyList();
+      private void ensureRecipesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          recipes_ = new java.util.ArrayList<grpc.Recipe.RecipeDTO>(recipes_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          grpc.Recipe.RecipeDTO, grpc.Recipe.RecipeDTO.Builder, grpc.Recipe.RecipeDTOOrBuilder> recipesBuilder_;
+
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public java.util.List<grpc.Recipe.RecipeDTO> getRecipesList() {
+        if (recipesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(recipes_);
+        } else {
+          return recipesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public int getRecipesCount() {
+        if (recipesBuilder_ == null) {
+          return recipes_.size();
+        } else {
+          return recipesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public grpc.Recipe.RecipeDTO getRecipes(int index) {
+        if (recipesBuilder_ == null) {
+          return recipes_.get(index);
+        } else {
+          return recipesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder setRecipes(
+          int index, grpc.Recipe.RecipeDTO value) {
+        if (recipesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecipesIsMutable();
+          recipes_.set(index, value);
+          onChanged();
+        } else {
+          recipesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder setRecipes(
+          int index, grpc.Recipe.RecipeDTO.Builder builderForValue) {
+        if (recipesBuilder_ == null) {
+          ensureRecipesIsMutable();
+          recipes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          recipesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder addRecipes(grpc.Recipe.RecipeDTO value) {
+        if (recipesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecipesIsMutable();
+          recipes_.add(value);
+          onChanged();
+        } else {
+          recipesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder addRecipes(
+          int index, grpc.Recipe.RecipeDTO value) {
+        if (recipesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecipesIsMutable();
+          recipes_.add(index, value);
+          onChanged();
+        } else {
+          recipesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder addRecipes(
+          grpc.Recipe.RecipeDTO.Builder builderForValue) {
+        if (recipesBuilder_ == null) {
+          ensureRecipesIsMutable();
+          recipes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          recipesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder addRecipes(
+          int index, grpc.Recipe.RecipeDTO.Builder builderForValue) {
+        if (recipesBuilder_ == null) {
+          ensureRecipesIsMutable();
+          recipes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          recipesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder addAllRecipes(
+          java.lang.Iterable<? extends grpc.Recipe.RecipeDTO> values) {
+        if (recipesBuilder_ == null) {
+          ensureRecipesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, recipes_);
+          onChanged();
+        } else {
+          recipesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder clearRecipes() {
+        if (recipesBuilder_ == null) {
+          recipes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          recipesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public Builder removeRecipes(int index) {
+        if (recipesBuilder_ == null) {
+          ensureRecipesIsMutable();
+          recipes_.remove(index);
+          onChanged();
+        } else {
+          recipesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public grpc.Recipe.RecipeDTO.Builder getRecipesBuilder(
+          int index) {
+        return getRecipesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public grpc.Recipe.RecipeDTOOrBuilder getRecipesOrBuilder(
+          int index) {
+        if (recipesBuilder_ == null) {
+          return recipes_.get(index);  } else {
+          return recipesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public java.util.List<? extends grpc.Recipe.RecipeDTOOrBuilder> 
+           getRecipesOrBuilderList() {
+        if (recipesBuilder_ != null) {
+          return recipesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(recipes_);
+        }
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public grpc.Recipe.RecipeDTO.Builder addRecipesBuilder() {
+        return getRecipesFieldBuilder().addBuilder(
+            grpc.Recipe.RecipeDTO.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public grpc.Recipe.RecipeDTO.Builder addRecipesBuilder(
+          int index) {
+        return getRecipesFieldBuilder().addBuilder(
+            index, grpc.Recipe.RecipeDTO.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .RecipeDTO recipes = 1;</code>
+       */
+      public java.util.List<grpc.Recipe.RecipeDTO.Builder> 
+           getRecipesBuilderList() {
+        return getRecipesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          grpc.Recipe.RecipeDTO, grpc.Recipe.RecipeDTO.Builder, grpc.Recipe.RecipeDTOOrBuilder> 
+          getRecipesFieldBuilder() {
+        if (recipesBuilder_ == null) {
+          recipesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              grpc.Recipe.RecipeDTO, grpc.Recipe.RecipeDTO.Builder, grpc.Recipe.RecipeDTOOrBuilder>(
+                  recipes_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          recipes_ = null;
+        }
+        return recipesBuilder_;
+      }
+
+      private grpc.Recipe.RecipeServerResponse serverResponse_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Recipe.RecipeServerResponse, grpc.Recipe.RecipeServerResponse.Builder, grpc.Recipe.RecipeServerResponseOrBuilder> serverResponseBuilder_;
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public boolean hasServerResponse() {
+        return serverResponseBuilder_ != null || serverResponse_ != null;
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Recipe.RecipeServerResponse getServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          return serverResponse_ == null ? grpc.Recipe.RecipeServerResponse.getDefaultInstance() : serverResponse_;
+        } else {
+          return serverResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public Builder setServerResponse(grpc.Recipe.RecipeServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          serverResponse_ = value;
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public Builder setServerResponse(
+          grpc.Recipe.RecipeServerResponse.Builder builderForValue) {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public Builder mergeServerResponse(grpc.Recipe.RecipeServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (serverResponse_ != null) {
+            serverResponse_ =
+              grpc.Recipe.RecipeServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
+          } else {
+            serverResponse_ = value;
+          }
+          onChanged();
+        } else {
+          serverResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public Builder clearServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+          onChanged();
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Recipe.RecipeServerResponse.Builder getServerResponseBuilder() {
+        
+        onChanged();
+        return getServerResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Recipe.RecipeServerResponseOrBuilder getServerResponseOrBuilder() {
+        if (serverResponseBuilder_ != null) {
+          return serverResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return serverResponse_ == null ?
+              grpc.Recipe.RecipeServerResponse.getDefaultInstance() : serverResponse_;
+        }
+      }
+      /**
+       * <code>.RecipeServerResponse serverResponse = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Recipe.RecipeServerResponse, grpc.Recipe.RecipeServerResponse.Builder, grpc.Recipe.RecipeServerResponseOrBuilder> 
+          getServerResponseFieldBuilder() {
+        if (serverResponseBuilder_ == null) {
+          serverResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              grpc.Recipe.RecipeServerResponse, grpc.Recipe.RecipeServerResponse.Builder, grpc.Recipe.RecipeServerResponseOrBuilder>(
+                  getServerResponse(),
+                  getParentForChildren(),
+                  isClean());
+          serverResponse_ = null;
+        }
+        return serverResponseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:RecipesDTO)
+    }
+
+    // @@protoc_insertion_point(class_scope:RecipesDTO)
+    private static final grpc.Recipe.RecipesDTO DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Recipe.RecipesDTO();
+    }
+
+    public static grpc.Recipe.RecipesDTO getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RecipesDTO>
+        PARSER = new com.google.protobuf.AbstractParser<RecipesDTO>() {
+      @java.lang.Override
+      public RecipesDTO parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RecipesDTO(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RecipesDTO> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RecipesDTO> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Recipe.RecipesDTO getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4332,10 +5723,20 @@ public final class Recipe {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Empty_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Empty_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_RecipeServerResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RecipeServerResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RecipesDTO_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_RecipesDTO_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_RecipeDTO_descriptor;
   private static final 
@@ -4365,21 +5766,25 @@ public final class Recipe {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014Recipe.proto\032\nStep.proto\"1\n\024RecipeServ" +
-      "erResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"\254\001" +
-      "\n\tRecipeDTO\022\020\n\010idRecipe\030\001 \001(\005\022\016\n\006idUser\030" +
-      "\002 \001(\005\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004 \001(" +
-      "\t\022\023\n\013ingredients\030\005 \001(\t\022\022\n\nidCategory\030\006 \001" +
-      "(\005\022\027\n\017preparationTime\030\007 \001(\005\022\027\n\005steps\030\010 \003" +
-      "(\0132\010.StepDTO\"Y\n\014RecipeObjDTO\022\032\n\006recipe\030\001" +
-      " \001(\0132\n.RecipeDTO\022-\n\016serverResponse\030\002 \001(\013" +
-      "2\025.RecipeServerResponse\"[\n\rListRecipeDTO" +
-      "\022\033\n\007recipes\030\001 \003(\0132\n.RecipeDTO\022-\n\016serverR" +
-      "esponse\030\002 \001(\0132\025.RecipeServerResponse\"$\n\020" +
-      "GetRecipeRequest\022\020\n\010idRecipe\030\001 \001(\0052i\n\020Re" +
-      "cipeController\022&\n\taddRecipe\022\n.RecipeDTO\032" +
-      "\r.RecipeObjDTO\022-\n\tgetRecipe\022\021.GetRecipeR" +
-      "equest\032\r.RecipeObjDTOB\006\n\004grpcb\006proto3"
+      "\n\014Recipe.proto\032\nStep.proto\"\007\n\005Empty\"1\n\024R" +
+      "ecipeServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg" +
+      "\030\002 \001(\t\"X\n\nRecipesDTO\022\033\n\007recipes\030\001 \003(\0132\n." +
+      "RecipeDTO\022-\n\016serverResponse\030\002 \001(\0132\025.Reci" +
+      "peServerResponse\"\254\001\n\tRecipeDTO\022\020\n\010idReci" +
+      "pe\030\001 \001(\005\022\016\n\006idUser\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022" +
+      "\023\n\013description\030\004 \001(\t\022\023\n\013ingredients\030\005 \001(" +
+      "\t\022\022\n\nidCategory\030\006 \001(\005\022\027\n\017preparationTime" +
+      "\030\007 \001(\005\022\027\n\005steps\030\010 \003(\0132\010.StepDTO\"Y\n\014Recip" +
+      "eObjDTO\022\032\n\006recipe\030\001 \001(\0132\n.RecipeDTO\022-\n\016s" +
+      "erverResponse\030\002 \001(\0132\025.RecipeServerRespon" +
+      "se\"[\n\rListRecipeDTO\022\033\n\007recipes\030\001 \003(\0132\n.R" +
+      "ecipeDTO\022-\n\016serverResponse\030\002 \001(\0132\025.Recip" +
+      "eServerResponse\"$\n\020GetRecipeRequest\022\020\n\010i" +
+      "dRecipe\030\001 \001(\0052\217\001\n\020RecipeController\022&\n\tad" +
+      "dRecipe\022\n.RecipeDTO\032\r.RecipeObjDTO\022-\n\tge" +
+      "tRecipe\022\021.GetRecipeRequest\032\r.RecipeObjDT" +
+      "O\022$\n\rgetAllRecipes\022\006.Empty\032\013.RecipesDTOB" +
+      "\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4394,32 +5799,44 @@ public final class Recipe {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           grpc.Step.getDescriptor(),
         }, assigner);
-    internal_static_RecipeServerResponse_descriptor =
+    internal_static_Empty_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Empty_descriptor,
+        new java.lang.String[] { });
+    internal_static_RecipeServerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_RecipeServerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecipeServerResponse_descriptor,
         new java.lang.String[] { "Code", "Msg", });
+    internal_static_RecipesDTO_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_RecipesDTO_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_RecipesDTO_descriptor,
+        new java.lang.String[] { "Recipes", "ServerResponse", });
     internal_static_RecipeDTO_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_RecipeDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecipeDTO_descriptor,
         new java.lang.String[] { "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", });
     internal_static_RecipeObjDTO_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_RecipeObjDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecipeObjDTO_descriptor,
         new java.lang.String[] { "Recipe", "ServerResponse", });
     internal_static_ListRecipeDTO_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ListRecipeDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListRecipeDTO_descriptor,
         new java.lang.String[] { "Recipes", "ServerResponse", });
     internal_static_GetRecipeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_GetRecipeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetRecipeRequest_descriptor,

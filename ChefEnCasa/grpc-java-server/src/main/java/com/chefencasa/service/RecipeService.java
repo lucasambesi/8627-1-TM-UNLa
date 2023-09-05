@@ -40,6 +40,10 @@ public class RecipeService {
         return recipeRepository.getById(idRecipe);
     }
 
+    public List<Recipe> getAll() throws Exception{
+        return recipeRepository.getAll();
+    }
+
     private Recipe mapToEntity (grpc.Recipe.RecipeDTO dto) throws Exception{
         Recipe u = new Recipe();
 

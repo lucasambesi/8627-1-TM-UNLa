@@ -2,9 +2,13 @@ package com.chefencasa.Controller;
 
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.RecipeService;
+import com.google.protobuf.Empty;
+import grpc.Category;
 import grpc.Recipe;
 import grpc.RecipeControllerGrpc;
 import io.grpc.stub.StreamObserver;
+
+import java.util.List;
 
 public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplBase {
     public RecipeService recipeService = RecipeService.getInstance();
@@ -51,6 +55,22 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         responseObserver.onCompleted();
     }
 
+   public void getAllRecipes(Recipe.Empty request, StreamObserver<Recipe.RecipesDTO> responseObserver) {
+        Recipe.RecipesDTO.Builder recipesDTO = Recipe.RecipesDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Recipe> recipes = this.recipeService.getAll();
+            for (com.chefencasa.Model.Recipe recipe : recipes) {
+                recipesDTO.addRecipes(mapRecipeDTO(recipe));
+            }
+            recipesDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(recipesDTO.build());
+        responseObserver.onCompleted();
+    }
 
     public Recipe.RecipeDTO.Builder mapRecipeDTO (com.chefencasa.Model.Recipe u){
         Recipe.RecipeDTO.Builder dto = Recipe.RecipeDTO.newBuilder();

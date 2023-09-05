@@ -7,11 +7,20 @@ import "Protos/Step.proto";
 service RecipeController{
   rpc addRecipe(RecipeDTO) returns (RecipeObjDTO);
   rpc getRecipe(GetRecipeRequest)returns (RecipeObjDTO);
+  rpc getAllRecipes(Empty) returns (RecipesDTO);
+}
+
+message Empty {
 }
 
 message RecipeServerResponse{
   int32 code = 1;
   string msg = 2;
+}
+
+message RecipesDTO{
+  repeated RecipeDTO recipes=1;
+  RecipeServerResponse serverResponse = 2;
 }
 
 message RecipeDTO{
