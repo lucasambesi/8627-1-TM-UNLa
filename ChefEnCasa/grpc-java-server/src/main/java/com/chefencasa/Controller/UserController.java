@@ -16,7 +16,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
 
         try {
-            com.chefencasa.Model.User usuario = this.userService.agregarUsuario(request);
+            com.chefencasa.Model.User usuario = this.userService.addUser(request);
             response.setUser(this.mapUserDTO(usuario));
             serverResponse.setCode(200);
             serverResponse.setMsg("User created");

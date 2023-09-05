@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "grpc";
+
+service CategoryController{
+  rpc addCategory(CategoryDTO) returns (CategoryObjDTO);
+  rpc getCategory(GetCategoryRequest)returns (CategoryObjDTO);
+}
+
+message CategoryServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+message CategoryDTO{
+  int32 idCategory=1;
+  string name = 2;
+}
+
+message CategoryObjDTO{
+  CategoryDTO category = 1;
+  CategoryServerResponse serverResponse = 2;
+}
+
+message GetCategoryRequest{
+  int32 idCategory=1;
+}

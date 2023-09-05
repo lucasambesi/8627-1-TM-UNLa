@@ -17,7 +17,7 @@ public class UserService {
 
     UserRepository userRepository = UserRepository.getInstance();
 
-    public User agregarUsuario(UserDTO userDTO) throws Exception {
+    public User addUser(UserDTO userDTO) throws Exception {
         User toPersist = mapToEntity(userDTO);
         User persisted = userRepository.createUser(toPersist);
         return persisted;

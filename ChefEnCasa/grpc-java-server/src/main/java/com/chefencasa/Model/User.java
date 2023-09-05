@@ -1,9 +1,12 @@
 package com.chefencasa.Model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,4 +36,9 @@ public class User {
 
     @Column(name="password")
     private String password;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(cascade = {CascadeType.MERGE,
+            CascadeType.REFRESH}, targetEntity = Recipe.class)
+    private Set<Recipe> processes = new HashSet<>();
 }

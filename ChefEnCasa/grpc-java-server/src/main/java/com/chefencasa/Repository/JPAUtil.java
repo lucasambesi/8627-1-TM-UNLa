@@ -3,6 +3,7 @@ package com.chefencasa.Repository;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
 public class JPAUtil {
     private static  EntityManagerFactory emf;
 

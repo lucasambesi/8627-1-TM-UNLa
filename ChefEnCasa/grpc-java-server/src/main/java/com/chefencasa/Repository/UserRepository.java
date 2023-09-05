@@ -25,7 +25,7 @@ public class UserRepository {
             transaction.begin();
             entity = em.merge(user);
             transaction.commit();
-        } // end_try
+        }
         catch (Exception e){
             String msg = "Persistence error - addUser method: " + e.getMessage();
             System.out.println(msg);

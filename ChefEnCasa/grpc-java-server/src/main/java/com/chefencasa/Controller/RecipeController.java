@@ -1,0 +1,78 @@
+package com.chefencasa.Controller;
+
+import com.chefencasa.Model.Step;
+import com.chefencasa.service.RecipeService;
+import grpc.Recipe;
+import grpc.RecipeControllerGrpc;
+import io.grpc.stub.StreamObserver;
+
+public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplBase {
+    public RecipeService recipeService = RecipeService.getInstance();
+
+    public RecipeController() {
+    }
+
+    public void addRecipe(Recipe.RecipeDTO request, StreamObserver<Recipe.RecipeObjDTO> responseObserver) {
+        Recipe.RecipeObjDTO.Builder response = Recipe.RecipeObjDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+
+        try {
+            com.chefencasa.Model.Recipe recipe = this.recipeService.addRecipe(request);
+            response.setRecipe(this.mapRecipeDTO(recipe));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Recipe created");
+        } catch (Exception var6) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(var6.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getRecipe(Recipe.GetRecipeRequest request, StreamObserver<Recipe.RecipeObjDTO> responseObserver) {
+        com.chefencasa.Model.Recipe recipe = null;
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        Recipe.RecipeObjDTO.Builder response = Recipe.RecipeObjDTO.newBuilder();
+
+        try {
+            recipe = this.recipeService.getById(request.getIdRecipe());
+            response.setRecipe(this.mapRecipeDTO(recipe));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Recipe found");
+        } catch (Exception var7) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(var7.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+
+    public Recipe.RecipeDTO.Builder mapRecipeDTO (com.chefencasa.Model.Recipe u){
+        Recipe.RecipeDTO.Builder dto = Recipe.RecipeDTO.newBuilder();
+
+        dto.setIdRecipe(u.getIdRecipe());
+        dto.setIdUser(u.getUser().getIdUser());
+        dto.setTitle(u.getTitle());
+        dto.setDescription(u.getDescription());
+        dto.setIngredients(u.getIngredients());
+        dto.setPreparationTime(u.getPreparationTime());
+        dto.setIdCategory(u.getCategory().getIdCategory());
+
+        for(Step step: u.getSteps()){
+
+            grpc.Step.StepDTO.Builder stepDTO = grpc.Step.StepDTO.newBuilder();
+            stepDTO.setIdStep(step.getIdStep());
+            stepDTO.setDescription(step.getDescription());
+
+            dto.addSteps(stepDTO);
+        }
+
+        return dto;
+    }
+
+}

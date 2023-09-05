@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option java_package = "grpc";
+
+service StepController{
+  rpc addStep(StepDTO) returns (StepObjDTO);
+}
+
+message StepServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+message StepDTO{
+  int32 idStep = 1;
+  int32 idRecipe = 2;
+  string description = 3;
+}
+
+message StepObjDTO{
+  StepDTO step = 1;
+  StepServerResponse serverResponse = 2;
+}
+
+message ListStepDTO{
+  repeated StepDTO steps = 1;
+  StepServerResponse serverResponse = 2;
+}

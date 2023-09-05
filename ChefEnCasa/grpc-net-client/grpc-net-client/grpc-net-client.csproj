@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\Category.proto" />
+    <None Remove="Protos\Recipe.proto" />
+    <None Remove="Protos\Step.proto" />
     <None Remove="Protos\User.proto" />
   </ItemGroup>
 
@@ -28,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\Category.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Recipe.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Step.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\User.proto" GrpcServices="Client" />
   </ItemGroup>
 

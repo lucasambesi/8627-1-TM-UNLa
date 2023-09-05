@@ -63,6 +63,13 @@ C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\ChefEnCasa.
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\ChefEnCasa.API\grpc-net-client\bin\Debug\net6.0\Grpc.AspNetCore.Server.dll
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\ChefEnCasa.API\grpc-net-client\bin\Debug\net6.0\Grpc.AspNetCore.Server.ClientFactory.dll
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\ChefEnCasa.API\grpc-net-client\bin\Debug\net6.0\Grpc.Net.ClientFactory.dll
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.csproj.AssemblyReference.cache
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.AssemblyInfoInputs.cache
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.AssemblyInfo.cs
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.csproj.CoreCompileInputs.cache
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\appsettings.json
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\grpc-net-client.exe
@@ -107,13 +114,6 @@ C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-cl
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.csproj.AssemblyReference.cache
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.AssemblyInfoInputs.cache
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.AssemblyInfo.cs
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.csproj.CoreCompileInputs.cache
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\grpc-net-client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\staticwebassets\msbuild.grpc-net-client.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\staticwebassets\msbuild.build.grpc-net-client.props
 C:\Users\lucas\Documents\ProyectosGit\UNLa\8627-1-TM-UNLa\ChefEnCasa\grpc-net-client\grpc-net-client\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.grpc-net-client.props

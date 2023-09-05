@@ -1,0 +1,39 @@
+syntax = "proto3";
+import "Step.proto";
+
+option java_package = "grpc";
+
+service RecipeController{
+  rpc addRecipe(RecipeDTO) returns (RecipeObjDTO);
+  rpc getRecipe(GetRecipeRequest)returns (RecipeObjDTO);
+}
+
+message RecipeServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+message RecipeDTO{
+  int32 idRecipe = 1;
+  int32 idUser = 2;
+  string title = 3;
+  string description = 4;
+  string ingredients = 5;
+  int32 idCategory = 6;
+  int32 preparationTime = 7;
+  repeated StepDTO steps = 8;
+}
+
+message RecipeObjDTO{
+  RecipeDTO recipe = 1;
+  RecipeServerResponse serverResponse = 2;
+}
+
+message ListRecipeDTO{
+  repeated RecipeDTO recipes = 1;
+  RecipeServerResponse serverResponse = 2;
+}
+
+message GetRecipeRequest{
+  int32 idRecipe=1;
+}

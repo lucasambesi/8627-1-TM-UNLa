@@ -6,32 +6,32 @@ using System.Web.Http.Cors;
 
 namespace grpc_net_client.Controllers
 {
-    [Route("api/user")]
+    [Route("api/recipe")]
     [ApiController]
     [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
-    public class UserControllerClient : ControllerBase
+    public class RecipeControllerClient : ControllerBase
     {
         private readonly IOptions<ApiConfig> _config;
-        UserController.UserControllerClient _service;
+        RecipeController.RecipeControllerClient _service;
 
         #region constructor
-        public UserControllerClient(IOptions<ApiConfig> config)
+        public RecipeControllerClient(IOptions<ApiConfig> config)
         {
             _config = config;
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL);
-            _service = new UserController.UserControllerClient(channel);
+            _service = new RecipeController.RecipeControllerClient(channel);
         }
         #endregion
 
         #region endpoints
         [HttpGet]
-        public async Task<ActionResult> Get(int idUser)
+        public async Task<ActionResult> Get(int idRecipe)
         {
             try
             {
-                GetUserRequest idUsuarioDTO = new GetUserRequest() { IdUser = idUser };
-                var response = await _service.getUserAsync(idUsuarioDTO);
+                GetRecipeRequest idRecipeDTO = new GetRecipeRequest() { IdRecipe = idRecipe };
+                var response = await _service.getRecipeAsync(idRecipeDTO);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }
@@ -43,30 +43,11 @@ namespace grpc_net_client.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
-        public async Task<ActionResult> Login([FromBody] GetByUserIdAndPasswordRequest request)
+        public async Task<ActionResult> Post([FromBody] RecipeDTO recipe)
         {
             try
             {
-                var response = await _service.getByUserAndPasswordRequestAsync(request);
-                if (response.User == null) return NotFound();
-                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
-                return Ok(response.User);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpPost]
-        [Route("register")]
-        public async Task<ActionResult> Post([FromBody] UserDTO user)
-        {
-            try
-            {
-                var response = await _service.addUserAsync(user);
+                var response = await _service.addRecipeAsync(recipe);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }
