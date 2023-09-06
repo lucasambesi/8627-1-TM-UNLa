@@ -71,8 +71,8 @@ const Login = (props) => {
       if(valid){
         try {          
             const res = await login(username, password);
-            if(res.user){
-              setUser(res.user)
+            if(res){
+              setUser(res.data)
               navigate({
                 pathname:"/home",
                   }) 

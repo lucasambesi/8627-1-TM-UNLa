@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import unlalogo from '../../assets/unla_logo.png'; 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+
+import { categoryPresenter } from '../../presenter/CategoryPresenter'
+import { stepPresenter } from '../../presenter/StepPresenter'
 
 const style = {
     position: 'absolute',
@@ -24,11 +24,32 @@ const style = {
     p: 4,
   };
 
-  export const Recipes = (props) => {
+  export const Recipe = (props) => {
     const {recipe} = props
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [category, setCategory] = useState({});
+    const [steps, setSteps] = useState([]);
+
+    const { getCategoryById } = categoryPresenter()
+    const { getStepsByRecipeId } = stepPresenter()
+
+    useEffect(() => {
+        getCategoryById(recipe.idCategory)
+          .then((res) => {
+            setCategory(res)
+          })
+          .catch((err) => console.log(err));
+      }, [])
+
+      useEffect(() => {
+        getStepsByRecipeId(recipe.idRecipe)
+          .then((res) => {
+            setSteps(res)
+          })
+          .catch((err) => console.log(err));
+      }, [])
 
     return (
         <Card elevation={3} sx={{ maxWidth: 345, minWidth: 345, margin: 2 }}>
@@ -49,22 +70,44 @@ const style = {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-            <Button onClick={handleOpen}>INGREDIENTES</Button>
+            <Button onClick={handleOpen}>DETALLES</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
             <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography id="modal-modal-title" align="center" variant="h4" component="h2">
                     {recipe.title}
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {recipe.ingredients}
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     La receta te tomara aproximadamente {recipe.preparationTime} minutos.
                 </Typography>
+                <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
+                    Categoria: 
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    {category.name}
+                </Typography>
+                <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
+                    Ingredientes:
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    {recipe.ingredients}
+                </Typography>
+                <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
+                    Pasos:
+                </Typography>
+                {
+                    steps ? steps.map((step , index) =>{
+                    return (
+                        <Typography key={step.idStep} id="modal-modal-description" sx={{ mt: 2 }}>
+                           Paso {index + 1}: {step.description}
+                        </Typography>
+                        )
+                    })
+                    : "No posee pasos"
+                }
             </Box>
             </Modal>
             </CardActions>

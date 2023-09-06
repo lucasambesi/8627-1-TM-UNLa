@@ -1,21 +1,21 @@
 import axios from "axios"
-import {recipePresenterMock} from './Mocks/RecipeMock'
+import {categoryPresenterMock} from './Mocks/CategoryMock'
 
-export const recipePresenter = () => {
+export const categoryPresenter = () => {
 
     const useMock = import.meta.env.VITE_REACT_BACKEND_MOCK
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
 
-    const {getMock} = recipePresenterMock()
+    const {getMock} = categoryPresenterMock()
 
-    const getRecipes = async () => {
+    const getCategories = async () => {
         try {
 
             if(useMock == 'true'){
                 return getMock()
             }
 
-            const res = await axios.get(`${baseUrl}/recipes`);
+            const res = await axios.get(`${baseUrl}/categories`);
             
             const result = await res.data;
             return result
@@ -24,29 +24,29 @@ export const recipePresenter = () => {
         }
     }
 
-    const getRecipesByUserId = async (idUser) => {
+    const getCategoryById = async (id) => {
         try {
 
             if(useMock == 'true'){
                 return getMock()
             }
 
-            const res = await axios.get(`${baseUrl}/recipes/user`, {
+            const res = await axios.get(`${baseUrl}/categories/category`, {
                 params: {
-                  userId: idUser
+                  idCategory: id
                 }
               });
 
             const result = await res.data
 
-            return result
+            return result.category
         } catch (err) {
             console.error(err)
         }
     }
 
     return {
-        getRecipes,
-        getRecipesByUserId,
+        getCategories,
+        getCategoryById,
     }
 }

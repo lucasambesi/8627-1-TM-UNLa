@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
-import { Recipes } from './pages/Recipes/Recipe';
+import { FavoriteRecipes } from './pages/Recipes/Favorites'
 
 function App() {
 
@@ -22,8 +22,8 @@ function App() {
         <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/recipes" element={<Recipe />} />        
+        <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
+        <Route path="/recipes" element={<FavoriteRecipes user={user}/>} />        
       </Routes>
     </BrowserRouter>
     </>
