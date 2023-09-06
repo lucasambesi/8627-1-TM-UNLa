@@ -24,7 +24,7 @@ const style = {
     p: 4,
   };
 
- export default  Recipe = (props) => {
+  export const Recipes = (props) => {
     const {recipe} = props
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);

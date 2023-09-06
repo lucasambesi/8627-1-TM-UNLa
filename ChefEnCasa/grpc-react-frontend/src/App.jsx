@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
-import { Recipe } from './pages/Recipes/Recipe';
+import { Recipes } from './pages/Recipes/Recipe';
 
 function App() {
 

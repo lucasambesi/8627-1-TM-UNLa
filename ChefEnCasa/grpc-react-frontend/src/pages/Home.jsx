@@ -3,7 +3,7 @@ import { recipePresenter } from '../presenter/RecipePresenter'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import Recipe from "./Recipes/Recipe";
+import {Recipes} from "./Recipes/Recipe";
 
 const Home = (props) => {
    const [recipes, setRecipes] = useState([]);
