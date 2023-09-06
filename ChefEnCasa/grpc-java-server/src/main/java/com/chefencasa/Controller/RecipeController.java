@@ -71,6 +71,24 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         responseObserver.onNext(recipesDTO.build());
         responseObserver.onCompleted();
     }
+
+    public void getRecipesByUserId(Recipe.IdUserRequest request, StreamObserver<Recipe.RecipesDTO> responseObserver) {
+        Recipe.RecipesDTO.Builder recipesDTO = Recipe.RecipesDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Recipe> recipes = recipeService.getByUserId(request.getIdUser());
+            for (com.chefencasa.Model.Recipe recipe : recipes) {
+                recipesDTO.addRecipes(mapRecipeDTO(recipe));
+            }
+            recipesDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(recipesDTO.build());
+        responseObserver.onCompleted();
+    }
+
     public Recipe.RecipeDTO.Builder mapRecipeDTO (com.chefencasa.Model.Recipe u){
         Recipe.RecipeDTO.Builder dto = Recipe.RecipeDTO.newBuilder();
 

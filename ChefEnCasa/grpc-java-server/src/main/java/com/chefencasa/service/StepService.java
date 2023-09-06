@@ -1,8 +1,12 @@
 package com.chefencasa.service;
 
+import com.chefencasa.Model.Recipe;
 import com.chefencasa.Model.Step;
+import com.chefencasa.Model.User;
 import com.chefencasa.Repository.RecipeRepository;
 import com.chefencasa.Repository.StepRepository;
+
+import java.util.List;
 
 public class StepService {
     private static StepService service;
@@ -23,6 +27,11 @@ public class StepService {
         Step persisted = stepRepository.createStep(toPersist);
 
         return persisted;
+    }
+
+    public List<Step> getByRecipeId(int idRecipe) throws Exception{
+        Recipe recipe = recipeService.getById(idRecipe);
+        return stepRepository.getByRecipe(recipe);
     }
 
     private Step mapToEntity (grpc.Step.StepDTO dto) throws Exception{

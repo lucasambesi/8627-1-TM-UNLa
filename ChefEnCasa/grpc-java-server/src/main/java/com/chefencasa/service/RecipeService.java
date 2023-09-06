@@ -44,6 +44,11 @@ public class RecipeService {
         return recipeRepository.getAll();
     }
 
+    public List<Recipe> getByUserId(int idUser) throws Exception{
+        User user = userService.getById(idUser);
+        return recipeRepository.getByUser(user);
+    }
+
     private Recipe mapToEntity (grpc.Recipe.RecipeDTO dto) throws Exception{
         Recipe u = new Recipe();
 

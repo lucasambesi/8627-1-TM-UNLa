@@ -6,7 +6,7 @@ using System.Web.Http.Cors;
 
 namespace grpc_net_client.Controllers
 {
-    [Route("api/category")]
+    [Route("api/categories")]
     [ApiController]
     [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
     public class CategoryControllerClient : ControllerBase
@@ -40,7 +40,7 @@ namespace grpc_net_client.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("category")]
         public async Task<ActionResult> Get(int idCategory)
         {
             try

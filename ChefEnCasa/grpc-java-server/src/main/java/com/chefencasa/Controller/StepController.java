@@ -1,9 +1,12 @@
 package com.chefencasa.Controller;
 
 import com.chefencasa.service.StepService;
+import grpc.Recipe;
 import grpc.Step;
 import grpc.StepControllerGrpc;
 import io.grpc.stub.StreamObserver;
+
+import java.util.List;
 
 public class StepController extends StepControllerGrpc.StepControllerImplBase {
     public StepService stepService = StepService.getInstance();
@@ -27,6 +30,23 @@ public class StepController extends StepControllerGrpc.StepControllerImplBase {
 
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getStepsByRecipeId(Step.IdRecipeRequest request, StreamObserver<Step.StepsDTO> responseObserver) {
+        Step.StepsDTO.Builder stepsDTO = Step.StepsDTO.newBuilder();
+        Step.StepServerResponse.Builder serverResponse = Step.StepServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Step> steps = stepService.getByRecipeId(request.getIdrecipe());
+            for (com.chefencasa.Model.Step recipe : steps) {
+                stepsDTO.addSteps(mapStepDTO(recipe));
+            }
+            stepsDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(stepsDTO.build());
         responseObserver.onCompleted();
     }
 

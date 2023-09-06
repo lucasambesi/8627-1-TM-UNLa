@@ -59,6 +59,38 @@ public final class StepControllerGrpc {
      return getAddStepMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Step.IdRecipeRequest,
+      grpc.Step.StepsDTO> getGetStepsByRecipeIdMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getStepsByRecipeId",
+      requestType = grpc.Step.IdRecipeRequest.class,
+      responseType = grpc.Step.StepsDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Step.IdRecipeRequest,
+      grpc.Step.StepsDTO> getGetStepsByRecipeIdMethod() {
+    io.grpc.MethodDescriptor<grpc.Step.IdRecipeRequest, grpc.Step.StepsDTO> getGetStepsByRecipeIdMethod;
+    if ((getGetStepsByRecipeIdMethod = StepControllerGrpc.getGetStepsByRecipeIdMethod) == null) {
+      synchronized (StepControllerGrpc.class) {
+        if ((getGetStepsByRecipeIdMethod = StepControllerGrpc.getGetStepsByRecipeIdMethod) == null) {
+          StepControllerGrpc.getGetStepsByRecipeIdMethod = getGetStepsByRecipeIdMethod = 
+              io.grpc.MethodDescriptor.<grpc.Step.IdRecipeRequest, grpc.Step.StepsDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "StepController", "getStepsByRecipeId"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Step.IdRecipeRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Step.StepsDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new StepControllerMethodDescriptorSupplier("getStepsByRecipeId"))
+                  .build();
+          }
+        }
+     }
+     return getGetStepsByRecipeIdMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +125,13 @@ public final class StepControllerGrpc {
       asyncUnimplementedUnaryCall(getAddStepMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getStepsByRecipeId(grpc.Step.IdRecipeRequest request,
+        io.grpc.stub.StreamObserver<grpc.Step.StepsDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetStepsByRecipeIdMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +141,13 @@ public final class StepControllerGrpc {
                 grpc.Step.StepDTO,
                 grpc.Step.StepObjDTO>(
                   this, METHODID_ADD_STEP)))
+          .addMethod(
+            getGetStepsByRecipeIdMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Step.IdRecipeRequest,
+                grpc.Step.StepsDTO>(
+                  this, METHODID_GET_STEPS_BY_RECIPE_ID)))
           .build();
     }
   }
@@ -131,6 +177,14 @@ public final class StepControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getAddStepMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getStepsByRecipeId(grpc.Step.IdRecipeRequest request,
+        io.grpc.stub.StreamObserver<grpc.Step.StepsDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetStepsByRecipeIdMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +210,13 @@ public final class StepControllerGrpc {
     public grpc.Step.StepObjDTO addStep(grpc.Step.StepDTO request) {
       return blockingUnaryCall(
           getChannel(), getAddStepMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Step.StepsDTO getStepsByRecipeId(grpc.Step.IdRecipeRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetStepsByRecipeIdMethod(), getCallOptions(), request);
     }
   }
 
@@ -184,9 +245,18 @@ public final class StepControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getAddStepMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Step.StepsDTO> getStepsByRecipeId(
+        grpc.Step.IdRecipeRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetStepsByRecipeIdMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_STEP = 0;
+  private static final int METHODID_GET_STEPS_BY_RECIPE_ID = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -208,6 +278,10 @@ public final class StepControllerGrpc {
         case METHODID_ADD_STEP:
           serviceImpl.addStep((grpc.Step.StepDTO) request,
               (io.grpc.stub.StreamObserver<grpc.Step.StepObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_STEPS_BY_RECIPE_ID:
+          serviceImpl.getStepsByRecipeId((grpc.Step.IdRecipeRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.Step.StepsDTO>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -271,6 +345,7 @@ public final class StepControllerGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new StepControllerFileDescriptorSupplier())
               .addMethod(getAddStepMethod())
+              .addMethod(getGetStepsByRecipeIdMethod())
               .build();
         }
       }

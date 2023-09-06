@@ -39,5 +39,24 @@ namespace grpc_net_client.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("recipe")]
+        public async Task<ActionResult> GetByRecipe(int recipeId)
+        {
+            try
+            {
+                IdRecipeRequest request = new IdRecipeRequest() { Idrecipe = recipeId };
+                var response = await _service.getStepsByRecipeIdAsync(request);
+                if (response.Steps.Count == 0) return NoContent();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response.Steps);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

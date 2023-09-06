@@ -48,6 +48,10 @@ public static partial class StepController
   static readonly grpc::Marshaller<global::StepDTO> __Marshaller_StepDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::StepDTO.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::StepObjDTO> __Marshaller_StepObjDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::StepObjDTO.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::IdRecipeRequest> __Marshaller_IdRecipeRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::IdRecipeRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::StepsDTO> __Marshaller_StepsDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::StepsDTO.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::StepDTO, global::StepObjDTO> __Method_addStep = new grpc::Method<global::StepDTO, global::StepObjDTO>(
@@ -56,6 +60,14 @@ public static partial class StepController
       "addStep",
       __Marshaller_StepDTO,
       __Marshaller_StepObjDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::IdRecipeRequest, global::StepsDTO> __Method_getStepsByRecipeId = new grpc::Method<global::IdRecipeRequest, global::StepsDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "getStepsByRecipeId",
+      __Marshaller_IdRecipeRequest,
+      __Marshaller_StepsDTO);
 
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -109,6 +121,26 @@ public static partial class StepController
     public virtual grpc::AsyncUnaryCall<global::StepObjDTO> addStepAsync(global::StepDTO request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_addStep, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::StepsDTO getStepsByRecipeId(global::IdRecipeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getStepsByRecipeId(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::StepsDTO getStepsByRecipeId(global::IdRecipeRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_getStepsByRecipeId, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::StepsDTO> getStepsByRecipeIdAsync(global::IdRecipeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getStepsByRecipeIdAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::StepsDTO> getStepsByRecipeIdAsync(global::IdRecipeRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_getStepsByRecipeId, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

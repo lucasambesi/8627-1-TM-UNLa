@@ -4,11 +4,17 @@ option java_package = "grpc";
 
 service StepController{
   rpc addStep(StepDTO) returns (StepObjDTO);
+  rpc getStepsByRecipeId(IdRecipeRequest) returns (StepsDTO);
 }
 
 message StepServerResponse{
   int32 code = 1;
   string msg = 2;
+}
+
+message StepsDTO{
+  repeated StepDTO steps=1;
+  StepServerResponse serverResponse = 2;
 }
 
 message StepDTO{
@@ -25,4 +31,8 @@ message StepObjDTO{
 message ListStepDTO{
   repeated StepDTO steps = 1;
   StepServerResponse serverResponse = 2;
+}
+
+message IdRecipeRequest{
+  int32 idrecipe = 1;
 }

@@ -60,6 +60,25 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("user")]
+        public async Task<ActionResult> GetByUsuario(int userId)
+        {
+            try
+            {
+                IdUserRequest request = new IdUserRequest() { IdUser = userId };
+                var response = await _service.getRecipesByUserIdAsync(request);
+                if (response.Recipes.Count == 0) return NoContent();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response.Recipes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] RecipeDTO recipe)
         {

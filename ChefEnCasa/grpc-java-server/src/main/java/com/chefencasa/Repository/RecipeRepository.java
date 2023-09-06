@@ -1,6 +1,7 @@
 package com.chefencasa.Repository;
 
 import com.chefencasa.Model.Recipe;
+import com.chefencasa.Model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -81,6 +82,29 @@ public class RecipeRepository {
             recipes = em.createQuery(query).getResultList();
         } catch (Exception e) {
             String msg = "Error de persistencia - Método GetAll: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
+        return recipes;
+    }
+
+    public List<Recipe> getByUser(User user) throws Exception{
+        List<Recipe> recipes = new ArrayList<Recipe>();
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Recipe> query = criteriaBuilder.createQuery(Recipe.class);
+
+        Root<Recipe> root = query.from(Recipe.class);
+        Predicate byUser = criteriaBuilder.equal(root.get("user"), user);
+        query.select(root).where(byUser);
+
+        try {
+            recipes = em.createQuery(query).getResultList();
+        } catch (Exception e) {
+            String msg = "Error de persistencia - Método GetRecipesByUser: " + e.getMessage();
             System.out.println(msg);
             throw new Exception(msg);
         } finally {

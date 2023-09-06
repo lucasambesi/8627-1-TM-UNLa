@@ -3,6 +3,7 @@ package com.chefencasa.Controller;
 import com.chefencasa.service.CategoryService;
 import grpc.Category;
 import grpc.CategoryControllerGrpc;
+import grpc.User;
 import io.grpc.stub.StreamObserver;
 
 public class CategoryController  extends CategoryControllerGrpc.CategoryControllerImplBase {
@@ -24,6 +25,26 @@ public class CategoryController  extends CategoryControllerGrpc.CategoryControll
         } catch (Exception var6) {
             serverResponse.setCode(500);
             serverResponse.setMsg(var6.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getCategory(Category.GetCategoryRequest request, StreamObserver<Category.CategoryObjDTO> responseObserver) {
+        com.chefencasa.Model.Category user = null;
+        Category.CategoryServerResponse.Builder serverResponse = Category.CategoryServerResponse.newBuilder();
+        Category.CategoryObjDTO.Builder response = Category.CategoryObjDTO.newBuilder();
+
+        try {
+            user = this.categoryService.getById(request.getIdCategory());
+            response.setCategory(this.mapCategoryDTO(user));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Category found");
+        } catch (Exception var7) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(var7.getMessage());
         }
 
         response.setServerResponse(serverResponse);
