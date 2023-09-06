@@ -4,11 +4,19 @@ import { recipePresenter } from '../../presenter/RecipePresenter'
 import React, {useEffect, useState} from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 import '../../styles/profile.css'
+
+import uno from '../../assets/recetas/uno.jpg'; 
+import dos from '../../assets/recetas/dos.jpg'; 
+import tres from '../../assets/recetas/tres.jpg'; 
+import cuatro from '../../assets/recetas/cuatro.jpg'; 
+import cinco from '../../assets/recetas/cinco.jpg'; 
+
 export const Profile = (props) => {
     const { user, setUser } = props;
     const [recipes, setRecipes] = useState([]);
+    const images = [uno, dos, tres, cuatro, cinco]
 
-    const {getRecipesByUserId} = recipePresenter()
+    const {getRecipesByUserId} = recipePresenter()    
 
     useEffect(() => {
       getRecipesByUserId(user.idUser)
@@ -52,9 +60,9 @@ export const Profile = (props) => {
                     {
                         recipes ? recipes.map((recipe) =>{
                         return (
-                          <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '80%' }}>
+                          <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '40%', minHeight: '40%' }}>
                           <MDBCard>
-                            <MDBCardImage src='https://mdbootstrap.com/img/new/standard/nature/182.webp' alt='...' position='top' style={{ maxHeight:'200px' }} />
+                            <MDBCardImage src={images[Math.floor(Math.random() * images.length)]} alt='...' position='top' style={{ maxHeight:'200px' }} />
                               <MDBCardBody>
                                 <MDBRow>
                                   <MDBCardText>

@@ -1,13 +1,20 @@
+import 'reactjs-popup/dist/index.css';
+
 import React, { useEffect, useState }  from "react";
-import unlalogo from '../../assets/unla_logo.png'; 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import 'reactjs-popup/dist/index.css';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+
+import unlalogo from '../../assets/unla_logo.png'; 
+import uno from '../../assets/recetas/uno.jpg'; 
+import dos from '../../assets/recetas/dos.jpg'; 
+import tres from '../../assets/recetas/tres.jpg'; 
+import cuatro from '../../assets/recetas/cuatro.jpg'; 
+import cinco from '../../assets/recetas/cinco.jpg'; 
 
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
@@ -26,9 +33,8 @@ const style = {
 
   export const Recipe = (props) => {
     const {recipe} = props
+    const images = [uno, dos, tres, cuatro, cinco]
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     const [category, setCategory] = useState({});
     const [steps, setSteps] = useState([]);
 
@@ -51,14 +57,17 @@ const style = {
           .catch((err) => console.log(err));
       }, [])
 
+      const handleOpen = () => setOpen(true);
+      const handleClose = () => setOpen(false);  
+
     return (
         <Card elevation={3} sx={{ maxWidth: 345, minWidth: 345, margin: 2 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={unlalogo}
-                    alt="unlalogo"
+                    image={images[Math.floor(Math.random() * images.length)]}
+                    alt="receta"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -93,7 +102,7 @@ const style = {
                     Ingredientes:
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {recipe.ingredients}
+                    {(recipe.ingredients != "") ? recipe.ingredients : "No posee ingredientes"}
                 </Typography>
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
                     Pasos:

@@ -11,7 +11,7 @@ export const FavoriteRecipes = (props) => {
     const { user } = props;
 
      useEffect(() => {
-       getRecipesByUserId()
+       getRecipesByUserId(user.idUser)
          .then((res) => {
            setRecipes(res)
          })
