@@ -9,7 +9,6 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-import unlalogo from '../../assets/unla_logo.png'; 
 import uno from '../../assets/recetas/uno.jpg'; 
 import dos from '../../assets/recetas/dos.jpg'; 
 import tres from '../../assets/recetas/tres.jpg'; 
@@ -18,6 +17,7 @@ import cinco from '../../assets/recetas/cinco.jpg';
 
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
+import { userPresenter } from '../../presenter/UserPresenter'
 
 const style = {
     position: 'absolute',
@@ -37,9 +37,11 @@ const style = {
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
     const [steps, setSteps] = useState([]);
+    const [autor, setAutor] = useState({});
 
     const { getCategoryById } = categoryPresenter()
     const { getStepsByRecipeId } = stepPresenter()
+    const { getById } = userPresenter()
 
     useEffect(() => {
         getCategoryById(recipe.idCategory)
@@ -53,6 +55,14 @@ const style = {
         getStepsByRecipeId(recipe.idRecipe)
           .then((res) => {
             setSteps(res)
+          })
+          .catch((err) => console.log(err));
+      }, [])
+
+      useEffect(() => {
+        getById(recipe.idUser)
+          .then((res) => {            
+            setAutor(res.user)
           })
           .catch((err) => console.log(err));
       }, [])
@@ -99,8 +109,14 @@ const style = {
                     {category.name}
                 </Typography>
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
-                    Ingredientes:
+                    Creada por: 
                 </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    {`${autor.name} ${autor.lastName}`}
+                </Typography>
+                <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
+                    Ingredientes:
+                </Typography>                
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                     {(recipe.ingredients != "") ? recipe.ingredients : "No posee ingredientes"}
                 </Typography>

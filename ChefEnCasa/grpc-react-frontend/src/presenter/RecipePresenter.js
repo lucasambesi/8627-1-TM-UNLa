@@ -12,12 +12,12 @@ export const recipePresenter = () => {
         try {
 
             if(useMock == 'true'){
-                return getMock()
+                return getMock().recipes
             }
-
+            
             const res = await axios.get(`${baseUrl}/recipes`);
             
-            const result = await res.data;
+            const result = await res.data;            
             return result
         } catch (err) {
             console.error(err)
@@ -28,7 +28,7 @@ export const recipePresenter = () => {
         try {
 
             if(useMock == 'true'){
-                return getMock()
+                return getMock().recipes
             }
 
             const res = await axios.get(`${baseUrl}/recipes/user`, {

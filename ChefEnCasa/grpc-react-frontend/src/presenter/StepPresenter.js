@@ -12,7 +12,7 @@ export const stepPresenter = () => {
         try {
 
             if(useMock == 'true'){
-                return getMock()
+                return getMock().steps
             }
 
             const res = await axios.get(`${baseUrl}/step/recipe`, {
