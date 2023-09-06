@@ -155,6 +155,38 @@ public final class RecipeControllerGrpc {
      return getGetRecipesByUserIdMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Recipe.GetByFilterRequest,
+      grpc.Recipe.RecipesDTO> getGetByFilterMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getByFilter",
+      requestType = grpc.Recipe.GetByFilterRequest.class,
+      responseType = grpc.Recipe.RecipesDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Recipe.GetByFilterRequest,
+      grpc.Recipe.RecipesDTO> getGetByFilterMethod() {
+    io.grpc.MethodDescriptor<grpc.Recipe.GetByFilterRequest, grpc.Recipe.RecipesDTO> getGetByFilterMethod;
+    if ((getGetByFilterMethod = RecipeControllerGrpc.getGetByFilterMethod) == null) {
+      synchronized (RecipeControllerGrpc.class) {
+        if ((getGetByFilterMethod = RecipeControllerGrpc.getGetByFilterMethod) == null) {
+          RecipeControllerGrpc.getGetByFilterMethod = getGetByFilterMethod = 
+              io.grpc.MethodDescriptor.<grpc.Recipe.GetByFilterRequest, grpc.Recipe.RecipesDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "RecipeController", "getByFilter"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.GetByFilterRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.RecipesDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new RecipeControllerMethodDescriptorSupplier("getByFilter"))
+                  .build();
+          }
+        }
+     }
+     return getGetByFilterMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -210,6 +242,13 @@ public final class RecipeControllerGrpc {
       asyncUnimplementedUnaryCall(getGetRecipesByUserIdMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getByFilter(grpc.Recipe.GetByFilterRequest request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetByFilterMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -240,6 +279,13 @@ public final class RecipeControllerGrpc {
                 grpc.Recipe.IdUserRequest,
                 grpc.Recipe.RecipesDTO>(
                   this, METHODID_GET_RECIPES_BY_USER_ID)))
+          .addMethod(
+            getGetByFilterMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Recipe.GetByFilterRequest,
+                grpc.Recipe.RecipesDTO>(
+                  this, METHODID_GET_BY_FILTER)))
           .build();
     }
   }
@@ -293,6 +339,14 @@ public final class RecipeControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetRecipesByUserIdMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getByFilter(grpc.Recipe.GetByFilterRequest request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetByFilterMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -339,6 +393,13 @@ public final class RecipeControllerGrpc {
     public grpc.Recipe.RecipesDTO getRecipesByUserId(grpc.Recipe.IdUserRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetRecipesByUserIdMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Recipe.RecipesDTO getByFilter(grpc.Recipe.GetByFilterRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetByFilterMethod(), getCallOptions(), request);
     }
   }
 
@@ -391,12 +452,21 @@ public final class RecipeControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetRecipesByUserIdMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Recipe.RecipesDTO> getByFilter(
+        grpc.Recipe.GetByFilterRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetByFilterMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_RECIPE = 0;
   private static final int METHODID_GET_RECIPE = 1;
   private static final int METHODID_GET_ALL_RECIPES = 2;
   private static final int METHODID_GET_RECIPES_BY_USER_ID = 3;
+  private static final int METHODID_GET_BY_FILTER = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -429,6 +499,10 @@ public final class RecipeControllerGrpc {
           break;
         case METHODID_GET_RECIPES_BY_USER_ID:
           serviceImpl.getRecipesByUserId((grpc.Recipe.IdUserRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO>) responseObserver);
+          break;
+        case METHODID_GET_BY_FILTER:
+          serviceImpl.getByFilter((grpc.Recipe.GetByFilterRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO>) responseObserver);
           break;
         default:
@@ -496,6 +570,7 @@ public final class RecipeControllerGrpc {
               .addMethod(getGetRecipeMethod())
               .addMethod(getGetAllRecipesMethod())
               .addMethod(getGetRecipesByUserIdMethod())
+              .addMethod(getGetByFilterMethod())
               .build();
         }
       }

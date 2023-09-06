@@ -9,6 +9,7 @@ service RecipeController{
   rpc getRecipe(GetRecipeRequest)returns (RecipeObjDTO);
   rpc getAllRecipes(Empty) returns (RecipesDTO);
   rpc getRecipesByUserId(IdUserRequest) returns (RecipesDTO);
+  rpc getByFilter(GetByFilterRequest) returns (RecipesDTO);
 }
 
 message Empty {
@@ -51,4 +52,12 @@ message GetRecipeRequest{
 
 message IdUserRequest{
   int32 idUser = 1;
+}
+
+message GetByFilterRequest{
+  int32 idCategory=1;
+  string title=2;
+  string ingredients=3;
+  int32 timeSince=4;
+  int32 timeUntil=5;
 }

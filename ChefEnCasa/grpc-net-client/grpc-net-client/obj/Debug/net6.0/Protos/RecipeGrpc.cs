@@ -56,6 +56,8 @@ public static partial class RecipeController
   static readonly grpc::Marshaller<global::RecipesDTO> __Marshaller_RecipesDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RecipesDTO.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::IdUserRequest> __Marshaller_IdUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::IdUserRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::GetByFilterRequest> __Marshaller_GetByFilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetByFilterRequest.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::RecipeDTO, global::RecipeObjDTO> __Method_addRecipe = new grpc::Method<global::RecipeDTO, global::RecipeObjDTO>(
@@ -87,6 +89,14 @@ public static partial class RecipeController
       __ServiceName,
       "getRecipesByUserId",
       __Marshaller_IdUserRequest,
+      __Marshaller_RecipesDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::GetByFilterRequest, global::RecipesDTO> __Method_getByFilter = new grpc::Method<global::GetByFilterRequest, global::RecipesDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "getByFilter",
+      __Marshaller_GetByFilterRequest,
       __Marshaller_RecipesDTO);
 
   /// <summary>Service descriptor</summary>
@@ -201,6 +211,26 @@ public static partial class RecipeController
     public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getRecipesByUserIdAsync(global::IdUserRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_getRecipesByUserId, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipesDTO getByFilter(global::GetByFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getByFilter(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipesDTO getByFilter(global::GetByFilterRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_getByFilter, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getByFilterAsync(global::GetByFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getByFilterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getByFilterAsync(global::GetByFilterRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_getByFilter, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

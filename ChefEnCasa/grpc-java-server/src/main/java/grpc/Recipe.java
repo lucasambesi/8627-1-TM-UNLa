@@ -6198,6 +6198,882 @@ public final class Recipe {
 
   }
 
+  public interface GetByFilterRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetByFilterRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 idCategory = 1;</code>
+     */
+    int getIdCategory();
+
+    /**
+     * <code>string title = 2;</code>
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>string title = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    /**
+     * <code>string ingredients = 3;</code>
+     */
+    java.lang.String getIngredients();
+    /**
+     * <code>string ingredients = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getIngredientsBytes();
+
+    /**
+     * <code>int32 timeSince = 4;</code>
+     */
+    int getTimeSince();
+
+    /**
+     * <code>int32 timeUntil = 5;</code>
+     */
+    int getTimeUntil();
+  }
+  /**
+   * Protobuf type {@code GetByFilterRequest}
+   */
+  public  static final class GetByFilterRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GetByFilterRequest)
+      GetByFilterRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetByFilterRequest.newBuilder() to construct.
+    private GetByFilterRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetByFilterRequest() {
+      idCategory_ = 0;
+      title_ = "";
+      ingredients_ = "";
+      timeSince_ = 0;
+      timeUntil_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetByFilterRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              idCategory_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ingredients_ = s;
+              break;
+            }
+            case 32: {
+
+              timeSince_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              timeUntil_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Recipe.internal_static_GetByFilterRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Recipe.internal_static_GetByFilterRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Recipe.GetByFilterRequest.class, grpc.Recipe.GetByFilterRequest.Builder.class);
+    }
+
+    public static final int IDCATEGORY_FIELD_NUMBER = 1;
+    private int idCategory_;
+    /**
+     * <code>int32 idCategory = 1;</code>
+     */
+    public int getIdCategory() {
+      return idCategory_;
+    }
+
+    public static final int TITLE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object title_;
+    /**
+     * <code>string title = 2;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string title = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INGREDIENTS_FIELD_NUMBER = 3;
+    private volatile java.lang.Object ingredients_;
+    /**
+     * <code>string ingredients = 3;</code>
+     */
+    public java.lang.String getIngredients() {
+      java.lang.Object ref = ingredients_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ingredients_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ingredients = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIngredientsBytes() {
+      java.lang.Object ref = ingredients_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ingredients_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESINCE_FIELD_NUMBER = 4;
+    private int timeSince_;
+    /**
+     * <code>int32 timeSince = 4;</code>
+     */
+    public int getTimeSince() {
+      return timeSince_;
+    }
+
+    public static final int TIMEUNTIL_FIELD_NUMBER = 5;
+    private int timeUntil_;
+    /**
+     * <code>int32 timeUntil = 5;</code>
+     */
+    public int getTimeUntil() {
+      return timeUntil_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (idCategory_ != 0) {
+        output.writeInt32(1, idCategory_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
+      }
+      if (!getIngredientsBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ingredients_);
+      }
+      if (timeSince_ != 0) {
+        output.writeInt32(4, timeSince_);
+      }
+      if (timeUntil_ != 0) {
+        output.writeInt32(5, timeUntil_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (idCategory_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, idCategory_);
+      }
+      if (!getTitleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
+      }
+      if (!getIngredientsBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ingredients_);
+      }
+      if (timeSince_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, timeSince_);
+      }
+      if (timeUntil_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, timeUntil_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Recipe.GetByFilterRequest)) {
+        return super.equals(obj);
+      }
+      grpc.Recipe.GetByFilterRequest other = (grpc.Recipe.GetByFilterRequest) obj;
+
+      boolean result = true;
+      result = result && (getIdCategory()
+          == other.getIdCategory());
+      result = result && getTitle()
+          .equals(other.getTitle());
+      result = result && getIngredients()
+          .equals(other.getIngredients());
+      result = result && (getTimeSince()
+          == other.getTimeSince());
+      result = result && (getTimeUntil()
+          == other.getTimeUntil());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IDCATEGORY_FIELD_NUMBER;
+      hash = (53 * hash) + getIdCategory();
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + INGREDIENTS_FIELD_NUMBER;
+      hash = (53 * hash) + getIngredients().hashCode();
+      hash = (37 * hash) + TIMESINCE_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeSince();
+      hash = (37 * hash) + TIMEUNTIL_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeUntil();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Recipe.GetByFilterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Recipe.GetByFilterRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetByFilterRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetByFilterRequest)
+        grpc.Recipe.GetByFilterRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Recipe.internal_static_GetByFilterRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Recipe.internal_static_GetByFilterRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Recipe.GetByFilterRequest.class, grpc.Recipe.GetByFilterRequest.Builder.class);
+      }
+
+      // Construct using grpc.Recipe.GetByFilterRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        idCategory_ = 0;
+
+        title_ = "";
+
+        ingredients_ = "";
+
+        timeSince_ = 0;
+
+        timeUntil_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Recipe.internal_static_GetByFilterRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.GetByFilterRequest getDefaultInstanceForType() {
+        return grpc.Recipe.GetByFilterRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.GetByFilterRequest build() {
+        grpc.Recipe.GetByFilterRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Recipe.GetByFilterRequest buildPartial() {
+        grpc.Recipe.GetByFilterRequest result = new grpc.Recipe.GetByFilterRequest(this);
+        result.idCategory_ = idCategory_;
+        result.title_ = title_;
+        result.ingredients_ = ingredients_;
+        result.timeSince_ = timeSince_;
+        result.timeUntil_ = timeUntil_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Recipe.GetByFilterRequest) {
+          return mergeFrom((grpc.Recipe.GetByFilterRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Recipe.GetByFilterRequest other) {
+        if (other == grpc.Recipe.GetByFilterRequest.getDefaultInstance()) return this;
+        if (other.getIdCategory() != 0) {
+          setIdCategory(other.getIdCategory());
+        }
+        if (!other.getTitle().isEmpty()) {
+          title_ = other.title_;
+          onChanged();
+        }
+        if (!other.getIngredients().isEmpty()) {
+          ingredients_ = other.ingredients_;
+          onChanged();
+        }
+        if (other.getTimeSince() != 0) {
+          setTimeSince(other.getTimeSince());
+        }
+        if (other.getTimeUntil() != 0) {
+          setTimeUntil(other.getTimeUntil());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Recipe.GetByFilterRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Recipe.GetByFilterRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int idCategory_ ;
+      /**
+       * <code>int32 idCategory = 1;</code>
+       */
+      public int getIdCategory() {
+        return idCategory_;
+      }
+      /**
+       * <code>int32 idCategory = 1;</code>
+       */
+      public Builder setIdCategory(int value) {
+        
+        idCategory_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 idCategory = 1;</code>
+       */
+      public Builder clearIdCategory() {
+        
+        idCategory_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object title_ = "";
+      /**
+       * <code>string title = 2;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string title = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string title = 2;</code>
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 2;</code>
+       */
+      public Builder clearTitle() {
+        
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 2;</code>
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ingredients_ = "";
+      /**
+       * <code>string ingredients = 3;</code>
+       */
+      public java.lang.String getIngredients() {
+        java.lang.Object ref = ingredients_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ingredients_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ingredients = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIngredientsBytes() {
+        java.lang.Object ref = ingredients_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ingredients_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ingredients = 3;</code>
+       */
+      public Builder setIngredients(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ingredients_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ingredients = 3;</code>
+       */
+      public Builder clearIngredients() {
+        
+        ingredients_ = getDefaultInstance().getIngredients();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ingredients = 3;</code>
+       */
+      public Builder setIngredientsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ingredients_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int timeSince_ ;
+      /**
+       * <code>int32 timeSince = 4;</code>
+       */
+      public int getTimeSince() {
+        return timeSince_;
+      }
+      /**
+       * <code>int32 timeSince = 4;</code>
+       */
+      public Builder setTimeSince(int value) {
+        
+        timeSince_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 timeSince = 4;</code>
+       */
+      public Builder clearTimeSince() {
+        
+        timeSince_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int timeUntil_ ;
+      /**
+       * <code>int32 timeUntil = 5;</code>
+       */
+      public int getTimeUntil() {
+        return timeUntil_;
+      }
+      /**
+       * <code>int32 timeUntil = 5;</code>
+       */
+      public Builder setTimeUntil(int value) {
+        
+        timeUntil_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 timeUntil = 5;</code>
+       */
+      public Builder clearTimeUntil() {
+        
+        timeUntil_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GetByFilterRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetByFilterRequest)
+    private static final grpc.Recipe.GetByFilterRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Recipe.GetByFilterRequest();
+    }
+
+    public static grpc.Recipe.GetByFilterRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetByFilterRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetByFilterRequest>() {
+      @java.lang.Override
+      public GetByFilterRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetByFilterRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetByFilterRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetByFilterRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Recipe.GetByFilterRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Empty_descriptor;
   private static final 
@@ -6238,6 +7114,11 @@ public final class Recipe {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_IdUserRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetByFilterRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetByFilterRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6262,12 +7143,16 @@ public final class Recipe {
       "ecipeDTO\022-\n\016serverResponse\030\002 \001(\0132\025.Recip" +
       "eServerResponse\"$\n\020GetRecipeRequest\022\020\n\010i" +
       "dRecipe\030\001 \001(\005\"\037\n\rIdUserRequest\022\016\n\006idUser" +
-      "\030\001 \001(\0052\302\001\n\020RecipeController\022&\n\taddRecipe" +
-      "\022\n.RecipeDTO\032\r.RecipeObjDTO\022-\n\tgetRecipe" +
-      "\022\021.GetRecipeRequest\032\r.RecipeObjDTO\022$\n\rge" +
-      "tAllRecipes\022\006.Empty\032\013.RecipesDTO\0221\n\022getR" +
-      "ecipesByUserId\022\016.IdUserRequest\032\013.Recipes" +
-      "DTOB\006\n\004grpcb\006proto3"
+      "\030\001 \001(\005\"r\n\022GetByFilterRequest\022\022\n\nidCatego" +
+      "ry\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003" +
+      " \001(\t\022\021\n\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001" +
+      "(\0052\363\001\n\020RecipeController\022&\n\taddRecipe\022\n.R" +
+      "ecipeDTO\032\r.RecipeObjDTO\022-\n\tgetRecipe\022\021.G" +
+      "etRecipeRequest\032\r.RecipeObjDTO\022$\n\rgetAll" +
+      "Recipes\022\006.Empty\032\013.RecipesDTO\0221\n\022getRecip" +
+      "esByUserId\022\016.IdUserRequest\032\013.RecipesDTO\022" +
+      "/\n\013getByFilter\022\023.GetByFilterRequest\032\013.Re" +
+      "cipesDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6330,6 +7215,12 @@ public final class Recipe {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IdUserRequest_descriptor,
         new java.lang.String[] { "IdUser", });
+    internal_static_GetByFilterRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_GetByFilterRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetByFilterRequest_descriptor,
+        new java.lang.String[] { "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil", });
     grpc.Step.getDescriptor();
   }
 

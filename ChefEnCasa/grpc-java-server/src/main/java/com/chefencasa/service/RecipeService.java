@@ -1,5 +1,6 @@
 package com.chefencasa.service;
 
+import com.chefencasa.Model.Category;
 import com.chefencasa.Model.Recipe;
 import com.chefencasa.Model.Step;
 import com.chefencasa.Model.User;
@@ -47,6 +48,12 @@ public class RecipeService {
     public List<Recipe> getByUserId(int idUser) throws Exception{
         User user = userService.getById(idUser);
         return recipeRepository.getByUser(user);
+    }
+
+    public List<Recipe> getByFilter(int idCategory, String title, String ingredients, int timeSince, int timeUntil) throws Exception{
+
+        Category categoria = idCategory == 0 ? null : categoryService.getById(idCategory);
+        return recipeRepository.getByFilter(categoria, title, ingredients, timeSince, timeUntil);
     }
 
     private Recipe mapToEntity (grpc.Recipe.RecipeDTO dto) throws Exception{

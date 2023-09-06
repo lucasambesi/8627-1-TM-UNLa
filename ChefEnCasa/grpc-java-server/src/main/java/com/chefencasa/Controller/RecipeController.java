@@ -89,6 +89,31 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         responseObserver.onCompleted();
     }
 
+    public void getByFilter(Recipe.GetByFilterRequest request, StreamObserver<Recipe.RecipesDTO> responseObserver) {
+        Recipe.RecipesDTO.Builder response = Recipe.RecipesDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Recipe> recipes = recipeService.getByFilter(
+                    request.getIdCategory(),
+                    request.getTitle(),
+                    request.getIngredients(),
+                    request.getTimeSince(),
+                    request.getTimeUntil()
+            );
+            for(com.chefencasa.Model.Recipe p : recipes){
+                response.addRecipes(mapRecipeDTO(p));
+            }
+            serverResponse.setCode(200);
+            serverResponse.setMsg("");
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
     public Recipe.RecipeDTO.Builder mapRecipeDTO (com.chefencasa.Model.Recipe u){
         Recipe.RecipeDTO.Builder dto = Recipe.RecipeDTO.newBuilder();
 
@@ -101,7 +126,6 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         dto.setIdCategory(u.getCategory().getIdCategory());
 
         for(Step step: u.getSteps()){
-
             grpc.Step.StepDTO.Builder stepDTO = grpc.Step.StepDTO.newBuilder();
             stepDTO.setIdStep(step.getIdStep());
             stepDTO.setDescription(step.getDescription());
