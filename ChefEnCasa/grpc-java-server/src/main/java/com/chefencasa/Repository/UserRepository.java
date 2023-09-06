@@ -38,6 +38,28 @@ public class UserRepository {
         return entity;
     }
 
+    public User updateUser(User user) throws Exception{
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        User entity = null;
+        try {
+            transaction.begin();
+            entity = em.merge(user);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("ATENCION: Error de persistencia en método updateUser");
+        }
+        finally {
+            em.close();
+        }
+
+        return entity;
+
+    }
+
     public User getById(int idUser) throws Exception{
 
         User user = null;

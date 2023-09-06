@@ -4,6 +4,9 @@ import com.chefencasa.Model.User;
 import com.chefencasa.Repository.UserRepository;
 import grpc.User.UserDTO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserService {
 
     private static UserService service;
@@ -22,6 +25,30 @@ public class UserService {
         User persisted = userRepository.createUser(toPersist);
         return persisted;
     }
+    public User addFollowing(int idUser, int idFollowing) throws Exception{
+
+        User user = null;
+        User following = null;
+        Set<User> followings = new HashSet<>();
+
+        try{
+            user = userRepository.getById(idUser);
+            following = userRepository.getById(idFollowing);
+
+            followings = user.getFollowing();
+            followings.add(following);
+
+            user = userRepository.updateUser(user);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("ATENCION: Error en addFollowing");
+        }
+
+        return user;
+
+    }
+
 
     public User getById (int isUser) throws Exception{
         return userRepository.getById(isUser);

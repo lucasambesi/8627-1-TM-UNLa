@@ -1,4 +1,5 @@
 package com.chefencasa.Controller;
+import com.chefencasa.Model.Step;
 import com.chefencasa.service.UserService;
 import grpc.User;
 import grpc.UserControllerGrpc;
@@ -28,6 +29,36 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
+    }
+
+    public void addFollowing(User.PostFollowingRequest request, StreamObserver<User.PostFollowingResponse> responseObserver) {
+
+        int idUser = request.getIdUser();
+        int idFollowing = request.getIdFollowing();
+
+        com.chefencasa.Model.User usuario = null;
+
+        User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
+        User.PostFollowingResponse.Builder response =  User.PostFollowingResponse.newBuilder();
+
+        try {
+            usuario = this.userService.addFollowing(idUser, idFollowing);
+
+            response.setIdUser(idUser);
+            response.setIdFollowing(idFollowing);
+
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Following creado");
+        }
+        catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+
     }
 
     public void getUser(User.GetUserRequest request, StreamObserver<User.UserObjDTO> responseObserver) {
@@ -86,6 +117,17 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         dto.setEmail(u.getEmail());
         dto.setUsername(u.getUsername());
         dto.setPassword(u.getPassword());
+
+        for(com.chefencasa.Model.User user: u.getFollowing()){
+
+            User.FollowingDTO.Builder userDto = User.FollowingDTO.newBuilder();
+            userDto.setIdUser(user.getIdUser());
+            userDto.setName(user.getName());
+            userDto.setLastName(user.getLastname());
+            userDto.setUsername(user.getUsername());
+
+            dto.addFollowing(userDto);
+        }
 
         return dto;
     }

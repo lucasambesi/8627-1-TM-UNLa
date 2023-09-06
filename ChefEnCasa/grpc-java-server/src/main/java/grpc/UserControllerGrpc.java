@@ -59,6 +59,70 @@ public final class UserControllerGrpc {
      return getAddUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest,
+      grpc.User.PostFollowingResponse> getAddFollowingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "addFollowing",
+      requestType = grpc.User.PostFollowingRequest.class,
+      responseType = grpc.User.PostFollowingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest,
+      grpc.User.PostFollowingResponse> getAddFollowingMethod() {
+    io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest, grpc.User.PostFollowingResponse> getAddFollowingMethod;
+    if ((getAddFollowingMethod = UserControllerGrpc.getAddFollowingMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getAddFollowingMethod = UserControllerGrpc.getAddFollowingMethod) == null) {
+          UserControllerGrpc.getAddFollowingMethod = getAddFollowingMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.PostFollowingRequest, grpc.User.PostFollowingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "addFollowing"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFollowingRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFollowingResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("addFollowing"))
+                  .build();
+          }
+        }
+     }
+     return getAddFollowingMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.User.GetUserRequest,
+      grpc.User.UsersDTO> getGetFollowingsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getFollowings",
+      requestType = grpc.User.GetUserRequest.class,
+      responseType = grpc.User.UsersDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.GetUserRequest,
+      grpc.User.UsersDTO> getGetFollowingsMethod() {
+    io.grpc.MethodDescriptor<grpc.User.GetUserRequest, grpc.User.UsersDTO> getGetFollowingsMethod;
+    if ((getGetFollowingsMethod = UserControllerGrpc.getGetFollowingsMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getGetFollowingsMethod = UserControllerGrpc.getGetFollowingsMethod) == null) {
+          UserControllerGrpc.getGetFollowingsMethod = getGetFollowingsMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.GetUserRequest, grpc.User.UsersDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "getFollowings"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.GetUserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.UsersDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("getFollowings"))
+                  .build();
+          }
+        }
+     }
+     return getGetFollowingsMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.User.GetUserRequest,
       grpc.User.UserObjDTO> getGetUserMethod;
 
@@ -159,6 +223,20 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public void addFollowing(grpc.User.PostFollowingRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getAddFollowingMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void getFollowings(grpc.User.GetUserRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UsersDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetFollowingsMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getUser(grpc.User.GetUserRequest request,
         io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetUserMethod(), responseObserver);
@@ -180,6 +258,20 @@ public final class UserControllerGrpc {
                 grpc.User.UserDTO,
                 grpc.User.UserObjDTO>(
                   this, METHODID_ADD_USER)))
+          .addMethod(
+            getAddFollowingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.PostFollowingRequest,
+                grpc.User.PostFollowingResponse>(
+                  this, METHODID_ADD_FOLLOWING)))
+          .addMethod(
+            getGetFollowingsMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.GetUserRequest,
+                grpc.User.UsersDTO>(
+                  this, METHODID_GET_FOLLOWINGS)))
           .addMethod(
             getGetUserMethod(),
             asyncUnaryCall(
@@ -226,6 +318,22 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public void addFollowing(grpc.User.PostFollowingRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getAddFollowingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getFollowings(grpc.User.GetUserRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UsersDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetFollowingsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getUser(grpc.User.GetUserRequest request,
         io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
       asyncUnaryCall(
@@ -264,6 +372,20 @@ public final class UserControllerGrpc {
     public grpc.User.UserObjDTO addUser(grpc.User.UserDTO request) {
       return blockingUnaryCall(
           getChannel(), getAddUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.PostFollowingResponse addFollowing(grpc.User.PostFollowingRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getAddFollowingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.UsersDTO getFollowings(grpc.User.GetUserRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetFollowingsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -309,6 +431,22 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.PostFollowingResponse> addFollowing(
+        grpc.User.PostFollowingRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getAddFollowingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.UsersDTO> getFollowings(
+        grpc.User.GetUserRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetFollowingsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.User.UserObjDTO> getUser(
         grpc.User.GetUserRequest request) {
       return futureUnaryCall(
@@ -325,8 +463,10 @@ public final class UserControllerGrpc {
   }
 
   private static final int METHODID_ADD_USER = 0;
-  private static final int METHODID_GET_USER = 1;
-  private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 2;
+  private static final int METHODID_ADD_FOLLOWING = 1;
+  private static final int METHODID_GET_FOLLOWINGS = 2;
+  private static final int METHODID_GET_USER = 3;
+  private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -348,6 +488,14 @@ public final class UserControllerGrpc {
         case METHODID_ADD_USER:
           serviceImpl.addUser((grpc.User.UserDTO) request,
               (io.grpc.stub.StreamObserver<grpc.User.UserObjDTO>) responseObserver);
+          break;
+        case METHODID_ADD_FOLLOWING:
+          serviceImpl.addFollowing((grpc.User.PostFollowingRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse>) responseObserver);
+          break;
+        case METHODID_GET_FOLLOWINGS:
+          serviceImpl.getFollowings((grpc.User.GetUserRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.UsersDTO>) responseObserver);
           break;
         case METHODID_GET_USER:
           serviceImpl.getUser((grpc.User.GetUserRequest) request,
@@ -419,6 +567,8 @@ public final class UserControllerGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserControllerFileDescriptorSupplier())
               .addMethod(getAddUserMethod())
+              .addMethod(getAddFollowingMethod())
+              .addMethod(getGetFollowingsMethod())
               .addMethod(getGetUserMethod())
               .addMethod(getGetByUserAndPasswordRequestMethod())
               .build();

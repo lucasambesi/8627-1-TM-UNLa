@@ -4,6 +4,8 @@ option java_package = "grpc";
 
 service UserController{
   rpc addUser(UserDTO) returns (UserObjDTO);
+  rpc addFollowing(PostFollowingRequest) returns (PostFollowingResponse);
+  rpc getFollowings(GetUserRequest)returns (UsersDTO);
   rpc getUser(GetUserRequest)returns (UserObjDTO);
   rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
 }
@@ -16,10 +18,30 @@ message UserDTO{
   string email = 5;
   string username = 6;
   string password = 7;
+  repeated FollowingDTO following = 8;
 }
+
+message FollowingDTO{
+  int32 idUser = 1;
+  string name = 2;
+  string last_name = 3;
+  string username = 4;
+}
+
 
 message GetUserRequest{
   int32 idUser=1;
+}
+
+message PostFollowingRequest{
+  int32 idUser=1;
+  int32 idFollowing=2;
+}
+
+message PostFollowingResponse{
+  int32 idUser=1;
+  int32 idFollowing=2;
+  UserServerResponse serverResponse = 3;
 }
 
 message UserServerResponse{
@@ -32,12 +54,12 @@ message GetByUserIdAndPasswordRequest{
   string password = 2;
 }
 
-message UserObjDTO{
-  UserDTO user = 1;
+message UsersDTO{
+  repeated UserDTO users=1;
   UserServerResponse serverResponse = 2;
 }
 
-message ListUserDTO{
-  repeated UserDTO users = 1;
+message UserObjDTO{
+  UserDTO user = 1;
   UserServerResponse serverResponse = 2;
 }

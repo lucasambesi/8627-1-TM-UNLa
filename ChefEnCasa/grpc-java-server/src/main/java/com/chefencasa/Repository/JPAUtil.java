@@ -9,7 +9,7 @@ public class JPAUtil {
 
     public static EntityManagerFactory getEMF() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("chefEnCasa");
+            emf = Persistence.createEntityManagerFactory("chefencasa");
         }
         return emf;
     }
