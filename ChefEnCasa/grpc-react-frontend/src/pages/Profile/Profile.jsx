@@ -2,7 +2,7 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { recipePresenter } from '../../presenter/RecipePresenter'
 import React, {useEffect, useState} from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBCardLink } from 'mdb-react-ui-kit';
 import '../../styles/profile.css'
 
 import uno from '../../assets/recetas/uno.jpg'; 
@@ -47,8 +47,8 @@ export const Profile = (props) => {
                   <div className="d-flex justify-content-end text-center py-1">
                     <div>
                       {/* ENLACE HACIA LOS SEGUIDORES */}
-                      <MDBCardText className="mb-1 h5">478</MDBCardText>
-                      <MDBCardText className="small text-muted mb-0">Following</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{user.following.length}</MDBCardText>
+                      <MDBCardLink href='/following' className="small text-muted mb-0">Following</MDBCardLink>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export const Profile = (props) => {
                         return (
                           <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '40%', minHeight: '40%' }}>
                           <MDBCard>
-                            <MDBCardImage src={images[Math.floor(Math.random() * images.length)]} alt='...' position='top' style={{ maxHeight:'200px' }} />
+                            <MDBCardImage src={images[Math.floor(Math.random() * images.length)]} alt='...' position='top' style={{ height:'200px' }} />
                               <MDBCardBody>
                                 <MDBRow>
                                   <MDBCardText>

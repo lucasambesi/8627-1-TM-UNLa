@@ -8,6 +8,7 @@ import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
 import { FavoriteRecipes } from './pages/Recipes/Favorites'
+import { Following } from './pages/Profile/Following';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
         <Route path="/recipes" element={<FavoriteRecipes user={user}/>} />        
+        <Route path="/following" element={<Following user={user}/>} />
       </Routes>
     </BrowserRouter>
     </>

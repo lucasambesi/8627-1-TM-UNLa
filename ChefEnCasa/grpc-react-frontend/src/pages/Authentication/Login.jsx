@@ -73,6 +73,7 @@ const Login = (props) => {
             const res = await login(username, password);
             if(res){
               setUser(res.data)
+              window.localStorage.setItem("id", res.data.idUser)
               navigate({
                 pathname:"/home",
                   }) 
