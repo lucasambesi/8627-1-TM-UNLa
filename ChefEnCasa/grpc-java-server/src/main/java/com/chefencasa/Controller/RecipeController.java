@@ -71,7 +71,6 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         responseObserver.onNext(recipesDTO.build());
         responseObserver.onCompleted();
     }
-
     public Recipe.RecipeDTO.Builder mapRecipeDTO (com.chefencasa.Model.Recipe u){
         Recipe.RecipeDTO.Builder dto = Recipe.RecipeDTO.newBuilder();
 

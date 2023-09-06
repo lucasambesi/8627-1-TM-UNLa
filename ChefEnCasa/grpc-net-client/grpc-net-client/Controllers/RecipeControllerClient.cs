@@ -25,6 +25,7 @@ namespace grpc_net_client.Controllers
         #endregion
 
         #region endpoints
+
         [HttpGet("recipe")]
         public async Task<ActionResult> Get(int idRecipe)
         {

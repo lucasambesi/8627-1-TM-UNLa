@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.chefencasa.Controller.CategoryController;
 import com.chefencasa.Controller.RecipeController;
+import com.chefencasa.Controller.StepController;
 import com.chefencasa.Controller.UserController;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -18,6 +19,7 @@ public class App {
                 .addService(new CategoryController())
                 .addService(new UserController())
                 .addService(new RecipeController())
+                .addService(new StepController())
                 .build();
         server.start();
         System.out.println("Server listening on port " + server.getPort());
