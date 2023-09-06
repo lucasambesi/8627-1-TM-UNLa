@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
-import { Recipes } from './pages/Recipes/Recipes';
+import { Recipe } from './pages/Recipes/Recipe';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/recipes" element={<Recipes />} />        
+        <Route path="/recipes" element={<Recipe />} />        
       </Routes>
     </BrowserRouter>
     </>
