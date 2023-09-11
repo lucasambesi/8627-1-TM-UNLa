@@ -48,8 +48,32 @@ export const userPresenter = () => {
         }
     }
 
+    const register = async (user) => {
+        try {
+            if(useMock == 'true'){
+                return getMock()
+            }
+
+            const body ={
+                "name": user.name,
+                "lastName": user.lastName,
+                "dni": user.dni,
+                "email": user.email,
+                "username": user.username,
+                "password": user.password
+              }
+
+            const res = await axios.post(`${baseUrl}/user/register`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     return {
         getById,
-        login
+        login,
+        register
     }
 }

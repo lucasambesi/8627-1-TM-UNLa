@@ -5,7 +5,7 @@ export const categoryPresenterMock = () => {
             idCategory: 1,
             name: 'comidas',
         },
-        recipes: [
+        categories: [
             {
                 idCategory: 1,
                 name: 'comidas',

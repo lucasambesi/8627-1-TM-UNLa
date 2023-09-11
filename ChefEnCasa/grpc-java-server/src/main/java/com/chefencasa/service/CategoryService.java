@@ -1,7 +1,10 @@
 package com.chefencasa.service;
 
 import com.chefencasa.Model.Category;
+import com.chefencasa.Model.Recipe;
 import com.chefencasa.Repository.CategoryRepository;
+
+import java.util.List;
 
 public class CategoryService {
 
@@ -24,6 +27,10 @@ public class CategoryService {
 
     public Category getById (int idCategory) throws Exception{
         return categoryRepository.getById(idCategory);
+    }
+
+    public List<Category> getAll() throws Exception{
+        return categoryRepository.getAll();
     }
 
     private Category mapToEntity (grpc.Category.CategoryDTO dto) throws Exception{

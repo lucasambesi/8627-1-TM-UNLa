@@ -12,7 +12,7 @@ export const categoryPresenter = () => {
         try {
 
             if(useMock == 'true'){
-                return getMock()
+                return getMock().categories
             }
 
             const res = await axios.get(`${baseUrl}/categories`);

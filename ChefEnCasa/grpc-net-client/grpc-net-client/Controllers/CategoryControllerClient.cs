@@ -40,6 +40,23 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetAll()
+        {
+            try
+            {
+                var response = await _service.getAllCategoriesAsync(new EmptyCategory());
+                if (response.Categories.Count == 0) return NoContent();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response.Categories);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("category")]
         public async Task<ActionResult> Get(int idCategory)
         {

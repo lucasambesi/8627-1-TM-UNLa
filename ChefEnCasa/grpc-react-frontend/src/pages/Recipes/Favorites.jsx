@@ -13,6 +13,7 @@ export const FavoriteRecipes = (props) => {
      useEffect(() => {
        getRecipesByUserId(user.idUser)
          .then((res) => {
+          console.log("recipes = ", res)
            setRecipes(res)
          })
          .catch((err) => console.log(err));

@@ -9,6 +9,7 @@ import com.chefencasa.Repository.UserRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,6 +36,23 @@ public class RecipeService {
         Recipe persisted = recipeRepository.createRecipe(toPersist);
 
         return persisted;
+    }
+
+    public Recipe updateRecipe(grpc.Recipe.RecipeDTO recipeDTO) throws Exception{
+
+        Recipe recipe = null;
+
+        try{
+            recipe = recipeRepository.getById(recipeDTO.getIdRecipe());
+            Recipe toPersist = mapToEntity(recipeDTO);
+            recipe = recipeRepository.updateRecipe(toPersist);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("ATENCION: Error en updateRecipe");
+        }
+
+        return recipe;
     }
 
     public Recipe getById (int idRecipe) throws Exception{

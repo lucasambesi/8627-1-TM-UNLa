@@ -91,6 +91,38 @@ public final class CategoryControllerGrpc {
      return getGetCategoryMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Category.EmptyCategory,
+      grpc.Category.CategoriesDTO> getGetAllCategoriesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getAllCategories",
+      requestType = grpc.Category.EmptyCategory.class,
+      responseType = grpc.Category.CategoriesDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Category.EmptyCategory,
+      grpc.Category.CategoriesDTO> getGetAllCategoriesMethod() {
+    io.grpc.MethodDescriptor<grpc.Category.EmptyCategory, grpc.Category.CategoriesDTO> getGetAllCategoriesMethod;
+    if ((getGetAllCategoriesMethod = CategoryControllerGrpc.getGetAllCategoriesMethod) == null) {
+      synchronized (CategoryControllerGrpc.class) {
+        if ((getGetAllCategoriesMethod = CategoryControllerGrpc.getGetAllCategoriesMethod) == null) {
+          CategoryControllerGrpc.getGetAllCategoriesMethod = getGetAllCategoriesMethod = 
+              io.grpc.MethodDescriptor.<grpc.Category.EmptyCategory, grpc.Category.CategoriesDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "CategoryController", "getAllCategories"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Category.EmptyCategory.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Category.CategoriesDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new CategoryControllerMethodDescriptorSupplier("getAllCategories"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllCategoriesMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,6 +164,13 @@ public final class CategoryControllerGrpc {
       asyncUnimplementedUnaryCall(getGetCategoryMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAllCategories(grpc.Category.EmptyCategory request,
+        io.grpc.stub.StreamObserver<grpc.Category.CategoriesDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllCategoriesMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -148,6 +187,13 @@ public final class CategoryControllerGrpc {
                 grpc.Category.GetCategoryRequest,
                 grpc.Category.CategoryObjDTO>(
                   this, METHODID_GET_CATEGORY)))
+          .addMethod(
+            getGetAllCategoriesMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Category.EmptyCategory,
+                grpc.Category.CategoriesDTO>(
+                  this, METHODID_GET_ALL_CATEGORIES)))
           .build();
     }
   }
@@ -185,6 +231,14 @@ public final class CategoryControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetCategoryMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllCategories(grpc.Category.EmptyCategory request,
+        io.grpc.stub.StreamObserver<grpc.Category.CategoriesDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetAllCategoriesMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -217,6 +271,13 @@ public final class CategoryControllerGrpc {
     public grpc.Category.CategoryObjDTO getCategory(grpc.Category.GetCategoryRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetCategoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Category.CategoriesDTO getAllCategories(grpc.Category.EmptyCategory request) {
+      return blockingUnaryCall(
+          getChannel(), getGetAllCategoriesMethod(), getCallOptions(), request);
     }
   }
 
@@ -253,10 +314,19 @@ public final class CategoryControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetCategoryMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Category.CategoriesDTO> getAllCategories(
+        grpc.Category.EmptyCategory request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetAllCategoriesMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_CATEGORY = 0;
   private static final int METHODID_GET_CATEGORY = 1;
+  private static final int METHODID_GET_ALL_CATEGORIES = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -282,6 +352,10 @@ public final class CategoryControllerGrpc {
         case METHODID_GET_CATEGORY:
           serviceImpl.getCategory((grpc.Category.GetCategoryRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Category.CategoryObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_ALL_CATEGORIES:
+          serviceImpl.getAllCategories((grpc.Category.EmptyCategory) request,
+              (io.grpc.stub.StreamObserver<grpc.Category.CategoriesDTO>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -346,6 +420,7 @@ public final class CategoryControllerGrpc {
               .setSchemaDescriptor(new CategoryControllerFileDescriptorSupplier())
               .addMethod(getAddCategoryMethod())
               .addMethod(getGetCategoryMethod())
+              .addMethod(getGetAllCategoriesMethod())
               .build();
         }
       }

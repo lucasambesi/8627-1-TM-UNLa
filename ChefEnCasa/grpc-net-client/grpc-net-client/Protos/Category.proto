@@ -5,6 +5,10 @@ option java_package = "grpc";
 service CategoryController{
   rpc addCategory(CategoryDTO) returns (CategoryObjDTO);
   rpc getCategory(GetCategoryRequest)returns (CategoryObjDTO);
+  rpc getAllCategories(EmptyCategory) returns (CategoriesDTO);
+}
+
+message EmptyCategory {
 }
 
 message CategoryServerResponse{
@@ -24,4 +28,9 @@ message CategoryObjDTO{
 
 message GetCategoryRequest{
   int32 idCategory=1;
+}
+
+message CategoriesDTO{
+  repeated CategoryDTO categories=1;
+  CategoryServerResponse serverResponse = 2;
 }

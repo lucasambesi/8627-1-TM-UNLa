@@ -24,6 +24,27 @@ export const recipePresenter = () => {
         }
     }
 
+    const getById = async (id) => {
+        try {
+
+            if(useMock == 'true'){
+                return getMock()
+            }
+
+            const res = await axios.get(`${baseUrl}/recipes/recipe`, {
+                params: {
+                  idRecipe: id
+                }
+              });
+
+            const result = await res.data
+
+            return result.recipe
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const getRecipesByUserId = async (idUser) => {
         try {
 
@@ -45,8 +66,58 @@ export const recipePresenter = () => {
         }
     }
 
+    const addRecipe = async (recipe) => {
+        try {
+            if(useMock == 'true'){
+                return getMock()
+            }
+
+            const body = {
+                "idUser": recipe.idUser,
+                "title": recipe.title,
+                "description":recipe.description,
+                "ingredients": recipe.ingredients,
+                "idCategory": recipe.idCategory,
+                "preparationTime": recipe.preparationTime
+              }
+
+            const res = await axios.post(`${baseUrl}/recipes`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
+    const updateRecipe = async (recipe) => {
+        try {
+            if(useMock == 'true'){
+                return getMock()
+            }
+
+            const body = {
+                "idUser": recipe.idUser,
+                "idrecipe": recipe.idRecipe,
+                "title": recipe.title,
+                "description":recipe.description,
+                "ingredients": recipe.ingredients,
+                "idCategory": recipe.idCategory,
+                "preparationTime": recipe.preparationTime
+              }
+
+            const res = await axios.put(`${baseUrl}/recipes`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     return {
         getRecipes,
         getRecipesByUserId,
+        addRecipe,
+        getById,
+        updateRecipe
     }
 }

@@ -6,6 +6,7 @@ import "Protos/Step.proto";
 
 service RecipeController{
   rpc addRecipe(RecipeDTO) returns (RecipeObjDTO);
+  rpc updateRecipe(RecipeDTO) returns (RecipeObjDTO);
   rpc getRecipe(GetRecipeRequest)returns (RecipeObjDTO);
   rpc getAllRecipes(Empty) returns (RecipesDTO);
   rpc getRecipesByUserId(IdUserRequest) returns (RecipesDTO);

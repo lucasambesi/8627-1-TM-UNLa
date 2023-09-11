@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router'
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
+import { userPresenter } from '../../presenter/UserPresenter'
 import {
   Grid,
   Typography,
@@ -23,7 +24,8 @@ import {
 export const Register = () => {
 
     const navigate = useNavigate();
-  
+    const {register} = userPresenter()
+
     const [tipoUsuario, setTipoUsuario] = useState(0);
     const [errTipoUsuario, setErrTipoUsuario] = useState("");
   
@@ -140,30 +142,32 @@ export const Register = () => {
       let retorno = true;
       if (nombre === "") {
         setErrNombre("Este campo es requerido");
+        console.log(nombre)
         retorno = false;
       }
       if (apellido === "") {
         setErrApellido("Este campo es requerido");
+        console.log(apellido)
         retorno = false;
       }
       if (dni === "") {
         setErrDni("Este campo es requerido");
+        console.log(dni)
         retorno = false;
       }
       if (email === "") {
         setErrEmail("Este campo es requerido");
+        console.log(email)
         retorno = false;
       }
       if (username === "") {
         setErrUserName("Este campo es requerido");
+        console.log(username)
         retorno = false;
       }
       if (password === "") {
         setErrPass("Este campo es requerido");
-        retorno = false;
-      }
-      if (tipoUsuario === "") {
-        setErrPass("Este campo es requerido");
+        console.log(password)
         retorno = false;
       }
   
@@ -176,19 +180,21 @@ export const Register = () => {
   
     const send = async () => {
       const formOK = validate();
+
       if (formOK) {
         try {
+
           const newUser = {
-            "idUsuario": 0,
-            "nombre": nombre,
-            "apellido": apellido,
+            "name": nombre,
+            "lastName": apellido,
             "dni": dni,
             "email": email.toString(),
-            "usuario": username,
-            "clave": password,
-            "idTipoUsuario": tipoUsuario
+            "username": username,
+            "password": password
           }
-        //   await altaUsuario(newUser)
+
+          await register(newUser)
+
           alert("Usuario Creado")
           navigate("/login")
         } catch (error) {
@@ -199,9 +205,10 @@ export const Register = () => {
   
       }
     }
+
     const goLogin = () => {
-      clear()
       navigate("/login")
+      clear()
     }
   
     return (
@@ -231,33 +238,33 @@ export const Register = () => {
                   />
                 </Grid>
                 <Grid item container>
-                    <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">
-                            Password
-                        </InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={visible ? 'text' : 'password'}
-                            endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={()=>{setVisible(!visible)}}                                
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                >
-                                {
-                                    visible ? <VisibilityIcon/> : <VisibilityOffIcon/>
-                                }
-                                </IconButton>
-                            </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                    </FormControl>
+                  <FormControl sx={{  width: '100%' }}  variant="outlined"
+                      error={errPass !== "" ? true : false}
+                      onChange={e => { call_setPassword(e.target.value) }}>
+                      <InputLabel htmlFor="outlined-adornment-password">
+                          Password
+                      </InputLabel>
+                      <OutlinedInput
+                          id="outlined-adornment-password"
+                          type={visible ? 'text' : 'password'}
+                          endAdornment={
+                          <InputAdornment position="end">
+                              <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={()=>{setVisible(!visible)}}                                
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                              >
+                              {
+                                  visible ? <VisibilityIcon/> : <VisibilityOffIcon/>
+                              }
+                              </IconButton>
+                          </InputAdornment>
+                          }
+                          label="Password"
+                      />
+                  </FormControl>
                 </Grid>
-
-                <hr style={{ width: "100%" }} />
                 <Grid container item>
                   <TextField
                     fullWidth

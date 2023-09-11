@@ -47,6 +47,28 @@ public class RecipeRepository {
         return entity;
     }
 
+    public Recipe updateRecipe(Recipe recipe) throws Exception{
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        Recipe entity = null;
+        try {
+            transaction.begin();
+            entity = em.merge(recipe);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("ATENCION: Error de persistencia en método updateRecipe");
+        }
+        finally {
+            em.close();
+        }
+
+        return entity;
+
+    }
+
     public Recipe getById(int idRecipe) throws Exception{
 
         Recipe recipe = null;

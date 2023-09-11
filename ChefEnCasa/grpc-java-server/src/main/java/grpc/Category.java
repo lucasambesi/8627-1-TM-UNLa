@@ -14,6 +14,418 @@ public final class Category {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface EmptyCategoryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EmptyCategory)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code EmptyCategory}
+   */
+  public  static final class EmptyCategory extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:EmptyCategory)
+      EmptyCategoryOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use EmptyCategory.newBuilder() to construct.
+    private EmptyCategory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private EmptyCategory() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EmptyCategory(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Category.internal_static_EmptyCategory_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Category.internal_static_EmptyCategory_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Category.EmptyCategory.class, grpc.Category.EmptyCategory.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Category.EmptyCategory)) {
+        return super.equals(obj);
+      }
+      grpc.Category.EmptyCategory other = (grpc.Category.EmptyCategory) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Category.EmptyCategory parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Category.EmptyCategory parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Category.EmptyCategory parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Category.EmptyCategory parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Category.EmptyCategory prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EmptyCategory}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EmptyCategory)
+        grpc.Category.EmptyCategoryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Category.internal_static_EmptyCategory_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Category.internal_static_EmptyCategory_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Category.EmptyCategory.class, grpc.Category.EmptyCategory.Builder.class);
+      }
+
+      // Construct using grpc.Category.EmptyCategory.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Category.internal_static_EmptyCategory_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Category.EmptyCategory getDefaultInstanceForType() {
+        return grpc.Category.EmptyCategory.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Category.EmptyCategory build() {
+        grpc.Category.EmptyCategory result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Category.EmptyCategory buildPartial() {
+        grpc.Category.EmptyCategory result = new grpc.Category.EmptyCategory(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Category.EmptyCategory) {
+          return mergeFrom((grpc.Category.EmptyCategory)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Category.EmptyCategory other) {
+        if (other == grpc.Category.EmptyCategory.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Category.EmptyCategory parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Category.EmptyCategory) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EmptyCategory)
+    }
+
+    // @@protoc_insertion_point(class_scope:EmptyCategory)
+    private static final grpc.Category.EmptyCategory DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Category.EmptyCategory();
+    }
+
+    public static grpc.Category.EmptyCategory getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EmptyCategory>
+        PARSER = new com.google.protobuf.AbstractParser<EmptyCategory>() {
+      @java.lang.Override
+      public EmptyCategory parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new EmptyCategory(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<EmptyCategory> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EmptyCategory> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Category.EmptyCategory getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface CategoryServerResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:CategoryServerResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -2517,6 +2929,990 @@ public final class Category {
 
   }
 
+  public interface CategoriesDTOOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CategoriesDTO)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    java.util.List<grpc.Category.CategoryDTO> 
+        getCategoriesList();
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    grpc.Category.CategoryDTO getCategories(int index);
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    int getCategoriesCount();
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    java.util.List<? extends grpc.Category.CategoryDTOOrBuilder> 
+        getCategoriesOrBuilderList();
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    grpc.Category.CategoryDTOOrBuilder getCategoriesOrBuilder(
+        int index);
+
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    boolean hasServerResponse();
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    grpc.Category.CategoryServerResponse getServerResponse();
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    grpc.Category.CategoryServerResponseOrBuilder getServerResponseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code CategoriesDTO}
+   */
+  public  static final class CategoriesDTO extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:CategoriesDTO)
+      CategoriesDTOOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CategoriesDTO.newBuilder() to construct.
+    private CategoriesDTO(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CategoriesDTO() {
+      categories_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CategoriesDTO(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                categories_ = new java.util.ArrayList<grpc.Category.CategoryDTO>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              categories_.add(
+                  input.readMessage(grpc.Category.CategoryDTO.parser(), extensionRegistry));
+              break;
+            }
+            case 18: {
+              grpc.Category.CategoryServerResponse.Builder subBuilder = null;
+              if (serverResponse_ != null) {
+                subBuilder = serverResponse_.toBuilder();
+              }
+              serverResponse_ = input.readMessage(grpc.Category.CategoryServerResponse.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(serverResponse_);
+                serverResponse_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          categories_ = java.util.Collections.unmodifiableList(categories_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Category.internal_static_CategoriesDTO_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Category.internal_static_CategoriesDTO_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Category.CategoriesDTO.class, grpc.Category.CategoriesDTO.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CATEGORIES_FIELD_NUMBER = 1;
+    private java.util.List<grpc.Category.CategoryDTO> categories_;
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    public java.util.List<grpc.Category.CategoryDTO> getCategoriesList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    public java.util.List<? extends grpc.Category.CategoryDTOOrBuilder> 
+        getCategoriesOrBuilderList() {
+      return categories_;
+    }
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    public int getCategoriesCount() {
+      return categories_.size();
+    }
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    public grpc.Category.CategoryDTO getCategories(int index) {
+      return categories_.get(index);
+    }
+    /**
+     * <code>repeated .CategoryDTO categories = 1;</code>
+     */
+    public grpc.Category.CategoryDTOOrBuilder getCategoriesOrBuilder(
+        int index) {
+      return categories_.get(index);
+    }
+
+    public static final int SERVERRESPONSE_FIELD_NUMBER = 2;
+    private grpc.Category.CategoryServerResponse serverResponse_;
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    public boolean hasServerResponse() {
+      return serverResponse_ != null;
+    }
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    public grpc.Category.CategoryServerResponse getServerResponse() {
+      return serverResponse_ == null ? grpc.Category.CategoryServerResponse.getDefaultInstance() : serverResponse_;
+    }
+    /**
+     * <code>.CategoryServerResponse serverResponse = 2;</code>
+     */
+    public grpc.Category.CategoryServerResponseOrBuilder getServerResponseOrBuilder() {
+      return getServerResponse();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < categories_.size(); i++) {
+        output.writeMessage(1, categories_.get(i));
+      }
+      if (serverResponse_ != null) {
+        output.writeMessage(2, getServerResponse());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < categories_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, categories_.get(i));
+      }
+      if (serverResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getServerResponse());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Category.CategoriesDTO)) {
+        return super.equals(obj);
+      }
+      grpc.Category.CategoriesDTO other = (grpc.Category.CategoriesDTO) obj;
+
+      boolean result = true;
+      result = result && getCategoriesList()
+          .equals(other.getCategoriesList());
+      result = result && (hasServerResponse() == other.hasServerResponse());
+      if (hasServerResponse()) {
+        result = result && getServerResponse()
+            .equals(other.getServerResponse());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getCategoriesCount() > 0) {
+        hash = (37 * hash) + CATEGORIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCategoriesList().hashCode();
+      }
+      if (hasServerResponse()) {
+        hash = (37 * hash) + SERVERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getServerResponse().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Category.CategoriesDTO parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Category.CategoriesDTO parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Category.CategoriesDTO parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Category.CategoriesDTO parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Category.CategoriesDTO prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CategoriesDTO}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CategoriesDTO)
+        grpc.Category.CategoriesDTOOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Category.internal_static_CategoriesDTO_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Category.internal_static_CategoriesDTO_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Category.CategoriesDTO.class, grpc.Category.CategoriesDTO.Builder.class);
+      }
+
+      // Construct using grpc.Category.CategoriesDTO.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getCategoriesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (categoriesBuilder_ == null) {
+          categories_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          categoriesBuilder_.clear();
+        }
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Category.internal_static_CategoriesDTO_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Category.CategoriesDTO getDefaultInstanceForType() {
+        return grpc.Category.CategoriesDTO.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Category.CategoriesDTO build() {
+        grpc.Category.CategoriesDTO result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Category.CategoriesDTO buildPartial() {
+        grpc.Category.CategoriesDTO result = new grpc.Category.CategoriesDTO(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (categoriesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            categories_ = java.util.Collections.unmodifiableList(categories_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.categories_ = categories_;
+        } else {
+          result.categories_ = categoriesBuilder_.build();
+        }
+        if (serverResponseBuilder_ == null) {
+          result.serverResponse_ = serverResponse_;
+        } else {
+          result.serverResponse_ = serverResponseBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Category.CategoriesDTO) {
+          return mergeFrom((grpc.Category.CategoriesDTO)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Category.CategoriesDTO other) {
+        if (other == grpc.Category.CategoriesDTO.getDefaultInstance()) return this;
+        if (categoriesBuilder_ == null) {
+          if (!other.categories_.isEmpty()) {
+            if (categories_.isEmpty()) {
+              categories_ = other.categories_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureCategoriesIsMutable();
+              categories_.addAll(other.categories_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.categories_.isEmpty()) {
+            if (categoriesBuilder_.isEmpty()) {
+              categoriesBuilder_.dispose();
+              categoriesBuilder_ = null;
+              categories_ = other.categories_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              categoriesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCategoriesFieldBuilder() : null;
+            } else {
+              categoriesBuilder_.addAllMessages(other.categories_);
+            }
+          }
+        }
+        if (other.hasServerResponse()) {
+          mergeServerResponse(other.getServerResponse());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Category.CategoriesDTO parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Category.CategoriesDTO) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<grpc.Category.CategoryDTO> categories_ =
+        java.util.Collections.emptyList();
+      private void ensureCategoriesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          categories_ = new java.util.ArrayList<grpc.Category.CategoryDTO>(categories_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          grpc.Category.CategoryDTO, grpc.Category.CategoryDTO.Builder, grpc.Category.CategoryDTOOrBuilder> categoriesBuilder_;
+
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public java.util.List<grpc.Category.CategoryDTO> getCategoriesList() {
+        if (categoriesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(categories_);
+        } else {
+          return categoriesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public int getCategoriesCount() {
+        if (categoriesBuilder_ == null) {
+          return categories_.size();
+        } else {
+          return categoriesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public grpc.Category.CategoryDTO getCategories(int index) {
+        if (categoriesBuilder_ == null) {
+          return categories_.get(index);
+        } else {
+          return categoriesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder setCategories(
+          int index, grpc.Category.CategoryDTO value) {
+        if (categoriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCategoriesIsMutable();
+          categories_.set(index, value);
+          onChanged();
+        } else {
+          categoriesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder setCategories(
+          int index, grpc.Category.CategoryDTO.Builder builderForValue) {
+        if (categoriesBuilder_ == null) {
+          ensureCategoriesIsMutable();
+          categories_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          categoriesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder addCategories(grpc.Category.CategoryDTO value) {
+        if (categoriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCategoriesIsMutable();
+          categories_.add(value);
+          onChanged();
+        } else {
+          categoriesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder addCategories(
+          int index, grpc.Category.CategoryDTO value) {
+        if (categoriesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCategoriesIsMutable();
+          categories_.add(index, value);
+          onChanged();
+        } else {
+          categoriesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder addCategories(
+          grpc.Category.CategoryDTO.Builder builderForValue) {
+        if (categoriesBuilder_ == null) {
+          ensureCategoriesIsMutable();
+          categories_.add(builderForValue.build());
+          onChanged();
+        } else {
+          categoriesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder addCategories(
+          int index, grpc.Category.CategoryDTO.Builder builderForValue) {
+        if (categoriesBuilder_ == null) {
+          ensureCategoriesIsMutable();
+          categories_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          categoriesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder addAllCategories(
+          java.lang.Iterable<? extends grpc.Category.CategoryDTO> values) {
+        if (categoriesBuilder_ == null) {
+          ensureCategoriesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, categories_);
+          onChanged();
+        } else {
+          categoriesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder clearCategories() {
+        if (categoriesBuilder_ == null) {
+          categories_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          categoriesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public Builder removeCategories(int index) {
+        if (categoriesBuilder_ == null) {
+          ensureCategoriesIsMutable();
+          categories_.remove(index);
+          onChanged();
+        } else {
+          categoriesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public grpc.Category.CategoryDTO.Builder getCategoriesBuilder(
+          int index) {
+        return getCategoriesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public grpc.Category.CategoryDTOOrBuilder getCategoriesOrBuilder(
+          int index) {
+        if (categoriesBuilder_ == null) {
+          return categories_.get(index);  } else {
+          return categoriesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public java.util.List<? extends grpc.Category.CategoryDTOOrBuilder> 
+           getCategoriesOrBuilderList() {
+        if (categoriesBuilder_ != null) {
+          return categoriesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(categories_);
+        }
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public grpc.Category.CategoryDTO.Builder addCategoriesBuilder() {
+        return getCategoriesFieldBuilder().addBuilder(
+            grpc.Category.CategoryDTO.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public grpc.Category.CategoryDTO.Builder addCategoriesBuilder(
+          int index) {
+        return getCategoriesFieldBuilder().addBuilder(
+            index, grpc.Category.CategoryDTO.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .CategoryDTO categories = 1;</code>
+       */
+      public java.util.List<grpc.Category.CategoryDTO.Builder> 
+           getCategoriesBuilderList() {
+        return getCategoriesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          grpc.Category.CategoryDTO, grpc.Category.CategoryDTO.Builder, grpc.Category.CategoryDTOOrBuilder> 
+          getCategoriesFieldBuilder() {
+        if (categoriesBuilder_ == null) {
+          categoriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              grpc.Category.CategoryDTO, grpc.Category.CategoryDTO.Builder, grpc.Category.CategoryDTOOrBuilder>(
+                  categories_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          categories_ = null;
+        }
+        return categoriesBuilder_;
+      }
+
+      private grpc.Category.CategoryServerResponse serverResponse_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Category.CategoryServerResponse, grpc.Category.CategoryServerResponse.Builder, grpc.Category.CategoryServerResponseOrBuilder> serverResponseBuilder_;
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public boolean hasServerResponse() {
+        return serverResponseBuilder_ != null || serverResponse_ != null;
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Category.CategoryServerResponse getServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          return serverResponse_ == null ? grpc.Category.CategoryServerResponse.getDefaultInstance() : serverResponse_;
+        } else {
+          return serverResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public Builder setServerResponse(grpc.Category.CategoryServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          serverResponse_ = value;
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public Builder setServerResponse(
+          grpc.Category.CategoryServerResponse.Builder builderForValue) {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public Builder mergeServerResponse(grpc.Category.CategoryServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (serverResponse_ != null) {
+            serverResponse_ =
+              grpc.Category.CategoryServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
+          } else {
+            serverResponse_ = value;
+          }
+          onChanged();
+        } else {
+          serverResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public Builder clearServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+          onChanged();
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Category.CategoryServerResponse.Builder getServerResponseBuilder() {
+        
+        onChanged();
+        return getServerResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      public grpc.Category.CategoryServerResponseOrBuilder getServerResponseOrBuilder() {
+        if (serverResponseBuilder_ != null) {
+          return serverResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return serverResponse_ == null ?
+              grpc.Category.CategoryServerResponse.getDefaultInstance() : serverResponse_;
+        }
+      }
+      /**
+       * <code>.CategoryServerResponse serverResponse = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Category.CategoryServerResponse, grpc.Category.CategoryServerResponse.Builder, grpc.Category.CategoryServerResponseOrBuilder> 
+          getServerResponseFieldBuilder() {
+        if (serverResponseBuilder_ == null) {
+          serverResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              grpc.Category.CategoryServerResponse, grpc.Category.CategoryServerResponse.Builder, grpc.Category.CategoryServerResponseOrBuilder>(
+                  getServerResponse(),
+                  getParentForChildren(),
+                  isClean());
+          serverResponse_ = null;
+        }
+        return serverResponseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CategoriesDTO)
+    }
+
+    // @@protoc_insertion_point(class_scope:CategoriesDTO)
+    private static final grpc.Category.CategoriesDTO DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Category.CategoriesDTO();
+    }
+
+    public static grpc.Category.CategoriesDTO getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CategoriesDTO>
+        PARSER = new com.google.protobuf.AbstractParser<CategoriesDTO>() {
+      @java.lang.Override
+      public CategoriesDTO parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CategoriesDTO(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CategoriesDTO> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CategoriesDTO> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Category.CategoriesDTO getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EmptyCategory_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_EmptyCategory_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CategoryServerResponse_descriptor;
   private static final 
@@ -2537,6 +3933,11 @@ public final class Category {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetCategoryRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CategoriesDTO_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CategoriesDTO_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2546,16 +3947,21 @@ public final class Category {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Category.proto\"3\n\026CategoryServerRespon" +
-      "se\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"/\n\013Categor" +
-      "yDTO\022\022\n\nidCategory\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\"a" +
-      "\n\016CategoryObjDTO\022\036\n\010category\030\001 \001(\0132\014.Cat" +
-      "egoryDTO\022/\n\016serverResponse\030\002 \001(\0132\027.Categ" +
-      "oryServerResponse\"(\n\022GetCategoryRequest\022" +
-      "\022\n\nidCategory\030\001 \001(\0052w\n\022CategoryControlle" +
-      "r\022,\n\013addCategory\022\014.CategoryDTO\032\017.Categor" +
-      "yObjDTO\0223\n\013getCategory\022\023.GetCategoryRequ" +
-      "est\032\017.CategoryObjDTOB\006\n\004grpcb\006proto3"
+      "\n\016Category.proto\"\017\n\rEmptyCategory\"3\n\026Cat" +
+      "egoryServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg" +
+      "\030\002 \001(\t\"/\n\013CategoryDTO\022\022\n\nidCategory\030\001 \001(" +
+      "\005\022\014\n\004name\030\002 \001(\t\"a\n\016CategoryObjDTO\022\036\n\010cat" +
+      "egory\030\001 \001(\0132\014.CategoryDTO\022/\n\016serverRespo" +
+      "nse\030\002 \001(\0132\027.CategoryServerResponse\"(\n\022Ge" +
+      "tCategoryRequest\022\022\n\nidCategory\030\001 \001(\005\"b\n\r" +
+      "CategoriesDTO\022 \n\ncategories\030\001 \003(\0132\014.Cate" +
+      "goryDTO\022/\n\016serverResponse\030\002 \001(\0132\027.Catego" +
+      "ryServerResponse2\253\001\n\022CategoryController\022" +
+      ",\n\013addCategory\022\014.CategoryDTO\032\017.CategoryO" +
+      "bjDTO\0223\n\013getCategory\022\023.GetCategoryReques" +
+      "t\032\017.CategoryObjDTO\0222\n\020getAllCategories\022\016" +
+      ".EmptyCategory\032\016.CategoriesDTOB\006\n\004grpcb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2569,30 +3975,42 @@ public final class Category {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_CategoryServerResponse_descriptor =
+    internal_static_EmptyCategory_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_EmptyCategory_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_EmptyCategory_descriptor,
+        new java.lang.String[] { });
+    internal_static_CategoryServerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_CategoryServerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CategoryServerResponse_descriptor,
         new java.lang.String[] { "Code", "Msg", });
     internal_static_CategoryDTO_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_CategoryDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CategoryDTO_descriptor,
         new java.lang.String[] { "IdCategory", "Name", });
     internal_static_CategoryObjDTO_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_CategoryObjDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CategoryObjDTO_descriptor,
         new java.lang.String[] { "Category", "ServerResponse", });
     internal_static_GetCategoryRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_GetCategoryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetCategoryRequest_descriptor,
         new java.lang.String[] { "IdCategory", });
+    internal_static_CategoriesDTO_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_CategoriesDTO_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CategoriesDTO_descriptor,
+        new java.lang.String[] { "Categories", "ServerResponse", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

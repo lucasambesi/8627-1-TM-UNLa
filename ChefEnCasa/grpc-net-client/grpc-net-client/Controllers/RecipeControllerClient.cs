@@ -112,6 +112,22 @@ namespace grpc_net_client.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] RecipeDTO recipe)
+        {
+            try
+            {
+                var response = await _service.updateRecipeAsync(recipe);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
         #endregion
     }
 }

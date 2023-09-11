@@ -18,6 +18,7 @@ import cinco from '../../assets/recetas/cinco.jpg';
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
 import { userPresenter } from '../../presenter/UserPresenter'
+import { useNavigate } from 'react-router'
 
 const style = {
     position: 'absolute',
@@ -32,7 +33,7 @@ const style = {
   };
 
   export const Recipe = (props) => {
-    const {recipe} = props
+    const {recipe, editMode} = props
     const images = [uno, dos, tres, cuatro, cinco]
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
@@ -42,6 +43,9 @@ const style = {
     const { getCategoryById } = categoryPresenter()
     const { getStepsByRecipeId } = stepPresenter()
     const { getById } = userPresenter()
+    const navigate = useNavigate();
+
+    const toRecipe = () => { navigate(`/update-recipe/${encodeURIComponent(recipe.idRecipe, true)}`) }
 
     useEffect(() => {
         getCategoryById(recipe.idCategory)
@@ -71,7 +75,7 @@ const style = {
       const handleClose = () => setOpen(false);  
 
     return (
-        <Card elevation={3} sx={{ maxWidth: 345, minWidth: 345, margin: 2 }}>
+        <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, margin: 2 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -90,6 +94,10 @@ const style = {
             </CardActionArea>
             <CardActions>
             <Button onClick={handleOpen}>DETALLES</Button>
+            {
+                (editMode) ? <Button onClick={toRecipe}>Editar</Button> : null
+            }
+            
             <Modal
                 open={open}
                 onClose={handleClose}

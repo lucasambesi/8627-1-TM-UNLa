@@ -3,8 +3,11 @@ package com.chefencasa.Controller;
 import com.chefencasa.service.CategoryService;
 import grpc.Category;
 import grpc.CategoryControllerGrpc;
+import grpc.Recipe;
 import grpc.User;
 import io.grpc.stub.StreamObserver;
+
+import java.util.List;
 
 public class CategoryController  extends CategoryControllerGrpc.CategoryControllerImplBase {
 
@@ -49,6 +52,23 @@ public class CategoryController  extends CategoryControllerGrpc.CategoryControll
 
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getAllCategories(Category.EmptyCategory request, StreamObserver<Category.CategoriesDTO> responseObserver) {
+        Category.CategoriesDTO.Builder categoriesDTO = Category.CategoriesDTO.newBuilder();
+        Category.CategoryServerResponse.Builder serverResponse = Category.CategoryServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Category> categories = this.categoryService.getAll();
+            for (com.chefencasa.Model.Category category : categories) {
+                categoriesDTO.addCategories(mapCategoryDTO(category));
+            }
+            categoriesDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(categoriesDTO.build());
         responseObserver.onCompleted();
     }
 

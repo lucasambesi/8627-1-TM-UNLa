@@ -5,6 +5,11 @@ import com.chefencasa.Model.Category;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryRepository {
     private static CategoryRepository repository;
@@ -60,5 +65,26 @@ public class CategoryRepository {
         }
 
         return category;
+    }
+
+    public List<Category> getAll() throws Exception{
+        List<Category> categories = new ArrayList<Category>();
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Category> query = criteriaBuilder.createQuery(Category.class);
+        Root<Category> root = query.from(Category.class);
+        query.select(root);
+
+        try {
+            categories = em.createQuery(query).getResultList();
+        } catch (Exception e) {
+            String msg = "Error de persistencia - Método GetAll: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
+        return categories;
     }
 }

@@ -2,8 +2,6 @@ package com.chefencasa.Controller;
 
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.RecipeService;
-import com.google.protobuf.Empty;
-import grpc.Category;
 import grpc.Recipe;
 import grpc.RecipeControllerGrpc;
 import io.grpc.stub.StreamObserver;
@@ -25,6 +23,25 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
             response.setRecipe(this.mapRecipeDTO(recipe));
             serverResponse.setCode(200);
             serverResponse.setMsg("Recipe created");
+        } catch (Exception var6) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(var6.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void updateRecipe(Recipe.RecipeDTO request, StreamObserver<Recipe.RecipeObjDTO> responseObserver) {
+        Recipe.RecipeObjDTO.Builder response = Recipe.RecipeObjDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+
+        try {
+            com.chefencasa.Model.Recipe recipe = this.recipeService.updateRecipe(request);
+            response.setRecipe(this.mapRecipeDTO(recipe));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Recipe updated");
         } catch (Exception var6) {
             serverResponse.setCode(500);
             serverResponse.setMsg(var6.getMessage());

@@ -7,27 +7,30 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
-import { FavoriteRecipes } from './pages/Recipes/Favorites'
+import { MyRecipes } from './pages/Recipes/MyRecipes'
 import { Following } from './pages/Profile/Following';
+import { CreateRecipe } from './pages/Recipes/CreateRecipe';
 
 function App() {
 
   const [user, setUser] = useLocalStorage('user', '')
   
   return (
-    <>
-    <BrowserRouter>
-      <NavBar user={user} setUser={setUser} />
-      <Routes>
-        <Route index element={user ? <Home /> : <Login user={user} setUser={setUser}/>} />
-        <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
-        <Route path="/recipes" element={<FavoriteRecipes user={user}/>} />        
-        <Route path="/following" element={<Following user={user}/>} />
-      </Routes>
-    </BrowserRouter>
+    <>    
+      <BrowserRouter>
+        <NavBar user={user} setUser={setUser} />
+        <Routes>
+          <Route index element={user ? <Home /> : <Login user={user} setUser={setUser}/>} />
+          <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/update-recipe/:idRecipe" element={<CreateRecipe user={user} />} />
+          <Route path="/create-recipe" element={<CreateRecipe user={user} />} />
+          <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
+          <Route path="/recipes" element={<MyRecipes user={user}/>} />        
+          <Route path="/following" element={<Following user={user}/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

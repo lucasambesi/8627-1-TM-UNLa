@@ -50,6 +50,10 @@ public static partial class CategoryController
   static readonly grpc::Marshaller<global::CategoryObjDTO> __Marshaller_CategoryObjDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CategoryObjDTO.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::GetCategoryRequest> __Marshaller_GetCategoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetCategoryRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::EmptyCategory> __Marshaller_EmptyCategory = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::EmptyCategory.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::CategoriesDTO> __Marshaller_CategoriesDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CategoriesDTO.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::CategoryDTO, global::CategoryObjDTO> __Method_addCategory = new grpc::Method<global::CategoryDTO, global::CategoryObjDTO>(
@@ -66,6 +70,14 @@ public static partial class CategoryController
       "getCategory",
       __Marshaller_GetCategoryRequest,
       __Marshaller_CategoryObjDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::EmptyCategory, global::CategoriesDTO> __Method_getAllCategories = new grpc::Method<global::EmptyCategory, global::CategoriesDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "getAllCategories",
+      __Marshaller_EmptyCategory,
+      __Marshaller_CategoriesDTO);
 
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -139,6 +151,26 @@ public static partial class CategoryController
     public virtual grpc::AsyncUnaryCall<global::CategoryObjDTO> getCategoryAsync(global::GetCategoryRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_getCategory, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::CategoriesDTO getAllCategories(global::EmptyCategory request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getAllCategories(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::CategoriesDTO getAllCategories(global::EmptyCategory request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_getAllCategories, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::CategoriesDTO> getAllCategoriesAsync(global::EmptyCategory request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getAllCategoriesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::CategoriesDTO> getAllCategoriesAsync(global::EmptyCategory request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_getAllCategories, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

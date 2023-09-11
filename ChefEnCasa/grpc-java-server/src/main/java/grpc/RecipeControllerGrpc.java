@@ -59,6 +59,38 @@ public final class RecipeControllerGrpc {
      return getAddRecipeMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Recipe.RecipeDTO,
+      grpc.Recipe.RecipeObjDTO> getUpdateRecipeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "updateRecipe",
+      requestType = grpc.Recipe.RecipeDTO.class,
+      responseType = grpc.Recipe.RecipeObjDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Recipe.RecipeDTO,
+      grpc.Recipe.RecipeObjDTO> getUpdateRecipeMethod() {
+    io.grpc.MethodDescriptor<grpc.Recipe.RecipeDTO, grpc.Recipe.RecipeObjDTO> getUpdateRecipeMethod;
+    if ((getUpdateRecipeMethod = RecipeControllerGrpc.getUpdateRecipeMethod) == null) {
+      synchronized (RecipeControllerGrpc.class) {
+        if ((getUpdateRecipeMethod = RecipeControllerGrpc.getUpdateRecipeMethod) == null) {
+          RecipeControllerGrpc.getUpdateRecipeMethod = getUpdateRecipeMethod = 
+              io.grpc.MethodDescriptor.<grpc.Recipe.RecipeDTO, grpc.Recipe.RecipeObjDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "RecipeController", "updateRecipe"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.RecipeDTO.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.RecipeObjDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new RecipeControllerMethodDescriptorSupplier("updateRecipe"))
+                  .build();
+          }
+        }
+     }
+     return getUpdateRecipeMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.Recipe.GetRecipeRequest,
       grpc.Recipe.RecipeObjDTO> getGetRecipeMethod;
 
@@ -223,6 +255,13 @@ public final class RecipeControllerGrpc {
 
     /**
      */
+    public void updateRecipe(grpc.Recipe.RecipeDTO request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateRecipeMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getRecipe(grpc.Recipe.GetRecipeRequest request,
         io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetRecipeMethod(), responseObserver);
@@ -258,6 +297,13 @@ public final class RecipeControllerGrpc {
                 grpc.Recipe.RecipeDTO,
                 grpc.Recipe.RecipeObjDTO>(
                   this, METHODID_ADD_RECIPE)))
+          .addMethod(
+            getUpdateRecipeMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Recipe.RecipeDTO,
+                grpc.Recipe.RecipeObjDTO>(
+                  this, METHODID_UPDATE_RECIPE)))
           .addMethod(
             getGetRecipeMethod(),
             asyncUnaryCall(
@@ -314,6 +360,14 @@ public final class RecipeControllerGrpc {
         io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddRecipeMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateRecipe(grpc.Recipe.RecipeDTO request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdateRecipeMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -376,6 +430,13 @@ public final class RecipeControllerGrpc {
 
     /**
      */
+    public grpc.Recipe.RecipeObjDTO updateRecipe(grpc.Recipe.RecipeDTO request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdateRecipeMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public grpc.Recipe.RecipeObjDTO getRecipe(grpc.Recipe.GetRecipeRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetRecipeMethod(), getCallOptions(), request);
@@ -431,6 +492,14 @@ public final class RecipeControllerGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Recipe.RecipeObjDTO> updateRecipe(
+        grpc.Recipe.RecipeDTO request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdateRecipeMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Recipe.RecipeObjDTO> getRecipe(
         grpc.Recipe.GetRecipeRequest request) {
       return futureUnaryCall(
@@ -463,10 +532,11 @@ public final class RecipeControllerGrpc {
   }
 
   private static final int METHODID_ADD_RECIPE = 0;
-  private static final int METHODID_GET_RECIPE = 1;
-  private static final int METHODID_GET_ALL_RECIPES = 2;
-  private static final int METHODID_GET_RECIPES_BY_USER_ID = 3;
-  private static final int METHODID_GET_BY_FILTER = 4;
+  private static final int METHODID_UPDATE_RECIPE = 1;
+  private static final int METHODID_GET_RECIPE = 2;
+  private static final int METHODID_GET_ALL_RECIPES = 3;
+  private static final int METHODID_GET_RECIPES_BY_USER_ID = 4;
+  private static final int METHODID_GET_BY_FILTER = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -487,6 +557,10 @@ public final class RecipeControllerGrpc {
       switch (methodId) {
         case METHODID_ADD_RECIPE:
           serviceImpl.addRecipe((grpc.Recipe.RecipeDTO) request,
+              (io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO>) responseObserver);
+          break;
+        case METHODID_UPDATE_RECIPE:
+          serviceImpl.updateRecipe((grpc.Recipe.RecipeDTO) request,
               (io.grpc.stub.StreamObserver<grpc.Recipe.RecipeObjDTO>) responseObserver);
           break;
         case METHODID_GET_RECIPE:
@@ -567,6 +641,7 @@ public final class RecipeControllerGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RecipeControllerFileDescriptorSupplier())
               .addMethod(getAddRecipeMethod())
+              .addMethod(getUpdateRecipeMethod())
               .addMethod(getGetRecipeMethod())
               .addMethod(getGetAllRecipesMethod())
               .addMethod(getGetRecipesByUserIdMethod())

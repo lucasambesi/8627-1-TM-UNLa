@@ -7146,13 +7146,14 @@ public final class Recipe {
       "\030\001 \001(\005\"r\n\022GetByFilterRequest\022\022\n\nidCatego" +
       "ry\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003" +
       " \001(\t\022\021\n\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001" +
-      "(\0052\363\001\n\020RecipeController\022&\n\taddRecipe\022\n.R" +
-      "ecipeDTO\032\r.RecipeObjDTO\022-\n\tgetRecipe\022\021.G" +
-      "etRecipeRequest\032\r.RecipeObjDTO\022$\n\rgetAll" +
-      "Recipes\022\006.Empty\032\013.RecipesDTO\0221\n\022getRecip" +
-      "esByUserId\022\016.IdUserRequest\032\013.RecipesDTO\022" +
-      "/\n\013getByFilter\022\023.GetByFilterRequest\032\013.Re" +
-      "cipesDTOB\006\n\004grpcb\006proto3"
+      "(\0052\236\002\n\020RecipeController\022&\n\taddRecipe\022\n.R" +
+      "ecipeDTO\032\r.RecipeObjDTO\022)\n\014updateRecipe\022" +
+      "\n.RecipeDTO\032\r.RecipeObjDTO\022-\n\tgetRecipe\022" +
+      "\021.GetRecipeRequest\032\r.RecipeObjDTO\022$\n\rget" +
+      "AllRecipes\022\006.Empty\032\013.RecipesDTO\0221\n\022getRe" +
+      "cipesByUserId\022\016.IdUserRequest\032\013.RecipesD" +
+      "TO\022/\n\013getByFilter\022\023.GetByFilterRequest\032\013" +
+      ".RecipesDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

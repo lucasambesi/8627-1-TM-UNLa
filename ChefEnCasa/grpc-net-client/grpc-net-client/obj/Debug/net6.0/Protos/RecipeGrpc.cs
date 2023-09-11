@@ -68,6 +68,14 @@ public static partial class RecipeController
       __Marshaller_RecipeObjDTO);
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::RecipeDTO, global::RecipeObjDTO> __Method_updateRecipe = new grpc::Method<global::RecipeDTO, global::RecipeObjDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "updateRecipe",
+      __Marshaller_RecipeDTO,
+      __Marshaller_RecipeObjDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::GetRecipeRequest, global::RecipeObjDTO> __Method_getRecipe = new grpc::Method<global::GetRecipeRequest, global::RecipeObjDTO>(
       grpc::MethodType.Unary,
       __ServiceName,
@@ -151,6 +159,26 @@ public static partial class RecipeController
     public virtual grpc::AsyncUnaryCall<global::RecipeObjDTO> addRecipeAsync(global::RecipeDTO request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_addRecipe, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipeObjDTO updateRecipe(global::RecipeDTO request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return updateRecipe(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipeObjDTO updateRecipe(global::RecipeDTO request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_updateRecipe, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipeObjDTO> updateRecipeAsync(global::RecipeDTO request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return updateRecipeAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipeObjDTO> updateRecipeAsync(global::RecipeDTO request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_updateRecipe, null, options, request);
     }
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public virtual global::RecipeObjDTO getRecipe(global::GetRecipeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
