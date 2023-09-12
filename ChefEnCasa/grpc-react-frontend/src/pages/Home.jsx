@@ -4,25 +4,15 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {Recipe} from "./Recipes/Recipe";
 import { Container } from "@mui/material";
-import { useNavigate } from 'react-router'
 import { FilterRecipes } from "./Recipes/FilterRecipes";
 
 const Home = (props) => {
    const [recipes, setRecipes] = useState([]);
 
-   const {getRecipes} = recipePresenter()
-
-   const navigate = useNavigate();
-   
-   const toCreateRecipe = () => { navigate("/create-recipe") }
-
-   const OpenModal = () => {
-      setEditMode(false)
-      setOpen(true);
-    };
+   const {getByFilter} = recipePresenter()
 
     useEffect(() => {
-      getRecipes()
+      getByFilter({})
         .then((res) => {
           console.log(res)
           setRecipes(res)
@@ -34,7 +24,7 @@ const Home = (props) => {
       <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:'2%'}}>        
         <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <FilterRecipes setProductos={setRecipes} />
+            <FilterRecipes setRecipes={setRecipes} />
             {
                 recipes ? recipes.map((recipe) =>{
                 return (

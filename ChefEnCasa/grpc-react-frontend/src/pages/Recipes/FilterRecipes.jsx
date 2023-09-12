@@ -6,38 +6,49 @@ import IconButton from '@mui/material/IconButton'
 import { blue } from '@mui/material/colors'
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
+import {recipePresenter} from '../../presenter/RecipePresenter'
 
 export const FilterRecipes = (props) => {
     const { 
-        setProductos
+        setRecipes
     } = props;
 
-    const [categoria, setCategoria] = useState({});
-    const [filtros, setFiltros] = useState({
-        categoria: 0,
+    const {getByFilter} = recipePresenter()
+
+    const [category, setCategory] = useState({});
+    const [filter, setFilter] = useState({
+        idCategory: 0,
         title: "",
         ingredients: "",
-        TimeSince: 0,
+        timeSince: 0,
         timeUntil: 1000
     })
 
-    useEffect(() => {
-        let tempFiltros = { ...filtros }
-        tempFiltros.categoria = categoria.idCategoria
-        setFiltros(tempFiltros)
-    }, [categoria])
+    // useEffect(() => {
+    //     let tempFilter = { ...filter }
+    //     tempFilter.category = category.idCategory
+    //     setFilter(tempFilter)
+    // }, [category])
 
     const handleChange = (e) => {
         let value = e.target.value
         if(e.target.type === "number"){
             value = Number(value)
         }
-        let tempFiltros = { ...filtros }
-        tempFiltros[e.target.name] = value
-        setFiltros(tempFiltros)
+        let tempFilter = { ...filter }
+        tempFilter[e.target.name] = value
+        setFilter(tempFilter)
     }
     
-    const buscarProductos = () => {
+    const find = () => {
+        console.log("filter =", filter)
+
+        getByFilter(filter)
+        .then((res) => {
+          console.log(res)
+          setRecipes(res)
+        })
+        .catch((err) => console.log(err));
     }
 
     return (
@@ -51,7 +62,7 @@ export const FilterRecipes = (props) => {
                                 label="Titulo"
                                 id="title"
                                 variant="outlined"
-                                value={filtros.title}
+                                value={filter.title}
                                 size="small"
                                 onChange={handleChange}
                             />
@@ -62,7 +73,7 @@ export const FilterRecipes = (props) => {
                                 label="Ingredientes"
                                 id="ingredients"
                                 variant="outlined"
-                                value={filtros.ingredients}
+                                value={filter.ingredients}
                                 size="small"
                                 onChange={handleChange}
                             />
@@ -72,9 +83,9 @@ export const FilterRecipes = (props) => {
                                 type="number"
                                 label="Tiempo desde"
                                 variant="outlined"
-                                name="TimeSince"
+                                name="timeSince"
                                 onChange={handleChange}
-                                value={filtros.TimeSince}
+                                value={filter.timeSince}
                                 size="small"
                             />
                         </Grid>
@@ -85,13 +96,13 @@ export const FilterRecipes = (props) => {
                                 variant="outlined"
                                 name="timeUntil"
                                 onChange={handleChange}
-                                value={filtros.timeUntil}
+                                value={filter.timeUntil}
                                 size="small"
                             />
                         </Grid>
                     </Grid>
                     <Grid item xs={1}>
-                        <IconButton onClick={buscarProductos}>
+                        <IconButton onClick={find}>
                             <SearchIcon style={{ color: blue[700], fontSize: "24px" }} />
                         </IconButton>
                     </Grid>

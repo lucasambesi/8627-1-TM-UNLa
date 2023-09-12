@@ -66,6 +66,31 @@ export const recipePresenter = () => {
         }
     }
 
+    const getByFilter = async (filter) => {
+        try {
+
+            if(useMock == 'true'){
+                return getMock().recipes
+            }
+
+            const res = await axios.get(`${baseUrl}/recipes/byFilter`, {
+                params: {
+                    "IdCategory": filter.idCategory != null ? filter.idCategory : 0,
+                    "Title": filter.title != "" ? filter.title : null,
+                    "Ingredients": filter.ingredients != "" ? filter.ingredients : null,
+                    "TimeSince": filter.timeSince != null ? filter.timeSince : 0,
+                    "TimeUntil":  filter.timeUntil != null ? filter.timeUntil : 1000,
+                }
+              });
+
+            const result = await res.data
+
+            return result
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const addRecipe = async (recipe) => {
 
         console.log("recipe ", recipe)
@@ -124,6 +149,7 @@ export const recipePresenter = () => {
         getRecipesByUserId,
         addRecipe,
         getById,
-        updateRecipe
+        updateRecipe,
+        getByFilter
     }
 }
