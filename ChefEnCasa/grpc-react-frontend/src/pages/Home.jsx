@@ -3,28 +3,28 @@ import { recipePresenter } from '../presenter/RecipePresenter'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {Recipe} from "./Recipes/Recipe";
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 import { Container } from "@mui/material";
 import { useNavigate } from 'react-router'
-
-const fabStyle = {
-  position: 'absolute',
-  bottom: 30,
-  right: 30,
-};
+import { FilterRecipes } from "./Recipes/FilterRecipes";
 
 const Home = (props) => {
    const [recipes, setRecipes] = useState([]);
+
    const {getRecipes} = recipePresenter()
 
    const navigate = useNavigate();
    
    const toCreateRecipe = () => { navigate("/create-recipe") }
 
+   const OpenModal = () => {
+      setEditMode(false)
+      setOpen(true);
+    };
+
     useEffect(() => {
       getRecipes()
         .then((res) => {
+          console.log(res)
           setRecipes(res)
         })
         .catch((err) => console.log(err));
@@ -34,6 +34,7 @@ const Home = (props) => {
       <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:'2%'}}>        
         <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <FilterRecipes setProductos={setRecipes} />
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
@@ -43,9 +44,6 @@ const Home = (props) => {
                 : null
             }
           </Grid>
-          <Fab color="primary" aria-label="add" sx={fabStyle} onClick={toCreateRecipe}>
-            <AddIcon />
-          </Fab>
         </Box>
       </Container>
     );

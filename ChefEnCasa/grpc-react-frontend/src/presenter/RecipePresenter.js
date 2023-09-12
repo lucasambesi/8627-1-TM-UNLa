@@ -67,6 +67,8 @@ export const recipePresenter = () => {
     }
 
     const addRecipe = async (recipe) => {
+
+        console.log("recipe ", recipe)
         try {
             if(useMock == 'true'){
                 return getMock()
@@ -78,9 +80,11 @@ export const recipePresenter = () => {
                 "description":recipe.description,
                 "ingredients": recipe.ingredients,
                 "idCategory": recipe.idCategory,
-                "preparationTime": recipe.preparationTime
-              }
-
+                "preparationTime": recipe.preparationTime,
+                "images": recipe.images,
+                "steps": recipe.steps
+            }
+            console.log("body =", body)
             const res = await axios.post(`${baseUrl}/recipes`, body);
 
             return res.data;
@@ -89,21 +93,23 @@ export const recipePresenter = () => {
         }
     }
 
-    const updateRecipe = async (recipe) => {
+    const updateRecipe = async (recipe, idUser) => {
         try {
             if(useMock == 'true'){
                 return getMock()
             }
-
+            
             const body = {
-                "idUser": recipe.idUser,
-                "idrecipe": recipe.idRecipe,
+                "idUser": idUser,
+                "idRecipe": recipe.idRecipe,
                 "title": recipe.title,
                 "description":recipe.description,
                 "ingredients": recipe.ingredients,
                 "idCategory": recipe.idCategory,
-                "preparationTime": recipe.preparationTime
-              }
+                "preparationTime": recipe.preparationTime,
+                "images": recipe.images,
+                "steps": recipe.steps
+            }
 
             const res = await axios.put(`${baseUrl}/recipes`, body);
 

@@ -1,4 +1,5 @@
 ﻿using Grpc.Net.Client;
+using grpc_net_client.Model;
 using grpc_net_client.Model.Config;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -8,7 +9,7 @@ namespace grpc_net_client.Controllers
 {
     [Route("api/recipes")]
     [ApiController]
-    [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:5173/", headers: "*", methods: "*")]
     public class RecipeControllerClient : ControllerBase
     {
         private readonly IOptions<ApiConfig> _config;
@@ -19,7 +20,10 @@ namespace grpc_net_client.Controllers
         {
             _config = config;
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL);
+            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL, new GrpcChannelOptions
+            {
+                MaxReceiveMessageSize = 1000 * 1024 * 1024
+            });
             _service = new RecipeController.RecipeControllerClient(channel);
         }
         #endregion
@@ -98,11 +102,43 @@ namespace grpc_net_client.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] RecipeDTO recipe)
+        public async Task<ActionResult> Post([FromBody] Recipe recipe)
         {
             try
             {
-                var response = await _service.addRecipeAsync(recipe);
+                RecipeDTO recipeDTO = new()
+                {
+                    IdRecipe = recipe.IdRecipe,
+                    Title = recipe.Title,
+                    Description = recipe.Description,
+                    Ingredients = recipe.Ingredients,
+                    PreparationTime = recipe.PreparationTime,
+                    IdCategory = recipe.IdCategory,
+                    IdUser = recipe.IdUser,
+                };
+
+                foreach (var image in recipe.Images)
+                {
+                    RecipeImageDTO imageDTO = new() 
+                    { 
+                        Name = image.Name,
+                        File = image.File,
+                        IdImage = image.IdImage
+                    };
+                    recipeDTO.Images.Add(imageDTO);
+                }
+
+                foreach (var step in recipe.Steps)
+                {
+                    StepDTO stepDTO = new()
+                    {
+                        Description = step.Description,
+                        IdStep = step.IdStep
+                    };
+                    recipeDTO.Steps.Add(stepDTO);
+                }
+
+                var response = await _service.addRecipeAsync(recipeDTO);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }
@@ -114,11 +150,43 @@ namespace grpc_net_client.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] RecipeDTO recipe)
+        public async Task<ActionResult> Put([FromBody] Recipe recipe)
         {
             try
             {
-                var response = await _service.updateRecipeAsync(recipe);
+                RecipeDTO recipeDTO = new()
+                {
+                    IdRecipe = recipe.IdRecipe,
+                    Title = recipe.Title,
+                    Description = recipe.Description,
+                    Ingredients = recipe.Ingredients,
+                    PreparationTime = recipe.PreparationTime,
+                    IdCategory = recipe.IdCategory,
+                    IdUser = recipe.IdUser,
+                };
+
+                foreach (var image in recipe.Images)
+                {
+                    RecipeImageDTO imageDTO = new()
+                    {
+                        Name = image.Name,
+                        File = image.File,
+                        IdImage = image.IdImage
+                    };
+                    recipeDTO.Images.Add(imageDTO);
+                }
+
+                foreach (var step in recipe.Steps)
+                {
+                    StepDTO stepDTO = new()
+                    {
+                        Description = step.Description,
+                        IdStep = step.IdStep
+                    };
+                    recipeDTO.Steps.Add(stepDTO);
+                }
+
+                var response = await _service.updateRecipeAsync(recipeDTO);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }

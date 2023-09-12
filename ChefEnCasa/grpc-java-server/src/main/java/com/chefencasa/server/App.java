@@ -15,7 +15,8 @@ public class App {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Server grpc starting");
-        Server server = ServerBuilder.forPort(9001)
+        Server server = ServerBuilder.forPort(9002)
+                .maxInboundMessageSize( 1000 * 1024 * 1024 )
                 .addService(new CategoryController())
                 .addService(new UserController())
                 .addService(new RecipeController())

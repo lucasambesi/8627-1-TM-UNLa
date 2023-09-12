@@ -17,11 +17,9 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Link } from 'react-router-dom';
 import { userPresenter } from '../../presenter/UserPresenter'
-// import { useLocalStorage } from './helpers/useLocalStorage';
 
 const Login = (props) => {
   const { user, setUser } = props;
-  // const { traerIdUsuario } = useUsuarioPresenter()
   const navigate = useNavigate();
 
   const {login} = userPresenter()

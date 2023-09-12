@@ -8,7 +8,7 @@ namespace grpc_net_client.Controllers
 {
     [Route("api/step")]
     [ApiController]
-    [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:5173/", headers: "*", methods: "*")]
     public class StepControllerClient : ControllerBase
     {
         private readonly IOptions<ApiConfig> _config;

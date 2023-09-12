@@ -26,38 +26,41 @@ public static partial class RecipeReflection {
           "bXB0eSIxChRSZWNpcGVTZXJ2ZXJSZXNwb25zZRIMCgRjb2RlGAEgASgFEgsK",
           "A21zZxgCIAEoCSJYCgpSZWNpcGVzRFRPEhsKB3JlY2lwZXMYASADKAsyCi5S",
           "ZWNpcGVEVE8SLQoOc2VydmVyUmVzcG9uc2UYAiABKAsyFS5SZWNpcGVTZXJ2",
-          "ZXJSZXNwb25zZSKsAQoJUmVjaXBlRFRPEhAKCGlkUmVjaXBlGAEgASgFEg4K",
+          "ZXJSZXNwb25zZSLNAQoJUmVjaXBlRFRPEhAKCGlkUmVjaXBlGAEgASgFEg4K",
           "BmlkVXNlchgCIAEoBRINCgV0aXRsZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgE",
           "IAEoCRITCgtpbmdyZWRpZW50cxgFIAEoCRISCgppZENhdGVnb3J5GAYgASgF",
           "EhcKD3ByZXBhcmF0aW9uVGltZRgHIAEoBRIXCgVzdGVwcxgIIAMoCzIILlN0",
-          "ZXBEVE8iWQoMUmVjaXBlT2JqRFRPEhoKBnJlY2lwZRgBIAEoCzIKLlJlY2lw",
-          "ZURUTxItCg5zZXJ2ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJl",
-          "c3BvbnNlIlsKDUxpc3RSZWNpcGVEVE8SGwoHcmVjaXBlcxgBIAMoCzIKLlJl",
-          "Y2lwZURUTxItCg5zZXJ2ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZl",
-          "clJlc3BvbnNlIiQKEEdldFJlY2lwZVJlcXVlc3QSEAoIaWRSZWNpcGUYASAB",
-          "KAUiHwoNSWRVc2VyUmVxdWVzdBIOCgZpZFVzZXIYASABKAUicgoSR2V0QnlG",
-          "aWx0ZXJSZXF1ZXN0EhIKCmlkQ2F0ZWdvcnkYASABKAUSDQoFdGl0bGUYAiAB",
-          "KAkSEwoLaW5ncmVkaWVudHMYAyABKAkSEQoJdGltZVNpbmNlGAQgASgFEhEK",
-          "CXRpbWVVbnRpbBgFIAEoBTKeAgoQUmVjaXBlQ29udHJvbGxlchImCglhZGRS",
-          "ZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVPYmpEVE8SKQoMdXBkYXRlUmVj",
-          "aXBlEgouUmVjaXBlRFRPGg0uUmVjaXBlT2JqRFRPEi0KCWdldFJlY2lwZRIR",
-          "LkdldFJlY2lwZVJlcXVlc3QaDS5SZWNpcGVPYmpEVE8SJAoNZ2V0QWxsUmVj",
-          "aXBlcxIGLkVtcHR5GgsuUmVjaXBlc0RUTxIxChJnZXRSZWNpcGVzQnlVc2Vy",
-          "SWQSDi5JZFVzZXJSZXF1ZXN0GgsuUmVjaXBlc0RUTxIvCgtnZXRCeUZpbHRl",
-          "chITLkdldEJ5RmlsdGVyUmVxdWVzdBoLLlJlY2lwZXNEVE9CBgoEZ3JwY2IG",
-          "cHJvdG8z"));
+          "ZXBEVE8SHwoGaW1hZ2VzGAkgAygLMg8uUmVjaXBlSW1hZ2VEVE8iWQoMUmVj",
+          "aXBlT2JqRFRPEhoKBnJlY2lwZRgBIAEoCzIKLlJlY2lwZURUTxItCg5zZXJ2",
+          "ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJlc3BvbnNlIlsKDUxp",
+          "c3RSZWNpcGVEVE8SGwoHcmVjaXBlcxgBIAMoCzIKLlJlY2lwZURUTxItCg5z",
+          "ZXJ2ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJlc3BvbnNlIiQK",
+          "EEdldFJlY2lwZVJlcXVlc3QSEAoIaWRSZWNpcGUYASABKAUiHwoNSWRVc2Vy",
+          "UmVxdWVzdBIOCgZpZFVzZXIYASABKAUicgoSR2V0QnlGaWx0ZXJSZXF1ZXN0",
+          "EhIKCmlkQ2F0ZWdvcnkYASABKAUSDQoFdGl0bGUYAiABKAkSEwoLaW5ncmVk",
+          "aWVudHMYAyABKAkSEQoJdGltZVNpbmNlGAQgASgFEhEKCXRpbWVVbnRpbBgF",
+          "IAEoBSI9Cg5SZWNpcGVJbWFnZURUTxIPCgdpZEltYWdlGAEgASgFEgwKBG5h",
+          "bWUYAiABKAkSDAoEZmlsZRgDIAEoCTKeAgoQUmVjaXBlQ29udHJvbGxlchIm",
+          "CglhZGRSZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVPYmpEVE8SKQoMdXBk",
+          "YXRlUmVjaXBlEgouUmVjaXBlRFRPGg0uUmVjaXBlT2JqRFRPEi0KCWdldFJl",
+          "Y2lwZRIRLkdldFJlY2lwZVJlcXVlc3QaDS5SZWNpcGVPYmpEVE8SJAoNZ2V0",
+          "QWxsUmVjaXBlcxIGLkVtcHR5GgsuUmVjaXBlc0RUTxIxChJnZXRSZWNpcGVz",
+          "QnlVc2VySWQSDi5JZFVzZXJSZXF1ZXN0GgsuUmVjaXBlc0RUTxIvCgtnZXRC",
+          "eUZpbHRlchITLkdldEJ5RmlsdGVyUmVxdWVzdBoLLlJlY2lwZXNEVE9CBgoE",
+          "Z3JwY2IGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::StepReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Empty), global::Empty.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipeServerResponse), global::RecipeServerResponse.Parser, new[]{ "Code", "Msg" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipesDTO), global::RecipesDTO.Parser, new[]{ "Recipes", "ServerResponse" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::RecipeDTO), global::RecipeDTO.Parser, new[]{ "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RecipeDTO), global::RecipeDTO.Parser, new[]{ "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", "Images" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipeObjDTO), global::RecipeObjDTO.Parser, new[]{ "Recipe", "ServerResponse" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ListRecipeDTO), global::ListRecipeDTO.Parser, new[]{ "Recipes", "ServerResponse" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetRecipeRequest), global::GetRecipeRequest.Parser, new[]{ "IdRecipe" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdUserRequest), global::IdUserRequest.Parser, new[]{ "IdUser" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GetByFilterRequest), global::GetByFilterRequest.Parser, new[]{ "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::GetByFilterRequest), global::GetByFilterRequest.Parser, new[]{ "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RecipeImageDTO), global::RecipeImageDTO.Parser, new[]{ "IdImage", "Name", "File" }, null, null, null, null)
         }));
   }
   #endregion
@@ -708,6 +711,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     idCategory_ = other.idCategory_;
     preparationTime_ = other.preparationTime_;
     steps_ = other.steps_.Clone();
+    images_ = other.images_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -812,6 +816,17 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     get { return steps_; }
   }
 
+  /// <summary>Field number for the "images" field.</summary>
+  public const int ImagesFieldNumber = 9;
+  private static readonly pb::FieldCodec<global::RecipeImageDTO> _repeated_images_codec
+      = pb::FieldCodec.ForMessage(74, global::RecipeImageDTO.Parser);
+  private readonly pbc::RepeatedField<global::RecipeImageDTO> images_ = new pbc::RepeatedField<global::RecipeImageDTO>();
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public pbc::RepeatedField<global::RecipeImageDTO> Images {
+    get { return images_; }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -835,6 +850,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     if (IdCategory != other.IdCategory) return false;
     if (PreparationTime != other.PreparationTime) return false;
     if(!steps_.Equals(other.steps_)) return false;
+    if(!images_.Equals(other.images_)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -850,6 +866,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     if (IdCategory != 0) hash ^= IdCategory.GetHashCode();
     if (PreparationTime != 0) hash ^= PreparationTime.GetHashCode();
     hash ^= steps_.GetHashCode();
+    hash ^= images_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -897,6 +914,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
       output.WriteInt32(PreparationTime);
     }
     steps_.WriteTo(output, _repeated_steps_codec);
+    images_.WriteTo(output, _repeated_images_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -936,6 +954,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
       output.WriteInt32(PreparationTime);
     }
     steps_.WriteTo(ref output, _repeated_steps_codec);
+    images_.WriteTo(ref output, _repeated_images_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -968,6 +987,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(PreparationTime);
     }
     size += steps_.CalculateSize(_repeated_steps_codec);
+    size += images_.CalculateSize(_repeated_images_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -1002,6 +1022,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
       PreparationTime = other.PreparationTime;
     }
     steps_.Add(other.steps_);
+    images_.Add(other.images_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -1049,6 +1070,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
           steps_.AddEntriesFrom(input, _repeated_steps_codec);
           break;
         }
+        case 74: {
+          images_.AddEntriesFrom(input, _repeated_images_codec);
+          break;
+        }
       }
     }
   #endif
@@ -1094,6 +1119,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
         }
         case 66: {
           steps_.AddEntriesFrom(ref input, _repeated_steps_codec);
+          break;
+        }
+        case 74: {
+          images_.AddEntriesFrom(ref input, _repeated_images_codec);
           break;
         }
       }
@@ -2277,6 +2306,269 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
         }
         case 40: {
           TimeUntil = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+public sealed partial class RecipeImageDTO : pb::IMessage<RecipeImageDTO>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<RecipeImageDTO> _parser = new pb::MessageParser<RecipeImageDTO>(() => new RecipeImageDTO());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<RecipeImageDTO> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::RecipeReflection.Descriptor.MessageTypes[9]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RecipeImageDTO() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RecipeImageDTO(RecipeImageDTO other) : this() {
+    idImage_ = other.idImage_;
+    name_ = other.name_;
+    file_ = other.file_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RecipeImageDTO Clone() {
+    return new RecipeImageDTO(this);
+  }
+
+  /// <summary>Field number for the "idImage" field.</summary>
+  public const int IdImageFieldNumber = 1;
+  private int idImage_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int IdImage {
+    get { return idImage_; }
+    set {
+      idImage_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "name" field.</summary>
+  public const int NameFieldNumber = 2;
+  private string name_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string Name {
+    get { return name_; }
+    set {
+      name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "file" field.</summary>
+  public const int FileFieldNumber = 3;
+  private string file_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string File {
+    get { return file_; }
+    set {
+      file_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as RecipeImageDTO);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(RecipeImageDTO other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (IdImage != other.IdImage) return false;
+    if (Name != other.Name) return false;
+    if (File != other.File) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (IdImage != 0) hash ^= IdImage.GetHashCode();
+    if (Name.Length != 0) hash ^= Name.GetHashCode();
+    if (File.Length != 0) hash ^= File.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (IdImage != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdImage);
+    }
+    if (Name.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(Name);
+    }
+    if (File.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(File);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (IdImage != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(IdImage);
+    }
+    if (Name.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(Name);
+    }
+    if (File.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(File);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (IdImage != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdImage);
+    }
+    if (Name.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+    }
+    if (File.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(File);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(RecipeImageDTO other) {
+    if (other == null) {
+      return;
+    }
+    if (other.IdImage != 0) {
+      IdImage = other.IdImage;
+    }
+    if (other.Name.Length != 0) {
+      Name = other.Name;
+    }
+    if (other.File.Length != 0) {
+      File = other.File;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          IdImage = input.ReadInt32();
+          break;
+        }
+        case 18: {
+          Name = input.ReadString();
+          break;
+        }
+        case 26: {
+          File = input.ReadString();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          IdImage = input.ReadInt32();
+          break;
+        }
+        case 18: {
+          Name = input.ReadString();
+          break;
+        }
+        case 26: {
+          File = input.ReadString();
           break;
         }
       }

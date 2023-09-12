@@ -8,7 +8,7 @@ namespace grpc_net_client.Controllers
 {
     [Route("api/categories")]
     [ApiController]
-    [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:5173/", headers: "*", methods: "*")]
     public class CategoryControllerClient : ControllerBase
     {
         private readonly IOptions<ApiConfig> _config;
@@ -19,7 +19,10 @@ namespace grpc_net_client.Controllers
         {
             _config = config;
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL);
+            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL, new GrpcChannelOptions
+            {
+                MaxReceiveMessageSize = 1000 * 1024 * 1024
+            });
             _service = new CategoryController.CategoryControllerClient(channel);
         }
         #endregion

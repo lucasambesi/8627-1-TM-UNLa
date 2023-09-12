@@ -35,6 +35,7 @@ message RecipeDTO{
   int32 idCategory = 6;
   int32 preparationTime = 7;
   repeated StepDTO steps = 8;
+  repeated RecipeImageDTO images = 9;
 }
 
 message RecipeObjDTO{
@@ -61,4 +62,10 @@ message GetByFilterRequest{
   string ingredients=3;
   int32 timeSince=4;
   int32 timeUntil=5;
+}
+
+message RecipeImageDTO {
+  int32 idImage = 1;
+  string name = 2;
+  string file = 3;
 }

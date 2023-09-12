@@ -1,11 +1,13 @@
 package com.chefencasa.Controller;
 
+import com.chefencasa.Model.RecipeImage;
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.RecipeService;
 import grpc.Recipe;
 import grpc.RecipeControllerGrpc;
 import io.grpc.stub.StreamObserver;
 
+import java.util.Base64;
 import java.util.List;
 
 public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplBase {
@@ -148,6 +150,16 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
             stepDTO.setDescription(step.getDescription());
 
             dto.addSteps(stepDTO);
+        }
+
+        for(RecipeImage image: u.getImages()){
+            Recipe.RecipeImageDTO.Builder tempImgDTO = Recipe.RecipeImageDTO.newBuilder();
+
+            tempImgDTO.setIdImage(image.getIdImage());
+            tempImgDTO.setName(image.getName());
+            tempImgDTO.setFile(Base64.getEncoder().encodeToString(image.getFile()));
+
+            dto.addImages(tempImgDTO);
         }
 
         return dto;

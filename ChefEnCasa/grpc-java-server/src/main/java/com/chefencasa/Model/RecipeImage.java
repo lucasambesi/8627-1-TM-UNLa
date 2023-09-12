@@ -8,19 +8,24 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name="steps")
-public class Step {
+@Table(name="images")
+public class RecipeImage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idStep")
-    private int idStep;
+    @Column(name = "idImage")
+    private int idImage;
 
-    @Column(name = "description", nullable = true)
-    private String description;
+    @Column(name="name")
+    private String name;
+
+    @Column (name = "file")
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
+    private byte[] file;
 
     @ManyToOne (cascade={CascadeType.ALL, CascadeType.REFRESH})
-    @JoinColumn (name = "recipe_idRecipe")
+    @JoinColumn (name = "idRecipe")
     private Recipe recipe;
-
 
 }

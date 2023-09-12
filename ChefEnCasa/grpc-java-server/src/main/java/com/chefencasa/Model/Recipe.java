@@ -43,4 +43,7 @@ public class Recipe {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,
             CascadeType.REFRESH}, targetEntity = Step.class)
     private List<Step> steps = new ArrayList<>();
+
+    @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="recipe")
+    private Set<RecipeImage> images;
 }

@@ -2,6 +2,7 @@ package com.chefencasa.Repository;
 
 import com.chefencasa.Model.Category;
 import com.chefencasa.Model.Recipe;
+import com.chefencasa.Model.RecipeImage;
 import com.chefencasa.Model.User;
 
 import javax.persistence.EntityManager;
@@ -24,30 +25,7 @@ public class RecipeRepository {
         return repository;
     }
 
-    public Recipe createRecipe(Recipe recipe) throws Exception {
-
-        EntityManager em = JPAUtil.getEMF().createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        Recipe entity = null;
-
-        try {
-            transaction.begin();
-            entity = em.merge(recipe);
-            transaction.commit();
-        }
-        catch (Exception e){
-            String msg = "Persistence error - addRecipe method: " + e.getMessage();
-            System.out.println(msg);
-            throw new Exception(msg);
-        }
-        finally {
-            em.close();
-        }
-
-        return entity;
-    }
-
-    public Recipe updateRecipe(Recipe recipe) throws Exception{
+    public Recipe saveOrUpdateRecipe(Recipe recipe) throws Exception{
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
@@ -59,14 +37,30 @@ public class RecipeRepository {
         }
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            throw new Exception("ATENCION: Error de persistencia en método updateRecipe");
+            throw new Exception("ATENCION: Error de persistencia en método saveOrUpdateRecipe");
         }
         finally {
             em.close();
         }
 
         return entity;
+    }
 
+    public void saveOrUpdateImage(RecipeImage image) throws Exception {
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+            em.merge(image);
+            transaction.commit();
+        } catch (Exception e){
+            String msg = "Error de persistencia - Método saveOrUpdateImage: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
     }
 
     public Recipe getById(int idRecipe) throws Exception{

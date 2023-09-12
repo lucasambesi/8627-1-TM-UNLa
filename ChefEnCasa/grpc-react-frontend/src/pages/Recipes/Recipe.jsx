@@ -3,22 +3,15 @@ import 'reactjs-popup/dist/index.css';
 import React, { useEffect, useState }  from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-import uno from '../../assets/recetas/uno.jpg'; 
-import dos from '../../assets/recetas/dos.jpg'; 
-import tres from '../../assets/recetas/tres.jpg'; 
-import cuatro from '../../assets/recetas/cuatro.jpg'; 
-import cinco from '../../assets/recetas/cinco.jpg'; 
-
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
 import { userPresenter } from '../../presenter/UserPresenter'
-import { useNavigate } from 'react-router'
+import { SwipleableImages } from './SwipleableImages';
 
 const style = {
     position: 'absolute',
@@ -33,8 +26,8 @@ const style = {
   };
 
   export const Recipe = (props) => {
-    const {recipe, editMode} = props
-    const images = [uno, dos, tres, cuatro, cinco]
+    const {recipe, editMode, edit} = props
+
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
     const [steps, setSteps] = useState([]);
@@ -43,9 +36,6 @@ const style = {
     const { getCategoryById } = categoryPresenter()
     const { getStepsByRecipeId } = stepPresenter()
     const { getById } = userPresenter()
-    const navigate = useNavigate();
-
-    const toRecipe = () => { navigate(`/update-recipe/${encodeURIComponent(recipe.idRecipe, true)}`) }
 
     useEffect(() => {
         getCategoryById(recipe.idCategory)
@@ -75,27 +65,28 @@ const style = {
       const handleClose = () => setOpen(false);  
 
     return (
-        <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, margin: 2 }}>
+        <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, marginTop: 4, marginRight: 3 }}>
             <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image={images[Math.floor(Math.random() * images.length)]}
-                    alt="receta"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    {recipe.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    {recipe.description}
-                    </Typography>
-                </CardContent>
+                {
+                    (recipe.images.length > 0) ? <SwipleableImages images={recipe.images} /> :<RecipeImages images={recipe.images} />
+                }
             </CardActionArea>
+            <CardContent>
+                <Typography gutterBottom variant="h6" component="div">
+                    {recipe.title.length > 40
+                    ? `${recipe.title.slice(0, 37)}...`
+                    : recipe.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {recipe.description.length > 100
+                    ? `${recipe.description.slice(0, 97)}...`
+                    : recipe.description}
+                </Typography>
+            </CardContent>
             <CardActions>
             <Button onClick={handleOpen}>DETALLES</Button>
             {
-                (editMode) ? <Button onClick={toRecipe}>Editar</Button> : null
+                (editMode) ? <Button onClick={() => edit(recipe)}>Editar</Button> : null
             }
             
             <Modal

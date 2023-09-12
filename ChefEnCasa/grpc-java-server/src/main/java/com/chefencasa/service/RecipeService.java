@@ -1,17 +1,12 @@
 package com.chefencasa.service;
 
-import com.chefencasa.Model.Category;
-import com.chefencasa.Model.Recipe;
-import com.chefencasa.Model.Step;
-import com.chefencasa.Model.User;
+import com.chefencasa.Model.*;
 import com.chefencasa.Repository.RecipeRepository;
+import com.chefencasa.Repository.StepRepository;
 import com.chefencasa.Repository.UserRepository;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RecipeService {
     private static RecipeService service;
@@ -29,11 +24,33 @@ public class RecipeService {
 
     UserService userService = UserService.getInstance();
 
+    StepRepository stepRepository = StepRepository.getInstance();
+
     CategoryService categoryService = CategoryService.getInstance();
 
     public Recipe addRecipe(grpc.Recipe.RecipeDTO recipeDTO) throws Exception {
         Recipe toPersist = mapToEntity(recipeDTO);
-        Recipe persisted = recipeRepository.createRecipe(toPersist);
+
+        Set<RecipeImage> images = toPersist.getImages();
+        toPersist.setImages(new HashSet<>());
+
+        List<Step> steps = toPersist.getSteps();
+        toPersist.setSteps(new ArrayList<>());
+
+        Recipe persisted = recipeRepository.saveOrUpdateRecipe(toPersist);
+
+        for(RecipeImage image : images ){
+            image.setRecipe(persisted);
+            recipeRepository.saveOrUpdateImage(image);
+        }
+
+        for(Step step : steps ){
+            step.setRecipe(persisted);
+            stepRepository.createStep(step);
+        }
+
+        persisted.setImages(images);
+        persisted.setSteps(steps);
 
         return persisted;
     }
@@ -44,8 +61,33 @@ public class RecipeService {
 
         try{
             recipe = recipeRepository.getById(recipeDTO.getIdRecipe());
+
             Recipe toPersist = mapToEntity(recipeDTO);
-            recipe = recipeRepository.updateRecipe(toPersist);
+
+            Set<RecipeImage> images = toPersist.getImages();
+            List<Step> steps = toPersist.getSteps();
+
+            recipe.setTitle(toPersist.getTitle());
+            recipe.setDescription(toPersist.getDescription());
+            recipe.setIngredients(toPersist.getIngredients());
+            recipe.setPreparationTime(toPersist.getPreparationTime());
+            recipe.setImages(new HashSet<>());
+            recipe.setSteps(new ArrayList<>());
+
+            recipe = recipeRepository.saveOrUpdateRecipe(recipe);
+
+            for(RecipeImage image : images ){
+                image.setRecipe(recipe);
+                recipeRepository.saveOrUpdateImage(image);
+            }
+
+            for(Step step : steps ){
+                step.setRecipe(recipe);
+                stepRepository.createStep(step);
+            }
+
+            recipe.setImages(images);
+            recipe.setSteps(steps);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -86,6 +128,7 @@ public class RecipeService {
         u.setCategory(categoryService.getById(dto.getIdCategory()));
 
         List<Step> steps = new ArrayList<>();
+        Set<RecipeImage> images = new HashSet<>();
 
         for(grpc.Step.StepDTO stepDTO : dto.getStepsList()){
             Step step = new Step();
@@ -95,6 +138,16 @@ public class RecipeService {
             steps.add(step);
         }
 
+        for(grpc.Recipe.RecipeImageDTO ImgDto : dto.getImagesList()){
+            RecipeImage img = new RecipeImage();
+
+            img.setIdImage(ImgDto.getIdImage());
+            img.setName(ImgDto.getName());
+            img.setFile(Base64.getDecoder().decode(ImgDto.getFile()));
+
+            images.add(img);
+        }
+        u.setImages(images);
         u.setSteps(steps);
 
         return u;

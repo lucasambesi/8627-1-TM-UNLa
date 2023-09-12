@@ -5,6 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
+    options.AddDefaultPolicy(builder =>
+    {
+        // Permite las solicitudes desde 'http://localhost:5173'
+        builder.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+
     options.AddPolicy(name: "MyAllowSpecificOrigins",
                       builder =>
                       {
