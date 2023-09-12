@@ -1,6 +1,7 @@
 package com.chefencasa.Controller;
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.UserService;
+import grpc.Recipe;
 import grpc.User;
 import grpc.UserControllerGrpc;
 import io.grpc.stub.StreamObserver;
@@ -58,7 +59,35 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
+    }
 
+    public void addFavorite(User.PostFavoriteRequest request, StreamObserver<User.PostFavoriteResponse> responseObserver) {
+
+        int idUser = request.getIdUser();
+        int idFavorite = request.getIdrecipe();
+
+        com.chefencasa.Model.User usuario = null;
+
+        User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
+        User.PostFavoriteResponse.Builder response =  User.PostFavoriteResponse.newBuilder();
+
+        try {
+            usuario = this.userService.addFavoriteRecipes(idUser, idFavorite);
+
+            response.setIdUser(idUser);
+            response.setIdrecipe(idFavorite);
+
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Favorito creado");
+        }
+        catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
     }
 
     public void getUser(User.GetUserRequest request, StreamObserver<User.UserObjDTO> responseObserver) {

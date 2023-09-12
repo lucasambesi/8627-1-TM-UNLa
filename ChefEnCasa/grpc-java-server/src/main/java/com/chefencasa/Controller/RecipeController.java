@@ -3,6 +3,7 @@ package com.chefencasa.Controller;
 import com.chefencasa.Model.RecipeImage;
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.RecipeService;
+import com.chefencasa.service.UserService;
 import grpc.Recipe;
 import grpc.RecipeControllerGrpc;
 import io.grpc.stub.StreamObserver;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplBase {
     public RecipeService recipeService = RecipeService.getInstance();
-
+    public UserService userService = UserService.getInstance();
     public RecipeController() {
     }
 
@@ -96,6 +97,23 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
         try {
             List<com.chefencasa.Model.Recipe> recipes = recipeService.getByUserId(request.getIdUser());
+            for (com.chefencasa.Model.Recipe recipe : recipes) {
+                recipesDTO.addRecipes(mapRecipeDTO(recipe));
+            }
+            recipesDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(recipesDTO.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getFavotires(Recipe.IdUserRequest request, StreamObserver<Recipe.RecipesDTO> responseObserver) {
+        Recipe.RecipesDTO.Builder recipesDTO = Recipe.RecipesDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Recipe> recipes = userService.getFavorites(request.getIdUser());
             for (com.chefencasa.Model.Recipe recipe : recipes) {
                 recipesDTO.addRecipes(mapRecipeDTO(recipe));
             }

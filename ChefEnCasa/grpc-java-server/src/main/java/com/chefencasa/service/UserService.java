@@ -1,10 +1,13 @@
 package com.chefencasa.service;
 
+import com.chefencasa.Model.Recipe;
 import com.chefencasa.Model.User;
+import com.chefencasa.Repository.RecipeRepository;
 import com.chefencasa.Repository.UserRepository;
 import grpc.User.UserDTO;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserService {
@@ -20,9 +23,11 @@ public class UserService {
 
     UserRepository userRepository = UserRepository.getInstance();
 
+    RecipeRepository recipeRepository = RecipeRepository.getInstance();
+
     public User addUser(UserDTO userDTO) throws Exception {
         User toPersist = mapToEntity(userDTO);
-        User persisted = userRepository.createUser(toPersist);
+        User persisted = userRepository.saveOrUpdate(toPersist);
         return persisted;
     }
     public User addFollowing(int idUser, int idFollowing) throws Exception{
@@ -38,7 +43,7 @@ public class UserService {
             followings = user.getFollowing();
             followings.add(following);
 
-            user = userRepository.updateUser(user);
+            user = userRepository.saveOrUpdate(user);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -46,7 +51,33 @@ public class UserService {
         }
 
         return user;
+    }
 
+    public User addFavoriteRecipes(int idUser, int idRecipe) throws Exception{
+
+        User user = null;
+        Recipe recipe = null;
+
+        try{
+            user = userRepository.getById(idUser);
+            recipe = recipeRepository.getById(idRecipe);
+
+            if(!user.getFavorites().contains(recipe) && recipe.getUser().getIdUser() != idUser){
+                user.getFavorites().add(recipe);
+                user = userRepository.saveOrUpdate(user);
+            }
+
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("ATENCION: Error en addFavoriteRecipes");
+        }
+
+        return user;
+    }
+
+    public List<Recipe> getFavorites (int idUser) throws Exception{
+        return userRepository.getFavorites(idUser);
     }
 
 

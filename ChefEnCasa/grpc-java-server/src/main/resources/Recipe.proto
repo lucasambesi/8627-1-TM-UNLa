@@ -11,6 +11,7 @@ service RecipeController{
   rpc getAllRecipes(Empty) returns (RecipesDTO);
   rpc getRecipesByUserId(IdUserRequest) returns (RecipesDTO);
   rpc getByFilter(GetByFilterRequest) returns (RecipesDTO);
+  rpc getFavotires(IdUserRequest)returns (RecipesDTO);
 }
 
 message Empty {

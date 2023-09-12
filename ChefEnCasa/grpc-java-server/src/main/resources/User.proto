@@ -8,6 +8,7 @@ service UserController{
   rpc getFollowings(GetUserRequest)returns (UsersDTO);
   rpc getUser(GetUserRequest)returns (UserObjDTO);
   rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
+  rpc addFavorite(PostFavoriteRequest) returns (PostFavoriteResponse);
 }
 
 message UserDTO{
@@ -38,9 +39,20 @@ message PostFollowingRequest{
   int32 idFollowing=2;
 }
 
+message PostFavoriteRequest{
+  int32 idUser=1;
+  int32 idrecipe=2;
+}
+
 message PostFollowingResponse{
   int32 idUser=1;
   int32 idFollowing=2;
+  UserServerResponse serverResponse = 3;
+}
+
+message PostFavoriteResponse{
+  int32 idUser=1;
+  int32 idrecipe=2;
   UserServerResponse serverResponse = 3;
 }
 

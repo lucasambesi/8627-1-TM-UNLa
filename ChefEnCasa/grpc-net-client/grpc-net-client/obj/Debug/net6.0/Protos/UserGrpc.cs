@@ -58,6 +58,10 @@ public static partial class UserController
   static readonly grpc::Marshaller<global::UsersDTO> __Marshaller_UsersDTO = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::UsersDTO.Parser));
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Marshaller<global::GetByUserIdAndPasswordRequest> __Marshaller_GetByUserIdAndPasswordRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GetByUserIdAndPasswordRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::PostFavoriteRequest> __Marshaller_PostFavoriteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::PostFavoriteRequest.Parser));
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Marshaller<global::PostFavoriteResponse> __Marshaller_PostFavoriteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::PostFavoriteResponse.Parser));
 
   [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
   static readonly grpc::Method<global::UserDTO, global::UserObjDTO> __Method_addUser = new grpc::Method<global::UserDTO, global::UserObjDTO>(
@@ -98,6 +102,14 @@ public static partial class UserController
       "getByUserAndPasswordRequest",
       __Marshaller_GetByUserIdAndPasswordRequest,
       __Marshaller_UserObjDTO);
+
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::PostFavoriteRequest, global::PostFavoriteResponse> __Method_addFavorite = new grpc::Method<global::PostFavoriteRequest, global::PostFavoriteResponse>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "addFavorite",
+      __Marshaller_PostFavoriteRequest,
+      __Marshaller_PostFavoriteResponse);
 
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -231,6 +243,26 @@ public static partial class UserController
     public virtual grpc::AsyncUnaryCall<global::UserObjDTO> getByUserAndPasswordRequestAsync(global::GetByUserIdAndPasswordRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_getByUserAndPasswordRequest, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFavoriteResponse addFavorite(global::PostFavoriteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return addFavorite(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFavoriteResponse addFavorite(global::PostFavoriteRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_addFavorite, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> addFavoriteAsync(global::PostFavoriteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return addFavoriteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> addFavoriteAsync(global::PostFavoriteRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_addFavorite, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

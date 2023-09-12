@@ -36,7 +36,7 @@ public class Recipe {
     @JoinColumn (name = "category")
     private Category category;
 
-    @ManyToOne(optional = false, cascade = {CascadeType.MERGE,
+    @ManyToOne(optional = false, cascade = {
             CascadeType.REFRESH}, targetEntity = User.class)
     private User user;
 

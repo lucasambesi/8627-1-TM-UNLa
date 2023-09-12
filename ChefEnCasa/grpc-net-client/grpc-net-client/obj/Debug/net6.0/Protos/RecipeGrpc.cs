@@ -107,6 +107,14 @@ public static partial class RecipeController
       __Marshaller_GetByFilterRequest,
       __Marshaller_RecipesDTO);
 
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::IdUserRequest, global::RecipesDTO> __Method_getFavotires = new grpc::Method<global::IdUserRequest, global::RecipesDTO>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "getFavotires",
+      __Marshaller_IdUserRequest,
+      __Marshaller_RecipesDTO);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -259,6 +267,26 @@ public static partial class RecipeController
     public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getByFilterAsync(global::GetByFilterRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_getByFilter, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipesDTO getFavotires(global::IdUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getFavotires(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::RecipesDTO getFavotires(global::IdUserRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_getFavotires, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getFavotiresAsync(global::IdUserRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return getFavotiresAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::RecipesDTO> getFavotiresAsync(global::IdUserRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_getFavotires, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

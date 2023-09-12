@@ -1,9 +1,12 @@
 package com.chefencasa.Repository;
 
+import com.chefencasa.Model.Recipe;
+import com.chefencasa.Model.Step;
 import com.chefencasa.Model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class UserRepository {
     private static UserRepository repository;
@@ -15,7 +18,7 @@ public class UserRepository {
         return repository;
     }
 
-    public User createUser(User user) throws Exception {
+    public User saveOrUpdate(User user) throws Exception {
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
@@ -27,7 +30,7 @@ public class UserRepository {
             transaction.commit();
         }
         catch (Exception e){
-            String msg = "Persistence error - addUser method: " + e.getMessage();
+            String msg = "Persistence error - saveOrUpdate method: " + e.getMessage();
             System.out.println(msg);
             throw new Exception(msg);
         }
@@ -36,28 +39,6 @@ public class UserRepository {
         }
 
         return entity;
-    }
-
-    public User updateUser(User user) throws Exception{
-
-        EntityManager em = JPAUtil.getEMF().createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        User entity = null;
-        try {
-            transaction.begin();
-            entity = em.merge(user);
-            transaction.commit();
-        }
-        catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            throw new Exception("ATENCION: Error de persistencia en método updateUser");
-        }
-        finally {
-            em.close();
-        }
-
-        return entity;
-
     }
 
     public User getById(int idUser) throws Exception{
@@ -107,5 +88,25 @@ public class UserRepository {
         }
 
         return user;
+    }
+
+    public List<Recipe> getFavorites(int idUser) throws Exception {
+        List<Recipe> recipes = null;
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+
+        try {
+            String query = "SELECT f FROM User u INNER JOIN u.favorites f WHERE u.idUser = :idUser";
+            TypedQuery<Recipe> tq = em.createQuery(query, Recipe.class);
+            tq.setParameter("idUser", idUser);
+
+            recipes = tq.getResultList();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("WARNING: Persistence error in getFavorites method");
+        } finally {
+            em.close();
+        }
+
+        return recipes;
     }
 }

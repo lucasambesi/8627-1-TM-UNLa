@@ -8270,15 +8270,16 @@ public final class Recipe {
       "\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003 \001(\t\022\021\n" +
       "\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001(\005\"=\n\016R" +
       "ecipeImageDTO\022\017\n\007idImage\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \001(\t\022\014\n\004file\030\003 \001(\t2\236\002\n\020RecipeController\022" +
+      " \001(\t\022\014\n\004file\030\003 \001(\t2\313\002\n\020RecipeController\022" +
       "&\n\taddRecipe\022\n.RecipeDTO\032\r.RecipeObjDTO\022" +
       ")\n\014updateRecipe\022\n.RecipeDTO\032\r.RecipeObjD" +
       "TO\022-\n\tgetRecipe\022\021.GetRecipeRequest\032\r.Rec" +
       "ipeObjDTO\022$\n\rgetAllRecipes\022\006.Empty\032\013.Rec" +
       "ipesDTO\0221\n\022getRecipesByUserId\022\016.IdUserRe" +
       "quest\032\013.RecipesDTO\022/\n\013getByFilter\022\023.GetB" +
-      "yFilterRequest\032\013.RecipesDTOB\006\n\004grpcb\006pro" +
-      "to3"
+      "yFilterRequest\032\013.RecipesDTO\022+\n\014getFavoti" +
+      "res\022\016.IdUserRequest\032\013.RecipesDTOB\006\n\004grpc" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

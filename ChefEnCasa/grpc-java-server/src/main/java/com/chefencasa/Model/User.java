@@ -38,16 +38,20 @@ public class User {
     private String password;
 
     @Setter(AccessLevel.NONE)
-    @OneToMany(cascade = {CascadeType.MERGE,
+    @OneToMany(cascade = {
             CascadeType.REFRESH}, targetEntity = Recipe.class)
     private Set<Recipe> recipes = new HashSet<>();
 
-    @Setter(AccessLevel.NONE)
-    @ManyToMany(cascade = {CascadeType.MERGE,
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.REFRESH}, targetEntity = Recipe.class)
+    @JoinTable(
+            name = "User_Recipe_Favorites",
+            joinColumns = @JoinColumn(name = "User_idUser"),
+            inverseJoinColumns = @JoinColumn(name = "recipes_idRecipe")
+    )
     private Set<Recipe> favorites = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.REFRESH}, targetEntity = User.class)
     private Set<User> following = new HashSet<>();
 }
