@@ -42,6 +42,11 @@ public class User {
             CascadeType.REFRESH}, targetEntity = Recipe.class)
     private Set<Recipe> recipes = new HashSet<>();
 
+    @Setter(AccessLevel.NONE)
+    @ManyToMany(cascade = {CascadeType.MERGE,
+            CascadeType.REFRESH}, targetEntity = Recipe.class)
+    private Set<Recipe> favorites = new HashSet<>();
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,
             CascadeType.REFRESH}, targetEntity = User.class)
     private Set<User> following = new HashSet<>();
