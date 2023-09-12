@@ -7,8 +7,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';
 import { Profile } from './pages/Profile/Profile';
-import { MyRecipes } from './pages/Recipes/MyRecipes'
 import { Following } from './pages/Profile/Following';
+import { RecipeTabs } from './pages/Recipes/TabsRecipes';
 
 function App() {
 
@@ -19,12 +19,12 @@ function App() {
       <BrowserRouter>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route index element={user ? <Home /> : <Login user={user} setUser={setUser}/>} />
-          <Route path="/home" element={<Home />} />
+          <Route index element={user ? <Home user={user}/> : <Login user={user} setUser={setUser}/>} />
+          <Route path="/home" element={<Home user={user}/>} />
           <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
-          <Route path="/recipes" element={<MyRecipes user={user}/>} />        
+          <Route path="/recipes" element={<RecipeTabs user={user}/>} />        
           <Route path="/following" element={<Following user={user}/>} />
         </Routes>
       </BrowserRouter>

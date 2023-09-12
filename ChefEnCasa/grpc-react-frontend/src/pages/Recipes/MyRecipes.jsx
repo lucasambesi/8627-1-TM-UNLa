@@ -33,8 +33,7 @@ export const MyRecipes = (props) => {
         preparationTime: "",
         idCategory: "",
         idUser: "",
-        images: [],
-        steps: []
+        images: []
       });
 
      useEffect(() => {
@@ -58,16 +57,21 @@ export const MyRecipes = (props) => {
       };
  
      return (
-        <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:'4%'}}>     
-            <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
+        <Container sx={{  justifySelf:'center', alignSelf: 'center'}}>
+            <Box sx={{ flexGrow: 1, marginLeft: 12, alignContent:'center' }}>
                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 {
                     recipes ? recipes.map((recipe) =>{
                     return (
-                        <Recipe editMode={true} edit={abrirModalEdicion} recipe={recipe} key={recipe.idRecipe}/>
+                        <Recipe idUser={user.idUser} editMode={true} edit={abrirModalEdicion} favoriteMode={false} recipe={recipe} key={recipe.idRecipe}/>
                         )
                     })
-                    : null
+                    : 
+                    <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
+                      <h4>
+                        No hay recetas creadas, puedes hacerlo desde el boton de abajo a la derecha!
+                      </h4>
+                    </Box>
                 }
                 </Grid>
             </Box>

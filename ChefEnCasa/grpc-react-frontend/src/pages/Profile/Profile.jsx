@@ -4,18 +4,22 @@ import { recipePresenter } from '../../presenter/RecipePresenter'
 import React, {useEffect, useState} from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBCardLink } from 'mdb-react-ui-kit';
 import '../../styles/profile.css'
-
+import { Button } from '@mui/material';
 import uno from '../../assets/recetas/uno.jpg'; 
 import dos from '../../assets/recetas/dos.jpg'; 
 import tres from '../../assets/recetas/tres.jpg'; 
 import cuatro from '../../assets/recetas/cuatro.jpg'; 
 import cinco from '../../assets/recetas/cinco.jpg'; 
+import { Recipe } from '../Recipes/Recipe';
+
+
+import { useNavigate } from 'react-router'
 
 export const Profile = (props) => {
     const { user, setUser } = props;
     const [recipes, setRecipes] = useState([]);
     const images = [uno, dos, tres, cuatro, cinco]
-
+    const navigate = useNavigate();
     const {getRecipesByUserId} = recipePresenter()    
 
     useEffect(() => {
@@ -26,6 +30,7 @@ export const Profile = (props) => {
         .catch((err) => console.log(err));
     }, []);
 
+    const toRecipes = () => { navigate("/recipes") }
 
     return (
       <div >
@@ -39,45 +44,51 @@ export const Profile = (props) => {
                       alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
-                    <MDBTypography tag="h5">{user.name}</MDBTypography>
-                    <MDBCardText>{user.dni}</MDBCardText>
+                    <MDBTypography tag="h5">{user.name} {user.lastName}</MDBTypography>
+                    <MDBCardText>{`@${user.username}`}</MDBCardText>
                   </div>
                 </div>
                 <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                   <div className="d-flex justify-content-end text-center py-1">
                     <div>
-                      {/* ENLACE HACIA LOS SEGUIDORES */}
                       <MDBCardText className="mb-1 h5">{user.following.length}</MDBCardText>
-                      <MDBCardLink href='/following' className="small text-muted mb-0">Following</MDBCardLink>
+                      <MDBCardLink href='/following' className="small text-muted mb-0">Seguidos</MDBCardLink>
                     </div>
                   </div>
                 </div>
-                <MDBCardBody className="text-black p-4">
-                  <div className="d-flex justify-content-between align-items-center mb-4">
+                <MDBCardBody className="text-black">
+                  <div className="d-flex justify-content-between align-items-center">
                     <MDBCardText className="lead fw-normal mb-0">Recetas de {user.name}</MDBCardText>
                   </div>
                   <MDBRow>
                     {
-                        recipes ? recipes.map((recipe) =>{
+                        recipes 
+                        ? 
+                        recipes.slice(0, 2).map((recipe) =>{
                         return (
                           <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '40%', minHeight: '40%' }}>
-                          <MDBCard>
-                            <MDBCardImage src={images[Math.floor(Math.random() * images.length)]} alt='...' position='top' style={{ height:'200px' }} />
-                              <MDBCardBody>
-                                <MDBRow>
-                                  <MDBCardText>
-                                    {recipe.title}
-                                  </MDBCardText>
-                                  <MDBCardText>
-                                    {recipe.description}
-                                  </MDBCardText>
-                                </MDBRow>
-                            </MDBCardBody>
-                          </MDBCard>
-                        </MDBCol>
+                            <Recipe recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
+                          </MDBCol>
+                          
                           )
                         })
-                        : "No posee recetas creadas"
+                        : 
+                        "No posee recetas creadas"
+                    }
+                  </MDBRow>
+                  <MDBRow style={{ marginTop: '30px', paddingLeft:'12px', paddingRight:'50px' }}>
+                    {
+                      recipes 
+                        ? 
+                          <Button
+                              size="small"
+                              variant="outlined"
+                              color='primary'
+                              onClick={toRecipes}
+                          >
+                              Ver todas
+                          </Button>
+                        : null
                     }
                   </MDBRow>
                 </MDBCardBody>

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router'
 import { Button, TextField, Typography, Dialog } from "@mui/material";
 import {Files} from './Files'
 import {SelectCategory} from './SelectCategory'
+import StepsList from "./AddStepList";
 
 export const ModalRecipe = (props) => {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const ModalRecipe = (props) => {
     const {addRecipe, updateRecipe} = recipePresenter()
     const { getCategories } = categoryPresenter()
     const [descriptionLength, setDescriptionLength] = useState(0);
+    const [steps, setSteps] = useState([]);
 
     const { user, 
             open,
@@ -71,7 +73,7 @@ export const ModalRecipe = (props) => {
     const createRecipe = async (event) => {
         event.preventDefault();
 
-        addRecipe({ ...recipe, idUser: user.idUser  }).then((res) => {
+        addRecipe({ ...recipe, idUser: user.idUser, steps: steps}).then((res) => {
             alert("Receta creada")
         }).then(() => {
             navigate("/recipes")
@@ -128,7 +130,7 @@ export const ModalRecipe = (props) => {
                             value={recipe.description}
                             onChange={handleInputChange}
                             inputProps={{
-                                maxLength: 250 // Limitar la longitud máxima a 150 caracteres
+                                maxLength: 250 
                             }}
                             />
                     </Grid>                        
@@ -157,7 +159,15 @@ export const ModalRecipe = (props) => {
                     <Grid container item>
                         <SelectCategory categories={categories} setCategory={setCategory} category={category} />
                     </Grid>   
-                </Grid>            
+                </Grid>     
+                <Grid item xs={12}>
+                {
+                    (!editMode) ?
+                    <StepsList setSteps={setSteps} steps={steps}></StepsList>
+                    :
+                    <></>
+                }
+                </Grid>     
                 <Grid item xs={12}>
                 {
                     (!editMode) ?

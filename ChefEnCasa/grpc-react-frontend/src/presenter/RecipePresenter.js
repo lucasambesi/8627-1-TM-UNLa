@@ -66,6 +66,27 @@ export const recipePresenter = () => {
         }
     }
 
+    const getFavorites = async (idUser) => {
+        try {
+
+            if(useMock == 'true'){
+                return getMock().recipes
+            }
+
+            const res = await axios.get(`${baseUrl}/recipes/favorites`, {
+                params: {
+                  userId: idUser
+                }
+              });
+
+            const result = await res.data
+
+            return result
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const getByFilter = async (filter) => {
         try {
 
@@ -109,7 +130,7 @@ export const recipePresenter = () => {
                 "images": recipe.images,
                 "steps": recipe.steps
             }
-            console.log("body =", body)
+            console.log("body =>", body)
             const res = await axios.post(`${baseUrl}/recipes`, body);
 
             return res.data;
@@ -150,6 +171,7 @@ export const recipePresenter = () => {
         addRecipe,
         getById,
         updateRecipe,
-        getByFilter
+        getByFilter,
+        getFavorites
     }
 }

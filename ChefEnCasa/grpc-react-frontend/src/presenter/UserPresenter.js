@@ -71,9 +71,29 @@ export const userPresenter = () => {
         }
     }
 
+    const addToFavorites = async (idUser, idRecipe) => {
+        try {
+            if(useMock == 'true'){
+                return "success"
+            }
+
+            const body ={
+                "idUser": idUser,
+                "idRecipe": idRecipe
+              }
+            
+            const res = await axios.post(`${baseUrl}/user/favorites`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     return {
         getById,
         login,
-        register
+        register,
+        addToFavorites
     }
 }

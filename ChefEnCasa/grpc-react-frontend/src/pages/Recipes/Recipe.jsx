@@ -26,7 +26,7 @@ const style = {
   };
 
   export const Recipe = (props) => {
-    const {recipe, editMode, edit} = props
+    const {recipe, editMode, edit, favorite, idUser, favoriteMode} = props
 
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
@@ -65,10 +65,14 @@ const style = {
       const handleClose = () => setOpen(false);  
 
     return (
-        <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, marginTop: 4, marginRight: 3 }}>
+        <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, minHeight: 425, marginTop: 4, marginRight: 3 }}>
             <CardActionArea>
                 {
-                    (recipe.images.length > 0) ? <SwipleableImages images={recipe.images} /> :<RecipeImages images={recipe.images} />
+                    (recipe.images.length > 0) 
+                    ? 
+                        <SwipleableImages images={recipe.images} /> 
+                    :
+                        <RecipeImages images={recipe.images} />
                 }
             </CardActionArea>
             <CardContent>
@@ -86,7 +90,17 @@ const style = {
             <CardActions>
             <Button onClick={handleOpen}>DETALLES</Button>
             {
-                (editMode) ? <Button onClick={() => edit(recipe)}>Editar</Button> : null
+                (editMode) 
+                ? 
+                <Button onClick={() => edit(recipe)}>Editar</Button> 
+                : 
+                (
+                (recipe.idUser != idUser && !favoriteMode)
+                ?
+                <Button onClick={() => favorite(recipe)}>Agregar a Fav</Button>
+                :
+                null
+                )
             }
             
             <Modal
