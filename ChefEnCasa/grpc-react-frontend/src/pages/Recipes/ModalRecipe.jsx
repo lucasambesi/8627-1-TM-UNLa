@@ -77,6 +77,7 @@ export const ModalRecipe = (props) => {
             alert("Receta creada")
         }).then(() => {
             navigate("/recipes")
+            close()
         })
       }
     
@@ -87,6 +88,7 @@ export const ModalRecipe = (props) => {
             alert("Producto Actualizado")
         }).then(() => {
             navigate("/recipes")
+            close()
         })
       }
 

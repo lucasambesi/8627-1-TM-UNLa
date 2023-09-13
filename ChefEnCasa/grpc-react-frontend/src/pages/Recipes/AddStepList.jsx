@@ -56,7 +56,7 @@ export default function StepsList(props) {
               disablePadding
             >
               <ListItemButton role={undefined} dense>
-                <ListItemText id={labelId} primary={step.description} />
+                <ListItemText id={labelId} primary={`Paso ${index +1}: ${step.description}`} />
               </ListItemButton>
             </ListItem>
           );

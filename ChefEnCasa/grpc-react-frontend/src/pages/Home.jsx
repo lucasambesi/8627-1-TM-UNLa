@@ -43,9 +43,9 @@ const Home = (props) => {
     };
 
     return (
-      <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:'2%'}}>        
-        <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
-          <Grid container justifyContent={"flex-start"} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Container sx={{ marginTop:'2%'}}>        
+        <Box sx={{ flexGrow: 1, margin: 5, }}>
+          <Grid container justifyContent={"center"} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <FilterRecipes filter={filter} setFilter={setFilter} setRecipes={setRecipes}/>
             {
                 recipes ? recipes.map((recipe) =>{
