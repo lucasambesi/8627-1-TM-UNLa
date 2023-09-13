@@ -79,6 +79,11 @@ const style = {
             .catch((err) => console.log(err));
       } 
 
+      const deleteFavorite = (recipe) =>{
+            alert(`Proximamente`)
+            // alert(`Receta eliminada ${recipe.title}`)
+      } 
+
       const isIdInFollowing = (id) => user.following.some(item => item.idUser === id);
 
     return (
@@ -115,6 +120,10 @@ const style = {
                 (recipe.idUser != idUser && !favoriteMode)
                 ?
                 <Button onClick={() => favorite(recipe)}>Agregar a Fav</Button>
+                :
+                (favoriteMode) 
+                ? 
+                <Button onClick={() => deleteFavorite(recipe)}>Eliminar Fav</Button>
                 :
                 null
                 )
