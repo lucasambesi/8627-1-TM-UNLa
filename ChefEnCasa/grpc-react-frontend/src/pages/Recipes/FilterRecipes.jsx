@@ -10,19 +10,14 @@ import {recipePresenter} from '../../presenter/RecipePresenter'
 
 export const FilterRecipes = (props) => {
     const { 
-        setRecipes
+        setRecipes,
+        filter,
+        setFilter
     } = props;
 
     const {getByFilter} = recipePresenter()
 
     const [category, setCategory] = useState({});
-    const [filter, setFilter] = useState({
-        idCategory: 0,
-        title: "",
-        ingredients: "",
-        timeSince: 0,
-        timeUntil: 1000
-    })
 
     // useEffect(() => {
     //     let tempFilter = { ...filter }
@@ -41,8 +36,6 @@ export const FilterRecipes = (props) => {
     }
     
     const find = () => {
-        console.log("filter =", filter)
-
         getByFilter(filter)
         .then((res) => {
           console.log(res)

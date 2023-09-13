@@ -110,10 +110,9 @@ public class RecipeService {
         return recipeRepository.getByUser(user);
     }
 
-    public List<Recipe> getByFilter(int idCategory, String title, String ingredients, int timeSince, int timeUntil) throws Exception{
-
+    public List<Recipe> getByFilter(int idCategory, String title, String ingredients, int timeSince, int timeUntil, int pageNumber, int pageSize) throws Exception{
         Category categoria = idCategory == 0 ? null : categoryService.getById(idCategory);
-        return recipeRepository.getByFilter(categoria, title, ingredients, timeSince, timeUntil);
+        return recipeRepository.getByFilter(categoria, title, ingredients, timeSince, timeUntil, pageNumber, pageSize);
     }
 
     private Recipe mapToEntity (grpc.Recipe.RecipeDTO dto) throws Exception{

@@ -130,44 +130,47 @@ public class RecipeRepository {
         return recipes;
     }
 
-    public List<Recipe> getByFilter(Category category, String title, String ingredients, int timeSince, int timeUntil) throws Exception{
+    public List<Recipe> getByFilter(Category category, String title, String ingredients, int timeSince, int timeUntil, int pageNumber, int pageSize) throws Exception {
+        int startPosition = (pageNumber - 1) * pageSize;
 
         List<Recipe> recipes = new ArrayList<Recipe>();
         EntityManager em = JPAUtil.getEMF().createEntityManager();
 
         try {
             CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-            CriteriaQuery<Recipe> query=  criteriaBuilder.createQuery(Recipe.class);
+            CriteriaQuery<Recipe> query = criteriaBuilder.createQuery(Recipe.class);
             Root<Recipe> root = query.from(Recipe.class);
 
             List<Predicate> predicates = new ArrayList<>();
 
-            if(category != null) {
-                predicates.add(criteriaBuilder.equal(root.get("category"),category));
+            if (category != null) {
+                predicates.add(criteriaBuilder.equal(root.get("category"), category));
             }
-            if(!title.isEmpty()) {
-                predicates.add(criteriaBuilder.like(root.get("title") , "%"+title+"%"));
+            if (!title.isEmpty()) {
+                predicates.add(criteriaBuilder.like(root.get("title"), "%" + title + "%"));
             }
-            if(!ingredients.isEmpty()) {
-                predicates.add(criteriaBuilder.like(root.get("ingredients") , "%"+ingredients+"%"));
+            if (!ingredients.isEmpty()) {
+                predicates.add(criteriaBuilder.like(root.get("ingredients"), "%" + ingredients + "%"));
             }
 
-            if(timeSince != 0 && timeUntil != 0){
+            if (timeSince != 0 && timeUntil != 0) {
                 predicates.add(criteriaBuilder.between(root.get("preparationTime"), timeSince, timeUntil));
-            }
-            else if(timeSince != 0){
+            } else if (timeSince != 0) {
                 predicates.add(criteriaBuilder.greaterThan(root.get("preparationTime"), timeSince));
-            }
-            else if(timeUntil != 0){
+            } else if (timeUntil != 0) {
                 predicates.add(criteriaBuilder.lessThan(root.get("preparationTime"), timeUntil));
             }
 
             Predicate and = criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             query.select(root).where(and);
 
-            recipes = em.createQuery(query).getResultList();
+            TypedQuery<Recipe> typedQuery = em.createQuery(query);
+            typedQuery.setFirstResult(startPosition); // Establecer la posición de inicio
+            typedQuery.setMaxResults(pageSize); // Establecer el tamaño de página
+
+            recipes = typedQuery.getResultList();
         } catch (Exception e) {
-            String msg = "Error de persistencia - Método getByFilter: " + e.getMessage();
+            String msg = "Error de persistencia - Método getByFilterWithPagination: " + e.getMessage();
             System.out.println(msg);
             throw new Exception(msg);
         } finally {

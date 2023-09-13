@@ -93,7 +93,7 @@ export const recipePresenter = () => {
             if(useMock == 'true'){
                 return getMock().recipes
             }
-
+            console.log("filter =>", filter)
             const res = await axios.get(`${baseUrl}/recipes/byFilter`, {
                 params: {
                     "IdCategory": filter.idCategory != null ? filter.idCategory : 0,
@@ -101,6 +101,8 @@ export const recipePresenter = () => {
                     "Ingredients": filter.ingredients != "" ? filter.ingredients : null,
                     "TimeSince": filter.timeSince != null ? filter.timeSince : 0,
                     "TimeUntil":  filter.timeUntil != null ? filter.timeUntil : 1000,
+                    "PageNumber": filter.pageNumber != null ? filter.pageNumber : 1,
+                    "PageSize": filter.pageSize != null ? filter.pageSize : 6,
                 }
               });
 

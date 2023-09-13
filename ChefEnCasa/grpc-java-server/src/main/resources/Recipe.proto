@@ -63,6 +63,8 @@ message GetByFilterRequest{
   string ingredients=3;
   int32 timeSince=4;
   int32 timeUntil=5;
+  int32 pageNumber=6;
+  int32 pageSize=7;
 }
 
 message RecipeImageDTO {

@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import {Recipe} from "./Recipes/Recipe";
 import { Container } from "@mui/material";
 import { FilterRecipes } from "./Recipes/FilterRecipes";
+import PaginationControlled from "../components/Shared/Pagination";
 
 const Home = (props) => {
    const [recipes, setRecipes] = useState([]);
@@ -13,8 +14,18 @@ const Home = (props) => {
    const {getByFilter} = recipePresenter()
    const {addToFavorites} = userPresenter()
 
+   const [filter, setFilter] = useState({
+        idCategory: 0,
+        title: "",
+        ingredients: "",
+        timeSince: 0,
+        timeUntil: 1000,
+        pageNumber: 1,
+        pageSize:2,
+    })
+
     useEffect(() => {
-      getByFilter({})
+      getByFilter(filter)
         .then((res) => {
           console.log(res)
           setRecipes(res)
@@ -35,7 +46,7 @@ const Home = (props) => {
       <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:'2%'}}>        
         <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
           <Grid container justifyContent={"flex-start"} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <FilterRecipes setRecipes={setRecipes} />
+            <FilterRecipes filter={filter} setFilter={setFilter} setRecipes={setRecipes}/>
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
@@ -49,6 +60,9 @@ const Home = (props) => {
                   </h4>
                 </Box>
             }
+          </Grid>
+          <Grid container justifyContent={"center"} rowSpacing={1} columnSpacing={{ xs: 25}} marginTop={"40px"}>
+            <PaginationControlled filter={filter} setFilter={setFilter} setRecipes={setRecipes}/>
           </Grid>
         </Box>
       </Container>

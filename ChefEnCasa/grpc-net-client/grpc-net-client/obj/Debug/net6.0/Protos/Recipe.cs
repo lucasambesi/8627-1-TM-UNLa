@@ -36,19 +36,20 @@ public static partial class RecipeReflection {
           "c3RSZWNpcGVEVE8SGwoHcmVjaXBlcxgBIAMoCzIKLlJlY2lwZURUTxItCg5z",
           "ZXJ2ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJlc3BvbnNlIiQK",
           "EEdldFJlY2lwZVJlcXVlc3QSEAoIaWRSZWNpcGUYASABKAUiHwoNSWRVc2Vy",
-          "UmVxdWVzdBIOCgZpZFVzZXIYASABKAUicgoSR2V0QnlGaWx0ZXJSZXF1ZXN0",
-          "EhIKCmlkQ2F0ZWdvcnkYASABKAUSDQoFdGl0bGUYAiABKAkSEwoLaW5ncmVk",
-          "aWVudHMYAyABKAkSEQoJdGltZVNpbmNlGAQgASgFEhEKCXRpbWVVbnRpbBgF",
-          "IAEoBSI9Cg5SZWNpcGVJbWFnZURUTxIPCgdpZEltYWdlGAEgASgFEgwKBG5h",
-          "bWUYAiABKAkSDAoEZmlsZRgDIAEoCTLLAgoQUmVjaXBlQ29udHJvbGxlchIm",
-          "CglhZGRSZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVPYmpEVE8SKQoMdXBk",
-          "YXRlUmVjaXBlEgouUmVjaXBlRFRPGg0uUmVjaXBlT2JqRFRPEi0KCWdldFJl",
-          "Y2lwZRIRLkdldFJlY2lwZVJlcXVlc3QaDS5SZWNpcGVPYmpEVE8SJAoNZ2V0",
-          "QWxsUmVjaXBlcxIGLkVtcHR5GgsuUmVjaXBlc0RUTxIxChJnZXRSZWNpcGVz",
-          "QnlVc2VySWQSDi5JZFVzZXJSZXF1ZXN0GgsuUmVjaXBlc0RUTxIvCgtnZXRC",
-          "eUZpbHRlchITLkdldEJ5RmlsdGVyUmVxdWVzdBoLLlJlY2lwZXNEVE8SKwoM",
-          "Z2V0RmF2b3RpcmVzEg4uSWRVc2VyUmVxdWVzdBoLLlJlY2lwZXNEVE9CBgoE",
-          "Z3JwY2IGcHJvdG8z"));
+          "UmVxdWVzdBIOCgZpZFVzZXIYASABKAUimAEKEkdldEJ5RmlsdGVyUmVxdWVz",
+          "dBISCgppZENhdGVnb3J5GAEgASgFEg0KBXRpdGxlGAIgASgJEhMKC2luZ3Jl",
+          "ZGllbnRzGAMgASgJEhEKCXRpbWVTaW5jZRgEIAEoBRIRCgl0aW1lVW50aWwY",
+          "BSABKAUSEgoKcGFnZU51bWJlchgGIAEoBRIQCghwYWdlU2l6ZRgHIAEoBSI9",
+          "Cg5SZWNpcGVJbWFnZURUTxIPCgdpZEltYWdlGAEgASgFEgwKBG5hbWUYAiAB",
+          "KAkSDAoEZmlsZRgDIAEoCTLLAgoQUmVjaXBlQ29udHJvbGxlchImCglhZGRS",
+          "ZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVPYmpEVE8SKQoMdXBkYXRlUmVj",
+          "aXBlEgouUmVjaXBlRFRPGg0uUmVjaXBlT2JqRFRPEi0KCWdldFJlY2lwZRIR",
+          "LkdldFJlY2lwZVJlcXVlc3QaDS5SZWNpcGVPYmpEVE8SJAoNZ2V0QWxsUmVj",
+          "aXBlcxIGLkVtcHR5GgsuUmVjaXBlc0RUTxIxChJnZXRSZWNpcGVzQnlVc2Vy",
+          "SWQSDi5JZFVzZXJSZXF1ZXN0GgsuUmVjaXBlc0RUTxIvCgtnZXRCeUZpbHRl",
+          "chITLkdldEJ5RmlsdGVyUmVxdWVzdBoLLlJlY2lwZXNEVE8SKwoMZ2V0RmF2",
+          "b3RpcmVzEg4uSWRVc2VyUmVxdWVzdBoLLlJlY2lwZXNEVE9CBgoEZ3JwY2IG",
+          "cHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::StepReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -60,7 +61,7 @@ public static partial class RecipeReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::ListRecipeDTO), global::ListRecipeDTO.Parser, new[]{ "Recipes", "ServerResponse" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetRecipeRequest), global::GetRecipeRequest.Parser, new[]{ "IdRecipe" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::IdUserRequest), global::IdUserRequest.Parser, new[]{ "IdUser" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GetByFilterRequest), global::GetByFilterRequest.Parser, new[]{ "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::GetByFilterRequest), global::GetByFilterRequest.Parser, new[]{ "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil", "PageNumber", "PageSize" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipeImageDTO), global::RecipeImageDTO.Parser, new[]{ "IdImage", "Name", "File" }, null, null, null, null)
         }));
   }
@@ -2018,6 +2019,8 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     ingredients_ = other.ingredients_;
     timeSince_ = other.timeSince_;
     timeUntil_ = other.timeUntil_;
+    pageNumber_ = other.pageNumber_;
+    pageSize_ = other.pageSize_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2087,6 +2090,30 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     }
   }
 
+  /// <summary>Field number for the "pageNumber" field.</summary>
+  public const int PageNumberFieldNumber = 6;
+  private int pageNumber_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int PageNumber {
+    get { return pageNumber_; }
+    set {
+      pageNumber_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "pageSize" field.</summary>
+  public const int PageSizeFieldNumber = 7;
+  private int pageSize_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int PageSize {
+    get { return pageSize_; }
+    set {
+      pageSize_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -2107,6 +2134,8 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     if (Ingredients != other.Ingredients) return false;
     if (TimeSince != other.TimeSince) return false;
     if (TimeUntil != other.TimeUntil) return false;
+    if (PageNumber != other.PageNumber) return false;
+    if (PageSize != other.PageSize) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2119,6 +2148,8 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     if (Ingredients.Length != 0) hash ^= Ingredients.GetHashCode();
     if (TimeSince != 0) hash ^= TimeSince.GetHashCode();
     if (TimeUntil != 0) hash ^= TimeUntil.GetHashCode();
+    if (PageNumber != 0) hash ^= PageNumber.GetHashCode();
+    if (PageSize != 0) hash ^= PageSize.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2157,6 +2188,14 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
       output.WriteRawTag(40);
       output.WriteInt32(TimeUntil);
     }
+    if (PageNumber != 0) {
+      output.WriteRawTag(48);
+      output.WriteInt32(PageNumber);
+    }
+    if (PageSize != 0) {
+      output.WriteRawTag(56);
+      output.WriteInt32(PageSize);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2187,6 +2226,14 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
       output.WriteRawTag(40);
       output.WriteInt32(TimeUntil);
     }
+    if (PageNumber != 0) {
+      output.WriteRawTag(48);
+      output.WriteInt32(PageNumber);
+    }
+    if (PageSize != 0) {
+      output.WriteRawTag(56);
+      output.WriteInt32(PageSize);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -2211,6 +2258,12 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     }
     if (TimeUntil != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(TimeUntil);
+    }
+    if (PageNumber != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageNumber);
+    }
+    if (PageSize != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2238,6 +2291,12 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
     }
     if (other.TimeUntil != 0) {
       TimeUntil = other.TimeUntil;
+    }
+    if (other.PageNumber != 0) {
+      PageNumber = other.PageNumber;
+    }
+    if (other.PageSize != 0) {
+      PageSize = other.PageSize;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -2274,6 +2333,14 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
           TimeUntil = input.ReadInt32();
           break;
         }
+        case 48: {
+          PageNumber = input.ReadInt32();
+          break;
+        }
+        case 56: {
+          PageSize = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -2307,6 +2374,14 @@ public sealed partial class GetByFilterRequest : pb::IMessage<GetByFilterRequest
         }
         case 40: {
           TimeUntil = input.ReadInt32();
+          break;
+        }
+        case 48: {
+          PageNumber = input.ReadInt32();
+          break;
+        }
+        case 56: {
+          PageSize = input.ReadInt32();
           break;
         }
       }

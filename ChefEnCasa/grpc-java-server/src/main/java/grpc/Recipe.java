@@ -6603,6 +6603,16 @@ public final class Recipe {
      * <code>int32 timeUntil = 5;</code>
      */
     int getTimeUntil();
+
+    /**
+     * <code>int32 pageNumber = 6;</code>
+     */
+    int getPageNumber();
+
+    /**
+     * <code>int32 pageSize = 7;</code>
+     */
+    int getPageSize();
   }
   /**
    * Protobuf type {@code GetByFilterRequest}
@@ -6622,6 +6632,8 @@ public final class Recipe {
       ingredients_ = "";
       timeSince_ = 0;
       timeUntil_ = 0;
+      pageNumber_ = 0;
+      pageSize_ = 0;
     }
 
     @java.lang.Override
@@ -6673,6 +6685,16 @@ public final class Recipe {
             case 40: {
 
               timeUntil_ = input.readInt32();
+              break;
+            }
+            case 48: {
+
+              pageNumber_ = input.readInt32();
+              break;
+            }
+            case 56: {
+
+              pageSize_ = input.readInt32();
               break;
             }
             default: {
@@ -6802,6 +6824,24 @@ public final class Recipe {
       return timeUntil_;
     }
 
+    public static final int PAGENUMBER_FIELD_NUMBER = 6;
+    private int pageNumber_;
+    /**
+     * <code>int32 pageNumber = 6;</code>
+     */
+    public int getPageNumber() {
+      return pageNumber_;
+    }
+
+    public static final int PAGESIZE_FIELD_NUMBER = 7;
+    private int pageSize_;
+    /**
+     * <code>int32 pageSize = 7;</code>
+     */
+    public int getPageSize() {
+      return pageSize_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6831,6 +6871,12 @@ public final class Recipe {
       if (timeUntil_ != 0) {
         output.writeInt32(5, timeUntil_);
       }
+      if (pageNumber_ != 0) {
+        output.writeInt32(6, pageNumber_);
+      }
+      if (pageSize_ != 0) {
+        output.writeInt32(7, pageSize_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6858,6 +6904,14 @@ public final class Recipe {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, timeUntil_);
       }
+      if (pageNumber_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, pageNumber_);
+      }
+      if (pageSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, pageSize_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6884,6 +6938,10 @@ public final class Recipe {
           == other.getTimeSince());
       result = result && (getTimeUntil()
           == other.getTimeUntil());
+      result = result && (getPageNumber()
+          == other.getPageNumber());
+      result = result && (getPageSize()
+          == other.getPageSize());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -6905,6 +6963,10 @@ public final class Recipe {
       hash = (53 * hash) + getTimeSince();
       hash = (37 * hash) + TIMEUNTIL_FIELD_NUMBER;
       hash = (53 * hash) + getTimeUntil();
+      hash = (37 * hash) + PAGENUMBER_FIELD_NUMBER;
+      hash = (53 * hash) + getPageNumber();
+      hash = (37 * hash) + PAGESIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getPageSize();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7048,6 +7110,10 @@ public final class Recipe {
 
         timeUntil_ = 0;
 
+        pageNumber_ = 0;
+
+        pageSize_ = 0;
+
         return this;
       }
 
@@ -7079,6 +7145,8 @@ public final class Recipe {
         result.ingredients_ = ingredients_;
         result.timeSince_ = timeSince_;
         result.timeUntil_ = timeUntil_;
+        result.pageNumber_ = pageNumber_;
+        result.pageSize_ = pageSize_;
         onBuilt();
         return result;
       }
@@ -7143,6 +7211,12 @@ public final class Recipe {
         }
         if (other.getTimeUntil() != 0) {
           setTimeUntil(other.getTimeUntil());
+        }
+        if (other.getPageNumber() != 0) {
+          setPageNumber(other.getPageNumber());
+        }
+        if (other.getPageSize() != 0) {
+          setPageSize(other.getPageSize());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7385,6 +7459,58 @@ public final class Recipe {
       public Builder clearTimeUntil() {
         
         timeUntil_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int pageNumber_ ;
+      /**
+       * <code>int32 pageNumber = 6;</code>
+       */
+      public int getPageNumber() {
+        return pageNumber_;
+      }
+      /**
+       * <code>int32 pageNumber = 6;</code>
+       */
+      public Builder setPageNumber(int value) {
+        
+        pageNumber_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 pageNumber = 6;</code>
+       */
+      public Builder clearPageNumber() {
+        
+        pageNumber_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int pageSize_ ;
+      /**
+       * <code>int32 pageSize = 7;</code>
+       */
+      public int getPageSize() {
+        return pageSize_;
+      }
+      /**
+       * <code>int32 pageSize = 7;</code>
+       */
+      public Builder setPageSize(int value) {
+        
+        pageSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 pageSize = 7;</code>
+       */
+      public Builder clearPageSize() {
+        
+        pageSize_ = 0;
         onChanged();
         return this;
       }
@@ -8266,20 +8392,21 @@ public final class Recipe {
       "O\022-\n\016serverResponse\030\002 \001(\0132\025.RecipeServer" +
       "Response\"$\n\020GetRecipeRequest\022\020\n\010idRecipe" +
       "\030\001 \001(\005\"\037\n\rIdUserRequest\022\016\n\006idUser\030\001 \001(\005\"" +
-      "r\n\022GetByFilterRequest\022\022\n\nidCategory\030\001 \001(" +
-      "\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003 \001(\t\022\021\n" +
-      "\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001(\005\"=\n\016R" +
-      "ecipeImageDTO\022\017\n\007idImage\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \001(\t\022\014\n\004file\030\003 \001(\t2\313\002\n\020RecipeController\022" +
-      "&\n\taddRecipe\022\n.RecipeDTO\032\r.RecipeObjDTO\022" +
-      ")\n\014updateRecipe\022\n.RecipeDTO\032\r.RecipeObjD" +
-      "TO\022-\n\tgetRecipe\022\021.GetRecipeRequest\032\r.Rec" +
-      "ipeObjDTO\022$\n\rgetAllRecipes\022\006.Empty\032\013.Rec" +
-      "ipesDTO\0221\n\022getRecipesByUserId\022\016.IdUserRe" +
-      "quest\032\013.RecipesDTO\022/\n\013getByFilter\022\023.GetB" +
-      "yFilterRequest\032\013.RecipesDTO\022+\n\014getFavoti" +
-      "res\022\016.IdUserRequest\032\013.RecipesDTOB\006\n\004grpc" +
-      "b\006proto3"
+      "\230\001\n\022GetByFilterRequest\022\022\n\nidCategory\030\001 \001" +
+      "(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003 \001(\t\022\021" +
+      "\n\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001(\005\022\022\n\n" +
+      "pageNumber\030\006 \001(\005\022\020\n\010pageSize\030\007 \001(\005\"=\n\016Re" +
+      "cipeImageDTO\022\017\n\007idImage\030\001 \001(\005\022\014\n\004name\030\002 " +
+      "\001(\t\022\014\n\004file\030\003 \001(\t2\313\002\n\020RecipeController\022&" +
+      "\n\taddRecipe\022\n.RecipeDTO\032\r.RecipeObjDTO\022)" +
+      "\n\014updateRecipe\022\n.RecipeDTO\032\r.RecipeObjDT" +
+      "O\022-\n\tgetRecipe\022\021.GetRecipeRequest\032\r.Reci" +
+      "peObjDTO\022$\n\rgetAllRecipes\022\006.Empty\032\013.Reci" +
+      "pesDTO\0221\n\022getRecipesByUserId\022\016.IdUserReq" +
+      "uest\032\013.RecipesDTO\022/\n\013getByFilter\022\023.GetBy" +
+      "FilterRequest\032\013.RecipesDTO\022+\n\014getFavotir" +
+      "es\022\016.IdUserRequest\032\013.RecipesDTOB\006\n\004grpcb" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8347,7 +8474,7 @@ public final class Recipe {
     internal_static_GetByFilterRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetByFilterRequest_descriptor,
-        new java.lang.String[] { "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil", });
+        new java.lang.String[] { "IdCategory", "Title", "Ingredients", "TimeSince", "TimeUntil", "PageNumber", "PageSize", });
     internal_static_RecipeImageDTO_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_RecipeImageDTO_fieldAccessorTable = new

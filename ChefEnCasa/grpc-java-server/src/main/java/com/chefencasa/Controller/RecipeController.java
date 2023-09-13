@@ -135,7 +135,9 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
                     request.getTitle(),
                     request.getIngredients(),
                     request.getTimeSince(),
-                    request.getTimeUntil()
+                    request.getTimeUntil(),
+                    request.getPageNumber(),
+                    request.getPageSize()
             );
             for(com.chefencasa.Model.Recipe p : recipes){
                 response.addRecipes(mapRecipeDTO(p));
