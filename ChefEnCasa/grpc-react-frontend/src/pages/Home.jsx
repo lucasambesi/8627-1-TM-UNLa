@@ -15,7 +15,7 @@ const Home = (props) => {
    const {addToFavorites} = userPresenter()
 
    const [filter, setFilter] = useState({
-        idCategory: 0,
+        category: {"idCategory": 0},
         title: "",
         ingredients: "",
         timeSince: 0,

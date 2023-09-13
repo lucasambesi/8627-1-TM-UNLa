@@ -7,6 +7,9 @@ import { blue } from '@mui/material/colors'
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import {recipePresenter} from '../../presenter/RecipePresenter'
+import { categoryPresenter } from '../../presenter/CategoryPresenter'
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 export const FilterRecipes = (props) => {
     const { 
@@ -16,14 +19,17 @@ export const FilterRecipes = (props) => {
     } = props;
 
     const {getByFilter} = recipePresenter()
+    const { getCategories } = categoryPresenter()
+    const [categories, setCategories] = useState(null);
 
-    const [category, setCategory] = useState({});
 
-    // useEffect(() => {
-    //     let tempFilter = { ...filter }
-    //     tempFilter.category = category.idCategory
-    //     setFilter(tempFilter)
-    // }, [category])
+    useEffect(() => {
+        getCategories()
+          .then((res) => {
+            setCategories(res)
+          })
+          .catch((err) => console.log(err));
+      }, [])
 
     const handleChange = (e) => {
         let value = e.target.value
@@ -32,6 +38,15 @@ export const FilterRecipes = (props) => {
         }
         let tempFilter = { ...filter }
         tempFilter[e.target.name] = value
+        setFilter(tempFilter)
+    }
+
+    const HandleChangeCategory = (e) => {
+        let value = e.target.value
+
+        let tempFilter = { ...filter }
+        tempFilter["category"] = value
+        
         setFilter(tempFilter)
     }
     
@@ -92,6 +107,29 @@ export const FilterRecipes = (props) => {
                                 value={filter.timeUntil}
                                 size="small"
                             />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Select
+                                item
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={filter.category}
+                                label="Categoria"
+                                size="small"
+                                fullWidth
+                                onChange={HandleChangeCategory}
+                                >                                    
+                                {
+                                    categories ? categories.map((category , index) =>{
+                                        return (
+                                            <MenuItem id={category.id} key={index} value={category}>
+                                                {category.name}
+                                            </MenuItem>
+                                            )
+                                        })
+                                        : null
+                                }                            
+                            </Select>
                         </Grid>
                     </Grid>
                     <Grid item xs={1}>

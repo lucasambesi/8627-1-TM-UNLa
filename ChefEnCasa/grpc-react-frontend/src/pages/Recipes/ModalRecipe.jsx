@@ -156,8 +156,13 @@ export const ModalRecipe = (props) => {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid container item>
+                    <Grid item xs={12}>
+                    {
+                        (!editMode) ?
                         <SelectCategory categories={categories} setCategory={setCategory} category={category} />
+                        :
+                        <></>
+                    }                        
                     </Grid>   
                 </Grid>     
                 <Grid item xs={12}>

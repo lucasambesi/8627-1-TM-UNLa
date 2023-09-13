@@ -96,7 +96,7 @@ export const recipePresenter = () => {
             console.log("filter =>", filter)
             const res = await axios.get(`${baseUrl}/recipes/byFilter`, {
                 params: {
-                    "IdCategory": filter.idCategory != null ? filter.idCategory : 0,
+                    "IdCategory": filter.category.idCategory != null ? filter.category.idCategory : 0,
                     "Title": filter.title != "" ? filter.title : null,
                     "Ingredients": filter.ingredients != "" ? filter.ingredients : null,
                     "TimeSince": filter.timeSince != null ? filter.timeSince : 0,
