@@ -90,10 +90,30 @@ export const userPresenter = () => {
         }
     }
 
+    const addFollowing = async (idUser, idFollowing) => {
+        try {
+            if(useMock == 'true'){
+                return "success"
+            }
+
+            const body ={
+                "idUser": idUser,
+                "idFollowing": idFollowing
+              }
+            
+            const res = await axios.post(`${baseUrl}/user/following`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     return {
         getById,
         login,
         register,
-        addToFavorites
+        addToFavorites,
+        addFollowing
     }
 }

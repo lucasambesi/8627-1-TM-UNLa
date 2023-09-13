@@ -21,7 +21,7 @@ const Home = (props) => {
         timeSince: 0,
         timeUntil: 1000,
         pageNumber: 1,
-        pageSize:2,
+        pageSize:6,
     })
 
     useEffect(() => {

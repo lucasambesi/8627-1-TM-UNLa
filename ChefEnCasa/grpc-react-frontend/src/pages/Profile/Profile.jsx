@@ -11,12 +11,12 @@ import tres from '../../assets/recetas/tres.jpg';
 import cuatro from '../../assets/recetas/cuatro.jpg'; 
 import cinco from '../../assets/recetas/cinco.jpg'; 
 import { Recipe } from '../Recipes/Recipe';
-
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 import { useNavigate } from 'react-router'
 
-export const Profile = (props) => {
-    const { user, setUser } = props;
+export const Profile = () => {
+    const [user, setUser] = useLocalStorage('user')
     const [recipes, setRecipes] = useState([]);
     const images = [uno, dos, tres, cuatro, cinco]
     const navigate = useNavigate();

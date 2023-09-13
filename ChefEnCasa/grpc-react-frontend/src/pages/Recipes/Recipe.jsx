@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import Stack from '@mui/material/Stack';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
@@ -27,6 +29,7 @@ const style = {
 
   export const Recipe = (props) => {
     const {recipe, editMode, edit, favorite, idUser, favoriteMode} = props
+    const [user, setUser] = useLocalStorage('user')
 
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
@@ -35,7 +38,7 @@ const style = {
 
     const { getCategoryById } = categoryPresenter()
     const { getStepsByRecipeId } = stepPresenter()
-    const { getById } = userPresenter()
+    const { getById, addFollowing } = userPresenter()
 
     useEffect(() => {
         getCategoryById(recipe.idCategory)
@@ -63,6 +66,20 @@ const style = {
 
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);  
+
+      const follow = () =>{
+        addFollowing(idUser, recipe.idUser)        
+            .then((res) => {
+                let userTemp = user
+                userTemp.following.push(autor);
+
+                setUser(userTemp)
+                alert(`Seguiste a ${autor.name} ${autor.lastName}`)
+            })
+            .catch((err) => console.log(err));
+      } 
+
+      const isIdInFollowing = (id) => user.following.some(item => item.idUser === id);
 
     return (
         <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, minHeight: 425, marginTop: 4, marginRight: 3 }}>
@@ -124,9 +141,29 @@ const style = {
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
                     Creada por: 
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {`${autor.name} ${autor.lastName}`}
-                </Typography>
+                <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent={"space-between"} alignContent={"center"}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        {`${autor.name} ${autor.lastName}`}
+                    </Typography>
+                    {
+                        (recipe.idUser != idUser && !favoriteMode)
+                        ?
+                        (
+                            (isIdInFollowing(autor.idUser))
+                            ?
+                            <Button size='small'disabled='true'>
+                                Siguiendo
+                            </Button>
+                            :
+                            <Button size='small' onClick={follow}>
+                                Seguir
+                            </Button>
+                        )
+                        :
+                        null
+                    }
+                </Stack>
+
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
                     Ingredientes:
                 </Typography>                

@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from "react";
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { Container } from "@mui/material";
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
 
-export const Following = (props) => {
-    const { user } = props;
- 
-     return (
-       <Box sx={{ flexGrow: 1, margin: 5, alignContent:'center' }}>
-          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-           {
-               user.following ? user.following.map((follow) =>{
-               return (
-                <>  
-                <ListItemText>
-                    {follow.name} {follow.lastName}
-                </ListItemText>                          
-                </>
-                 )
-               })
-               : null
-           }
-         </List>
-       </Box>
-     );
-   }
+export const Following =() => {
+  const [user, setUser] = useLocalStorage('user')
+
+  const unfollow = (follow) => {
+    let userTemp = user
+    userTemp.following = userTemp.following.filter(item => item.idUser !== follow.idUser);
+    //Falta ir al backend
+    setUser(userTemp)
+    alert(`Eliminaste a ${follow.name} ${follow.lastName}`)    
+  }
+
+  return (
+    <Container sx={{ marginTop:"30px",  justifySelf:'center', alignSelf: 'center'}}>
+      <Paper elevation={3}>
+        <List dense sx={{ bgcolor: 'background.paper' }}>
+          {user.following.map((follow, index) => {
+            const labelId = `checkbox-list-secondary-label-${follow.name}`;
+            return (
+              <ListItem key={follow.name}>
+                <ListItemText id={labelId} primary={` ${follow.name} ${follow.lastName}`} />
+                <ListItemButton>
+                  <Button
+                    size='small'
+                    fullWidth
+                    onClick={(() => unfollow(follow))}>
+                    Eliminar
+                  </Button>
+                </ListItemButton>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Paper>
+    </Container>
+  );
+}
