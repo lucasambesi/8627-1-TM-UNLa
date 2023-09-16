@@ -219,6 +219,38 @@ public final class UserControllerGrpc {
      return getAddFavoriteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.User.PostFavoriteRequest,
+      grpc.User.PostFavoriteResponse> getDeleteFavoriteMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "deleteFavorite",
+      requestType = grpc.User.PostFavoriteRequest.class,
+      responseType = grpc.User.PostFavoriteResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.PostFavoriteRequest,
+      grpc.User.PostFavoriteResponse> getDeleteFavoriteMethod() {
+    io.grpc.MethodDescriptor<grpc.User.PostFavoriteRequest, grpc.User.PostFavoriteResponse> getDeleteFavoriteMethod;
+    if ((getDeleteFavoriteMethod = UserControllerGrpc.getDeleteFavoriteMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getDeleteFavoriteMethod = UserControllerGrpc.getDeleteFavoriteMethod) == null) {
+          UserControllerGrpc.getDeleteFavoriteMethod = getDeleteFavoriteMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.PostFavoriteRequest, grpc.User.PostFavoriteResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "deleteFavorite"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFavoriteRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFavoriteResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("deleteFavorite"))
+                  .build();
+          }
+        }
+     }
+     return getDeleteFavoriteMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -288,6 +320,13 @@ public final class UserControllerGrpc {
       asyncUnimplementedUnaryCall(getAddFavoriteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void deleteFavorite(grpc.User.PostFavoriteRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFavoriteResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteFavoriteMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -332,6 +371,13 @@ public final class UserControllerGrpc {
                 grpc.User.PostFavoriteRequest,
                 grpc.User.PostFavoriteResponse>(
                   this, METHODID_ADD_FAVORITE)))
+          .addMethod(
+            getDeleteFavoriteMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.PostFavoriteRequest,
+                grpc.User.PostFavoriteResponse>(
+                  this, METHODID_DELETE_FAVORITE)))
           .build();
     }
   }
@@ -401,6 +447,14 @@ public final class UserControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getAddFavoriteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void deleteFavorite(grpc.User.PostFavoriteRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFavoriteResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDeleteFavoriteMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -461,6 +515,13 @@ public final class UserControllerGrpc {
     public grpc.User.PostFavoriteResponse addFavorite(grpc.User.PostFavoriteRequest request) {
       return blockingUnaryCall(
           getChannel(), getAddFavoriteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.PostFavoriteResponse deleteFavorite(grpc.User.PostFavoriteRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getDeleteFavoriteMethod(), getCallOptions(), request);
     }
   }
 
@@ -529,6 +590,14 @@ public final class UserControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getAddFavoriteMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.PostFavoriteResponse> deleteFavorite(
+        grpc.User.PostFavoriteRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDeleteFavoriteMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_USER = 0;
@@ -537,6 +606,7 @@ public final class UserControllerGrpc {
   private static final int METHODID_GET_USER = 3;
   private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 4;
   private static final int METHODID_ADD_FAVORITE = 5;
+  private static final int METHODID_DELETE_FAVORITE = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -577,6 +647,10 @@ public final class UserControllerGrpc {
           break;
         case METHODID_ADD_FAVORITE:
           serviceImpl.addFavorite((grpc.User.PostFavoriteRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.PostFavoriteResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_FAVORITE:
+          serviceImpl.deleteFavorite((grpc.User.PostFavoriteRequest) request,
               (io.grpc.stub.StreamObserver<grpc.User.PostFavoriteResponse>) responseObserver);
           break;
         default:
@@ -646,6 +720,7 @@ public final class UserControllerGrpc {
               .addMethod(getGetUserMethod())
               .addMethod(getGetByUserAndPasswordRequestMethod())
               .addMethod(getAddFavoriteMethod())
+              .addMethod(getDeleteFavoriteMethod())
               .build();
         }
       }

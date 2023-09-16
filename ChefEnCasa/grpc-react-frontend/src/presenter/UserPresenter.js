@@ -90,6 +90,27 @@ export const userPresenter = () => {
         }
     }
 
+    const deleteToFavorites = async (idUser, idRecipe) => {
+        try {
+            if(useMock == 'true'){
+                return "success"
+            }
+
+            const body ={
+                "idUser": idUser,
+                "idRecipe": idRecipe
+              }
+              
+            console.log("body = ", body)
+            
+            const res = await axios.delete(`${baseUrl}/user/favorites`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     const addFollowing = async (idUser, idFollowing) => {
         try {
             if(useMock == 'true'){
@@ -114,6 +135,7 @@ export const userPresenter = () => {
         login,
         register,
         addToFavorites,
+        deleteToFavorites,
         addFollowing
     }
 }

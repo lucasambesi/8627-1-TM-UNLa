@@ -8757,7 +8757,7 @@ public final class User {
       "UserDTO\022+\n\016serverResponse\030\002 \001(\0132\023.UserSe" +
       "rverResponse\"Q\n\nUserObjDTO\022\026\n\004user\030\001 \001(\013" +
       "2\010.UserDTO\022+\n\016serverResponse\030\002 \001(\0132\023.Use" +
-      "rServerResponse2\317\002\n\016UserController\022 \n\007ad" +
+      "rServerResponse2\216\003\n\016UserController\022 \n\007ad" +
       "dUser\022\010.UserDTO\032\013.UserObjDTO\022=\n\014addFollo" +
       "wing\022\025.PostFollowingRequest\032\026.PostFollow" +
       "ingResponse\022+\n\rgetFollowings\022\017.GetUserRe" +
@@ -8765,8 +8765,9 @@ public final class User {
       "uest\032\013.UserObjDTO\022J\n\033getByUserAndPasswor" +
       "dRequest\022\036.GetByUserIdAndPasswordRequest" +
       "\032\013.UserObjDTO\022:\n\013addFavorite\022\024.PostFavor" +
-      "iteRequest\032\025.PostFavoriteResponseB\006\n\004grp" +
-      "cb\006proto3"
+      "iteRequest\032\025.PostFavoriteResponse\022=\n\016del" +
+      "eteFavorite\022\024.PostFavoriteRequest\032\025.Post" +
+      "FavoriteResponseB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

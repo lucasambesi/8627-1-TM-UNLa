@@ -9,6 +9,7 @@ service UserController{
   rpc getUser(GetUserRequest)returns (UserObjDTO);
   rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
   rpc addFavorite(PostFavoriteRequest) returns (PostFavoriteResponse);
+  rpc deleteFavorite(PostFavoriteRequest) returns (PostFavoriteResponse);
 }
 
 message UserDTO{

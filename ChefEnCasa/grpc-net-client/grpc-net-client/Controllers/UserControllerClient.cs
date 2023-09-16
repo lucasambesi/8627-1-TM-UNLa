@@ -96,6 +96,24 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("favorites")]
+        public async Task<ActionResult> DeleteRecipe([FromBody] PostFavoriteRequest request)
+        {
+            try
+            {
+                var response = await _service.deleteFavoriteAsync(request);
+                if (response.IdUser == null) return NotFound();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("register")]
         public async Task<ActionResult> Post([FromBody] UserDTO user)

@@ -111,6 +111,14 @@ public static partial class UserController
       __Marshaller_PostFavoriteRequest,
       __Marshaller_PostFavoriteResponse);
 
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::PostFavoriteRequest, global::PostFavoriteResponse> __Method_deleteFavorite = new grpc::Method<global::PostFavoriteRequest, global::PostFavoriteResponse>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "deleteFavorite",
+      __Marshaller_PostFavoriteRequest,
+      __Marshaller_PostFavoriteResponse);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -263,6 +271,26 @@ public static partial class UserController
     public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> addFavoriteAsync(global::PostFavoriteRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_addFavorite, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFavoriteResponse deleteFavorite(global::PostFavoriteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return deleteFavorite(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFavoriteResponse deleteFavorite(global::PostFavoriteRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_deleteFavorite, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> deleteFavoriteAsync(global::PostFavoriteRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return deleteFavoriteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> deleteFavoriteAsync(global::PostFavoriteRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_deleteFavorite, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

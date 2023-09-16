@@ -38,7 +38,7 @@ const style = {
 
     const { getCategoryById } = categoryPresenter()
     const { getStepsByRecipeId } = stepPresenter()
-    const { getById, addFollowing } = userPresenter()
+    const { getById, addFollowing, deleteToFavorites } = userPresenter()
 
     useEffect(() => {
         getCategoryById(recipe.idCategory)
@@ -80,23 +80,25 @@ const style = {
       } 
 
       const deleteFavorite = (recipe) =>{
-            alert(`Proximamente`)
-            // alert(`Receta eliminada ${recipe.title}`)
+        deleteToFavorites(user.idUser, recipe.idRecipe)
+        .then((res) => {
+          if(res)
+            alert(`${recipe.title} eliminada de favoritos`)
+        })
+        .catch((err) => console.log(err));
       } 
 
       const isIdInFollowing = (id) => user.following.some(item => item.idUser === id);
 
     return (
         <Card elevation={3} sx={{ maxWidth: 300, minWidth: 300, minHeight: 425, marginTop: 4, marginRight: 3 }}>
-            <CardActionArea>
-                {
-                    (recipe.images.length > 0) 
-                    ? 
-                        <SwipleableImages images={recipe.images} /> 
-                    :
-                        <RecipeImages images={recipe.images} />
-                }
-            </CardActionArea>
+            {
+                (recipe.images.length > 0) 
+                ? 
+                    <SwipleableImages images={recipe.images} /> 
+                :
+                    <RecipeImages images={recipe.images} />
+            }
             <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
                     {recipe.title.length > 40

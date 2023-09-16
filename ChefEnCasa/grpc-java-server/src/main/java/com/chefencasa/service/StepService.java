@@ -2,8 +2,6 @@ package com.chefencasa.service;
 
 import com.chefencasa.Model.Recipe;
 import com.chefencasa.Model.Step;
-import com.chefencasa.Model.User;
-import com.chefencasa.Repository.RecipeRepository;
 import com.chefencasa.Repository.StepRepository;
 
 import java.util.List;

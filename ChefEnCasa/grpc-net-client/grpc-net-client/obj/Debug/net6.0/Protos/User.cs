@@ -42,14 +42,16 @@ public static partial class UserReflection {
           "CC5Vc2VyRFRPEisKDnNlcnZlclJlc3BvbnNlGAIgASgLMhMuVXNlclNlcnZl",
           "clJlc3BvbnNlIlEKClVzZXJPYmpEVE8SFgoEdXNlchgBIAEoCzIILlVzZXJE",
           "VE8SKwoOc2VydmVyUmVzcG9uc2UYAiABKAsyEy5Vc2VyU2VydmVyUmVzcG9u",
-          "c2UyzwIKDlVzZXJDb250cm9sbGVyEiAKB2FkZFVzZXISCC5Vc2VyRFRPGgsu",
+          "c2UyjgMKDlVzZXJDb250cm9sbGVyEiAKB2FkZFVzZXISCC5Vc2VyRFRPGgsu",
           "VXNlck9iakRUTxI9CgxhZGRGb2xsb3dpbmcSFS5Qb3N0Rm9sbG93aW5nUmVx",
           "dWVzdBoWLlBvc3RGb2xsb3dpbmdSZXNwb25zZRIrCg1nZXRGb2xsb3dpbmdz",
           "Eg8uR2V0VXNlclJlcXVlc3QaCS5Vc2Vyc0RUTxInCgdnZXRVc2VyEg8uR2V0",
           "VXNlclJlcXVlc3QaCy5Vc2VyT2JqRFRPEkoKG2dldEJ5VXNlckFuZFBhc3N3",
           "b3JkUmVxdWVzdBIeLkdldEJ5VXNlcklkQW5kUGFzc3dvcmRSZXF1ZXN0Ggsu",
           "VXNlck9iakRUTxI6CgthZGRGYXZvcml0ZRIULlBvc3RGYXZvcml0ZVJlcXVl",
-          "c3QaFS5Qb3N0RmF2b3JpdGVSZXNwb25zZUIGCgRncnBjYgZwcm90bzM="));
+          "c3QaFS5Qb3N0RmF2b3JpdGVSZXNwb25zZRI9Cg5kZWxldGVGYXZvcml0ZRIU",
+          "LlBvc3RGYXZvcml0ZVJlcXVlc3QaFS5Qb3N0RmF2b3JpdGVSZXNwb25zZUIG",
+          "CgRncnBjYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

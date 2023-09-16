@@ -36,8 +36,10 @@ export const FilterRecipes = (props) => {
         if(e.target.type === "number"){
             value = Number(value)
         }
+
         let tempFilter = { ...filter }
         tempFilter[e.target.name] = value
+        
         setFilter(tempFilter)
     }
 

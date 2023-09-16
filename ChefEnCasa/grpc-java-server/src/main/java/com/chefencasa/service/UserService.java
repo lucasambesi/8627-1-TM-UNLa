@@ -76,6 +76,28 @@ public class UserService {
         return user;
     }
 
+    public User deleteFavoriteRecipes(int idUser, int idRecipe) throws Exception{
+
+        User user = null;
+        Recipe recipe = null;
+
+        try{
+            user = userRepository.getById(idUser);
+            recipe = recipeRepository.getById(idRecipe);
+
+            if(user != null && recipe != null){
+                user.getFavorites().remove(recipe);
+                user = userRepository.saveOrUpdate(user);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("ATENCION: Error en daleteFavoriteRecipes");
+        }
+
+        return user;
+    }
+
     public List<Recipe> getFavorites (int idUser) throws Exception{
         return userRepository.getFavorites(idUser);
     }
