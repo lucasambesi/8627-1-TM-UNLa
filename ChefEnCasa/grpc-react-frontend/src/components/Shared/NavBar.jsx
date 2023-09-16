@@ -20,6 +20,7 @@ export const NavBar = (props) => {
   const toProfile = () => { navigate("/profile") }
   const toRecipes = () => { navigate("/recipes") }
   const toHome = () => { navigate("/home") }
+  const toSearch = () => { navigate("/search") }
 
   const logout = () => {
     setUser(null)
@@ -65,8 +66,9 @@ export const NavBar = (props) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             { user ? (
                 <>                     
-                    <Button onClick={toProfile} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Perfil</Button>
+                    <Button onClick={toSearch} sx={{ my: 2, color: 'white', display: 'block' }}>Explorar</Button>
                     <Button onClick={toRecipes} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Recetas</Button>
+                    <Button onClick={toProfile} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Perfil</Button>
                     <Button onClick={logout} sx={{ my: 2, color: 'white', display: 'block' }}>Cerrar Sesión</Button>
                 </>
             ) : (
