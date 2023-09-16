@@ -27,7 +27,7 @@ const style = {
     p: 4,
   };
 
-  export const Recipe = (props) => {
+  export const RecipeCard = (props) => {
     const {recipe, editMode, edit, favorite, idUser, favoriteMode} = props
     const [user, setUser] = useLocalStorage('user')
 

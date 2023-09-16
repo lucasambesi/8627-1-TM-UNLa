@@ -10,7 +10,7 @@ import dos from '../../assets/recetas/dos.jpg';
 import tres from '../../assets/recetas/tres.jpg'; 
 import cuatro from '../../assets/recetas/cuatro.jpg'; 
 import cinco from '../../assets/recetas/cinco.jpg'; 
-import { Recipe } from '../Recipes/Recipe';
+import { RecipeCard } from '../Recipes/RecipeCard';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 
 import { useNavigate } from 'react-router'
@@ -67,7 +67,7 @@ export const Profile = () => {
                         recipes.slice(0, 2).map((recipe) =>{
                         return (
                           <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '40%', minHeight: '40%' }}>
-                            <Recipe recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
+                            <RecipeCard recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
                           </MDBCol>
                           
                           )

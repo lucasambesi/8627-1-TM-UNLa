@@ -3,7 +3,7 @@ import { recipePresenter } from '../../presenter/RecipePresenter'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import {Recipe} from "./Recipe";
+import {RecipeCard} from "./RecipeCard";
 import { Container } from "@mui/material";
 
 export const FavoriteRecipes = (props) => {
@@ -27,7 +27,7 @@ export const FavoriteRecipes = (props) => {
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
-                    <Recipe recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
+                    <RecipeCard recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
                   )
                 })
                 : 

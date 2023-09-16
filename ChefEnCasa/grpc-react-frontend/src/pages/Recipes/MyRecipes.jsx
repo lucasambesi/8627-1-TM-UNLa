@@ -6,7 +6,7 @@ import { Container } from "@mui/material";
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
-import {Recipe} from "./Recipe";
+import {RecipeCard} from "./RecipeCard";
 import { ModalRecipe } from "./ModalRecipe";
 
 const fabStyle = {
@@ -63,7 +63,7 @@ export const MyRecipes = (props) => {
                 {
                     recipes ? recipes.map((recipe) =>{
                     return (
-                        <Recipe idUser={user.idUser} editMode={true} edit={abrirModalEdicion} favoriteMode={false} recipe={recipe} key={recipe.idRecipe}/>
+                        <RecipeCard idUser={user.idUser} editMode={true} edit={abrirModalEdicion} favoriteMode={false} recipe={recipe} key={recipe.idRecipe}/>
                         )
                     })
                     : 

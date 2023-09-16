@@ -8,7 +8,7 @@ import { userPresenter } from '../../presenter/UserPresenter'
 
 import PaginationControlled from "../../components/Shared/Pagination";
 import { FilterRecipes } from "../../pages/Recipes/FilterRecipes";
-import {Recipe} from "../Recipes/Recipe";
+import {RecipeCard} from "./RecipeCard";
 
 export const SearchRecipe = (props) => {
    const [recipes, setRecipes] = useState([]);
@@ -52,7 +52,7 @@ export const SearchRecipe = (props) => {
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
-                    <Recipe idUser={user.idUser} editMode={false} recipe={recipe} favoriteMode={false} favorite={addToFavorite} key={recipe.idRecipe}/>
+                    <RecipeCard idUser={user.idUser} editMode={false} recipe={recipe} favoriteMode={false} favorite={addToFavorite} key={recipe.idRecipe}/>
                   )
                 })
                 : 
