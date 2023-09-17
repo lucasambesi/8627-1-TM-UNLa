@@ -10,6 +10,7 @@ import { Profile } from './pages/Profile/Profile';
 import { Following } from './pages/Profile/Following';
 import { RecipeTabs } from './pages/Recipes/TabsRecipes';
 import { SearchRecipe } from './pages/Recipes/SearchRecipe';
+import { Recipe } from './pages/Recipes/Recipe';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route index element={user ? <Home user={user}/> : <Login user={user} setUser={setUser}/>} />
           <Route path="/home" element={<Home user={user}/>} />
           <Route path="/search" element={<SearchRecipe user={user}/>} />
+          <Route path="/recipe/:recipeId" element={<Recipe />} />
           <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />

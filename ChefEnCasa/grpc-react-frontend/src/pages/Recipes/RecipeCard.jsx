@@ -4,7 +4,7 @@ import React, { useEffect, useState }  from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Button, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
@@ -14,6 +14,8 @@ import { categoryPresenter } from '../../presenter/CategoryPresenter'
 import { stepPresenter } from '../../presenter/StepPresenter'
 import { userPresenter } from '../../presenter/UserPresenter'
 import { SwipleableImages } from './SwipleableImages';
+
+import { useNavigate } from 'react-router'
 
 const style = {
     position: 'absolute',
@@ -30,6 +32,8 @@ const style = {
   export const RecipeCard = (props) => {
     const {recipe, editMode, edit, favorite, idUser, favoriteMode} = props
     const [user, setUser] = useLocalStorage('user')
+
+    const navigate = useNavigate();
 
     const [open, setOpen] = React.useState(false);
     const [category, setCategory] = useState({});
@@ -66,6 +70,10 @@ const style = {
 
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);  
+
+      const handleDetalles = () => {
+        navigate(`/recipe/${recipe.idRecipe}`)
+      };
 
       const follow = () =>{
         addFollowing(idUser, recipe.idUser)        
@@ -112,11 +120,11 @@ const style = {
                 </Typography>
             </CardContent>
             <CardActions>
-            <Button onClick={handleOpen}>DETALLES</Button>
+            <Button onClick={handleDetalles}>DETALLES</Button>
             {
                 (editMode) 
                 ? 
-                <Button onClick={() => edit(recipe)}>Editar</Button> 
+                 null
                 : 
                 (
                 (recipe.idUser != idUser && !favoriteMode)

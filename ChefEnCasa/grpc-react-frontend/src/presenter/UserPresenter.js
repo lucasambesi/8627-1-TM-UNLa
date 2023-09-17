@@ -130,12 +130,45 @@ export const userPresenter = () => {
         }
     }
 
+    const isInFavorites = async (idUser, idRecipe) => {
+
+        //TODO: Refactor crear endpoint para consultar si la receta esta en favs
+        try {
+
+            if(useMock == 'true'){
+                return getMock().recipes
+            }
+
+            const res = await axios.get(`${baseUrl}/recipes/favorites`, {
+                params: {
+                  userId: idUser
+                }
+              });
+
+            const result = await res.data
+
+            return existRecipe(result, idRecipe)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    function existRecipe(recetas, idRecipe) {     
+        for (let i = 0; i < recetas.length; i++) {
+          if (recetas[i].idRecipe == idRecipe) {
+            return true; 
+          }
+        }
+        return false;
+      }
+
     return {
         getById,
         login,
         register,
         addToFavorites,
         deleteToFavorites,
-        addFollowing
+        addFollowing,
+        isInFavorites
     }
 }

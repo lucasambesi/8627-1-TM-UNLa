@@ -21,8 +21,6 @@ export const MyRecipes = (props) => {
 
     const [open, setOpen] = useState(false);
     const [esEdicion, setEsEdicion] = useState(false);
-    const [openEdicion, setOpenEdicion] = useState(false);
-    const [productoAEditar, setProductoAEditar] = useState({});
 
     const [recipes, setRecipes] = useState([]);
     const [recipe, setRecipe] = useState({
@@ -48,13 +46,6 @@ export const MyRecipes = (props) => {
         setEsEdicion(false)
         setOpen(true);
       };
-
-      const abrirModalEdicion = (recipe) => {
-        setProductoAEditar(recipe)
-        console.log("receta a editar", productoAEditar)
-        setEsEdicion(true)
-        setOpenEdicion(true);
-      };
  
      return (
         <Container sx={{  justifySelf:'center', alignSelf: 'center'}}>
@@ -63,7 +54,7 @@ export const MyRecipes = (props) => {
                 {
                     recipes ? recipes.map((recipe) =>{
                     return (
-                        <RecipeCard idUser={user.idUser} editMode={true} edit={abrirModalEdicion} favoriteMode={false} recipe={recipe} key={recipe.idRecipe}/>
+                        <RecipeCard idUser={user.idUser} editMode={true} favoriteMode={false} recipe={recipe} key={recipe.idRecipe}/>
                         )
                     })
                     : 
@@ -79,7 +70,6 @@ export const MyRecipes = (props) => {
                 <AddIcon />
             </Fab>
             <ModalRecipe editMode={false} user={user} open={open} setOpen={setOpen} rcp={recipe} />
-            <ModalRecipe editMode={true} user={user} open={openEdicion} setOpen={setOpenEdicion} rcp={productoAEditar} />
         </Container>
      );
    }
