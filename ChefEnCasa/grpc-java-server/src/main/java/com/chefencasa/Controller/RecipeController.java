@@ -1,5 +1,6 @@
 package com.chefencasa.Controller;
 
+import com.chefencasa.Infraestructure.Producer.CreateRecipeProducer;
 import com.chefencasa.Model.RecipeImage;
 import com.chefencasa.Model.Step;
 import com.chefencasa.service.RecipeService;
@@ -14,6 +15,7 @@ import java.util.List;
 public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplBase {
     public RecipeService recipeService = RecipeService.getInstance();
     public UserService userService = UserService.getInstance();
+
     public RecipeController() {
     }
 
@@ -65,6 +67,7 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
             response.setRecipe(this.mapRecipeDTO(recipe));
             serverResponse.setCode(200);
             serverResponse.setMsg("Recipe found");
+
         } catch (Exception var7) {
             serverResponse.setCode(500);
             serverResponse.setMsg(var7.getMessage());

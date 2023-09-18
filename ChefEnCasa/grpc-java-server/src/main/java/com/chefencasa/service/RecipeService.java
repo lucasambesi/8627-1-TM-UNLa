@@ -1,9 +1,9 @@
 package com.chefencasa.service;
 
+import com.chefencasa.Infraestructure.Producer.CreateRecipeProducer;
 import com.chefencasa.Model.*;
 import com.chefencasa.Repository.RecipeRepository;
 import com.chefencasa.Repository.StepRepository;
-import com.chefencasa.Repository.UserRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -27,6 +27,8 @@ public class RecipeService {
     StepRepository stepRepository = StepRepository.getInstance();
 
     CategoryService categoryService = CategoryService.getInstance();
+
+    CreateRecipeProducer createRecipeProducer = CreateRecipeProducer.getInstance();
 
     public Recipe addRecipe(grpc.Recipe.RecipeDTO recipeDTO) throws Exception {
         Recipe toPersist = mapToEntity(recipeDTO);
@@ -98,7 +100,13 @@ public class RecipeService {
     }
 
     public Recipe getById (int idRecipe) throws Exception{
-        return recipeRepository.getById(idRecipe);
+
+        Recipe recipe = recipeRepository.getById(idRecipe);
+
+        createRecipeProducer.send(recipe.getTitle(), recipe);
+        createRecipeProducer.close();
+
+        return recipe;
     }
 
     public List<Recipe> getAll() throws Exception{
