@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './styles/App.css'
 import { NavBar } from "./components/Shared/NavBar";
 import Login from './pages/Authentication/Login'
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useLocalStorage } from './helpers/useLocalStorage';
 import {Register} from './pages/Authentication/Register';

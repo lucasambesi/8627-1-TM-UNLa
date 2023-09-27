@@ -5,6 +5,7 @@ export const recipePresenter = () => {
 
     const useMock = import.meta.env.VITE_REACT_BACKEND_MOCK
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
+    const baseKafkaUrl = import.meta.env.VITE_REACT_NODE_KAFKA_URL
 
     const {getMock} = recipePresenterMock()
 
@@ -18,6 +19,25 @@ export const recipePresenter = () => {
             const res = await axios.get(`${baseUrl}/recipes`);
             
             const result = await res.data;            
+            return result
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    const getKafkaRecipes = async (countRecipes) => {
+        try {
+            const topic = import.meta.env.VITE_REACT_TOPIC_NEWS
+            
+            const res = await axios.get(`${baseKafkaUrl}/recipes`, {
+                params: {                  
+                  topic: topic,
+                  maxMessages: countRecipes
+                }
+              });
+            
+            const result = await res.data;
+            
             return result
         } catch (err) {
             console.error(err)
@@ -169,6 +189,7 @@ export const recipePresenter = () => {
 
     return {
         getRecipes,
+        getKafkaRecipes,
         getRecipesByUserId,
         addRecipe,
         getById,
