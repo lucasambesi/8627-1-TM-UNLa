@@ -1,11 +1,22 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); 
 
 const recipeRoutes = require('./src/routes/recipeRoutes');
 
 const myConnection = require('express-myconnection');
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
 app.set('port', 5000);
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
