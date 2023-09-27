@@ -8,7 +8,7 @@ export const RecipeNew = (props) => {
     const navigate = useNavigate();
 
     const handleDetalles = () => {
-        navigate(`/recipe/${recipe.idRecipe}`)
+        navigate(`/recipe/${recipe.recipeId}`)
       };
 
     return (
