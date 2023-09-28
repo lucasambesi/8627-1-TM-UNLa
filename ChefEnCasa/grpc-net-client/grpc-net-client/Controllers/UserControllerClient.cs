@@ -98,7 +98,7 @@ namespace grpc_net_client.Controllers
 
         [HttpDelete]
         [Route("favorites")]
-        public async Task<ActionResult> DeleteRecipe([FromBody] PostFavoriteRequest request)
+        public async Task<ActionResult> DeleteRecipe([FromQuery] PostFavoriteRequest request)
         {
             try
             {

@@ -43,7 +43,7 @@ public class User {
     private Set<Recipe> recipes = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
-            CascadeType.REFRESH}, targetEntity = Recipe.class)
+            CascadeType.ALL}, targetEntity = Recipe.class)
     @JoinTable(
             name = "User_Recipe_Favorites",
             joinColumns = @JoinColumn(name = "User_idUser"),

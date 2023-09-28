@@ -94,16 +94,14 @@ export const userPresenter = () => {
         try {
             if(useMock == 'true'){
                 return "success"
-            }
+            }            
 
-            const body ={
-                "idUser": idUser,
-                "idRecipe": idRecipe
-              }
-              
-            console.log("body = ", body)
-            
-            const res = await axios.delete(`${baseUrl}/user/favorites`, body);
+            const res = await axios.delete(`${baseUrl}/user/favorites`, {
+                params: {
+                    "idUser": idUser,
+                    "idRecipe": idRecipe
+                }
+              });
 
             return res.data;
         } catch (err) {

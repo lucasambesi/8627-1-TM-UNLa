@@ -4,10 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter
@@ -46,4 +43,17 @@ public class Recipe {
 
     @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="recipe")
     private Set<RecipeImage> images;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return idRecipe == recipe.idRecipe;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idRecipe);
+    }
 }
