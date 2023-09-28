@@ -119,6 +119,14 @@ public static partial class UserController
       __Marshaller_PostFavoriteRequest,
       __Marshaller_PostFavoriteResponse);
 
+  [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+  static readonly grpc::Method<global::PostFollowingRequest, global::PostFollowingResponse> __Method_deleteFollowing = new grpc::Method<global::PostFollowingRequest, global::PostFollowingResponse>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "deleteFollowing",
+      __Marshaller_PostFollowingRequest,
+      __Marshaller_PostFollowingResponse);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -291,6 +299,26 @@ public static partial class UserController
     public virtual grpc::AsyncUnaryCall<global::PostFavoriteResponse> deleteFavoriteAsync(global::PostFavoriteRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_deleteFavorite, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFollowingResponse deleteFollowing(global::PostFollowingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return deleteFollowing(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual global::PostFollowingResponse deleteFollowing(global::PostFollowingRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_deleteFollowing, null, options, request);
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFollowingResponse> deleteFollowingAsync(global::PostFollowingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return deleteFollowingAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    public virtual grpc::AsyncUnaryCall<global::PostFollowingResponse> deleteFollowingAsync(global::PostFollowingRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_deleteFollowing, null, options, request);
     }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
