@@ -40,7 +40,7 @@ export const Profile = () => {
               <MDBCard>
               <div className="rounded-top text-white d-flex flex-row" style={{ backgroundImage: 'url("https://malevamag.com/wp-content/uploads/2015/02/10731090_732574466835103_7682023087681209921_n.jpg%22)', backgroundPosition: "center", height: '200px' }}>
                   <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                    <MDBCardImage src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                       alt="Generic placeholder image" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>

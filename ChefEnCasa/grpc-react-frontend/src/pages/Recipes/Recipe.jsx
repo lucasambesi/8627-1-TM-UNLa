@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Container, Button, Paper } from "@mui/material";
+import { Container, Button, Paper, Divider } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
@@ -13,6 +13,7 @@ import { recipePresenter } from '../../presenter/RecipePresenter'
 
 import { useParams } from 'react-router-dom';
 import { ModalRecipe } from "./ModalRecipe";
+import { Comments } from "./Recipe/Comments";
 
 export const Recipe = () => {
 
@@ -107,7 +108,7 @@ export const Recipe = () => {
       } 
 
     return (
-        <Container maxWidth="sm" sx={{ marginTop:'2%'}}>
+        <Container maxWidth="lg" sx={{ marginTop:'2%'}}>
             <Paper elevation={3} sx={{padding:"20px"}}>
 
                 <Stack direction="row" justifyContent={"space-between"} sx={{ marginTop:'20px'}}>
@@ -171,7 +172,7 @@ export const Recipe = () => {
                 </Typography>
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
                     Pasos:
-                </Typography>
+                </Typography>                
                 {
                     steps ? steps.map((step , index) =>{
                     return (
@@ -182,6 +183,8 @@ export const Recipe = () => {
                     })
                     : "No posee pasos"
                 } 
+                <Divider component="div" variant="fullWidth" sx={{marginTop: "20px"}} />
+                <Comments recipe={recipe} user={user}/>
             </Paper>
             <ModalRecipe editMode={true} user={user} open={openEdicion} setOpen={setOpenEdicion} rcp={RecipeAEditar} />
         </Container>
