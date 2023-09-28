@@ -49,7 +49,36 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
             response.setIdFollowing(idFollowing);
 
             serverResponse.setCode(200);
-            serverResponse.setMsg("Following creado");
+            serverResponse.setMsg("Following created");
+        }
+        catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void deleteFollowing(User.PostFollowingRequest request, StreamObserver<User.PostFollowingResponse> responseObserver) {
+
+        int idUser = request.getIdUser();
+        int idFollowing = request.getIdFollowing();
+
+        com.chefencasa.Model.User user = null;
+
+        User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
+        User.PostFollowingResponse.Builder response =  User.PostFollowingResponse.newBuilder();
+
+        try {
+            user = this.userService.deleteFollowing(idUser, idFollowing);
+
+            response.setIdUser(idUser);
+            response.setIdFollowing(idFollowing);
+
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Following deleted");
         }
         catch (Exception e) {
             serverResponse.setCode(500);
@@ -78,7 +107,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
             response.setIdrecipe(idFavorite);
 
             serverResponse.setCode(200);
-            serverResponse.setMsg("Favorito creado");
+            serverResponse.setMsg("Favorit created");
         }
         catch (Exception e) {
             serverResponse.setCode(500);
@@ -107,7 +136,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
             response.setIdrecipe(idFavorite);
 
             serverResponse.setCode(200);
-            serverResponse.setMsg("Favorito eliminado");
+            serverResponse.setMsg("Favorit deleted");
         }
         catch (Exception e) {
             serverResponse.setCode(500);

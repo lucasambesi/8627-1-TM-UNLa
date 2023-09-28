@@ -128,6 +128,26 @@ export const userPresenter = () => {
         }
     }
 
+    const deleteFollowing = async (idUser, idFollowing) => {
+        try {
+            if(useMock == 'true'){
+                return "success"
+            }            
+
+            const res = await axios.delete(`${baseUrl}/user/following`, {
+                params: {
+                    "idUser": idUser,
+                    "IdFollowing": idFollowing
+                }
+              });
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
+
     const isInFavorites = async (idUser, idRecipe) => {
 
         //TODO: Refactor crear endpoint para consultar si la receta esta en favs
@@ -167,6 +187,7 @@ export const userPresenter = () => {
         addToFavorites,
         deleteToFavorites,
         addFollowing,
+        deleteFollowing,
         isInFavorites
     }
 }

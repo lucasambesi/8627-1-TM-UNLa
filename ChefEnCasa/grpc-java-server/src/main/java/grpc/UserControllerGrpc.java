@@ -251,6 +251,38 @@ public final class UserControllerGrpc {
      return getDeleteFavoriteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest,
+      grpc.User.PostFollowingResponse> getDeleteFollowingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "deleteFollowing",
+      requestType = grpc.User.PostFollowingRequest.class,
+      responseType = grpc.User.PostFollowingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest,
+      grpc.User.PostFollowingResponse> getDeleteFollowingMethod() {
+    io.grpc.MethodDescriptor<grpc.User.PostFollowingRequest, grpc.User.PostFollowingResponse> getDeleteFollowingMethod;
+    if ((getDeleteFollowingMethod = UserControllerGrpc.getDeleteFollowingMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getDeleteFollowingMethod = UserControllerGrpc.getDeleteFollowingMethod) == null) {
+          UserControllerGrpc.getDeleteFollowingMethod = getDeleteFollowingMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.PostFollowingRequest, grpc.User.PostFollowingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "deleteFollowing"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFollowingRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.PostFollowingResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("deleteFollowing"))
+                  .build();
+          }
+        }
+     }
+     return getDeleteFollowingMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -327,6 +359,13 @@ public final class UserControllerGrpc {
       asyncUnimplementedUnaryCall(getDeleteFavoriteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void deleteFollowing(grpc.User.PostFollowingRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteFollowingMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -378,6 +417,13 @@ public final class UserControllerGrpc {
                 grpc.User.PostFavoriteRequest,
                 grpc.User.PostFavoriteResponse>(
                   this, METHODID_DELETE_FAVORITE)))
+          .addMethod(
+            getDeleteFollowingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.PostFollowingRequest,
+                grpc.User.PostFollowingResponse>(
+                  this, METHODID_DELETE_FOLLOWING)))
           .build();
     }
   }
@@ -455,6 +501,14 @@ public final class UserControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDeleteFavoriteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void deleteFollowing(grpc.User.PostFollowingRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDeleteFollowingMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -522,6 +576,13 @@ public final class UserControllerGrpc {
     public grpc.User.PostFavoriteResponse deleteFavorite(grpc.User.PostFavoriteRequest request) {
       return blockingUnaryCall(
           getChannel(), getDeleteFavoriteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.PostFollowingResponse deleteFollowing(grpc.User.PostFollowingRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getDeleteFollowingMethod(), getCallOptions(), request);
     }
   }
 
@@ -598,6 +659,14 @@ public final class UserControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDeleteFavoriteMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.PostFollowingResponse> deleteFollowing(
+        grpc.User.PostFollowingRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDeleteFollowingMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_USER = 0;
@@ -607,6 +676,7 @@ public final class UserControllerGrpc {
   private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 4;
   private static final int METHODID_ADD_FAVORITE = 5;
   private static final int METHODID_DELETE_FAVORITE = 6;
+  private static final int METHODID_DELETE_FOLLOWING = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -652,6 +722,10 @@ public final class UserControllerGrpc {
         case METHODID_DELETE_FAVORITE:
           serviceImpl.deleteFavorite((grpc.User.PostFavoriteRequest) request,
               (io.grpc.stub.StreamObserver<grpc.User.PostFavoriteResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_FOLLOWING:
+          serviceImpl.deleteFollowing((grpc.User.PostFollowingRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.PostFollowingResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -721,6 +795,7 @@ public final class UserControllerGrpc {
               .addMethod(getGetByUserAndPasswordRequestMethod())
               .addMethod(getAddFavoriteMethod())
               .addMethod(getDeleteFavoriteMethod())
+              .addMethod(getDeleteFollowingMethod())
               .build();
         }
       }

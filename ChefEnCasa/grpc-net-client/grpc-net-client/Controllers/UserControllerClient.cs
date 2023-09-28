@@ -78,6 +78,24 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("following")]
+        public async Task<ActionResult> DeleteFollowing([FromQuery] PostFollowingRequest request)
+        {
+            try
+            {
+                var response = await _service.deleteFollowingAsync(request);
+                if (response.IdUser == null) return NotFound();
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("favorites")]
         public async Task<ActionResult> FavoriteRecipe([FromBody] PostFavoriteRequest request)

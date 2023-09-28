@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -43,7 +44,7 @@ public class User {
     private Set<Recipe> recipes = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
-            CascadeType.ALL}, targetEntity = Recipe.class)
+            CascadeType.REMOVE}, targetEntity = Recipe.class)
     @JoinTable(
             name = "User_Recipe_Favorites",
             joinColumns = @JoinColumn(name = "User_idUser"),
@@ -52,6 +53,19 @@ public class User {
     private Set<Recipe> favorites = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
-            CascadeType.REFRESH}, targetEntity = User.class)
+            CascadeType.REMOVE}, targetEntity = User.class)
     private Set<User> following = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return idUser == user.idUser;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idUser);
+    }
 }

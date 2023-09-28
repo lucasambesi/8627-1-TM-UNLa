@@ -7,16 +7,25 @@ import { Container } from "@mui/material";
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
+import { userPresenter } from '../../presenter/UserPresenter'
 
 export const Following =() => {
   const [user, setUser] = useLocalStorage('user')
 
+  const { deleteFollowing } = userPresenter()
+
   const unfollow = (follow) => {
-    let userTemp = user
-    userTemp.following = userTemp.following.filter(item => item.idUser !== follow.idUser);
-    //Falta ir al backend
-    setUser(userTemp)
-    alert(`Eliminaste a ${follow.name} ${follow.lastName}`)    
+
+    deleteFollowing(user.idUser, follow.idUser)
+    .then((res) => {
+      if(res){
+        let userTemp = user
+        userTemp.following = userTemp.following.filter(item => item.idUser !== follow.idUser);
+        setUser(userTemp)
+        alert(`Eliminaste a ${follow.name} ${follow.lastName}`)    
+      }
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
