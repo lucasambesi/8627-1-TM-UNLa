@@ -29,7 +29,7 @@ export const recipePresenter = () => {
         try {
             const topic = import.meta.env.VITE_REACT_TOPIC_NEWS
             
-            const res = await axios.get(`${baseKafkaUrl}/recipes`, {
+            const res = await axios.get(`${baseKafkaUrl}/recipes/recipes`, {
                 params: {                  
                   topic: topic,
                   maxMessages: countRecipes
@@ -41,6 +41,25 @@ export const recipePresenter = () => {
             return result
         } catch (err) {
             console.error(err)
+        }
+    }
+
+    const sendCommentKafka = async (idUser, idRecipe, comment) => {
+        try {
+            const topic = import.meta.env.VITE_REACT_TOPIC_COMMENTS
+
+            const body = {
+                "topic": topic,
+                "idUser": idUser,
+                "idRecipe": idRecipe,
+                "comment": comment
+            }
+
+            const res = await axios.post(`${baseKafkaUrl}/recipes/send-comment`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
         }
     }
 
@@ -195,6 +214,7 @@ export const recipePresenter = () => {
         getById,
         updateRecipe,
         getByFilter,
-        getFavorites
+        getFavorites,
+        sendCommentKafka
     }
 }
