@@ -44,7 +44,7 @@ export const recipePresenter = () => {
         }
     }
 
-    const sendCommentKafka = async (idUser, idRecipe, comment) => {
+    const sendCommentKafka = async (idUser, idRecipe, comment, sendPopularity) => {
         try {
             const topic = import.meta.env.VITE_REACT_TOPIC_COMMENTS
 
@@ -54,8 +54,30 @@ export const recipePresenter = () => {
                 "idRecipe": idRecipe,
                 "comment": comment
             }
-
             const res = await axios.post(`${baseKafkaUrl}/recipes/send-comment`, body);
+            console.log("🚀 ~ file: RecipePresenter.js:64 ~ sendCommentKafka ~ res:", res)
+
+            if(sendPopularity && res.status == "200"){
+                const resKafka = await sendPopularityKafka(idRecipe, '+1')
+            }
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
+    const sendPopularityKafka = async (idRecipe, score) => {
+        try {
+            const topic = import.meta.env.VITE_REACT_TOPIC_POPULARITY_RECIPE
+
+            const body = {
+                "topic": topic,
+                "idRecipe": idRecipe,
+                "score": score,
+            }
+
+            const res = await axios.post(`${baseKafkaUrl}/recipes/popularity`, body);
 
             return res.data;
         } catch (err) {
@@ -208,13 +230,14 @@ export const recipePresenter = () => {
 
     return {
         getRecipes,
-        getKafkaRecipes,
         getRecipesByUserId,
         addRecipe,
         getById,
         updateRecipe,
         getByFilter,
         getFavorites,
-        sendCommentKafka
+        getKafkaRecipes,
+        sendCommentKafka,
+        sendPopularityKafka
     }
 }

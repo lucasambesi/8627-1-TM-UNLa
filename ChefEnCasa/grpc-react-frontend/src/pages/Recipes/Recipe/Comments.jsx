@@ -28,11 +28,12 @@ export const Comments = (props) => {
             setComment(value) 
         }
     
-        const sendComment = async () => {            
+        const sendComment = async () => {
+            const sendPopularity = user.idUser != recipe.idUser
+
             if(comment != ""){
-                sendCommentKafka(user.idUser, recipe.idRecipe, comment)
+                sendCommentKafka(user.idUser, recipe.idRecipe, comment, sendPopularity)
                 .then((res) => {
-                    console.log("🚀 ~ file: Comments.jsx:36 ~ .then ~ res:", res)
                     setComment("")
                     alert("¡El comentario fue enviado, se visualizará más tarde!")
                 })

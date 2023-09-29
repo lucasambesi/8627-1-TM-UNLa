@@ -1,9 +1,12 @@
 import axios from "axios"
+import { recipePresenter } from './RecipePresenter'
 
 export const userPresenter = () => {
 
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
     const baseKafkaUrl = import.meta.env.VITE_REACT_NODE_KAFKA_URL
+
+    const { sendPopularityKafka: sendPopularityRecipeKafka } = recipePresenter()
 
     const sendPopularityKafka = async (idUser, score) => {
         try {
@@ -81,8 +84,9 @@ export const userPresenter = () => {
               }
             
             const res = await axios.post(`${baseUrl}/user/favorites`, body);
-            if(res.status = "200"){
+            if(res.status == "200"){
                 const resKafka = await sendPopularityKafka(idAutor, '+1')
+                const resRecipeKafka = sendPopularityRecipeKafka(idRecipe, '+1')
             }
 
             return res.data;
@@ -100,8 +104,9 @@ export const userPresenter = () => {
                 }
               });
 
-            if(res.status = "200"){
+            if(res.status == "200"){
                 const resKafka = await sendPopularityKafka(idAutor, '-1')
+                const resRecipeKafka = sendPopularityRecipeKafka(idRecipe, '-1')
             }
 
             return res.data;
@@ -118,7 +123,7 @@ export const userPresenter = () => {
               }
             
             const res = await axios.post(`${baseUrl}/user/following`, body);
-            if(res.status = "200"){
+            if(res.status == "200"){
                 const resKafka = await sendPopularityKafka(idFollowing, '+1')
             }
 
