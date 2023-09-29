@@ -14,7 +14,7 @@ callback.sendPopularity = async (req, res) => {
       res.json(response);
 
     } catch (error) {
-      console.error("produceSendPopularityCallbak: " + error.message);
+      console.error("produceUserSendPopularityCallbak: " + error.message);
       res.json(serverError(error))
     }
 };

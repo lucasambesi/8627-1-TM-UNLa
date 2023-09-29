@@ -9,5 +9,6 @@ router.get('/', (   req, res)=>{
 
 router.get('/api/recipes/recipes', recipeCallbacks.getAll);
 router.post('/api/recipes/send-comment', recipeCallbacks.sendComment);
+router.post('/api/recipes/popularity', recipeCallbacks.sendPopularity);
 
 module.exports = router

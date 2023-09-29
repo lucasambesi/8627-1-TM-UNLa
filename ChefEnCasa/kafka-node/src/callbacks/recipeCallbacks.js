@@ -17,11 +17,13 @@ callback.getAll = async (req, res) => {
 };
 
 callback.sendComment = async (req, res) => {
-    console.log("entro aca sendComment")
     try {
-      const message = req.body
       const topic = req.body.topic
-      console.log("🚀 ~ file: recipeCallbacks.js:23 ~ topic:", topic)
+      const message = {
+        "idUser": req.body.idUser,
+        "idRecipe": req.body.idRecipe,
+        "comment": req.body.comment
+      }
       
       const response = producer.sendMessage(message, topic);      
       res.json(response);
@@ -30,6 +32,23 @@ callback.sendComment = async (req, res) => {
       console.error("produceCommentCallbak: " + error.message);
       res.json(serverError(error))
     }
+};
+
+callback.sendPopularity = async (req, res) => {
+  try {
+    const topic = req.body.topic
+    const message = {
+      "idRecipe": req.body.idRecipe,
+      "score": req.body.score
+    }
+
+    const response = producer.sendMessage(message, topic);      
+    res.json(response);
+
+  } catch (error) {
+    console.error("produceRecipeSendPopularityCallbak: " + error.message);
+    res.json(serverError(error))
+  }
 };
 
 module.exports = callback;
