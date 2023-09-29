@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Container, Button, Paper, Divider } from "@mui/material";
+import { Container, Button, Paper, Divider, Rating } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
@@ -14,6 +14,7 @@ import { recipePresenter } from '../../presenter/RecipePresenter'
 import { useParams } from 'react-router-dom';
 import { ModalRecipe } from "./ModalRecipe";
 import { Comments } from "./Recipe/Comments";
+import { CustomRating } from "./Recipe/Rating";
 
 export const Recipe = () => {
 
@@ -184,7 +185,21 @@ export const Recipe = () => {
                     : "No posee pasos"
                 } 
                 <Divider component="div" variant="fullWidth" sx={{marginTop: "20px"}} />
-                <Comments recipe={recipe} user={user}/>
+                <Stack spacing={2} sx={{marginTop:"20px"}}>
+                    {
+                        (recipe.idUser != user.idUser)
+                        ?
+                        <Stack spacing={2}>
+                            <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
+                                Tu valoración:
+                            </Typography>
+                            <CustomRating idRecipe={recipeId} user={user} readOnly={"false"}/>
+                        </Stack>
+                        :
+                        null
+                    } 
+                    <Comments recipe={recipe} user={user}/>
+                </Stack>
             </Paper>
             <ModalRecipe editMode={true} user={user} open={openEdicion} setOpen={setOpenEdicion} rcp={RecipeAEditar} />
         </Container>

@@ -44,7 +44,7 @@ export const Comments = (props) => {
         }
     
      return (
-        <Box sx={{ flexGrow: 1, marginTop: 5, alignContent:'center' }}>
+        <Box sx={{ flexGrow: 1, alignContent:'center' }}>
             <Stack spacing={1}>
                 <Box>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
