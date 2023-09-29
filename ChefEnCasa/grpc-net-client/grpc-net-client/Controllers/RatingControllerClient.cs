@@ -78,7 +78,7 @@ namespace grpc_net_client.Controllers
             }
         }
 
-        [HttpGet("rating/user-recipe")]
+        [HttpGet("user-recipe")]
         public async Task<ActionResult> Get(int idUser, int idRecipe)
         {
             try
