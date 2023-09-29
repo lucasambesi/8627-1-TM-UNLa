@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Protos\Category.proto" />
+    <None Remove="Protos\Rating.proto" />
     <None Remove="Protos\Recipe.proto" />
     <None Remove="Protos\Step.proto" />
     <None Remove="Protos\User.proto" />
@@ -32,6 +33,7 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\Category.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Rating.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\Recipe.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\Step.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\User.proto" GrpcServices="Client" />
