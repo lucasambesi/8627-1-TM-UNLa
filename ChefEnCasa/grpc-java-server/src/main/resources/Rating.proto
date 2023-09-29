@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_package = "grpc";
+
+service RatingController{
+  rpc addRating(RatingDTO) returns (RatingObjDTO);
+  rpc updateRating(RatingDTO) returns (RatingObjDTO);
+  rpc getRating(GetRatingRequest)returns (RatingObjDTO);
+  rpc getRatingByUserAndRecipe(UserAndRecipeRatingRequest) returns (RatingObjDTO);
+}
+
+message EmptyRating {
+}
+
+message RatingServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+message RatingDTO{
+  int32 idRating=1;
+  int32 idUser=2;
+  int32 idRecipe=3;
+  int32 value = 4;
+}
+
+message RatingObjDTO{
+  RatingDTO rating = 1;
+  RatingServerResponse serverResponse = 2;
+}
+
+message GetRatingRequest{
+  int32 idRating=1;
+}
+
+message UserAndRecipeRatingRequest{
+  int32 idUser=1;
+  int32 idRecipe=2;
+}
+
+message RatingsDTO{
+  repeated RatingDTO ratings=1;
+  RatingServerResponse serverResponse = 2;
+}
