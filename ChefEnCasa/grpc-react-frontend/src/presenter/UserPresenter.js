@@ -1,20 +1,30 @@
 import axios from "axios"
-import {userPresenterMock} from './Mocks/UserMock'
 
 export const userPresenter = () => {
 
-    const useMock = import.meta.env.VITE_REACT_BACKEND_MOCK
     const baseUrl = import.meta.env.VITE_REACT_BACKEND_URL
+    const baseKafkaUrl = import.meta.env.VITE_REACT_NODE_KAFKA_URL
 
-    const { getMock } = userPresenterMock()
+    const sendPopularityKafka = async (idUser, score) => {
+        try {
+            const topic = import.meta.env.VITE_REACT_TOPIC_POPULARITY_USER
+
+            const body = {
+                "topic": topic,
+                "idUser": idUser,
+                "score": score,
+            }
+
+            const res = await axios.post(`${baseKafkaUrl}/users/popularity`, body);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
 
     const getById = async (idUser) => {
         try {
-
-            if(useMock == 'true'){
-                return getMock()
-            }
-
             const res = await axios.get(`${baseUrl}/user`, {
                 params: {
                   idUser: idUser
@@ -31,10 +41,6 @@ export const userPresenter = () => {
 
     const login = async (username, password) => {
         try {
-            if(useMock == 'true'){
-                return getMock()
-            }
-
             const body = {
                 user: username,
                 password: password
@@ -50,10 +56,6 @@ export const userPresenter = () => {
 
     const register = async (user) => {
         try {
-            if(useMock == 'true'){
-                return getMock()
-            }
-
             const body ={
                 "name": user.name,
                 "lastName": user.lastName,
@@ -71,18 +73,17 @@ export const userPresenter = () => {
         }
     }
 
-    const addToFavorites = async (idUser, idRecipe) => {
+    const addToFavorites = async (idUser, idRecipe, idAutor) => {
         try {
-            if(useMock == 'true'){
-                return "success"
-            }
-
             const body ={
                 "idUser": idUser,
                 "idRecipe": idRecipe
               }
             
             const res = await axios.post(`${baseUrl}/user/favorites`, body);
+            if(res.status = "200"){
+                const resKafka = await sendPopularityKafka(idAutor, '+1')
+            }
 
             return res.data;
         } catch (err) {
@@ -90,18 +91,18 @@ export const userPresenter = () => {
         }
     }
 
-    const deleteToFavorites = async (idUser, idRecipe) => {
-        try {
-            if(useMock == 'true'){
-                return "success"
-            }            
-
+    const deleteToFavorites = async (idUser, idRecipe, idAutor) => {
+        try {        
             const res = await axios.delete(`${baseUrl}/user/favorites`, {
                 params: {
                     "idUser": idUser,
                     "idRecipe": idRecipe
                 }
               });
+
+            if(res.status = "200"){
+                const resKafka = await sendPopularityKafka(idAutor, '-1')
+            }
 
             return res.data;
         } catch (err) {
@@ -111,16 +112,15 @@ export const userPresenter = () => {
 
     const addFollowing = async (idUser, idFollowing) => {
         try {
-            if(useMock == 'true'){
-                return "success"
-            }
-
             const body ={
                 "idUser": idUser,
                 "idFollowing": idFollowing
               }
             
             const res = await axios.post(`${baseUrl}/user/following`, body);
+            if(res.status = "200"){
+                const resKafka = await sendPopularityKafka(idFollowing, '+1')
+            }
 
             return res.data;
         } catch (err) {
@@ -130,16 +130,16 @@ export const userPresenter = () => {
 
     const deleteFollowing = async (idUser, idFollowing) => {
         try {
-            if(useMock == 'true'){
-                return "success"
-            }            
-
             const res = await axios.delete(`${baseUrl}/user/following`, {
                 params: {
                     "idUser": idUser,
                     "IdFollowing": idFollowing
                 }
               });
+
+              if(res.status== "200"){            
+                  const resKafka = await sendPopularityKafka(idFollowing, '-1')
+              }
 
             return res.data;
         } catch (err) {
@@ -152,11 +152,6 @@ export const userPresenter = () => {
 
         //TODO: Refactor crear endpoint para consultar si la receta esta en favs
         try {
-
-            if(useMock == 'true'){
-                return getMock().recipes
-            }
-
             const res = await axios.get(`${baseUrl}/recipes/favorites`, {
                 params: {
                   userId: idUser
@@ -188,6 +183,7 @@ export const userPresenter = () => {
         deleteToFavorites,
         addFollowing,
         deleteFollowing,
-        isInFavorites
+        isInFavorites,
+        sendPopularityKafka
     }
 }

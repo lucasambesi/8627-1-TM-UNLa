@@ -90,7 +90,7 @@ export const Recipe = () => {
     } 
 
     const addToFavorite = (recipe) => {
-        addToFavorites(user.idUser, recipe.idRecipe)
+        addToFavorites(user.idUser, recipe.idRecipe, recipe.idUser)
         .then((res) => {
           if(res)
             alert(`${recipe.title} agregada a favoritos`)
