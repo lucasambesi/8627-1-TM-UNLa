@@ -29,6 +29,10 @@ public class Recipe {
     @Type(type="int")
     private int preparationTime;
 
+    @Column(name = "popularity", nullable = false)
+    @Type(type="int")
+    private int popularity;
+
     @ManyToOne (cascade={CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn (name = "category")
     private Category category;

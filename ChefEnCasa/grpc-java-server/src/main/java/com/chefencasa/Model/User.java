@@ -3,6 +3,7 @@ package com.chefencasa.Model;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -37,6 +38,10 @@ public class User {
 
     @Column(name="password")
     private String password;
+
+    @Column(name = "popularity", nullable = false)
+    @Type(type="int")
+    private int popularity;
 
     @Setter(AccessLevel.NONE)
     @OneToMany(cascade = {

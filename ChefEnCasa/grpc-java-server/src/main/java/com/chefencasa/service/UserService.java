@@ -151,6 +151,7 @@ public class UserService {
         u.setEmail(dto.getEmail());
         u.setUsername(dto.getUsername());
         u.setPassword(dto.getPassword());
+        u.setPopularity(dto.getPopularity());
         return u;
     }
 }

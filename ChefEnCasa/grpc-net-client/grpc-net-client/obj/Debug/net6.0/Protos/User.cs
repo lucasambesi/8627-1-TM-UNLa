@@ -22,41 +22,42 @@ public static partial class UserReflection {
   static UserReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "ChFQcm90b3MvVXNlci5wcm90byKcAQoHVXNlckRUTxIOCgZpZFVzZXIYASAB",
+          "ChFQcm90b3MvVXNlci5wcm90byKwAQoHVXNlckRUTxIOCgZpZFVzZXIYASAB",
           "KAUSDAoEbmFtZRgCIAEoCRIRCglsYXN0X25hbWUYAyABKAkSCwoDZG5pGAQg",
           "ASgJEg0KBWVtYWlsGAUgASgJEhAKCHVzZXJuYW1lGAYgASgJEhAKCHBhc3N3",
-          "b3JkGAcgASgJEiAKCWZvbGxvd2luZxgIIAMoCzINLkZvbGxvd2luZ0RUTyJR",
-          "CgxGb2xsb3dpbmdEVE8SDgoGaWRVc2VyGAEgASgFEgwKBG5hbWUYAiABKAkS",
-          "EQoJbGFzdF9uYW1lGAMgASgJEhAKCHVzZXJuYW1lGAQgASgJIiAKDkdldFVz",
-          "ZXJSZXF1ZXN0Eg4KBmlkVXNlchgBIAEoBSI7ChRQb3N0Rm9sbG93aW5nUmVx",
-          "dWVzdBIOCgZpZFVzZXIYASABKAUSEwoLaWRGb2xsb3dpbmcYAiABKAUiNwoT",
-          "UG9zdEZhdm9yaXRlUmVxdWVzdBIOCgZpZFVzZXIYASABKAUSEAoIaWRyZWNp",
-          "cGUYAiABKAUiaQoVUG9zdEZvbGxvd2luZ1Jlc3BvbnNlEg4KBmlkVXNlchgB",
-          "IAEoBRITCgtpZEZvbGxvd2luZxgCIAEoBRIrCg5zZXJ2ZXJSZXNwb25zZRgD",
-          "IAEoCzITLlVzZXJTZXJ2ZXJSZXNwb25zZSJlChRQb3N0RmF2b3JpdGVSZXNw",
-          "b25zZRIOCgZpZFVzZXIYASABKAUSEAoIaWRyZWNpcGUYAiABKAUSKwoOc2Vy",
-          "dmVyUmVzcG9uc2UYAyABKAsyEy5Vc2VyU2VydmVyUmVzcG9uc2UiLwoSVXNl",
-          "clNlcnZlclJlc3BvbnNlEgwKBGNvZGUYASABKAUSCwoDbXNnGAIgASgJIj8K",
-          "HUdldEJ5VXNlcklkQW5kUGFzc3dvcmRSZXF1ZXN0EgwKBHVzZXIYASABKAkS",
-          "EAoIcGFzc3dvcmQYAiABKAkiUAoIVXNlcnNEVE8SFwoFdXNlcnMYASADKAsy",
-          "CC5Vc2VyRFRPEisKDnNlcnZlclJlc3BvbnNlGAIgASgLMhMuVXNlclNlcnZl",
-          "clJlc3BvbnNlIlEKClVzZXJPYmpEVE8SFgoEdXNlchgBIAEoCzIILlVzZXJE",
-          "VE8SKwoOc2VydmVyUmVzcG9uc2UYAiABKAsyEy5Vc2VyU2VydmVyUmVzcG9u",
-          "c2Uy0AMKDlVzZXJDb250cm9sbGVyEiAKB2FkZFVzZXISCC5Vc2VyRFRPGgsu",
-          "VXNlck9iakRUTxI9CgxhZGRGb2xsb3dpbmcSFS5Qb3N0Rm9sbG93aW5nUmVx",
-          "dWVzdBoWLlBvc3RGb2xsb3dpbmdSZXNwb25zZRIrCg1nZXRGb2xsb3dpbmdz",
-          "Eg8uR2V0VXNlclJlcXVlc3QaCS5Vc2Vyc0RUTxInCgdnZXRVc2VyEg8uR2V0",
-          "VXNlclJlcXVlc3QaCy5Vc2VyT2JqRFRPEkoKG2dldEJ5VXNlckFuZFBhc3N3",
-          "b3JkUmVxdWVzdBIeLkdldEJ5VXNlcklkQW5kUGFzc3dvcmRSZXF1ZXN0Ggsu",
-          "VXNlck9iakRUTxI6CgthZGRGYXZvcml0ZRIULlBvc3RGYXZvcml0ZVJlcXVl",
-          "c3QaFS5Qb3N0RmF2b3JpdGVSZXNwb25zZRI9Cg5kZWxldGVGYXZvcml0ZRIU",
-          "LlBvc3RGYXZvcml0ZVJlcXVlc3QaFS5Qb3N0RmF2b3JpdGVSZXNwb25zZRJA",
-          "Cg9kZWxldGVGb2xsb3dpbmcSFS5Qb3N0Rm9sbG93aW5nUmVxdWVzdBoWLlBv",
-          "c3RGb2xsb3dpbmdSZXNwb25zZUIGCgRncnBjYgZwcm90bzM="));
+          "b3JkGAcgASgJEiAKCWZvbGxvd2luZxgIIAMoCzINLkZvbGxvd2luZ0RUTxIS",
+          "Cgpwb3B1bGFyaXR5GAkgASgFIlEKDEZvbGxvd2luZ0RUTxIOCgZpZFVzZXIY",
+          "ASABKAUSDAoEbmFtZRgCIAEoCRIRCglsYXN0X25hbWUYAyABKAkSEAoIdXNl",
+          "cm5hbWUYBCABKAkiIAoOR2V0VXNlclJlcXVlc3QSDgoGaWRVc2VyGAEgASgF",
+          "IjsKFFBvc3RGb2xsb3dpbmdSZXF1ZXN0Eg4KBmlkVXNlchgBIAEoBRITCgtp",
+          "ZEZvbGxvd2luZxgCIAEoBSI3ChNQb3N0RmF2b3JpdGVSZXF1ZXN0Eg4KBmlk",
+          "VXNlchgBIAEoBRIQCghpZHJlY2lwZRgCIAEoBSJpChVQb3N0Rm9sbG93aW5n",
+          "UmVzcG9uc2USDgoGaWRVc2VyGAEgASgFEhMKC2lkRm9sbG93aW5nGAIgASgF",
+          "EisKDnNlcnZlclJlc3BvbnNlGAMgASgLMhMuVXNlclNlcnZlclJlc3BvbnNl",
+          "ImUKFFBvc3RGYXZvcml0ZVJlc3BvbnNlEg4KBmlkVXNlchgBIAEoBRIQCghp",
+          "ZHJlY2lwZRgCIAEoBRIrCg5zZXJ2ZXJSZXNwb25zZRgDIAEoCzITLlVzZXJT",
+          "ZXJ2ZXJSZXNwb25zZSIvChJVc2VyU2VydmVyUmVzcG9uc2USDAoEY29kZRgB",
+          "IAEoBRILCgNtc2cYAiABKAkiPwodR2V0QnlVc2VySWRBbmRQYXNzd29yZFJl",
+          "cXVlc3QSDAoEdXNlchgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSJQCghVc2Vy",
+          "c0RUTxIXCgV1c2VycxgBIAMoCzIILlVzZXJEVE8SKwoOc2VydmVyUmVzcG9u",
+          "c2UYAiABKAsyEy5Vc2VyU2VydmVyUmVzcG9uc2UiUQoKVXNlck9iakRUTxIW",
+          "CgR1c2VyGAEgASgLMgguVXNlckRUTxIrCg5zZXJ2ZXJSZXNwb25zZRgCIAEo",
+          "CzITLlVzZXJTZXJ2ZXJSZXNwb25zZTLQAwoOVXNlckNvbnRyb2xsZXISIAoH",
+          "YWRkVXNlchIILlVzZXJEVE8aCy5Vc2VyT2JqRFRPEj0KDGFkZEZvbGxvd2lu",
+          "ZxIVLlBvc3RGb2xsb3dpbmdSZXF1ZXN0GhYuUG9zdEZvbGxvd2luZ1Jlc3Bv",
+          "bnNlEisKDWdldEZvbGxvd2luZ3MSDy5HZXRVc2VyUmVxdWVzdBoJLlVzZXJz",
+          "RFRPEicKB2dldFVzZXISDy5HZXRVc2VyUmVxdWVzdBoLLlVzZXJPYmpEVE8S",
+          "SgobZ2V0QnlVc2VyQW5kUGFzc3dvcmRSZXF1ZXN0Eh4uR2V0QnlVc2VySWRB",
+          "bmRQYXNzd29yZFJlcXVlc3QaCy5Vc2VyT2JqRFRPEjoKC2FkZEZhdm9yaXRl",
+          "EhQuUG9zdEZhdm9yaXRlUmVxdWVzdBoVLlBvc3RGYXZvcml0ZVJlc3BvbnNl",
+          "Ej0KDmRlbGV0ZUZhdm9yaXRlEhQuUG9zdEZhdm9yaXRlUmVxdWVzdBoVLlBv",
+          "c3RGYXZvcml0ZVJlc3BvbnNlEkAKD2RlbGV0ZUZvbGxvd2luZxIVLlBvc3RG",
+          "b2xsb3dpbmdSZXF1ZXN0GhYuUG9zdEZvbGxvd2luZ1Jlc3BvbnNlQgYKBGdy",
+          "cGNiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::UserDTO), global::UserDTO.Parser, new[]{ "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UserDTO), global::UserDTO.Parser, new[]{ "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following", "Popularity" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::FollowingDTO), global::FollowingDTO.Parser, new[]{ "IdUser", "Name", "LastName", "Username" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetUserRequest), global::GetUserRequest.Parser, new[]{ "IdUser" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PostFollowingRequest), global::PostFollowingRequest.Parser, new[]{ "IdUser", "IdFollowing" }, null, null, null, null),
@@ -115,6 +116,7 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
     username_ = other.username_;
     password_ = other.password_;
     following_ = other.following_.Clone();
+    popularity_ = other.popularity_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -219,6 +221,18 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
     get { return following_; }
   }
 
+  /// <summary>Field number for the "popularity" field.</summary>
+  public const int PopularityFieldNumber = 9;
+  private int popularity_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Popularity {
+    get { return popularity_; }
+    set {
+      popularity_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -242,6 +256,7 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
     if (Username != other.Username) return false;
     if (Password != other.Password) return false;
     if(!following_.Equals(other.following_)) return false;
+    if (Popularity != other.Popularity) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -257,6 +272,7 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
     if (Username.Length != 0) hash ^= Username.GetHashCode();
     if (Password.Length != 0) hash ^= Password.GetHashCode();
     hash ^= following_.GetHashCode();
+    if (Popularity != 0) hash ^= Popularity.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -304,6 +320,10 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
       output.WriteString(Password);
     }
     following_.WriteTo(output, _repeated_following_codec);
+    if (Popularity != 0) {
+      output.WriteRawTag(72);
+      output.WriteInt32(Popularity);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -343,6 +363,10 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
       output.WriteString(Password);
     }
     following_.WriteTo(ref output, _repeated_following_codec);
+    if (Popularity != 0) {
+      output.WriteRawTag(72);
+      output.WriteInt32(Popularity);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -375,6 +399,9 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
     }
     size += following_.CalculateSize(_repeated_following_codec);
+    if (Popularity != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Popularity);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -409,6 +436,9 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
       Password = other.Password;
     }
     following_.Add(other.following_);
+    if (other.Popularity != 0) {
+      Popularity = other.Popularity;
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -456,6 +486,10 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
           following_.AddEntriesFrom(input, _repeated_following_codec);
           break;
         }
+        case 72: {
+          Popularity = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -501,6 +535,10 @@ public sealed partial class UserDTO : pb::IMessage<UserDTO>
         }
         case 66: {
           following_.AddEntriesFrom(ref input, _repeated_following_codec);
+          break;
+        }
+        case 72: {
+          Popularity = input.ReadInt32();
           break;
         }
       }

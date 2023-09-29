@@ -166,6 +166,7 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         dto.setIngredients(u.getIngredients());
         dto.setPreparationTime(u.getPreparationTime());
         dto.setIdCategory(u.getCategory().getIdCategory());
+        dto.setPopularity(u.getPopularity());
 
         for(Step step: u.getSteps()){
             grpc.Step.StepDTO.Builder stepDTO = grpc.Step.StepDTO.newBuilder();

@@ -136,6 +136,7 @@ public class RecipeService {
         u.setPreparationTime(dto.getPreparationTime());
         u.setUser(userService.getById(dto.getIdUser()));
         u.setCategory(categoryService.getById(dto.getIdCategory()));
+        u.setPopularity(dto.getPopularity());
 
         List<Step> steps = new ArrayList<>();
         Set<RecipeImage> images = new HashSet<>();

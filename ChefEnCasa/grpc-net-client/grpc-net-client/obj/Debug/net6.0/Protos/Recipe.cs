@@ -26,37 +26,37 @@ public static partial class RecipeReflection {
           "bXB0eSIxChRSZWNpcGVTZXJ2ZXJSZXNwb25zZRIMCgRjb2RlGAEgASgFEgsK",
           "A21zZxgCIAEoCSJYCgpSZWNpcGVzRFRPEhsKB3JlY2lwZXMYASADKAsyCi5S",
           "ZWNpcGVEVE8SLQoOc2VydmVyUmVzcG9uc2UYAiABKAsyFS5SZWNpcGVTZXJ2",
-          "ZXJSZXNwb25zZSLNAQoJUmVjaXBlRFRPEhAKCGlkUmVjaXBlGAEgASgFEg4K",
+          "ZXJSZXNwb25zZSLhAQoJUmVjaXBlRFRPEhAKCGlkUmVjaXBlGAEgASgFEg4K",
           "BmlkVXNlchgCIAEoBRINCgV0aXRsZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgE",
           "IAEoCRITCgtpbmdyZWRpZW50cxgFIAEoCRISCgppZENhdGVnb3J5GAYgASgF",
           "EhcKD3ByZXBhcmF0aW9uVGltZRgHIAEoBRIXCgVzdGVwcxgIIAMoCzIILlN0",
-          "ZXBEVE8SHwoGaW1hZ2VzGAkgAygLMg8uUmVjaXBlSW1hZ2VEVE8iWQoMUmVj",
-          "aXBlT2JqRFRPEhoKBnJlY2lwZRgBIAEoCzIKLlJlY2lwZURUTxItCg5zZXJ2",
-          "ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJlc3BvbnNlIlsKDUxp",
-          "c3RSZWNpcGVEVE8SGwoHcmVjaXBlcxgBIAMoCzIKLlJlY2lwZURUTxItCg5z",
-          "ZXJ2ZXJSZXNwb25zZRgCIAEoCzIVLlJlY2lwZVNlcnZlclJlc3BvbnNlIiQK",
-          "EEdldFJlY2lwZVJlcXVlc3QSEAoIaWRSZWNpcGUYASABKAUiHwoNSWRVc2Vy",
-          "UmVxdWVzdBIOCgZpZFVzZXIYASABKAUimAEKEkdldEJ5RmlsdGVyUmVxdWVz",
-          "dBISCgppZENhdGVnb3J5GAEgASgFEg0KBXRpdGxlGAIgASgJEhMKC2luZ3Jl",
-          "ZGllbnRzGAMgASgJEhEKCXRpbWVTaW5jZRgEIAEoBRIRCgl0aW1lVW50aWwY",
-          "BSABKAUSEgoKcGFnZU51bWJlchgGIAEoBRIQCghwYWdlU2l6ZRgHIAEoBSI9",
-          "Cg5SZWNpcGVJbWFnZURUTxIPCgdpZEltYWdlGAEgASgFEgwKBG5hbWUYAiAB",
-          "KAkSDAoEZmlsZRgDIAEoCTLLAgoQUmVjaXBlQ29udHJvbGxlchImCglhZGRS",
-          "ZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVPYmpEVE8SKQoMdXBkYXRlUmVj",
-          "aXBlEgouUmVjaXBlRFRPGg0uUmVjaXBlT2JqRFRPEi0KCWdldFJlY2lwZRIR",
-          "LkdldFJlY2lwZVJlcXVlc3QaDS5SZWNpcGVPYmpEVE8SJAoNZ2V0QWxsUmVj",
-          "aXBlcxIGLkVtcHR5GgsuUmVjaXBlc0RUTxIxChJnZXRSZWNpcGVzQnlVc2Vy",
-          "SWQSDi5JZFVzZXJSZXF1ZXN0GgsuUmVjaXBlc0RUTxIvCgtnZXRCeUZpbHRl",
-          "chITLkdldEJ5RmlsdGVyUmVxdWVzdBoLLlJlY2lwZXNEVE8SKwoMZ2V0RmF2",
-          "b3RpcmVzEg4uSWRVc2VyUmVxdWVzdBoLLlJlY2lwZXNEVE9CBgoEZ3JwY2IG",
-          "cHJvdG8z"));
+          "ZXBEVE8SHwoGaW1hZ2VzGAkgAygLMg8uUmVjaXBlSW1hZ2VEVE8SEgoKcG9w",
+          "dWxhcml0eRgKIAEoBSJZCgxSZWNpcGVPYmpEVE8SGgoGcmVjaXBlGAEgASgL",
+          "MgouUmVjaXBlRFRPEi0KDnNlcnZlclJlc3BvbnNlGAIgASgLMhUuUmVjaXBl",
+          "U2VydmVyUmVzcG9uc2UiWwoNTGlzdFJlY2lwZURUTxIbCgdyZWNpcGVzGAEg",
+          "AygLMgouUmVjaXBlRFRPEi0KDnNlcnZlclJlc3BvbnNlGAIgASgLMhUuUmVj",
+          "aXBlU2VydmVyUmVzcG9uc2UiJAoQR2V0UmVjaXBlUmVxdWVzdBIQCghpZFJl",
+          "Y2lwZRgBIAEoBSIfCg1JZFVzZXJSZXF1ZXN0Eg4KBmlkVXNlchgBIAEoBSKY",
+          "AQoSR2V0QnlGaWx0ZXJSZXF1ZXN0EhIKCmlkQ2F0ZWdvcnkYASABKAUSDQoF",
+          "dGl0bGUYAiABKAkSEwoLaW5ncmVkaWVudHMYAyABKAkSEQoJdGltZVNpbmNl",
+          "GAQgASgFEhEKCXRpbWVVbnRpbBgFIAEoBRISCgpwYWdlTnVtYmVyGAYgASgF",
+          "EhAKCHBhZ2VTaXplGAcgASgFIj0KDlJlY2lwZUltYWdlRFRPEg8KB2lkSW1h",
+          "Z2UYASABKAUSDAoEbmFtZRgCIAEoCRIMCgRmaWxlGAMgASgJMssCChBSZWNp",
+          "cGVDb250cm9sbGVyEiYKCWFkZFJlY2lwZRIKLlJlY2lwZURUTxoNLlJlY2lw",
+          "ZU9iakRUTxIpCgx1cGRhdGVSZWNpcGUSCi5SZWNpcGVEVE8aDS5SZWNpcGVP",
+          "YmpEVE8SLQoJZ2V0UmVjaXBlEhEuR2V0UmVjaXBlUmVxdWVzdBoNLlJlY2lw",
+          "ZU9iakRUTxIkCg1nZXRBbGxSZWNpcGVzEgYuRW1wdHkaCy5SZWNpcGVzRFRP",
+          "EjEKEmdldFJlY2lwZXNCeVVzZXJJZBIOLklkVXNlclJlcXVlc3QaCy5SZWNp",
+          "cGVzRFRPEi8KC2dldEJ5RmlsdGVyEhMuR2V0QnlGaWx0ZXJSZXF1ZXN0Ggsu",
+          "UmVjaXBlc0RUTxIrCgxnZXRGYXZvdGlyZXMSDi5JZFVzZXJSZXF1ZXN0Ggsu",
+          "UmVjaXBlc0RUT0IGCgRncnBjYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::StepReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::Empty), global::Empty.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipeServerResponse), global::RecipeServerResponse.Parser, new[]{ "Code", "Msg" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipesDTO), global::RecipesDTO.Parser, new[]{ "Recipes", "ServerResponse" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::RecipeDTO), global::RecipeDTO.Parser, new[]{ "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", "Images" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RecipeDTO), global::RecipeDTO.Parser, new[]{ "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", "Images", "Popularity" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RecipeObjDTO), global::RecipeObjDTO.Parser, new[]{ "Recipe", "ServerResponse" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ListRecipeDTO), global::ListRecipeDTO.Parser, new[]{ "Recipes", "ServerResponse" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GetRecipeRequest), global::GetRecipeRequest.Parser, new[]{ "IdRecipe" }, null, null, null, null),
@@ -714,6 +714,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     preparationTime_ = other.preparationTime_;
     steps_ = other.steps_.Clone();
     images_ = other.images_.Clone();
+    popularity_ = other.popularity_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -829,6 +830,18 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     get { return images_; }
   }
 
+  /// <summary>Field number for the "popularity" field.</summary>
+  public const int PopularityFieldNumber = 10;
+  private int popularity_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Popularity {
+    get { return popularity_; }
+    set {
+      popularity_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -853,6 +866,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     if (PreparationTime != other.PreparationTime) return false;
     if(!steps_.Equals(other.steps_)) return false;
     if(!images_.Equals(other.images_)) return false;
+    if (Popularity != other.Popularity) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -869,6 +883,7 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     if (PreparationTime != 0) hash ^= PreparationTime.GetHashCode();
     hash ^= steps_.GetHashCode();
     hash ^= images_.GetHashCode();
+    if (Popularity != 0) hash ^= Popularity.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -917,6 +932,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     }
     steps_.WriteTo(output, _repeated_steps_codec);
     images_.WriteTo(output, _repeated_images_codec);
+    if (Popularity != 0) {
+      output.WriteRawTag(80);
+      output.WriteInt32(Popularity);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -957,6 +976,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     }
     steps_.WriteTo(ref output, _repeated_steps_codec);
     images_.WriteTo(ref output, _repeated_images_codec);
+    if (Popularity != 0) {
+      output.WriteRawTag(80);
+      output.WriteInt32(Popularity);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -990,6 +1013,9 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     }
     size += steps_.CalculateSize(_repeated_steps_codec);
     size += images_.CalculateSize(_repeated_images_codec);
+    if (Popularity != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Popularity);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -1025,6 +1051,9 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
     }
     steps_.Add(other.steps_);
     images_.Add(other.images_);
+    if (other.Popularity != 0) {
+      Popularity = other.Popularity;
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -1076,6 +1105,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
           images_.AddEntriesFrom(input, _repeated_images_codec);
           break;
         }
+        case 80: {
+          Popularity = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -1125,6 +1158,10 @@ public sealed partial class RecipeDTO : pb::IMessage<RecipeDTO>
         }
         case 74: {
           images_.AddEntriesFrom(ref input, _repeated_images_codec);
+          break;
+        }
+        case 80: {
+          Popularity = input.ReadInt32();
           break;
         }
       }

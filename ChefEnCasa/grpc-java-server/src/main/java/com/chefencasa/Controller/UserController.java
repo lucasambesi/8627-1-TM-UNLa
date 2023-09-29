@@ -204,6 +204,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         dto.setEmail(u.getEmail());
         dto.setUsername(u.getUsername());
         dto.setPassword(u.getPassword());
+        dto.setPopularity(u.getPopularity());
 
         for(com.chefencasa.Model.User user: u.getFollowing()){
 

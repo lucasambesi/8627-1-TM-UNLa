@@ -22,6 +22,7 @@ message UserDTO{
   string username = 6;
   string password = 7;
   repeated FollowingDTO following = 8;
+  int32 popularity = 9;
 }
 
 message FollowingDTO{

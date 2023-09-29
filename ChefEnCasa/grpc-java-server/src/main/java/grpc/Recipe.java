@@ -2119,6 +2119,11 @@ public final class Recipe {
      */
     grpc.Recipe.RecipeImageDTOOrBuilder getImagesOrBuilder(
         int index);
+
+    /**
+     * <code>int32 popularity = 10;</code>
+     */
+    int getPopularity();
   }
   /**
    * Protobuf type {@code RecipeDTO}
@@ -2142,6 +2147,7 @@ public final class Recipe {
       preparationTime_ = 0;
       steps_ = java.util.Collections.emptyList();
       images_ = java.util.Collections.emptyList();
+      popularity_ = 0;
     }
 
     @java.lang.Override
@@ -2222,6 +2228,11 @@ public final class Recipe {
               }
               images_.add(
                   input.readMessage(grpc.Recipe.RecipeImageDTO.parser(), extensionRegistry));
+              break;
+            }
+            case 80: {
+
+              popularity_ = input.readInt32();
               break;
             }
             default: {
@@ -2471,6 +2482,15 @@ public final class Recipe {
       return images_.get(index);
     }
 
+    public static final int POPULARITY_FIELD_NUMBER = 10;
+    private int popularity_;
+    /**
+     * <code>int32 popularity = 10;</code>
+     */
+    public int getPopularity() {
+      return popularity_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2511,6 +2531,9 @@ public final class Recipe {
       }
       for (int i = 0; i < images_.size(); i++) {
         output.writeMessage(9, images_.get(i));
+      }
+      if (popularity_ != 0) {
+        output.writeInt32(10, popularity_);
       }
       unknownFields.writeTo(output);
     }
@@ -2554,6 +2577,10 @@ public final class Recipe {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, images_.get(i));
       }
+      if (popularity_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, popularity_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2588,6 +2615,8 @@ public final class Recipe {
           .equals(other.getStepsList());
       result = result && getImagesList()
           .equals(other.getImagesList());
+      result = result && (getPopularity()
+          == other.getPopularity());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2621,6 +2650,8 @@ public final class Recipe {
         hash = (37 * hash) + IMAGES_FIELD_NUMBER;
         hash = (53 * hash) + getImagesList().hashCode();
       }
+      hash = (37 * hash) + POPULARITY_FIELD_NUMBER;
+      hash = (53 * hash) + getPopularity();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2782,6 +2813,8 @@ public final class Recipe {
         } else {
           imagesBuilder_.clear();
         }
+        popularity_ = 0;
+
         return this;
       }
 
@@ -2835,6 +2868,7 @@ public final class Recipe {
         } else {
           result.images_ = imagesBuilder_.build();
         }
+        result.popularity_ = popularity_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2959,6 +2993,9 @@ public final class Recipe {
               imagesBuilder_.addAllMessages(other.images_);
             }
           }
+        }
+        if (other.getPopularity() != 0) {
+          setPopularity(other.getPopularity());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3779,6 +3816,32 @@ public final class Recipe {
           images_ = null;
         }
         return imagesBuilder_;
+      }
+
+      private int popularity_ ;
+      /**
+       * <code>int32 popularity = 10;</code>
+       */
+      public int getPopularity() {
+        return popularity_;
+      }
+      /**
+       * <code>int32 popularity = 10;</code>
+       */
+      public Builder setPopularity(int value) {
+        
+        popularity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 popularity = 10;</code>
+       */
+      public Builder clearPopularity() {
+        
+        popularity_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -8380,33 +8443,33 @@ public final class Recipe {
       "ecipeServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg" +
       "\030\002 \001(\t\"X\n\nRecipesDTO\022\033\n\007recipes\030\001 \003(\0132\n." +
       "RecipeDTO\022-\n\016serverResponse\030\002 \001(\0132\025.Reci" +
-      "peServerResponse\"\315\001\n\tRecipeDTO\022\020\n\010idReci" +
+      "peServerResponse\"\341\001\n\tRecipeDTO\022\020\n\010idReci" +
       "pe\030\001 \001(\005\022\016\n\006idUser\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022" +
       "\023\n\013description\030\004 \001(\t\022\023\n\013ingredients\030\005 \001(" +
       "\t\022\022\n\nidCategory\030\006 \001(\005\022\027\n\017preparationTime" +
       "\030\007 \001(\005\022\027\n\005steps\030\010 \003(\0132\010.StepDTO\022\037\n\006image" +
-      "s\030\t \003(\0132\017.RecipeImageDTO\"Y\n\014RecipeObjDTO" +
-      "\022\032\n\006recipe\030\001 \001(\0132\n.RecipeDTO\022-\n\016serverRe" +
-      "sponse\030\002 \001(\0132\025.RecipeServerResponse\"[\n\rL" +
-      "istRecipeDTO\022\033\n\007recipes\030\001 \003(\0132\n.RecipeDT" +
-      "O\022-\n\016serverResponse\030\002 \001(\0132\025.RecipeServer" +
-      "Response\"$\n\020GetRecipeRequest\022\020\n\010idRecipe" +
-      "\030\001 \001(\005\"\037\n\rIdUserRequest\022\016\n\006idUser\030\001 \001(\005\"" +
-      "\230\001\n\022GetByFilterRequest\022\022\n\nidCategory\030\001 \001" +
-      "(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013ingredients\030\003 \001(\t\022\021" +
-      "\n\ttimeSince\030\004 \001(\005\022\021\n\ttimeUntil\030\005 \001(\005\022\022\n\n" +
-      "pageNumber\030\006 \001(\005\022\020\n\010pageSize\030\007 \001(\005\"=\n\016Re" +
-      "cipeImageDTO\022\017\n\007idImage\030\001 \001(\005\022\014\n\004name\030\002 " +
-      "\001(\t\022\014\n\004file\030\003 \001(\t2\313\002\n\020RecipeController\022&" +
-      "\n\taddRecipe\022\n.RecipeDTO\032\r.RecipeObjDTO\022)" +
-      "\n\014updateRecipe\022\n.RecipeDTO\032\r.RecipeObjDT" +
-      "O\022-\n\tgetRecipe\022\021.GetRecipeRequest\032\r.Reci" +
-      "peObjDTO\022$\n\rgetAllRecipes\022\006.Empty\032\013.Reci" +
-      "pesDTO\0221\n\022getRecipesByUserId\022\016.IdUserReq" +
-      "uest\032\013.RecipesDTO\022/\n\013getByFilter\022\023.GetBy" +
-      "FilterRequest\032\013.RecipesDTO\022+\n\014getFavotir" +
-      "es\022\016.IdUserRequest\032\013.RecipesDTOB\006\n\004grpcb" +
-      "\006proto3"
+      "s\030\t \003(\0132\017.RecipeImageDTO\022\022\n\npopularity\030\n" +
+      " \001(\005\"Y\n\014RecipeObjDTO\022\032\n\006recipe\030\001 \001(\0132\n.R" +
+      "ecipeDTO\022-\n\016serverResponse\030\002 \001(\0132\025.Recip" +
+      "eServerResponse\"[\n\rListRecipeDTO\022\033\n\007reci" +
+      "pes\030\001 \003(\0132\n.RecipeDTO\022-\n\016serverResponse\030" +
+      "\002 \001(\0132\025.RecipeServerResponse\"$\n\020GetRecip" +
+      "eRequest\022\020\n\010idRecipe\030\001 \001(\005\"\037\n\rIdUserRequ" +
+      "est\022\016\n\006idUser\030\001 \001(\005\"\230\001\n\022GetByFilterReque" +
+      "st\022\022\n\nidCategory\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n" +
+      "\013ingredients\030\003 \001(\t\022\021\n\ttimeSince\030\004 \001(\005\022\021\n" +
+      "\ttimeUntil\030\005 \001(\005\022\022\n\npageNumber\030\006 \001(\005\022\020\n\010" +
+      "pageSize\030\007 \001(\005\"=\n\016RecipeImageDTO\022\017\n\007idIm" +
+      "age\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004file\030\003 \001(\t2\313\002" +
+      "\n\020RecipeController\022&\n\taddRecipe\022\n.Recipe" +
+      "DTO\032\r.RecipeObjDTO\022)\n\014updateRecipe\022\n.Rec" +
+      "ipeDTO\032\r.RecipeObjDTO\022-\n\tgetRecipe\022\021.Get" +
+      "RecipeRequest\032\r.RecipeObjDTO\022$\n\rgetAllRe" +
+      "cipes\022\006.Empty\032\013.RecipesDTO\0221\n\022getRecipes" +
+      "ByUserId\022\016.IdUserRequest\032\013.RecipesDTO\022/\n" +
+      "\013getByFilter\022\023.GetByFilterRequest\032\013.Reci" +
+      "pesDTO\022+\n\014getFavotires\022\016.IdUserRequest\032\013" +
+      ".RecipesDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8444,7 +8507,7 @@ public final class Recipe {
     internal_static_RecipeDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RecipeDTO_descriptor,
-        new java.lang.String[] { "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", "Images", });
+        new java.lang.String[] { "IdRecipe", "IdUser", "Title", "Description", "Ingredients", "IdCategory", "PreparationTime", "Steps", "Images", "Popularity", });
     internal_static_RecipeObjDTO_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_RecipeObjDTO_fieldAccessorTable = new

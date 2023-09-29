@@ -37,6 +37,7 @@ message RecipeDTO{
   int32 preparationTime = 7;
   repeated StepDTO steps = 8;
   repeated RecipeImageDTO images = 9;
+  int32 popularity = 10;
 }
 
 message RecipeObjDTO{

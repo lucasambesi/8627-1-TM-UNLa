@@ -106,6 +106,11 @@ public final class User {
      */
     grpc.User.FollowingDTOOrBuilder getFollowingOrBuilder(
         int index);
+
+    /**
+     * <code>int32 popularity = 9;</code>
+     */
+    int getPopularity();
   }
   /**
    * Protobuf type {@code UserDTO}
@@ -128,6 +133,7 @@ public final class User {
       username_ = "";
       password_ = "";
       following_ = java.util.Collections.emptyList();
+      popularity_ = 0;
     }
 
     @java.lang.Override
@@ -202,6 +208,11 @@ public final class User {
               }
               following_.add(
                   input.readMessage(grpc.User.FollowingDTO.parser(), extensionRegistry));
+              break;
+            }
+            case 72: {
+
+              popularity_ = input.readInt32();
               break;
             }
             default: {
@@ -488,6 +499,15 @@ public final class User {
       return following_.get(index);
     }
 
+    public static final int POPULARITY_FIELD_NUMBER = 9;
+    private int popularity_;
+    /**
+     * <code>int32 popularity = 9;</code>
+     */
+    public int getPopularity() {
+      return popularity_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -526,6 +546,9 @@ public final class User {
       for (int i = 0; i < following_.size(); i++) {
         output.writeMessage(8, following_.get(i));
       }
+      if (popularity_ != 0) {
+        output.writeInt32(9, popularity_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -561,6 +584,10 @@ public final class User {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, following_.get(i));
       }
+      if (popularity_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, popularity_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -593,6 +620,8 @@ public final class User {
           .equals(other.getPassword());
       result = result && getFollowingList()
           .equals(other.getFollowingList());
+      result = result && (getPopularity()
+          == other.getPopularity());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -622,6 +651,8 @@ public final class User {
         hash = (37 * hash) + FOLLOWING_FIELD_NUMBER;
         hash = (53 * hash) + getFollowingList().hashCode();
       }
+      hash = (37 * hash) + POPULARITY_FIELD_NUMBER;
+      hash = (53 * hash) + getPopularity();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -776,6 +807,8 @@ public final class User {
         } else {
           followingBuilder_.clear();
         }
+        popularity_ = 0;
+
         return this;
       }
 
@@ -820,6 +853,7 @@ public final class User {
         } else {
           result.following_ = followingBuilder_.build();
         }
+        result.popularity_ = popularity_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -921,6 +955,9 @@ public final class User {
               followingBuilder_.addAllMessages(other.following_);
             }
           }
+        }
+        if (other.getPopularity() != 0) {
+          setPopularity(other.getPopularity());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1630,6 +1667,32 @@ public final class User {
           following_ = null;
         }
         return followingBuilder_;
+      }
+
+      private int popularity_ ;
+      /**
+       * <code>int32 popularity = 9;</code>
+       */
+      public int getPopularity() {
+        return popularity_;
+      }
+      /**
+       * <code>int32 popularity = 9;</code>
+       */
+      public Builder setPopularity(int value) {
+        
+        popularity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 popularity = 9;</code>
+       */
+      public Builder clearPopularity() {
+        
+        popularity_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -8735,41 +8798,41 @@ public final class User {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nUser.proto\"\234\001\n\007UserDTO\022\016\n\006idUser\030\001 \001(\005" +
+      "\n\nUser.proto\"\260\001\n\007UserDTO\022\016\n\006idUser\030\001 \001(\005" +
       "\022\014\n\004name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t\022\013\n\003dni" +
       "\030\004 \001(\t\022\r\n\005email\030\005 \001(\t\022\020\n\010username\030\006 \001(\t\022" +
       "\020\n\010password\030\007 \001(\t\022 \n\tfollowing\030\010 \003(\0132\r.F" +
-      "ollowingDTO\"Q\n\014FollowingDTO\022\016\n\006idUser\030\001 " +
-      "\001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t\022\020\n\010" +
-      "username\030\004 \001(\t\" \n\016GetUserRequest\022\016\n\006idUs" +
-      "er\030\001 \001(\005\";\n\024PostFollowingRequest\022\016\n\006idUs" +
-      "er\030\001 \001(\005\022\023\n\013idFollowing\030\002 \001(\005\"7\n\023PostFav" +
-      "oriteRequest\022\016\n\006idUser\030\001 \001(\005\022\020\n\010idrecipe" +
-      "\030\002 \001(\005\"i\n\025PostFollowingResponse\022\016\n\006idUse" +
-      "r\030\001 \001(\005\022\023\n\013idFollowing\030\002 \001(\005\022+\n\016serverRe" +
-      "sponse\030\003 \001(\0132\023.UserServerResponse\"e\n\024Pos" +
-      "tFavoriteResponse\022\016\n\006idUser\030\001 \001(\005\022\020\n\010idr" +
-      "ecipe\030\002 \001(\005\022+\n\016serverResponse\030\003 \001(\0132\023.Us" +
-      "erServerResponse\"/\n\022UserServerResponse\022\014" +
-      "\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"?\n\035GetByUserId" +
-      "AndPasswordRequest\022\014\n\004user\030\001 \001(\t\022\020\n\010pass" +
-      "word\030\002 \001(\t\"P\n\010UsersDTO\022\027\n\005users\030\001 \003(\0132\010." +
-      "UserDTO\022+\n\016serverResponse\030\002 \001(\0132\023.UserSe" +
-      "rverResponse\"Q\n\nUserObjDTO\022\026\n\004user\030\001 \001(\013" +
-      "2\010.UserDTO\022+\n\016serverResponse\030\002 \001(\0132\023.Use" +
-      "rServerResponse2\320\003\n\016UserController\022 \n\007ad" +
-      "dUser\022\010.UserDTO\032\013.UserObjDTO\022=\n\014addFollo" +
-      "wing\022\025.PostFollowingRequest\032\026.PostFollow" +
-      "ingResponse\022+\n\rgetFollowings\022\017.GetUserRe" +
-      "quest\032\t.UsersDTO\022\'\n\007getUser\022\017.GetUserReq" +
-      "uest\032\013.UserObjDTO\022J\n\033getByUserAndPasswor" +
-      "dRequest\022\036.GetByUserIdAndPasswordRequest" +
-      "\032\013.UserObjDTO\022:\n\013addFavorite\022\024.PostFavor" +
-      "iteRequest\032\025.PostFavoriteResponse\022=\n\016del" +
-      "eteFavorite\022\024.PostFavoriteRequest\032\025.Post" +
-      "FavoriteResponse\022@\n\017deleteFollowing\022\025.Po" +
-      "stFollowingRequest\032\026.PostFollowingRespon" +
-      "seB\006\n\004grpcb\006proto3"
+      "ollowingDTO\022\022\n\npopularity\030\t \001(\005\"Q\n\014Follo" +
+      "wingDTO\022\016\n\006idUser\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n" +
+      "\tlast_name\030\003 \001(\t\022\020\n\010username\030\004 \001(\t\" \n\016Ge" +
+      "tUserRequest\022\016\n\006idUser\030\001 \001(\005\";\n\024PostFoll" +
+      "owingRequest\022\016\n\006idUser\030\001 \001(\005\022\023\n\013idFollow" +
+      "ing\030\002 \001(\005\"7\n\023PostFavoriteRequest\022\016\n\006idUs" +
+      "er\030\001 \001(\005\022\020\n\010idrecipe\030\002 \001(\005\"i\n\025PostFollow" +
+      "ingResponse\022\016\n\006idUser\030\001 \001(\005\022\023\n\013idFollowi" +
+      "ng\030\002 \001(\005\022+\n\016serverResponse\030\003 \001(\0132\023.UserS" +
+      "erverResponse\"e\n\024PostFavoriteResponse\022\016\n" +
+      "\006idUser\030\001 \001(\005\022\020\n\010idrecipe\030\002 \001(\005\022+\n\016serve" +
+      "rResponse\030\003 \001(\0132\023.UserServerResponse\"/\n\022" +
+      "UserServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030" +
+      "\002 \001(\t\"?\n\035GetByUserIdAndPasswordRequest\022\014" +
+      "\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"P\n\010UsersD" +
+      "TO\022\027\n\005users\030\001 \003(\0132\010.UserDTO\022+\n\016serverRes" +
+      "ponse\030\002 \001(\0132\023.UserServerResponse\"Q\n\nUser" +
+      "ObjDTO\022\026\n\004user\030\001 \001(\0132\010.UserDTO\022+\n\016server" +
+      "Response\030\002 \001(\0132\023.UserServerResponse2\320\003\n\016" +
+      "UserController\022 \n\007addUser\022\010.UserDTO\032\013.Us" +
+      "erObjDTO\022=\n\014addFollowing\022\025.PostFollowing" +
+      "Request\032\026.PostFollowingResponse\022+\n\rgetFo" +
+      "llowings\022\017.GetUserRequest\032\t.UsersDTO\022\'\n\007" +
+      "getUser\022\017.GetUserRequest\032\013.UserObjDTO\022J\n" +
+      "\033getByUserAndPasswordRequest\022\036.GetByUser" +
+      "IdAndPasswordRequest\032\013.UserObjDTO\022:\n\013add" +
+      "Favorite\022\024.PostFavoriteRequest\032\025.PostFav" +
+      "oriteResponse\022=\n\016deleteFavorite\022\024.PostFa" +
+      "voriteRequest\032\025.PostFavoriteResponse\022@\n\017" +
+      "deleteFollowing\022\025.PostFollowingRequest\032\026" +
+      ".PostFollowingResponseB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8788,7 +8851,7 @@ public final class User {
     internal_static_UserDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserDTO_descriptor,
-        new java.lang.String[] { "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following", });
+        new java.lang.String[] { "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following", "Popularity", });
     internal_static_FollowingDTO_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_FollowingDTO_fieldAccessorTable = new
