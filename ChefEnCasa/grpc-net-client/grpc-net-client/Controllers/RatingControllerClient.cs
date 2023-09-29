@@ -1,4 +1,5 @@
 ﻿using Grpc.Net.Client;
+using grpc_net_client.Model;
 using grpc_net_client.Model.Config;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -44,6 +45,22 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] RatingDTO ratingDTO)
+        {
+            try
+            {
+                var response = await _service.updateRatingAsync(ratingDTO);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("rating")]
         public async Task<ActionResult> Get(int idRating)
         {
@@ -51,6 +68,27 @@ namespace grpc_net_client.Controllers
             {
                 GetRatingRequest idRatingDTO = new() { IdRating = idRating };
                 var response = await _service.getRatingAsync(idRatingDTO);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("rating/user-recipe")]
+        public async Task<ActionResult> Get(int idUser, int idRecipe)
+        {
+            try
+            {
+                UserAndRecipeRatingRequest request = new() { 
+                    IdUser = idUser,
+                    IdRecipe = idRecipe 
+                };
+
+                var response = await _service.getRatingByUserAndRecipeAsync(request);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }
