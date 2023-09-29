@@ -1,7 +1,6 @@
 package com.chefencasa.service;
 
-import com.chefencasa.Model.Rating;
-import com.chefencasa.Model.Recipe;
+import com.chefencasa.Model.*;
 import com.chefencasa.Repository.RatingRepository;
 
 public class RatingService {
@@ -21,10 +20,31 @@ public class RatingService {
         return service;
     }
 
-    public Rating saveOrUpdateRating(grpc.Rating.RatingDTO ratingDTO) throws Exception {
+    public Rating saveRating(grpc.Rating.RatingDTO ratingDTO) throws Exception {
         Rating toPersist = mapToEntity(ratingDTO);
         Rating persisted = ratingRepository.saveOrUpdateRating(toPersist);
         return persisted;
+    }
+
+    public Rating updateRating(grpc.Rating.RatingDTO ratingDTO) throws Exception{
+
+        Rating rating = null;
+
+        try{
+            rating = ratingRepository.getById(ratingDTO.getIdRating());
+
+            Rating toPersist = mapToEntity(ratingDTO);
+
+            rating.setValue(toPersist.getValue());
+
+            rating = ratingRepository.saveOrUpdateRating(rating);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            throw new Exception ("ATENCION: Error en updateRating");
+        }
+
+        return rating;
     }
 
     public Rating getById (int idRating) throws Exception{
@@ -32,6 +52,13 @@ public class RatingService {
         Rating rating = ratingRepository.getById(idRating);
 
         return rating;
+    }
+
+    public Rating getRatingByUserAndRecipe(int idUser, int idRecipe) throws Exception{
+        User user = userService.getById(idUser);
+        Recipe recipe = recipeService.getById(idRecipe);
+
+        return ratingRepository.getByUserAndRecipe(user, recipe);
     }
 
     private Rating mapToEntity (grpc.Rating.RatingDTO dto) throws Exception{
