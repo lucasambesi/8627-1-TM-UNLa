@@ -54,6 +54,8 @@ public class RecipeService {
         persisted.setImages(images);
         persisted.setSteps(steps);
 
+        createRecipeProducer.send(persisted.getTitle(), persisted);
+
         return persisted;
     }
 
@@ -103,8 +105,9 @@ public class RecipeService {
 
         Recipe recipe = recipeRepository.getById(idRecipe);
 
+        //TODO: Eliminar una vez terminadas las pruebas
         createRecipeProducer.send(recipe.getTitle(), recipe);
-        createRecipeProducer.close();
+        //createRecipeProducer.close();
 
         return recipe;
     }
