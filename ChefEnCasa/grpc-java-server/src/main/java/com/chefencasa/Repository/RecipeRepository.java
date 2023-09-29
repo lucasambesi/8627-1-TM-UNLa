@@ -165,8 +165,8 @@ public class RecipeRepository {
             query.select(root).where(and);
 
             TypedQuery<Recipe> typedQuery = em.createQuery(query);
-            typedQuery.setFirstResult(startPosition); // Establecer la posición de inicio
-            typedQuery.setMaxResults(pageSize); // Establecer el tamaño de página
+            typedQuery.setFirstResult(startPosition);
+            typedQuery.setMaxResults(pageSize);
 
             recipes = typedQuery.getResultList();
         } catch (Exception e) {
