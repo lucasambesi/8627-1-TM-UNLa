@@ -99,7 +99,7 @@ export const Recipe = () => {
       };
 
     const deleteFavorite = (recipe) =>{
-        deleteToFavorites(user.idUser, recipe.idRecipe)
+        deleteToFavorites(user.idUser, recipe.idRecipe, recipe.idUser)
         .then((res) => {
           if(res)
             alert(`${recipe.title} eliminada de favoritos`)
