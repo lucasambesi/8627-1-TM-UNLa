@@ -67,7 +67,7 @@ export const Profile = () => {
                         recipes.slice(0, 2).map((recipe) =>{
                         return (
                           <MDBCol className="mb-2" key={recipe.idRecipe} style={{ minWidth: '40%', minHeight: '40%' }}>
-                            <RecipeCard recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
+                            <RecipeCard recipe={recipe}/>
                           </MDBCol>
                           
                           )

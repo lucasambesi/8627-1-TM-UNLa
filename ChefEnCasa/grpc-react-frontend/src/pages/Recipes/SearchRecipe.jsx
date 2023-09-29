@@ -52,7 +52,7 @@ export const SearchRecipe = (props) => {
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
-                    <RecipeCard idUser={user.idUser} editMode={false} recipe={recipe} favoriteMode={false} favorite={addToFavorite} key={recipe.idRecipe}/>
+                    <RecipeCard recipe={recipe}/>
                   )
                 })
                 : 

@@ -27,7 +27,7 @@ export const FavoriteRecipes = (props) => {
             {
                 recipes ? recipes.map((recipe) =>{
                 return (
-                    <RecipeCard recipe={recipe} favoriteMode={true} key={recipe.idRecipe}/>
+                    <RecipeCard recipe={recipe}/>
                   )
                 })
                 : 
