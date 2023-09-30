@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Protos\Category.proto" />
+    <None Remove="Protos\Comment.proto" />
     <None Remove="Protos\Rating.proto" />
     <None Remove="Protos\Recipe.proto" />
     <None Remove="Protos\Step.proto" />
@@ -33,6 +34,7 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\Category.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\Comment.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\Rating.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\Recipe.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\Step.proto" GrpcServices="Client" />

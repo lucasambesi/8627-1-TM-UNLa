@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+
+option java_package = "grpc";
+
+service CommentController{
+  rpc getComments(GetCommentRequest)returns (CommentsDTO);
+}
+
+message EmptyComment {
+}
+
+message CommentServerResponse{
+  int32 code = 1;
+  string msg = 2;
+}
+
+message CommentDTO {
+  int32 idComment = 1;
+  string value = 2;
+  string name = 3;
+  string username = 4;
+}
+
+message CommentsDTO{
+  repeated CommentDTO comments = 1;
+  CommentServerResponse serverResponse = 2;
+}
+
+message GetCommentRequest{
+  int32 idRecipe=1;
+  int32 pageNumber=2;
+  int32 pageSize=3;
+}
