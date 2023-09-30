@@ -23,7 +23,7 @@ public class App {
                     "popularity-recipe-group",
                     "popularity-recipe-trigger",
                     "popularity-recipe-trigger-group",
-                    5,
+                    40,
                     "popularity-recipe-scheduler");
 
     private static final JobService<PopularityUserJob> popularityUserJob =
@@ -33,7 +33,7 @@ public class App {
                     "popularity-user-group",
                     "popularity-user-trigger",
                     "popularity-user-trigger-group",
-                    5,
+                    30,
                     "popularity-user-scheduler");
 
     private static final JobService<CommentJob> commentJob =
@@ -43,15 +43,15 @@ public class App {
                     "comment-group",
                     "comment-trigger",
                     "comment-trigger-group",
-                    5,
+                    20,
                     "comment-scheduler");
 
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Server grpc starting");
 
-        scheduler.scheduleAtFixedRate(commentJob, 0, 1, TimeUnit.MINUTES);
-        scheduler.scheduleAtFixedRate(popularityUserJob, 0, 1, TimeUnit.MINUTES);
-        scheduler.scheduleAtFixedRate(popularityRecipeJob, 0, 1, TimeUnit.MINUTES);
+        //scheduler.scheduleAtFixedRate(commentJob, 0, 1, TimeUnit.MINUTES);
+        //scheduler.scheduleAtFixedRate(popularityUserJob, 0, 1, TimeUnit.MINUTES);
+        //cheduler.scheduleAtFixedRate(popularityRecipeJob, 0, 1, TimeUnit.MINUTES);
 
         Server server = ServerBuilder.forPort(9003)
                 .maxInboundMessageSize(1000 * 1024 * 1024)
@@ -60,6 +60,7 @@ public class App {
                 .addService(new RecipeController())
                 .addService(new StepController())
                 .addService(new RatingController())
+                .addService(new CommentController())
                 .build();
         server.start();
 

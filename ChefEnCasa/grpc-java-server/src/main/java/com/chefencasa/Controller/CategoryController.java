@@ -3,8 +3,6 @@ package com.chefencasa.Controller;
 import com.chefencasa.service.CategoryService;
 import grpc.Category;
 import grpc.CategoryControllerGrpc;
-import grpc.Recipe;
-import grpc.User;
 import io.grpc.stub.StreamObserver;
 
 import java.util.List;
