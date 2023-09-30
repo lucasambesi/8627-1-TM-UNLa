@@ -3,25 +3,44 @@ import { recipePresenter } from '../../../presenter/RecipePresenter'
 import { Box, Button, Divider, FormControl, Grid, Input, InputAdornment, InputLabel, List, ListItem, ListItemText, OutlinedInput, Pagination, Paper, Stack, Typography } from "@mui/material";
 import CommentIcon from '@mui/icons-material/Comment';
 
+import { commentPresenter } from '../../../presenter/CommentPresenter'
+
 export const Comments = (props) => {
-        const [comments, setComments] = useState([
-            { idUser: 1, comment: "Comentario 1" },
-            { idUser: 2, comment: "Comentario 2" },
-            { idUser: 3, comment: "Comentario 3" }
-        ]);
+
+    const { getComments } = commentPresenter()
+
+        const { sendCommentKafka } = recipePresenter()
+        
+        const { user, recipe } = props;
+
+        const [comments, setComments] = useState(null);
 
         const [comment, setComment] = useState("")
 
-        const { sendCommentKafka } = recipePresenter()
-        const { user, recipe } = props;
+        const [page, setPage] = React.useState(1);
 
         useEffect(() => {
+            getComments(recipe.idRecipe, 3, page)
+            .then((res) => {      
+              console.log("🚀 ~ file: Comments.jsx:22 ~ .then ~ res:", res)
+              if(res){
+                setComments(res)
+              }
+            })
+            .catch((err) => console.log(err));
         }, []);
 
-        const [page, setPage] = React.useState(1);
     
         const  handleChangePagination = async (event, value) => {
-            setPage(value)     
+            setPage(value) 
+            
+            getComments(recipe.idRecipe, 3, page)
+            .then((res) => {
+              if(res){
+                setComments(res)
+              }
+            })
+            .catch((err) => console.log(err));
         }
 
         const call_setComment = (value) => {
@@ -83,18 +102,18 @@ export const Comments = (props) => {
                                 <ListItem alignItems="flex-start">
                                     <Paper elevation={3} sx={{width:"100%", padding:"2%"}}>
                                         <ListItemText
-                                        primary={"name of user " + comment.idUser}
+                                        primary={comment.name}
                                         secondary={
                                             <React.Fragment>
                                             <Typography
-                                                sx={{ display: 'inline' }}
+                                                sx={{ display: 'inline', marginTop:"10px" }}
                                                 component="span"
                                                 variant="body2"
                                                 color="text.primary"
                                             >
-                                                {"@username - "}
+                                                {"@" + comment.username + " dijo : "}
                                             </Typography>
-                                                {comment.comment}
+                                                {comment.value}
                                             </React.Fragment>
                                         }
                                         />
@@ -103,18 +122,20 @@ export const Comments = (props) => {
                             )
                             })                        
                             : 
-                            <Paper elevation={3} sx={{width:"100%", padding:"2%"}}>
-                                <h4>
-                                    No hay comentarios aún.
-                                </h4>
-                            </Paper>
+                            <ListItem alignItems="flex-start">
+                                <Paper elevation={3} sx={{width:"100%", padding:"2%"}}>
+                                    <h4>
+                                        No hay comentarios aún.
+                                    </h4>
+                                </Paper>
+                            </ListItem>
                         }
                     </List>
-                <Box sx={{ alignSelf:'center' }}>
-                    {
-                        comments ? <Pagination count={10} page={page} onChange={handleChangePagination} /> : null
-                    }                
-                </Box>
+                    <Box sx={{ alignSelf:'center' }}>
+                        {
+                            comments ? <Pagination count={5} page={page} onChange={handleChangePagination} /> : null
+                        }                
+                    </Box>
             </Stack>
         </Box>
      );
