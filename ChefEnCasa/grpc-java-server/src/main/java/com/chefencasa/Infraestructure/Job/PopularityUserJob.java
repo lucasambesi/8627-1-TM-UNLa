@@ -8,6 +8,6 @@ import java.util.Date;
 
 public class PopularityUserJob implements Job {
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        System.out.println("PopularityUserJob ejecutado a las " + new Date());
+        System.out.println("PopularityUserJob ejecuted - " + new Date());
     }
 }
