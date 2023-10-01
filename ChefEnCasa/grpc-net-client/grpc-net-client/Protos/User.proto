@@ -7,6 +7,7 @@ service UserController{
   rpc addFollowing(PostFollowingRequest) returns (PostFollowingResponse);
   rpc getFollowings(GetUserRequest)returns (UsersDTO);
   rpc getUser(GetUserRequest)returns (UserObjDTO);
+  rpc getUsersByPopularity(GetPopularityUserRequest)returns (UsersDTO);
   rpc getByUserAndPasswordRequest (GetByUserIdAndPasswordRequest) returns (UserObjDTO);
   rpc addFavorite(PostFavoriteRequest) returns (PostFavoriteResponse);
   rpc deleteFavorite(PostFavoriteRequest) returns (PostFavoriteResponse);
@@ -35,6 +36,11 @@ message FollowingDTO{
 
 message GetUserRequest{
   int32 idUser=1;
+}
+
+message GetPopularityUserRequest{
+  int32 pageSize=1;
+  int32 pageNumber=2;
 }
 
 message PostFollowingRequest{

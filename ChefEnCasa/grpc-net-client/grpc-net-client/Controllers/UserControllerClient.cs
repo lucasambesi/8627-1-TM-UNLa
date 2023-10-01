@@ -42,6 +42,27 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpGet("popularity")]
+        public async Task<ActionResult> GetPopularityUser(int pageSize, int pageNumber)
+        {
+            try
+            {
+                GetPopularityUserRequest request = new GetPopularityUserRequest() 
+                {
+                    PageNumber = pageNumber,
+                    PageSize= pageSize,
+                };
+                var response = await _service.getUsersByPopularityAsync(request);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("login")]
         public async Task<ActionResult> Login([FromBody] GetByUserIdAndPasswordRequest request)
