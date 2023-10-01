@@ -62,12 +62,29 @@ namespace grpc_net_client.Controllers
         }
 
         [HttpGet("rating")]
-        public async Task<ActionResult> Get(int idRating)
+        public async Task<ActionResult> Get(int idRecipe)
         {
             try
             {
-                GetRatingRequest idRatingDTO = new() { IdRating = idRating };
+                GetRatingRequest idRatingDTO = new() { IdRating = idRecipe };
                 var response = await _service.getRatingAsync(idRatingDTO);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("rating/average")]
+        public async Task<ActionResult> getAverageRating(int idRecipe)
+        {
+            try
+            {
+                GetRatingAvgRequest idRatingDTO = new() { IdRecipe = idRecipe };
+                var response = await _service.getAverageRatingAsync(idRatingDTO);
                 if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
                 return Ok(response);
             }
