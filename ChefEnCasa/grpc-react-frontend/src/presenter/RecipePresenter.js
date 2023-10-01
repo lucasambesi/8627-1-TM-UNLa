@@ -106,6 +106,24 @@ export const recipePresenter = () => {
         }
     }
 
+    const getRecipesByPopularity = async (pageSize, pageNumber) => {
+        try {
+            const res = await axios.get(`${baseUrl}/recipes/popularity`, {
+                params: {
+                    pageSize: pageSize,
+                    pageNumber: pageNumber
+                }
+              });
+
+              console.log("🚀 ~ file: RecipePresenter.js:119 ~ getRecipesByPopularity ~ res:", res)
+            const result = await res.data;
+
+            return result.recipes
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const getRecipesByUserId = async (idUser) => {
         try {
 
@@ -233,6 +251,7 @@ export const recipePresenter = () => {
         getRecipesByUserId,
         addRecipe,
         getById,
+        getRecipesByPopularity,
         updateRecipe,
         getByFilter,
         getFavorites,

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { News } from "./News";
 import { Box, Container, Divider, Grid, Stack, Typography } from "@mui/material";
 import { TopUsers } from "./users/TopUsers";
+import { TopRecipes } from "./recipes/TopRecipes";
 
 const Home = (props) => {
   
@@ -27,6 +28,15 @@ const Home = (props) => {
             <Box>
               <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <TopUsers />
+              </Grid>
+            </Box>
+            <Divider component="div" variant="fullWidth" />
+            <Typography variant="h3" alignSelf={"center"} >
+              {`Top Recetas`}
+            </Typography>
+            <Box>
+              <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+                <TopRecipes />
               </Grid>
             </Box>
           </Stack>

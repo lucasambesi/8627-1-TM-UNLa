@@ -11,7 +11,6 @@ export const TopUsers = (props) => {
     useEffect(() => {
         getUsersByPopularity(3,1)
           .then((res) => {
-            console.log("🚀 ~ file: TopUsers.jsx:17 ~ .then ~ res:", res)
             setUsers(res)
           })
           .catch((err) => console.log(err));
