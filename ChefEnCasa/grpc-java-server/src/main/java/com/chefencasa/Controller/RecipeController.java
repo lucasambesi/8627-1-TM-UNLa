@@ -7,6 +7,7 @@ import com.chefencasa.service.RecipeService;
 import com.chefencasa.service.UserService;
 import grpc.Recipe;
 import grpc.RecipeControllerGrpc;
+import grpc.User;
 import io.grpc.stub.StreamObserver;
 
 import java.util.Base64;
@@ -153,6 +154,26 @@ public class RecipeController extends RecipeControllerGrpc.RecipeControllerImplB
         }
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getRecipesByPopularity(Recipe.GetPopularityRecipeRequest request, StreamObserver<Recipe.RecipesDTO> responseObserver) {
+        Recipe.RecipesDTO.Builder recipesDTO = Recipe.RecipesDTO.newBuilder();
+        Recipe.RecipeServerResponse.Builder serverResponse = Recipe.RecipeServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.Recipe> recipes = recipeService.getRecipesByPopularity(
+                    request.getPageSize(),
+                    request.getPageNumber());
+
+            for (com.chefencasa.Model.Recipe recipe : recipes) {
+                recipesDTO.addRecipes(mapRecipeDTO(recipe));
+            }
+            recipesDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(recipesDTO.build());
         responseObserver.onCompleted();
     }
 

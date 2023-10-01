@@ -178,4 +178,26 @@ public class RecipeRepository {
         }
         return recipes;
     }
+
+    public List<Recipe> getRecipesByPopularity(int pageSize, int pageNumber) throws Exception {
+        List<Recipe> recipessers = null;
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+
+        try {
+            String query = "SELECT r FROM Recipe r ORDER BY r.popularity DESC";
+            TypedQuery<Recipe> tq = em.createQuery(query, Recipe.class);
+
+            tq.setFirstResult((pageNumber - 1) * pageSize);
+            tq.setMaxResults(pageSize);
+
+            recipessers = tq.getResultList();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("WARNING: Persistence error in getUsersByPopularity method");
+        } finally {
+            em.close();
+        }
+
+        return recipessers;
+    }
 }

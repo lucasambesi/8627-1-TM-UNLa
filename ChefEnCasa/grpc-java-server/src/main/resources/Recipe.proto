@@ -12,6 +12,7 @@ service RecipeController{
   rpc getRecipesByUserId(IdUserRequest) returns (RecipesDTO);
   rpc getByFilter(GetByFilterRequest) returns (RecipesDTO);
   rpc getFavotires(IdUserRequest)returns (RecipesDTO);
+  rpc getRecipesByPopularity(GetPopularityRecipeRequest)returns (RecipesDTO);
 }
 
 message Empty {
@@ -66,6 +67,11 @@ message GetByFilterRequest{
   int32 timeUntil=5;
   int32 pageNumber=6;
   int32 pageSize=7;
+}
+
+message GetPopularityRecipeRequest{
+  int32 pageSize=1;
+  int32 pageNumber=2;
 }
 
 message RecipeImageDTO {

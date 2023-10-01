@@ -126,6 +126,10 @@ public class RecipeService {
         return recipeRepository.getByFilter(categoria, title, ingredients, timeSince, timeUntil, pageNumber, pageSize);
     }
 
+    public List<Recipe> getRecipesByPopularity(int pageSize, int pageNumber) throws Exception{
+        return recipeRepository.getRecipesByPopularity(pageSize, pageNumber);
+    }
+
     private Recipe mapToEntity (grpc.Recipe.RecipeDTO dto) throws Exception{
         Recipe u = new Recipe();
 
