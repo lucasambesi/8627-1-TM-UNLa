@@ -120,6 +120,27 @@ namespace grpc_net_client.Controllers
             }
         }
 
+        [HttpGet("popularity")]
+        public async Task<ActionResult> GetPopularityUser(int pageSize, int pageNumber)
+        {
+            try
+            {
+                GetPopularityRecipeRequest request = new GetPopularityRecipeRequest()
+                {
+                    PageNumber = pageNumber,
+                    PageSize = pageSize,
+                };
+                var response = await _service.getRecipesByPopularityAsync(request);
+                if (response.ServerResponse.Code == 500) throw new Exception(response.ServerResponse.Msg);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Recipe recipe)
         {
