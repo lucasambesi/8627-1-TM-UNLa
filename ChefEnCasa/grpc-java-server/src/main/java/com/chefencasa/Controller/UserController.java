@@ -6,6 +6,8 @@ import grpc.User;
 import grpc.UserControllerGrpc;
 import io.grpc.stub.StreamObserver;
 
+import java.util.List;
+
 public class UserController extends UserControllerGrpc.UserControllerImplBase {
 
     public UserService userService = UserService.getInstance();
@@ -165,6 +167,26 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
 
         response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    public void getUsersByPopularity(User.GetPopularityUserRequest request, StreamObserver<User.UsersDTO> responseObserver) {
+        User.UsersDTO.Builder usersDTO = User.UsersDTO.newBuilder();
+        User.UserServerResponse.Builder serverResponse = User.UserServerResponse.newBuilder();
+        try {
+            List<com.chefencasa.Model.User> users = userService.getUsersByPopularity(
+                    request.getPageSize(),
+                    request.getPageNumber());
+
+            for (com.chefencasa.Model.User user : users) {
+                usersDTO.addUsers(mapUserDTO(user));
+            }
+            usersDTO.setServerResponse(serverResponse);
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        responseObserver.onNext(usersDTO.build());
         responseObserver.onCompleted();
     }
 

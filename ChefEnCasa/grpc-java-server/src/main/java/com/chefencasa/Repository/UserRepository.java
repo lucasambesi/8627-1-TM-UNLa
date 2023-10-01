@@ -90,6 +90,28 @@ public class UserRepository {
         return user;
     }
 
+    public List<User> getUsersByPopularity(int pageSize, int pageNumber) throws Exception {
+        List<User> users = null;
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+
+        try {
+            String query = "SELECT u FROM User u ORDER BY u.popularity DESC";
+            TypedQuery<User> tq = em.createQuery(query, User.class);
+
+            tq.setFirstResult((pageNumber - 1) * pageSize);
+            tq.setMaxResults(pageSize);
+
+            users = tq.getResultList();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("WARNING: Persistence error in getUsersByPopularity method");
+        } finally {
+            em.close();
+        }
+
+        return users;
+    }
+
     public List<Recipe> getFavorites(int idUser) throws Exception {
         List<Recipe> recipes = null;
         EntityManager em = JPAUtil.getEMF().createEntityManager();

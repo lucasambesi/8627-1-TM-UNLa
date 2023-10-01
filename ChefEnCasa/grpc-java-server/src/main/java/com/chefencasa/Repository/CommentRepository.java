@@ -1,9 +1,7 @@
 package com.chefencasa.Repository;
 
 import com.chefencasa.Model.Comment;
-import com.chefencasa.Model.Rating;
 import com.chefencasa.Model.Recipe;
-import com.chefencasa.Model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

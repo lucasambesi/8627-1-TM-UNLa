@@ -125,6 +125,9 @@ public class UserService {
         return userRepository.getFavorites(idUser);
     }
 
+    public List<User> getUsersByPopularity(int pageSize, int pageNumber) throws Exception{
+        return userRepository.getUsersByPopularity(pageSize, pageNumber);
+    }
 
     public User getById (int isUser) throws Exception{
         return userRepository.getById(isUser);
