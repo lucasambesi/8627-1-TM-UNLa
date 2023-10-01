@@ -67,6 +67,24 @@ export const ratingPresenter = () => {
         }
     }
 
+    const getAverage = async (idRecipe) => {
+        console.log("🚀 ~ file: RatingPresenter.js:71 ~ getAverage ~ idRecipe:", idRecipe)
+        try {
+            const res = await axios.get(`${baseUrl}/rating/average`, {
+                params: {
+                    idRecipe: idRecipe
+                }
+              });
+
+              console.log("🚀 ~ file: RatingPresenter.js:79 ~ getAverage ~ res:", res)
+            const result = await res.data
+
+            return result
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const getRatingByUserIdAndRecipeId = async (userId, recipeId) => {
         try {
 
@@ -88,6 +106,7 @@ export const ratingPresenter = () => {
         addRating,
         updateRating,
         getById,
-        getRatingByUserIdAndRecipeId
+        getRatingByUserIdAndRecipeId,
+        getAverage
     }
 }

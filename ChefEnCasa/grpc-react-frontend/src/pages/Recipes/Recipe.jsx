@@ -114,25 +114,28 @@ export const Recipe = () => {
 
                 <Stack direction="row" justifyContent={"space-between"} sx={{ marginTop:'20px'}}>
                     <Typography id="modal-modal-title" align="center" variant="h4" component="h2">
-                        {recipe.title}
+                            {recipe.title}
                     </Typography>
-                    {
-                        (user.idUser == autor.idUser) 
-                        ? 
-                        <Button variant="outlined" onClick={() => abrirModalEdicion(recipe)}>Editar</Button> 
-                        : 
-                        (
-                        (!isFavorite)
-                        ?
-                        <Button variant="outlined" onClick={() => addToFavorite(recipe)}>Agregar a Fav</Button>
-                        :
-                        <Button variant="outlined" onClick={() => deleteFavorite(recipe)}>Eliminar Fav</Button>
-                        )
-                    }
-                    </Stack>  
+                    <Stack direction={"row"} spacing={3} alignItems={"center"}>
+                        <CustomRating idRecipe={recipeId} user={user} readOnly={"true"}/>
+                        {
+                            (user.idUser == autor.idUser) 
+                            ? 
+                            <Button variant="outlined" onClick={() => abrirModalEdicion(recipe)}>Editar</Button> 
+                            : 
+                            (
+                            (!isFavorite)
+                            ?
+                            <Button variant="outlined" onClick={() => addToFavorite(recipe)}>Agregar a Fav</Button>
+                            :
+                            <Button variant="outlined" onClick={() => deleteFavorite(recipe)}>Eliminar Fav</Button>
+                            )
+                        }
+                    </Stack>
+                </Stack>  
                 <Typography id="modal-modal-description" sx={{ mt: 2, marginTop:"50px" }}>
                     La receta te tomara aproximadamente {recipe.preparationTime} minutos.
-                </Typography>
+                </Typography>               
                 <Typography sx={{marginTop: 2}} id="modal-modal-title" variant="h6" component="h2">
                     Categoria: 
                 </Typography>
