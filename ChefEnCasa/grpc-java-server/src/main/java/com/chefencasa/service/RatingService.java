@@ -3,6 +3,8 @@ package com.chefencasa.service;
 import com.chefencasa.Model.*;
 import com.chefencasa.Repository.RatingRepository;
 
+import java.util.List;
+
 public class RatingService {
 
     private static RatingService service;
@@ -59,6 +61,14 @@ public class RatingService {
         Recipe recipe = recipeService.getById(idRecipe);
 
         return ratingRepository.getByUserAndRecipe(user, recipe);
+    }
+
+    public double getAverageRating(int idRecipe) throws Exception{
+        return ratingRepository.getAverageRating(idRecipe);
+    }
+
+    public double getRatingCount(int idRecipe) throws Exception{
+        return ratingRepository.getRatingCount(idRecipe);
     }
 
     private Rating mapToEntity (grpc.Rating.RatingDTO dto) throws Exception{

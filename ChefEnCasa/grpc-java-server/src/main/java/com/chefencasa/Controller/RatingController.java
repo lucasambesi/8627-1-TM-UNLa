@@ -92,6 +92,33 @@ public class RatingController extends RatingControllerGrpc.RatingControllerImplB
         responseObserver.onCompleted();
     }
 
+    public void getAverageRating(
+            Rating.GetRatingAvgRequest request,
+            StreamObserver<Rating.RatingRecipeResponse> responseObserver) {
+
+        Rating.RatingServerResponse.Builder serverResponse = Rating.RatingServerResponse.newBuilder();
+        Rating.RatingRecipeResponse.Builder response = Rating.RatingRecipeResponse.newBuilder();
+
+        try {
+            double averageRating = this.ratingService.getAverageRating(request.getIdRecipe());
+            double count = this.ratingService.getRatingCount(request.getIdRecipe());
+
+            response.setAverage(averageRating);
+            response.setCount(count);
+
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Rating found");
+
+        } catch (Exception var7) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(var7.getMessage());
+        }
+
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
     private Rating.RatingDTO.Builder mapRatingDTO(com.chefencasa.Model.Rating c) throws Exception{
         Rating.RatingDTO.Builder ratingDTO =Rating.RatingDTO.newBuilder();
 

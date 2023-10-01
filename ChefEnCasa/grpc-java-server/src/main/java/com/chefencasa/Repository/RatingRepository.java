@@ -99,4 +99,35 @@ public class RatingRepository {
         }
         return rating;
     }
+
+    public long getRatingCount(int idRecipe) throws Exception {
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        try {
+            String query = "SELECT COUNT(r) FROM Rating r WHERE r.recipe.idRecipe = :idRecipe";
+            TypedQuery<Long> tq = em.createQuery(query, Long.class);
+            tq.setParameter("idRecipe", idRecipe);
+            return tq.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("WARNING: Persistence error in getRatingCount method");
+        } finally {
+            em.close();
+        }
+    }
+
+    public double getAverageRating(int idRecipe) throws Exception {
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        try {
+            String query = "SELECT AVG(r.value) FROM Rating r WHERE r.recipe.idRecipe = :idRecipe";
+            TypedQuery<Double> tq = em.createQuery(query, Double.class);
+            tq.setParameter("idRecipe", idRecipe);
+            Double averageRating = tq.getSingleResult();
+            return averageRating != null ? averageRating : 0;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("WARNING: Persistence error in getAverageRating method");
+        } finally {
+            em.close();
+        }
+    }
 }
