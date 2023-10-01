@@ -42,6 +42,23 @@ export const userPresenter = () => {
         }
     }
 
+    const getUsersByPopularity = async (pageSize, pageNumber) => {
+        try {
+            const res = await axios.get(`${baseUrl}/user/popularity`, {
+                params: {
+                    pageSize: pageSize,
+                    pageNumber: pageNumber
+                }
+              });
+
+            const result = await res.data;
+
+            return result.users
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const login = async (username, password) => {
         try {
             const body = {
@@ -189,6 +206,7 @@ export const userPresenter = () => {
         addFollowing,
         deleteFollowing,
         isInFavorites,
+        getUsersByPopularity,
         sendPopularityKafka
     }
 }
