@@ -6,6 +6,7 @@ service RatingController{
   rpc addRating(RatingDTO) returns (RatingObjDTO);
   rpc updateRating(RatingDTO) returns (RatingObjDTO);
   rpc getRating(GetRatingRequest)returns (RatingObjDTO);
+  rpc getAverageRating(GetRatingAvgRequest)returns (RatingRecipeResponse);
   rpc getRatingByUserAndRecipe(UserAndRecipeRatingRequest) returns (RatingObjDTO);
 }
 
@@ -33,6 +34,10 @@ message GetRatingRequest{
   int32 idRating=1;
 }
 
+message GetRatingAvgRequest{
+  int32 idRecipe=1;
+}
+
 message UserAndRecipeRatingRequest{
   int32 idUser=1;
   int32 idRecipe=2;
@@ -41,4 +46,10 @@ message UserAndRecipeRatingRequest{
 message RatingsDTO{
   repeated RatingDTO ratings=1;
   RatingServerResponse serverResponse = 2;
+}
+
+message RatingRecipeResponse{
+  double count=1;
+  double average=2;
+  RatingServerResponse serverResponse = 3;
 }
