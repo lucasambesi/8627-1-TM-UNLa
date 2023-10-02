@@ -11,7 +11,7 @@ export const Comments = (props) => {
 
         const { sendCommentKafka } = recipePresenter()
         
-        const { user, recipe } = props;
+        const { user, recipe, idRecipe } = props;
 
         const [comments, setComments] = useState(null);
 
@@ -20,7 +20,7 @@ export const Comments = (props) => {
         const [page, setPage] = React.useState(1);
 
         useEffect(() => {
-            getComments(recipe.idRecipe, 3, page)
+            getComments(idRecipe, 3, page)
             .then((res) => {      
               console.log("🚀 ~ file: Comments.jsx:22 ~ .then ~ res:", res)
               if(res){
@@ -34,7 +34,7 @@ export const Comments = (props) => {
         const  handleChangePagination = async (event, value) => {
             setPage(value) 
             
-            getComments(recipe.idRecipe, 3, page)
+            getComments(idRecipe, 3, page)
             .then((res) => {
               if(res){
                 setComments(res)

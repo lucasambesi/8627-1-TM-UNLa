@@ -18,7 +18,6 @@ export const TopRecipes = (props) => {
     useEffect(() => {
         getRecipesByPopularity(5,1)
           .then((res) => {
-            console.log("🚀 ~ file: TopUsers.jsx:17 ~ .then ~ res:", res)
             setRecipes(res)
           })
           .catch((err) => console.log(err));
