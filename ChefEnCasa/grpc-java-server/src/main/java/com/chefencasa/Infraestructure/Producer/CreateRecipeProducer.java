@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -48,7 +49,9 @@ public class CreateRecipeProducer {
 
             if (!images.isEmpty()) {
                 RecipeImage recipeImage = images.get(0);
-                //msj.setFile(recipeImage.getFile());
+                String parsed = Base64.getEncoder().encodeToString(recipeImage.getFile());
+
+                //msj.setFile(parsed);
             }
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -73,7 +76,7 @@ public class CreateRecipeProducer {
         return (Objects.nonNull(producer)) ? producer : new CreateRecipeProducer();
     }
 
-    private static final String TOPIC = "chefencasa-create-recipe";
+    private static final String TOPIC = "Novedades";
     private static final Integer PARTITION = 0;
     private static final Logger log = LogManager.getLogger(Producer.class);
 }

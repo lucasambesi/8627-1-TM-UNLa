@@ -105,10 +105,6 @@ public class RecipeService {
 
         Recipe recipe = recipeRepository.getById(idRecipe);
 
-        //TODO: Eliminar una vez terminadas las pruebas
-        createRecipeProducer.send(recipe.getTitle(), recipe);
-        //createRecipeProducer.close();
-
         return recipe;
     }
 

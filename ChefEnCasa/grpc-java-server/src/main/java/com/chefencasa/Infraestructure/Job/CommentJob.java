@@ -29,7 +29,7 @@ public class CommentJob implements Job {
 
         System.out.println("Starting message consumption...");
 
-        kafkaConsumer.consumeMessages("send-comments");
+        kafkaConsumer.consumeMessages("Comentarios");
         kafkaConsumer.close();
 
         System.out.println("Message consumption completed.");

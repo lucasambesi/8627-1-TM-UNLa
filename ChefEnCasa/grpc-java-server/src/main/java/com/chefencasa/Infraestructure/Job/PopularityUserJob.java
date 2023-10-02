@@ -28,7 +28,7 @@ public class PopularityUserJob implements Job {
 
         System.out.println("Starting message consumption...");
 
-        kafkaConsumer.consumeMessages("chefencasa-PopularidadUsuario");
+        kafkaConsumer.consumeMessages("PopularidadUsuario");
         kafkaConsumer.close();
 
         System.out.println("Message consumption completed.");

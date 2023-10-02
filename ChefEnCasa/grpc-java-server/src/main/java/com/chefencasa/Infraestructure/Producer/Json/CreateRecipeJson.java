@@ -19,6 +19,5 @@ public class CreateRecipeJson {
     private String username;
 
     @JsonProperty("url")
-    @Lob
-    private byte[] file;
+    private String file;
 }
