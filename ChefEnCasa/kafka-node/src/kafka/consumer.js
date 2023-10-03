@@ -31,12 +31,9 @@ const getMessages = async (topic, groupId, maxMessages) => {
             resolveOffset(message.offset);
             rs.push(JSON.parse(message.value.toString()));
 
-            if (++messagesRead >= maxMessages) {
-              break;
-            }
           }
 
-          unreadMessages = rs;
+          unreadMessages = rs.slice(-5);;
           consumer.disconnect();
           resolve(unreadMessages);
         }
