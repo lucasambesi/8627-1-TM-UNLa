@@ -11,6 +11,7 @@ import { Following } from './pages/Profile/Following';
 import { RecipeTabs } from './pages/Recipes/TabsRecipes';
 import { SearchRecipe } from './pages/Recipes/SearchRecipe';
 import { Recipe } from './pages/Recipes/Recipe';
+import { CsvUploader } from './components/CsvUploader';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/profile" element={<Profile user={user} setUser={setUser}/>} />
           <Route path="/recipes" element={<RecipeTabs user={user}/>} />        
           <Route path="/following" element={<Following user={user}/>} />
+          <Route path="/drafts/uploader" element={<CsvUploader user={user}/>} />
         </Routes>
       </BrowserRouter>
     </>

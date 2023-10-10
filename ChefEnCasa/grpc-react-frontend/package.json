@@ -17,12 +17,14 @@
     "@mui/material": "^5.14.7",
     "axios": "^0.27.2",
     "mdb-react-ui-kit": "^6.2.0",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-swipeable-views": "^0.14.0",
-    "reactjs-popup": "^2.0.5"
+    "reactjs-popup": "^2.0.5",
+    "strong-soap": "^3.5.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
