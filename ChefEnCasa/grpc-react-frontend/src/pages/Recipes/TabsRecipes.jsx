@@ -64,7 +64,7 @@ export const RecipeTabs = (props) => {
         <FavoriteRecipes user={user} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Drafts />
+        <Drafts user={user} />
       </CustomTabPanel>
     </Box>
   );

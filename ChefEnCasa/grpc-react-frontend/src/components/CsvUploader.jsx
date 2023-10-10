@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { Box, Button, Container, Grid } from '@mui/material';
 import { useNavigate } from 'react-router'
+import { draftPresenter } from '../presenter/DraftPresenter'
+export const CsvUploader = (props) => {
 
-export const CsvUploader = () => {
+  const {user } = props
   const [csvData, setCsvData] = useState(null);
   const navigate = useNavigate();
+  const { addDrafts } = draftPresenter()
+
 
   const handleCsvUpload = (event) => {
     const file = event.target.files[0];
     
     Papa.parse(file, {
       complete: (result) => {
-        console.log("🚀 ~ file: CsvUploader.jsx:12 ~ handleCsvUpload ~ result:", result)
         setCsvData(result.data);
       },
       header: true,
@@ -20,8 +23,12 @@ export const CsvUploader = () => {
   };
 
   const handleDrafts = () => {
-    alert("Borradores subidos con exito")
-    navigate("/recipes")
+    addDrafts(csvData, user.idUser)
+    .then((res) => {
+        alert("Borradores subidos con exito")
+        navigate("/recipes")
+    })
+    .catch((err) => console.log(err));
   };
 
   return (
@@ -38,10 +45,10 @@ export const CsvUploader = () => {
                             {csvData.map((row, index) => (
                             <li key={index}>
                                 <strong>{"Receta " + (index + 1) + ": "}</strong>
-                                <strong>Título:</strong> {row.título},{' '}
-                                <strong>Descripción:</strong> {row.descripción},{' '}
-                                <strong>Categoría:</strong> {row.categoría},{' '}
-                                <strong>Tiempo de Preparación:</strong> {row['tiempo de preparación']}
+                                <strong>Título:</strong> {row.title},{' '}
+                                <strong>Descripción:</strong> {row.description},{' '}
+                                <strong>Categoría:</strong> {row.category},{' '}
+                                <strong>Tiempo de Preparación:</strong> {row.preparationTime},{' '}
                             </li>
                             ))}
                         </Grid>
