@@ -29,8 +29,15 @@ namespace rest_net.Repositories
 
         public async Task<List<Draft>> GetDrafts(string userId)
         {
-            return await Collection.FindAsync(
+            var drafts = await Collection.FindAsync(
                 new BsonDocument { { "UserId", userId } }).Result.ToListAsync();
+            
+            foreach (var draft in drafts)
+            {
+                draft.DraftId = draft.Id.ToString();
+            }
+            
+            return drafts;
         }
 
         public async Task<List<Draft>> GetDrafts()
