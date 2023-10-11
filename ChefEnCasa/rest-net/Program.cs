@@ -29,7 +29,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDraftService, DraftService>();
+builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IDraftCollection, DraftCollection>();
+builder.Services.AddScoped<IReportCollection, ReportCollection>();
 
 var app = builder.Build();
 
