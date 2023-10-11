@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-import { Box, Button, Container, Grid } from '@mui/material';
+import { Box, Button, Container, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useNavigate } from 'react-router'
 import { draftPresenter } from '../presenter/DraftPresenter'
 export const CsvUploader = (props) => {
@@ -32,32 +32,102 @@ export const CsvUploader = (props) => {
   };
 
   return (
-    <Container sx={{  justifySelf:'center', alignSelf: 'center'}}>
-        <Box sx={{ flexGrow: 1, marginLeft: 12, alignContent:'center' }}>
-        <h2>Subir Archivo CSV</h2>
-        <input type="file" accept=".csv" onChange={handleCsvUpload} />
-        {
+    <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:"40px"}}>
+        <Paper elevation={0} sx={{ flexGrow: 1, alignContent:'center' }}>
+          <Stack spacing={5}>
+            <Typography id="modal-modal-title" align="center" variant="h5" component="h5">
+              Subir Archivo CSV
+            </Typography>
+            <Stack spacing={3}>
+              <Typography variant="h5" component="h5">
+                Seleccionar archivo:
+              </Typography>
+              <input type="file" accept=".csv" onChange={handleCsvUpload} />
+            </Stack>
+          </Stack>
+        
+          {
             csvData
             ?
-                <>
-                        <h3>Contenido del CSV:</h3>
-                        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            {csvData.map((row, index) => (
-                            <li key={index}>
-                                <strong>{"Receta " + (index + 1) + ": "}</strong>
-                                <strong>Título:</strong> {row.title},{' '}
-                                <strong>Descripción:</strong> {row.description},{' '}
-                                <strong>Categoría:</strong> {row.category},{' '}
-                                <strong>Tiempo de Preparación:</strong> {row.preparationTime},{' '}
-                            </li>
-                            ))}
-                        </Grid>
-                </>
+                <Stack marginTop={"20px"} spacing={5}>
+                  <Typography id="modal-modal-title" variant="h5" component="h5">
+                    Contenido del CSV:
+                  </Typography>
+                  <TableContainer component={Paper} elevation={3} >
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                      <TableHead>
+                        <TableRow >
+                          <TableCell align="center" sx={{fontWeight: "bold"}}>
+                            Borrador
+                          </TableCell>
+                          <TableCell align="center" sx={{fontWeight: "bold"}}>
+                            Titulo
+                          </TableCell>
+                          <TableCell align="center" sx={{fontWeight: "bold"}}>
+                            Descripción
+                          </TableCell>
+                          <TableCell align="center" sx={{fontWeight: "bold"}}>
+                            Categoria
+                          </TableCell>
+                          <TableCell align="center" sx={{fontWeight: "bold"}}>
+                            Tiempo de preparación
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {csvData.map((row, index) => (
+                          <TableRow
+                            key={row.title}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                          >
+                            <TableCell component="th" scope="row" align="center" sx={{fontWeight: "bold"}}>
+                              {index + 1}
+                            </TableCell>
+                            <TableCell align="center">
+                              {
+                                row.title.length > 100
+                                  ? `${row.title.slice(0, 97)}...`
+                                  : row.title
+                              }
+                            </TableCell>
+                            <TableCell align="center">
+                              {
+                                row.description.length > 100
+                                  ? `${row.description.slice(0, 97)}...`
+                                  : row.description
+                              }
+                            </TableCell>
+                            <TableCell align="center">
+                              {row.category}
+                            </TableCell>
+                            <TableCell align="center">
+                              {row.preparationTime + " minutos"} 
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <Button marginTop={"20px"} onClick={handleDrafts} variant="outlined">
+                    SUBIR
+                  </Button>
+                </Stack>
             :
             null
-        }
-        </Box>
-        <Button onClick={handleDrafts}>SUBIR</Button>       
+          }
+        </Paper>        
     </Container>
   );
 };
+
+{/* <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+  {csvData.map((row, index) => (
+  <li key={index}>
+      <strong>{"Receta " + (index + 1) + ": "}</strong>
+      <strong>Título:</strong> {row.title},{' '}
+      <strong>Descripción:</strong> {row.description},{' '}
+      <strong>Categoría:</strong> {row.category},{' '}
+      <strong>Tiempo de Preparación:</strong> {row.preparationTime},{' '}
+  </li>
+  ))}
+</Grid> */}

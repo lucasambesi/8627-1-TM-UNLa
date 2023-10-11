@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { recipePresenter } from '../../presenter/RecipePresenter'
 import { categoryPresenter } from '../../presenter/CategoryPresenter'
+import { draftPresenter } from '../../presenter/DraftPresenter'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from 'react-router'
@@ -14,6 +15,7 @@ export const ModalRecipe = (props) => {
 
     const {addRecipe, updateRecipe} = recipePresenter()
     const { getCategories } = categoryPresenter()
+    const { deleteDraft } = draftPresenter()
     const [descriptionLength, setDescriptionLength] = useState(0);
     const [steps, setSteps] = useState([]);
 
@@ -21,11 +23,13 @@ export const ModalRecipe = (props) => {
             open,
             setOpen,
             editMode, 
+            idCategory,
+            draftMode,
+            draft,
             rcp } = props
   
     const [recipe, setRecipe] = useState(rcp);
-    const [category, setCategory] = useState('');
-
+    const [category, setCategory] = useState("");
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -35,13 +39,19 @@ export const ModalRecipe = (props) => {
         }
       }, [rcp])
 
-    useEffect(() => {
-        getCategories()
-          .then((res) => {
-            setCategories(res)
-          })
-          .catch((err) => console.log(err));
-      }, [])
+      useEffect(() => {
+            getCategories()
+            .then((res) => {
+                setCategories(res);
+                if (idCategory && idCategory !== "") {
+                    const foundCategory = res.find((cat) => cat.idCategory == idCategory);
+                    if (foundCategory) {
+                        setCategory(foundCategory);
+                    }
+                }
+            })
+            .catch((err) => console.log(err));
+        }, []);
 
       useEffect(() => {
         setRecipe({ ...recipe, idCategory: category.idCategory })
@@ -70,27 +80,49 @@ export const ModalRecipe = (props) => {
      }
   
 
-    const createRecipe = async (event) => {
+     const createRecipe = async (event) => {
         event.preventDefault();
-
-        addRecipe({ ...recipe, idUser: user.idUser, steps: steps}).then((res) => {
-            alert("Receta creada")
+      
+        if (!validateFields(recipe)) {
+          return;
+        }
+      
+        addRecipe({ ...recipe, idUser: user.idUser, steps: steps })
+        .then((res) => {
+            if(draftMode == true && res.data){
+                deleteDraft(draft.draftId)
+                .then((res) => {console.log("borrador eliminado: " + draft.draftId)})
+                .catch((err) => console.log(err));
+            }
+          alert("Receta creada");
         }).then(() => {
-            navigate("/recipes")
-            close()
-        })
-      }
-    
+          navigate("/recipes");
+          close();
+        });
+      };
+      
       const editRecipe = (event) => {
         event.preventDefault();
-
+      
+        if (!validateFields(recipe)) {
+          return;
+        }
+      
         updateRecipe({ ...recipe, idUser: user.idUser }).then((res) => {
-            alert("Producto Actualizado")
+          alert("Producto Actualizado");
         }).then(() => {
-            navigate("/recipes")
-            close()
-        })
-      }
+          navigate("/recipes");
+          close();
+        });
+      };
+
+      const validateFields = (recipe) => {
+        if (!recipe.title || !recipe.description || !recipe.ingredients || !recipe.preparationTime || !recipe.idCategory) {
+          alert("Por favor, complete todos los campos obligatorios.");
+          return false;
+        }
+        return true;
+      };
 
     const close = () => {
         setOpen(false);

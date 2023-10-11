@@ -9,7 +9,7 @@ export const SelectCategory = (props) => {
         setCategory,
         category,
         categories
-    } = props   
+    } = props
 
     const handleChange = (event) => {
         setCategory(event.target.value);

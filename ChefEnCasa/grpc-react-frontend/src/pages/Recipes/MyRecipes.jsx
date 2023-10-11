@@ -69,7 +69,7 @@ export const MyRecipes = (props) => {
             <Fab color="primary" aria-label="add" sx={fabStyle} onClick={abrirModalCreacion}>
                 <AddIcon />
             </Fab>
-            <ModalRecipe editMode={false} user={user} open={open} setOpen={setOpen} rcp={recipe} />
+            <ModalRecipe editMode={false} user={user} open={open} setOpen={setOpen} rcp={recipe} idCategory={""}/>
         </Container>
      );
    }

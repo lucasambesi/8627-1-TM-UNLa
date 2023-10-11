@@ -22,6 +22,27 @@ export const draftPresenter = () => {
         }
     }
 
+    const updateDraft = async (draft) => {
+        try {    
+            const res = await axios.put(`${baseUrl}/draft?id=${draft.draftId}`, draft);
+
+            const result = res.status == "200" ? await res.data : null
+            return result;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
+    const deleteDraft = async (id) => {
+        try {        
+            const res = await axios.delete(`${baseUrl}/draft/${id}`);
+
+            return res.data;
+        } catch (err) {
+            console.log('err => ' , err)
+        }
+    }
+
     const getById = async (id) => {
         try {
             const res = await axios.get(`${baseUrl}/draft/${id}`);
@@ -49,6 +70,8 @@ export const draftPresenter = () => {
     return {
         addDrafts,
         getById,
-        getByUserId
+        getByUserId,
+        updateDraft,
+        deleteDraft
     }
 }

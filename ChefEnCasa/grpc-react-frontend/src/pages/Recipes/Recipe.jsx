@@ -204,7 +204,7 @@ export const Recipe = () => {
                     <Comments recipe={recipe} idRecipe={recipeId} user={user}/>
                 </Stack>
             </Paper>
-            <ModalRecipe editMode={true} user={user} open={openEdicion} setOpen={setOpenEdicion} rcp={RecipeAEditar} />
+            <ModalRecipe editMode={true} user={user} open={openEdicion} setOpen={setOpenEdicion} rcp={RecipeAEditar} idCategory={""}/>
         </Container>
     );
   }
