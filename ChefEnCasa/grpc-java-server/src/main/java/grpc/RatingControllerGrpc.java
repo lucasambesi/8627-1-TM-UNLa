@@ -123,6 +123,38 @@ public final class RatingControllerGrpc {
      return getGetRatingMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Rating.GetRatingAvgRequest,
+      grpc.Rating.RatingRecipeResponse> getGetAverageRatingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getAverageRating",
+      requestType = grpc.Rating.GetRatingAvgRequest.class,
+      responseType = grpc.Rating.RatingRecipeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Rating.GetRatingAvgRequest,
+      grpc.Rating.RatingRecipeResponse> getGetAverageRatingMethod() {
+    io.grpc.MethodDescriptor<grpc.Rating.GetRatingAvgRequest, grpc.Rating.RatingRecipeResponse> getGetAverageRatingMethod;
+    if ((getGetAverageRatingMethod = RatingControllerGrpc.getGetAverageRatingMethod) == null) {
+      synchronized (RatingControllerGrpc.class) {
+        if ((getGetAverageRatingMethod = RatingControllerGrpc.getGetAverageRatingMethod) == null) {
+          RatingControllerGrpc.getGetAverageRatingMethod = getGetAverageRatingMethod = 
+              io.grpc.MethodDescriptor.<grpc.Rating.GetRatingAvgRequest, grpc.Rating.RatingRecipeResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "RatingController", "getAverageRating"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Rating.GetRatingAvgRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Rating.RatingRecipeResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new RatingControllerMethodDescriptorSupplier("getAverageRating"))
+                  .build();
+          }
+        }
+     }
+     return getGetAverageRatingMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.Rating.UserAndRecipeRatingRequest,
       grpc.Rating.RatingObjDTO> getGetRatingByUserAndRecipeMethod;
 
@@ -205,6 +237,13 @@ public final class RatingControllerGrpc {
 
     /**
      */
+    public void getAverageRating(grpc.Rating.GetRatingAvgRequest request,
+        io.grpc.stub.StreamObserver<grpc.Rating.RatingRecipeResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAverageRatingMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getRatingByUserAndRecipe(grpc.Rating.UserAndRecipeRatingRequest request,
         io.grpc.stub.StreamObserver<grpc.Rating.RatingObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetRatingByUserAndRecipeMethod(), responseObserver);
@@ -233,6 +272,13 @@ public final class RatingControllerGrpc {
                 grpc.Rating.GetRatingRequest,
                 grpc.Rating.RatingObjDTO>(
                   this, METHODID_GET_RATING)))
+          .addMethod(
+            getGetAverageRatingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Rating.GetRatingAvgRequest,
+                grpc.Rating.RatingRecipeResponse>(
+                  this, METHODID_GET_AVERAGE_RATING)))
           .addMethod(
             getGetRatingByUserAndRecipeMethod(),
             asyncUnaryCall(
@@ -288,6 +334,14 @@ public final class RatingControllerGrpc {
 
     /**
      */
+    public void getAverageRating(grpc.Rating.GetRatingAvgRequest request,
+        io.grpc.stub.StreamObserver<grpc.Rating.RatingRecipeResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetAverageRatingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getRatingByUserAndRecipe(grpc.Rating.UserAndRecipeRatingRequest request,
         io.grpc.stub.StreamObserver<grpc.Rating.RatingObjDTO> responseObserver) {
       asyncUnaryCall(
@@ -332,6 +386,13 @@ public final class RatingControllerGrpc {
     public grpc.Rating.RatingObjDTO getRating(grpc.Rating.GetRatingRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetRatingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Rating.RatingRecipeResponse getAverageRating(grpc.Rating.GetRatingAvgRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetAverageRatingMethod(), getCallOptions(), request);
     }
 
     /**
@@ -386,6 +447,14 @@ public final class RatingControllerGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Rating.RatingRecipeResponse> getAverageRating(
+        grpc.Rating.GetRatingAvgRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetAverageRatingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Rating.RatingObjDTO> getRatingByUserAndRecipe(
         grpc.Rating.UserAndRecipeRatingRequest request) {
       return futureUnaryCall(
@@ -396,7 +465,8 @@ public final class RatingControllerGrpc {
   private static final int METHODID_ADD_RATING = 0;
   private static final int METHODID_UPDATE_RATING = 1;
   private static final int METHODID_GET_RATING = 2;
-  private static final int METHODID_GET_RATING_BY_USER_AND_RECIPE = 3;
+  private static final int METHODID_GET_AVERAGE_RATING = 3;
+  private static final int METHODID_GET_RATING_BY_USER_AND_RECIPE = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -426,6 +496,10 @@ public final class RatingControllerGrpc {
         case METHODID_GET_RATING:
           serviceImpl.getRating((grpc.Rating.GetRatingRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Rating.RatingObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_AVERAGE_RATING:
+          serviceImpl.getAverageRating((grpc.Rating.GetRatingAvgRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.Rating.RatingRecipeResponse>) responseObserver);
           break;
         case METHODID_GET_RATING_BY_USER_AND_RECIPE:
           serviceImpl.getRatingByUserAndRecipe((grpc.Rating.UserAndRecipeRatingRequest) request,
@@ -495,6 +569,7 @@ public final class RatingControllerGrpc {
               .addMethod(getAddRatingMethod())
               .addMethod(getUpdateRatingMethod())
               .addMethod(getGetRatingMethod())
+              .addMethod(getGetAverageRatingMethod())
               .addMethod(getGetRatingByUserAndRecipeMethod())
               .build();
         }

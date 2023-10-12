@@ -111,6 +111,16 @@ public final class User {
      * <code>int32 popularity = 9;</code>
      */
     int getPopularity();
+
+    /**
+     * <code>string role = 10;</code>
+     */
+    java.lang.String getRole();
+    /**
+     * <code>string role = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleBytes();
   }
   /**
    * Protobuf type {@code UserDTO}
@@ -134,6 +144,7 @@ public final class User {
       password_ = "";
       following_ = java.util.Collections.emptyList();
       popularity_ = 0;
+      role_ = "";
     }
 
     @java.lang.Override
@@ -213,6 +224,12 @@ public final class User {
             case 72: {
 
               popularity_ = input.readInt32();
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              role_ = s;
               break;
             }
             default: {
@@ -508,6 +525,40 @@ public final class User {
       return popularity_;
     }
 
+    public static final int ROLE_FIELD_NUMBER = 10;
+    private volatile java.lang.Object role_;
+    /**
+     * <code>string role = 10;</code>
+     */
+    public java.lang.String getRole() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        role_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string role = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRoleBytes() {
+      java.lang.Object ref = role_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        role_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -549,6 +600,9 @@ public final class User {
       if (popularity_ != 0) {
         output.writeInt32(9, popularity_);
       }
+      if (!getRoleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, role_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -588,6 +642,9 @@ public final class User {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, popularity_);
       }
+      if (!getRoleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, role_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -622,6 +679,8 @@ public final class User {
           .equals(other.getFollowingList());
       result = result && (getPopularity()
           == other.getPopularity());
+      result = result && getRole()
+          .equals(other.getRole());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -653,6 +712,8 @@ public final class User {
       }
       hash = (37 * hash) + POPULARITY_FIELD_NUMBER;
       hash = (53 * hash) + getPopularity();
+      hash = (37 * hash) + ROLE_FIELD_NUMBER;
+      hash = (53 * hash) + getRole().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -809,6 +870,8 @@ public final class User {
         }
         popularity_ = 0;
 
+        role_ = "";
+
         return this;
       }
 
@@ -854,6 +917,7 @@ public final class User {
           result.following_ = followingBuilder_.build();
         }
         result.popularity_ = popularity_;
+        result.role_ = role_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -958,6 +1022,10 @@ public final class User {
         }
         if (other.getPopularity() != 0) {
           setPopularity(other.getPopularity());
+        }
+        if (!other.getRole().isEmpty()) {
+          role_ = other.role_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1691,6 +1759,75 @@ public final class User {
       public Builder clearPopularity() {
         
         popularity_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object role_ = "";
+      /**
+       * <code>string role = 10;</code>
+       */
+      public java.lang.String getRole() {
+        java.lang.Object ref = role_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          role_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string role = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleBytes() {
+        java.lang.Object ref = role_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          role_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string role = 10;</code>
+       */
+      public Builder setRole(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        role_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role = 10;</code>
+       */
+      public Builder clearRole() {
+        
+        role_ = getDefaultInstance().getRole();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role = 10;</code>
+       */
+      public Builder setRoleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        role_ = value;
         onChanged();
         return this;
       }
@@ -3105,6 +3242,545 @@ public final class User {
 
     @java.lang.Override
     public grpc.User.GetUserRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GetPopularityUserRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetPopularityUserRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 pageSize = 1;</code>
+     */
+    int getPageSize();
+
+    /**
+     * <code>int32 pageNumber = 2;</code>
+     */
+    int getPageNumber();
+  }
+  /**
+   * Protobuf type {@code GetPopularityUserRequest}
+   */
+  public  static final class GetPopularityUserRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GetPopularityUserRequest)
+      GetPopularityUserRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetPopularityUserRequest.newBuilder() to construct.
+    private GetPopularityUserRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetPopularityUserRequest() {
+      pageSize_ = 0;
+      pageNumber_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetPopularityUserRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              pageSize_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              pageNumber_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.User.internal_static_GetPopularityUserRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.User.internal_static_GetPopularityUserRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.User.GetPopularityUserRequest.class, grpc.User.GetPopularityUserRequest.Builder.class);
+    }
+
+    public static final int PAGESIZE_FIELD_NUMBER = 1;
+    private int pageSize_;
+    /**
+     * <code>int32 pageSize = 1;</code>
+     */
+    public int getPageSize() {
+      return pageSize_;
+    }
+
+    public static final int PAGENUMBER_FIELD_NUMBER = 2;
+    private int pageNumber_;
+    /**
+     * <code>int32 pageNumber = 2;</code>
+     */
+    public int getPageNumber() {
+      return pageNumber_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (pageSize_ != 0) {
+        output.writeInt32(1, pageSize_);
+      }
+      if (pageNumber_ != 0) {
+        output.writeInt32(2, pageNumber_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (pageSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, pageSize_);
+      }
+      if (pageNumber_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, pageNumber_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.User.GetPopularityUserRequest)) {
+        return super.equals(obj);
+      }
+      grpc.User.GetPopularityUserRequest other = (grpc.User.GetPopularityUserRequest) obj;
+
+      boolean result = true;
+      result = result && (getPageSize()
+          == other.getPageSize());
+      result = result && (getPageNumber()
+          == other.getPageNumber());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PAGESIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getPageSize();
+      hash = (37 * hash) + PAGENUMBER_FIELD_NUMBER;
+      hash = (53 * hash) + getPageNumber();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.User.GetPopularityUserRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.User.GetPopularityUserRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.User.GetPopularityUserRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.User.GetPopularityUserRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetPopularityUserRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetPopularityUserRequest)
+        grpc.User.GetPopularityUserRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.User.internal_static_GetPopularityUserRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.User.internal_static_GetPopularityUserRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.User.GetPopularityUserRequest.class, grpc.User.GetPopularityUserRequest.Builder.class);
+      }
+
+      // Construct using grpc.User.GetPopularityUserRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        pageSize_ = 0;
+
+        pageNumber_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.User.internal_static_GetPopularityUserRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.User.GetPopularityUserRequest getDefaultInstanceForType() {
+        return grpc.User.GetPopularityUserRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.User.GetPopularityUserRequest build() {
+        grpc.User.GetPopularityUserRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.User.GetPopularityUserRequest buildPartial() {
+        grpc.User.GetPopularityUserRequest result = new grpc.User.GetPopularityUserRequest(this);
+        result.pageSize_ = pageSize_;
+        result.pageNumber_ = pageNumber_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.User.GetPopularityUserRequest) {
+          return mergeFrom((grpc.User.GetPopularityUserRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.User.GetPopularityUserRequest other) {
+        if (other == grpc.User.GetPopularityUserRequest.getDefaultInstance()) return this;
+        if (other.getPageSize() != 0) {
+          setPageSize(other.getPageSize());
+        }
+        if (other.getPageNumber() != 0) {
+          setPageNumber(other.getPageNumber());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.User.GetPopularityUserRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.User.GetPopularityUserRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int pageSize_ ;
+      /**
+       * <code>int32 pageSize = 1;</code>
+       */
+      public int getPageSize() {
+        return pageSize_;
+      }
+      /**
+       * <code>int32 pageSize = 1;</code>
+       */
+      public Builder setPageSize(int value) {
+        
+        pageSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 pageSize = 1;</code>
+       */
+      public Builder clearPageSize() {
+        
+        pageSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int pageNumber_ ;
+      /**
+       * <code>int32 pageNumber = 2;</code>
+       */
+      public int getPageNumber() {
+        return pageNumber_;
+      }
+      /**
+       * <code>int32 pageNumber = 2;</code>
+       */
+      public Builder setPageNumber(int value) {
+        
+        pageNumber_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 pageNumber = 2;</code>
+       */
+      public Builder clearPageNumber() {
+        
+        pageNumber_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GetPopularityUserRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetPopularityUserRequest)
+    private static final grpc.User.GetPopularityUserRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.User.GetPopularityUserRequest();
+    }
+
+    public static grpc.User.GetPopularityUserRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetPopularityUserRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetPopularityUserRequest>() {
+      @java.lang.Override
+      public GetPopularityUserRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetPopularityUserRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetPopularityUserRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetPopularityUserRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.User.GetPopularityUserRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8750,6 +9426,11 @@ public final class User {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetUserRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetPopularityUserRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetPopularityUserRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PostFollowingRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -8798,14 +9479,16 @@ public final class User {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nUser.proto\"\260\001\n\007UserDTO\022\016\n\006idUser\030\001 \001(\005" +
+      "\n\nUser.proto\"\276\001\n\007UserDTO\022\016\n\006idUser\030\001 \001(\005" +
       "\022\014\n\004name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t\022\013\n\003dni" +
       "\030\004 \001(\t\022\r\n\005email\030\005 \001(\t\022\020\n\010username\030\006 \001(\t\022" +
       "\020\n\010password\030\007 \001(\t\022 \n\tfollowing\030\010 \003(\0132\r.F" +
-      "ollowingDTO\022\022\n\npopularity\030\t \001(\005\"Q\n\014Follo" +
-      "wingDTO\022\016\n\006idUser\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n" +
-      "\tlast_name\030\003 \001(\t\022\020\n\010username\030\004 \001(\t\" \n\016Ge" +
-      "tUserRequest\022\016\n\006idUser\030\001 \001(\005\";\n\024PostFoll" +
+      "ollowingDTO\022\022\n\npopularity\030\t \001(\005\022\014\n\004role\030" +
+      "\n \001(\t\"Q\n\014FollowingDTO\022\016\n\006idUser\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t\022\020\n\010userna" +
+      "me\030\004 \001(\t\" \n\016GetUserRequest\022\016\n\006idUser\030\001 \001" +
+      "(\005\"@\n\030GetPopularityUserRequest\022\020\n\010pageSi" +
+      "ze\030\001 \001(\005\022\022\n\npageNumber\030\002 \001(\005\";\n\024PostFoll" +
       "owingRequest\022\016\n\006idUser\030\001 \001(\005\022\023\n\013idFollow" +
       "ing\030\002 \001(\005\"7\n\023PostFavoriteRequest\022\016\n\006idUs" +
       "er\030\001 \001(\005\022\020\n\010idrecipe\030\002 \001(\005\"i\n\025PostFollow" +
@@ -8820,19 +9503,21 @@ public final class User {
       "TO\022\027\n\005users\030\001 \003(\0132\010.UserDTO\022+\n\016serverRes" +
       "ponse\030\002 \001(\0132\023.UserServerResponse\"Q\n\nUser" +
       "ObjDTO\022\026\n\004user\030\001 \001(\0132\010.UserDTO\022+\n\016server" +
-      "Response\030\002 \001(\0132\023.UserServerResponse2\320\003\n\016" +
+      "Response\030\002 \001(\0132\023.UserServerResponse2\216\004\n\016" +
       "UserController\022 \n\007addUser\022\010.UserDTO\032\013.Us" +
       "erObjDTO\022=\n\014addFollowing\022\025.PostFollowing" +
       "Request\032\026.PostFollowingResponse\022+\n\rgetFo" +
       "llowings\022\017.GetUserRequest\032\t.UsersDTO\022\'\n\007" +
-      "getUser\022\017.GetUserRequest\032\013.UserObjDTO\022J\n" +
-      "\033getByUserAndPasswordRequest\022\036.GetByUser" +
-      "IdAndPasswordRequest\032\013.UserObjDTO\022:\n\013add" +
-      "Favorite\022\024.PostFavoriteRequest\032\025.PostFav" +
-      "oriteResponse\022=\n\016deleteFavorite\022\024.PostFa" +
-      "voriteRequest\032\025.PostFavoriteResponse\022@\n\017" +
-      "deleteFollowing\022\025.PostFollowingRequest\032\026" +
-      ".PostFollowingResponseB\006\n\004grpcb\006proto3"
+      "getUser\022\017.GetUserRequest\032\013.UserObjDTO\022<\n" +
+      "\024getUsersByPopularity\022\031.GetPopularityUse" +
+      "rRequest\032\t.UsersDTO\022J\n\033getByUserAndPassw" +
+      "ordRequest\022\036.GetByUserIdAndPasswordReque" +
+      "st\032\013.UserObjDTO\022:\n\013addFavorite\022\024.PostFav" +
+      "oriteRequest\032\025.PostFavoriteResponse\022=\n\016d" +
+      "eleteFavorite\022\024.PostFavoriteRequest\032\025.Po" +
+      "stFavoriteResponse\022@\n\017deleteFollowing\022\025." +
+      "PostFollowingRequest\032\026.PostFollowingResp" +
+      "onseB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8851,7 +9536,7 @@ public final class User {
     internal_static_UserDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserDTO_descriptor,
-        new java.lang.String[] { "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following", "Popularity", });
+        new java.lang.String[] { "IdUser", "Name", "LastName", "Dni", "Email", "Username", "Password", "Following", "Popularity", "Role", });
     internal_static_FollowingDTO_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_FollowingDTO_fieldAccessorTable = new
@@ -8864,50 +9549,56 @@ public final class User {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetUserRequest_descriptor,
         new java.lang.String[] { "IdUser", });
-    internal_static_PostFollowingRequest_descriptor =
+    internal_static_GetPopularityUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_GetPopularityUserRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetPopularityUserRequest_descriptor,
+        new java.lang.String[] { "PageSize", "PageNumber", });
+    internal_static_PostFollowingRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_PostFollowingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PostFollowingRequest_descriptor,
         new java.lang.String[] { "IdUser", "IdFollowing", });
     internal_static_PostFavoriteRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_PostFavoriteRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PostFavoriteRequest_descriptor,
         new java.lang.String[] { "IdUser", "Idrecipe", });
     internal_static_PostFollowingResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_PostFollowingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PostFollowingResponse_descriptor,
         new java.lang.String[] { "IdUser", "IdFollowing", "ServerResponse", });
     internal_static_PostFavoriteResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_PostFavoriteResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PostFavoriteResponse_descriptor,
         new java.lang.String[] { "IdUser", "Idrecipe", "ServerResponse", });
     internal_static_UserServerResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_UserServerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserServerResponse_descriptor,
         new java.lang.String[] { "Code", "Msg", });
     internal_static_GetByUserIdAndPasswordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_GetByUserIdAndPasswordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetByUserIdAndPasswordRequest_descriptor,
         new java.lang.String[] { "User", "Password", });
     internal_static_UsersDTO_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_UsersDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UsersDTO_descriptor,
         new java.lang.String[] { "Users", "ServerResponse", });
     internal_static_UserObjDTO_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_UserObjDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserObjDTO_descriptor,

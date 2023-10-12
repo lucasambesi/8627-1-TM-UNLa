@@ -251,6 +251,38 @@ public final class RecipeControllerGrpc {
      return getGetFavotiresMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Recipe.GetPopularityRecipeRequest,
+      grpc.Recipe.RecipesDTO> getGetRecipesByPopularityMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getRecipesByPopularity",
+      requestType = grpc.Recipe.GetPopularityRecipeRequest.class,
+      responseType = grpc.Recipe.RecipesDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Recipe.GetPopularityRecipeRequest,
+      grpc.Recipe.RecipesDTO> getGetRecipesByPopularityMethod() {
+    io.grpc.MethodDescriptor<grpc.Recipe.GetPopularityRecipeRequest, grpc.Recipe.RecipesDTO> getGetRecipesByPopularityMethod;
+    if ((getGetRecipesByPopularityMethod = RecipeControllerGrpc.getGetRecipesByPopularityMethod) == null) {
+      synchronized (RecipeControllerGrpc.class) {
+        if ((getGetRecipesByPopularityMethod = RecipeControllerGrpc.getGetRecipesByPopularityMethod) == null) {
+          RecipeControllerGrpc.getGetRecipesByPopularityMethod = getGetRecipesByPopularityMethod = 
+              io.grpc.MethodDescriptor.<grpc.Recipe.GetPopularityRecipeRequest, grpc.Recipe.RecipesDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "RecipeController", "getRecipesByPopularity"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.GetPopularityRecipeRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Recipe.RecipesDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new RecipeControllerMethodDescriptorSupplier("getRecipesByPopularity"))
+                  .build();
+          }
+        }
+     }
+     return getGetRecipesByPopularityMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -327,6 +359,13 @@ public final class RecipeControllerGrpc {
       asyncUnimplementedUnaryCall(getGetFavotiresMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getRecipesByPopularity(grpc.Recipe.GetPopularityRecipeRequest request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetRecipesByPopularityMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -378,6 +417,13 @@ public final class RecipeControllerGrpc {
                 grpc.Recipe.IdUserRequest,
                 grpc.Recipe.RecipesDTO>(
                   this, METHODID_GET_FAVOTIRES)))
+          .addMethod(
+            getGetRecipesByPopularityMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Recipe.GetPopularityRecipeRequest,
+                grpc.Recipe.RecipesDTO>(
+                  this, METHODID_GET_RECIPES_BY_POPULARITY)))
           .build();
     }
   }
@@ -455,6 +501,14 @@ public final class RecipeControllerGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetFavotiresMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getRecipesByPopularity(grpc.Recipe.GetPopularityRecipeRequest request,
+        io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetRecipesByPopularityMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -522,6 +576,13 @@ public final class RecipeControllerGrpc {
     public grpc.Recipe.RecipesDTO getFavotires(grpc.Recipe.IdUserRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetFavotiresMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Recipe.RecipesDTO getRecipesByPopularity(grpc.Recipe.GetPopularityRecipeRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetRecipesByPopularityMethod(), getCallOptions(), request);
     }
   }
 
@@ -598,6 +659,14 @@ public final class RecipeControllerGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetFavotiresMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Recipe.RecipesDTO> getRecipesByPopularity(
+        grpc.Recipe.GetPopularityRecipeRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetRecipesByPopularityMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_RECIPE = 0;
@@ -607,6 +676,7 @@ public final class RecipeControllerGrpc {
   private static final int METHODID_GET_RECIPES_BY_USER_ID = 4;
   private static final int METHODID_GET_BY_FILTER = 5;
   private static final int METHODID_GET_FAVOTIRES = 6;
+  private static final int METHODID_GET_RECIPES_BY_POPULARITY = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -651,6 +721,10 @@ public final class RecipeControllerGrpc {
           break;
         case METHODID_GET_FAVOTIRES:
           serviceImpl.getFavotires((grpc.Recipe.IdUserRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO>) responseObserver);
+          break;
+        case METHODID_GET_RECIPES_BY_POPULARITY:
+          serviceImpl.getRecipesByPopularity((grpc.Recipe.GetPopularityRecipeRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Recipe.RecipesDTO>) responseObserver);
           break;
         default:
@@ -721,6 +795,7 @@ public final class RecipeControllerGrpc {
               .addMethod(getGetRecipesByUserIdMethod())
               .addMethod(getGetByFilterMethod())
               .addMethod(getGetFavotiresMethod())
+              .addMethod(getGetRecipesByPopularityMethod())
               .build();
         }
       }

@@ -14,23 +14,23 @@ public final class Comment {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface EmptyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Empty)
+  public interface EmptyCommentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EmptyComment)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code Empty}
+   * Protobuf type {@code EmptyComment}
    */
-  public  static final class Empty extends
+  public  static final class EmptyComment extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Empty)
-      EmptyOrBuilder {
+      // @@protoc_insertion_point(message_implements:EmptyComment)
+      EmptyCommentOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Empty.newBuilder() to construct.
-    private Empty(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use EmptyComment.newBuilder() to construct.
+    private EmptyComment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Empty() {
+    private EmptyComment() {
     }
 
     @java.lang.Override
@@ -38,7 +38,7 @@ public final class Comment {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Empty(
+    private EmptyComment(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -77,15 +77,15 @@ public final class Comment {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return grpc.Comment.internal_static_Empty_descriptor;
+      return grpc.Comment.internal_static_EmptyComment_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return grpc.Comment.internal_static_Empty_fieldAccessorTable
+      return grpc.Comment.internal_static_EmptyComment_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              grpc.Comment.Empty.class, grpc.Comment.Empty.Builder.class);
+              grpc.Comment.EmptyComment.class, grpc.Comment.EmptyComment.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -121,10 +121,10 @@ public final class Comment {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof grpc.Comment.Empty)) {
+      if (!(obj instanceof grpc.Comment.EmptyComment)) {
         return super.equals(obj);
       }
-      grpc.Comment.Empty other = (grpc.Comment.Empty) obj;
+      grpc.Comment.EmptyComment other = (grpc.Comment.EmptyComment) obj;
 
       boolean result = true;
       result = result && unknownFields.equals(other.unknownFields);
@@ -143,69 +143,69 @@ public final class Comment {
       return hash;
     }
 
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Comment.Empty parseFrom(byte[] data)
+    public static grpc.Comment.EmptyComment parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Comment.Empty parseFrom(java.io.InputStream input)
+    public static grpc.Comment.EmptyComment parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static grpc.Comment.Empty parseDelimitedFrom(java.io.InputStream input)
+    public static grpc.Comment.EmptyComment parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static grpc.Comment.Empty parseDelimitedFrom(
+    public static grpc.Comment.EmptyComment parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static grpc.Comment.Empty parseFrom(
+    public static grpc.Comment.EmptyComment parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -218,7 +218,7 @@ public final class Comment {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(grpc.Comment.Empty prototype) {
+    public static Builder newBuilder(grpc.Comment.EmptyComment prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -234,26 +234,26 @@ public final class Comment {
       return builder;
     }
     /**
-     * Protobuf type {@code Empty}
+     * Protobuf type {@code EmptyComment}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Empty)
-        grpc.Comment.EmptyOrBuilder {
+        // @@protoc_insertion_point(builder_implements:EmptyComment)
+        grpc.Comment.EmptyCommentOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return grpc.Comment.internal_static_Empty_descriptor;
+        return grpc.Comment.internal_static_EmptyComment_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return grpc.Comment.internal_static_Empty_fieldAccessorTable
+        return grpc.Comment.internal_static_EmptyComment_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                grpc.Comment.Empty.class, grpc.Comment.Empty.Builder.class);
+                grpc.Comment.EmptyComment.class, grpc.Comment.EmptyComment.Builder.class);
       }
 
-      // Construct using grpc.Comment.Empty.newBuilder()
+      // Construct using grpc.Comment.EmptyComment.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -277,17 +277,17 @@ public final class Comment {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return grpc.Comment.internal_static_Empty_descriptor;
+        return grpc.Comment.internal_static_EmptyComment_descriptor;
       }
 
       @java.lang.Override
-      public grpc.Comment.Empty getDefaultInstanceForType() {
-        return grpc.Comment.Empty.getDefaultInstance();
+      public grpc.Comment.EmptyComment getDefaultInstanceForType() {
+        return grpc.Comment.EmptyComment.getDefaultInstance();
       }
 
       @java.lang.Override
-      public grpc.Comment.Empty build() {
-        grpc.Comment.Empty result = buildPartial();
+      public grpc.Comment.EmptyComment build() {
+        grpc.Comment.EmptyComment result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -295,8 +295,8 @@ public final class Comment {
       }
 
       @java.lang.Override
-      public grpc.Comment.Empty buildPartial() {
-        grpc.Comment.Empty result = new grpc.Comment.Empty(this);
+      public grpc.Comment.EmptyComment buildPartial() {
+        grpc.Comment.EmptyComment result = new grpc.Comment.EmptyComment(this);
         onBuilt();
         return result;
       }
@@ -335,16 +335,16 @@ public final class Comment {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.Comment.Empty) {
-          return mergeFrom((grpc.Comment.Empty)other);
+        if (other instanceof grpc.Comment.EmptyComment) {
+          return mergeFrom((grpc.Comment.EmptyComment)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(grpc.Comment.Empty other) {
-        if (other == grpc.Comment.Empty.getDefaultInstance()) return this;
+      public Builder mergeFrom(grpc.Comment.EmptyComment other) {
+        if (other == grpc.Comment.EmptyComment.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -360,11 +360,11 @@ public final class Comment {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        grpc.Comment.Empty parsedMessage = null;
+        grpc.Comment.EmptyComment parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.Comment.Empty) e.getUnfinishedMessage();
+          parsedMessage = (grpc.Comment.EmptyComment) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -386,41 +386,41 @@ public final class Comment {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Empty)
+      // @@protoc_insertion_point(builder_scope:EmptyComment)
     }
 
-    // @@protoc_insertion_point(class_scope:Empty)
-    private static final grpc.Comment.Empty DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:EmptyComment)
+    private static final grpc.Comment.EmptyComment DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new grpc.Comment.Empty();
+      DEFAULT_INSTANCE = new grpc.Comment.EmptyComment();
     }
 
-    public static grpc.Comment.Empty getDefaultInstance() {
+    public static grpc.Comment.EmptyComment getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Empty>
-        PARSER = new com.google.protobuf.AbstractParser<Empty>() {
+    private static final com.google.protobuf.Parser<EmptyComment>
+        PARSER = new com.google.protobuf.AbstractParser<EmptyComment>() {
       @java.lang.Override
-      public Empty parsePartialFrom(
+      public EmptyComment parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Empty(input, extensionRegistry);
+        return new EmptyComment(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Empty> parser() {
+    public static com.google.protobuf.Parser<EmptyComment> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Empty> getParserForType() {
+    public com.google.protobuf.Parser<EmptyComment> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public grpc.Comment.Empty getDefaultInstanceForType() {
+    public grpc.Comment.EmptyComment getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3508,10 +3508,10 @@ public final class Comment {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Empty_descriptor;
+    internal_static_EmptyComment_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Empty_fieldAccessorTable;
+      internal_static_EmptyComment_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommentServerResponse_descriptor;
   private static final 
@@ -3541,17 +3541,17 @@ public final class Comment {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rComment.proto\"\007\n\005Empty\"2\n\025CommentServe" +
-      "rResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"N\n\n" +
-      "CommentDTO\022\021\n\tidComment\030\001 \001(\005\022\r\n\005value\030\002" +
-      " \001(\t\022\014\n\004name\030\003 \001(\t\022\020\n\010username\030\004 \001(\t\"\\\n\013" +
-      "CommentsDTO\022\035\n\010comments\030\001 \003(\0132\013.CommentD" +
-      "TO\022.\n\016serverResponse\030\002 \001(\0132\026.CommentServ" +
-      "erResponse\"K\n\021GetCommentRequest\022\020\n\010idRec" +
-      "ipe\030\001 \001(\005\022\022\n\npageNumber\030\002 \001(\005\022\020\n\010pageSiz" +
-      "e\030\003 \001(\0052D\n\021CommentController\022/\n\013getComme" +
-      "nts\022\022.GetCommentRequest\032\014.CommentsDTOB\006\n" +
-      "\004grpcb\006proto3"
+      "\n\rComment.proto\"\016\n\014EmptyComment\"2\n\025Comme" +
+      "ntServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 " +
+      "\001(\t\"N\n\nCommentDTO\022\021\n\tidComment\030\001 \001(\005\022\r\n\005" +
+      "value\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\020\n\010username\030\004 " +
+      "\001(\t\"\\\n\013CommentsDTO\022\035\n\010comments\030\001 \003(\0132\013.C" +
+      "ommentDTO\022.\n\016serverResponse\030\002 \001(\0132\026.Comm" +
+      "entServerResponse\"K\n\021GetCommentRequest\022\020" +
+      "\n\010idRecipe\030\001 \001(\005\022\022\n\npageNumber\030\002 \001(\005\022\020\n\010" +
+      "pageSize\030\003 \001(\0052D\n\021CommentController\022/\n\013g" +
+      "etComments\022\022.GetCommentRequest\032\014.Comment" +
+      "sDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3565,11 +3565,11 @@ public final class Comment {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_Empty_descriptor =
+    internal_static_EmptyComment_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Empty_fieldAccessorTable = new
+    internal_static_EmptyComment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Empty_descriptor,
+        internal_static_EmptyComment_descriptor,
         new java.lang.String[] { });
     internal_static_CommentServerResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);

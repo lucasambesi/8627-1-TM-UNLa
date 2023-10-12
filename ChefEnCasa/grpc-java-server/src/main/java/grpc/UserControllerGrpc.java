@@ -155,6 +155,38 @@ public final class UserControllerGrpc {
      return getGetUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.User.GetPopularityUserRequest,
+      grpc.User.UsersDTO> getGetUsersByPopularityMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getUsersByPopularity",
+      requestType = grpc.User.GetPopularityUserRequest.class,
+      responseType = grpc.User.UsersDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.User.GetPopularityUserRequest,
+      grpc.User.UsersDTO> getGetUsersByPopularityMethod() {
+    io.grpc.MethodDescriptor<grpc.User.GetPopularityUserRequest, grpc.User.UsersDTO> getGetUsersByPopularityMethod;
+    if ((getGetUsersByPopularityMethod = UserControllerGrpc.getGetUsersByPopularityMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getGetUsersByPopularityMethod = UserControllerGrpc.getGetUsersByPopularityMethod) == null) {
+          UserControllerGrpc.getGetUsersByPopularityMethod = getGetUsersByPopularityMethod = 
+              io.grpc.MethodDescriptor.<grpc.User.GetPopularityUserRequest, grpc.User.UsersDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserController", "getUsersByPopularity"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.GetPopularityUserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.User.UsersDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("getUsersByPopularity"))
+                  .build();
+          }
+        }
+     }
+     return getGetUsersByPopularityMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.User.GetByUserIdAndPasswordRequest,
       grpc.User.UserObjDTO> getGetByUserAndPasswordRequestMethod;
 
@@ -340,6 +372,13 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public void getUsersByPopularity(grpc.User.GetPopularityUserRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UsersDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetUsersByPopularityMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getByUserAndPasswordRequest(grpc.User.GetByUserIdAndPasswordRequest request,
         io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetByUserAndPasswordRequestMethod(), responseObserver);
@@ -396,6 +435,13 @@ public final class UserControllerGrpc {
                 grpc.User.GetUserRequest,
                 grpc.User.UserObjDTO>(
                   this, METHODID_GET_USER)))
+          .addMethod(
+            getGetUsersByPopularityMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.User.GetPopularityUserRequest,
+                grpc.User.UsersDTO>(
+                  this, METHODID_GET_USERS_BY_POPULARITY)))
           .addMethod(
             getGetByUserAndPasswordRequestMethod(),
             asyncUnaryCall(
@@ -480,6 +526,14 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public void getUsersByPopularity(grpc.User.GetPopularityUserRequest request,
+        io.grpc.stub.StreamObserver<grpc.User.UsersDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetUsersByPopularityMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getByUserAndPasswordRequest(grpc.User.GetByUserIdAndPasswordRequest request,
         io.grpc.stub.StreamObserver<grpc.User.UserObjDTO> responseObserver) {
       asyncUnaryCall(
@@ -555,6 +609,13 @@ public final class UserControllerGrpc {
     public grpc.User.UserObjDTO getUser(grpc.User.GetUserRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.User.UsersDTO getUsersByPopularity(grpc.User.GetPopularityUserRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetUsersByPopularityMethod(), getCallOptions(), request);
     }
 
     /**
@@ -638,6 +699,14 @@ public final class UserControllerGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.User.UsersDTO> getUsersByPopularity(
+        grpc.User.GetPopularityUserRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetUsersByPopularityMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.User.UserObjDTO> getByUserAndPasswordRequest(
         grpc.User.GetByUserIdAndPasswordRequest request) {
       return futureUnaryCall(
@@ -673,10 +742,11 @@ public final class UserControllerGrpc {
   private static final int METHODID_ADD_FOLLOWING = 1;
   private static final int METHODID_GET_FOLLOWINGS = 2;
   private static final int METHODID_GET_USER = 3;
-  private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 4;
-  private static final int METHODID_ADD_FAVORITE = 5;
-  private static final int METHODID_DELETE_FAVORITE = 6;
-  private static final int METHODID_DELETE_FOLLOWING = 7;
+  private static final int METHODID_GET_USERS_BY_POPULARITY = 4;
+  private static final int METHODID_GET_BY_USER_AND_PASSWORD_REQUEST = 5;
+  private static final int METHODID_ADD_FAVORITE = 6;
+  private static final int METHODID_DELETE_FAVORITE = 7;
+  private static final int METHODID_DELETE_FOLLOWING = 8;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -710,6 +780,10 @@ public final class UserControllerGrpc {
         case METHODID_GET_USER:
           serviceImpl.getUser((grpc.User.GetUserRequest) request,
               (io.grpc.stub.StreamObserver<grpc.User.UserObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_USERS_BY_POPULARITY:
+          serviceImpl.getUsersByPopularity((grpc.User.GetPopularityUserRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.User.UsersDTO>) responseObserver);
           break;
         case METHODID_GET_BY_USER_AND_PASSWORD_REQUEST:
           serviceImpl.getByUserAndPasswordRequest((grpc.User.GetByUserIdAndPasswordRequest) request,
@@ -792,6 +866,7 @@ public final class UserControllerGrpc {
               .addMethod(getAddFollowingMethod())
               .addMethod(getGetFollowingsMethod())
               .addMethod(getGetUserMethod())
+              .addMethod(getGetUsersByPopularityMethod())
               .addMethod(getGetByUserAndPasswordRequestMethod())
               .addMethod(getAddFavoriteMethod())
               .addMethod(getDeleteFavoriteMethod())

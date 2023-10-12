@@ -2981,6 +2981,482 @@ public final class Rating {
 
   }
 
+  public interface GetRatingAvgRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetRatingAvgRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 idRecipe = 1;</code>
+     */
+    int getIdRecipe();
+  }
+  /**
+   * Protobuf type {@code GetRatingAvgRequest}
+   */
+  public  static final class GetRatingAvgRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GetRatingAvgRequest)
+      GetRatingAvgRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetRatingAvgRequest.newBuilder() to construct.
+    private GetRatingAvgRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetRatingAvgRequest() {
+      idRecipe_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetRatingAvgRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              idRecipe_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Rating.internal_static_GetRatingAvgRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Rating.internal_static_GetRatingAvgRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Rating.GetRatingAvgRequest.class, grpc.Rating.GetRatingAvgRequest.Builder.class);
+    }
+
+    public static final int IDRECIPE_FIELD_NUMBER = 1;
+    private int idRecipe_;
+    /**
+     * <code>int32 idRecipe = 1;</code>
+     */
+    public int getIdRecipe() {
+      return idRecipe_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (idRecipe_ != 0) {
+        output.writeInt32(1, idRecipe_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (idRecipe_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, idRecipe_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Rating.GetRatingAvgRequest)) {
+        return super.equals(obj);
+      }
+      grpc.Rating.GetRatingAvgRequest other = (grpc.Rating.GetRatingAvgRequest) obj;
+
+      boolean result = true;
+      result = result && (getIdRecipe()
+          == other.getIdRecipe());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IDRECIPE_FIELD_NUMBER;
+      hash = (53 * hash) + getIdRecipe();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.GetRatingAvgRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Rating.GetRatingAvgRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GetRatingAvgRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetRatingAvgRequest)
+        grpc.Rating.GetRatingAvgRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Rating.internal_static_GetRatingAvgRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Rating.internal_static_GetRatingAvgRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Rating.GetRatingAvgRequest.class, grpc.Rating.GetRatingAvgRequest.Builder.class);
+      }
+
+      // Construct using grpc.Rating.GetRatingAvgRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        idRecipe_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Rating.internal_static_GetRatingAvgRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Rating.GetRatingAvgRequest getDefaultInstanceForType() {
+        return grpc.Rating.GetRatingAvgRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Rating.GetRatingAvgRequest build() {
+        grpc.Rating.GetRatingAvgRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Rating.GetRatingAvgRequest buildPartial() {
+        grpc.Rating.GetRatingAvgRequest result = new grpc.Rating.GetRatingAvgRequest(this);
+        result.idRecipe_ = idRecipe_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Rating.GetRatingAvgRequest) {
+          return mergeFrom((grpc.Rating.GetRatingAvgRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Rating.GetRatingAvgRequest other) {
+        if (other == grpc.Rating.GetRatingAvgRequest.getDefaultInstance()) return this;
+        if (other.getIdRecipe() != 0) {
+          setIdRecipe(other.getIdRecipe());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Rating.GetRatingAvgRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Rating.GetRatingAvgRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int idRecipe_ ;
+      /**
+       * <code>int32 idRecipe = 1;</code>
+       */
+      public int getIdRecipe() {
+        return idRecipe_;
+      }
+      /**
+       * <code>int32 idRecipe = 1;</code>
+       */
+      public Builder setIdRecipe(int value) {
+        
+        idRecipe_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 idRecipe = 1;</code>
+       */
+      public Builder clearIdRecipe() {
+        
+        idRecipe_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GetRatingAvgRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetRatingAvgRequest)
+    private static final grpc.Rating.GetRatingAvgRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Rating.GetRatingAvgRequest();
+    }
+
+    public static grpc.Rating.GetRatingAvgRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetRatingAvgRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetRatingAvgRequest>() {
+      @java.lang.Override
+      public GetRatingAvgRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetRatingAvgRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetRatingAvgRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetRatingAvgRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Rating.GetRatingAvgRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface UserAndRecipeRatingRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:UserAndRecipeRatingRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -4499,6 +4975,745 @@ public final class Rating {
 
   }
 
+  public interface RatingRecipeResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RatingRecipeResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>double count = 1;</code>
+     */
+    double getCount();
+
+    /**
+     * <code>double average = 2;</code>
+     */
+    double getAverage();
+
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    boolean hasServerResponse();
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    grpc.Rating.RatingServerResponse getServerResponse();
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    grpc.Rating.RatingServerResponseOrBuilder getServerResponseOrBuilder();
+  }
+  /**
+   * Protobuf type {@code RatingRecipeResponse}
+   */
+  public  static final class RatingRecipeResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:RatingRecipeResponse)
+      RatingRecipeResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RatingRecipeResponse.newBuilder() to construct.
+    private RatingRecipeResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RatingRecipeResponse() {
+      count_ = 0D;
+      average_ = 0D;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RatingRecipeResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 9: {
+
+              count_ = input.readDouble();
+              break;
+            }
+            case 17: {
+
+              average_ = input.readDouble();
+              break;
+            }
+            case 26: {
+              grpc.Rating.RatingServerResponse.Builder subBuilder = null;
+              if (serverResponse_ != null) {
+                subBuilder = serverResponse_.toBuilder();
+              }
+              serverResponse_ = input.readMessage(grpc.Rating.RatingServerResponse.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(serverResponse_);
+                serverResponse_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Rating.internal_static_RatingRecipeResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Rating.internal_static_RatingRecipeResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Rating.RatingRecipeResponse.class, grpc.Rating.RatingRecipeResponse.Builder.class);
+    }
+
+    public static final int COUNT_FIELD_NUMBER = 1;
+    private double count_;
+    /**
+     * <code>double count = 1;</code>
+     */
+    public double getCount() {
+      return count_;
+    }
+
+    public static final int AVERAGE_FIELD_NUMBER = 2;
+    private double average_;
+    /**
+     * <code>double average = 2;</code>
+     */
+    public double getAverage() {
+      return average_;
+    }
+
+    public static final int SERVERRESPONSE_FIELD_NUMBER = 3;
+    private grpc.Rating.RatingServerResponse serverResponse_;
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    public boolean hasServerResponse() {
+      return serverResponse_ != null;
+    }
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    public grpc.Rating.RatingServerResponse getServerResponse() {
+      return serverResponse_ == null ? grpc.Rating.RatingServerResponse.getDefaultInstance() : serverResponse_;
+    }
+    /**
+     * <code>.RatingServerResponse serverResponse = 3;</code>
+     */
+    public grpc.Rating.RatingServerResponseOrBuilder getServerResponseOrBuilder() {
+      return getServerResponse();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (count_ != 0D) {
+        output.writeDouble(1, count_);
+      }
+      if (average_ != 0D) {
+        output.writeDouble(2, average_);
+      }
+      if (serverResponse_ != null) {
+        output.writeMessage(3, getServerResponse());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (count_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(1, count_);
+      }
+      if (average_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, average_);
+      }
+      if (serverResponse_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getServerResponse());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Rating.RatingRecipeResponse)) {
+        return super.equals(obj);
+      }
+      grpc.Rating.RatingRecipeResponse other = (grpc.Rating.RatingRecipeResponse) obj;
+
+      boolean result = true;
+      result = result && (
+          java.lang.Double.doubleToLongBits(getCount())
+          == java.lang.Double.doubleToLongBits(
+              other.getCount()));
+      result = result && (
+          java.lang.Double.doubleToLongBits(getAverage())
+          == java.lang.Double.doubleToLongBits(
+              other.getAverage()));
+      result = result && (hasServerResponse() == other.hasServerResponse());
+      if (hasServerResponse()) {
+        result = result && getServerResponse()
+            .equals(other.getServerResponse());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getCount()));
+      hash = (37 * hash) + AVERAGE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAverage()));
+      if (hasServerResponse()) {
+        hash = (37 * hash) + SERVERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getServerResponse().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Rating.RatingRecipeResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Rating.RatingRecipeResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RatingRecipeResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RatingRecipeResponse)
+        grpc.Rating.RatingRecipeResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Rating.internal_static_RatingRecipeResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Rating.internal_static_RatingRecipeResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Rating.RatingRecipeResponse.class, grpc.Rating.RatingRecipeResponse.Builder.class);
+      }
+
+      // Construct using grpc.Rating.RatingRecipeResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        count_ = 0D;
+
+        average_ = 0D;
+
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Rating.internal_static_RatingRecipeResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Rating.RatingRecipeResponse getDefaultInstanceForType() {
+        return grpc.Rating.RatingRecipeResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Rating.RatingRecipeResponse build() {
+        grpc.Rating.RatingRecipeResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Rating.RatingRecipeResponse buildPartial() {
+        grpc.Rating.RatingRecipeResponse result = new grpc.Rating.RatingRecipeResponse(this);
+        result.count_ = count_;
+        result.average_ = average_;
+        if (serverResponseBuilder_ == null) {
+          result.serverResponse_ = serverResponse_;
+        } else {
+          result.serverResponse_ = serverResponseBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Rating.RatingRecipeResponse) {
+          return mergeFrom((grpc.Rating.RatingRecipeResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Rating.RatingRecipeResponse other) {
+        if (other == grpc.Rating.RatingRecipeResponse.getDefaultInstance()) return this;
+        if (other.getCount() != 0D) {
+          setCount(other.getCount());
+        }
+        if (other.getAverage() != 0D) {
+          setAverage(other.getAverage());
+        }
+        if (other.hasServerResponse()) {
+          mergeServerResponse(other.getServerResponse());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Rating.RatingRecipeResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Rating.RatingRecipeResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private double count_ ;
+      /**
+       * <code>double count = 1;</code>
+       */
+      public double getCount() {
+        return count_;
+      }
+      /**
+       * <code>double count = 1;</code>
+       */
+      public Builder setCount(double value) {
+        
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double count = 1;</code>
+       */
+      public Builder clearCount() {
+        
+        count_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double average_ ;
+      /**
+       * <code>double average = 2;</code>
+       */
+      public double getAverage() {
+        return average_;
+      }
+      /**
+       * <code>double average = 2;</code>
+       */
+      public Builder setAverage(double value) {
+        
+        average_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double average = 2;</code>
+       */
+      public Builder clearAverage() {
+        
+        average_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private grpc.Rating.RatingServerResponse serverResponse_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Rating.RatingServerResponse, grpc.Rating.RatingServerResponse.Builder, grpc.Rating.RatingServerResponseOrBuilder> serverResponseBuilder_;
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public boolean hasServerResponse() {
+        return serverResponseBuilder_ != null || serverResponse_ != null;
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public grpc.Rating.RatingServerResponse getServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          return serverResponse_ == null ? grpc.Rating.RatingServerResponse.getDefaultInstance() : serverResponse_;
+        } else {
+          return serverResponseBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public Builder setServerResponse(grpc.Rating.RatingServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          serverResponse_ = value;
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public Builder setServerResponse(
+          grpc.Rating.RatingServerResponse.Builder builderForValue) {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          serverResponseBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public Builder mergeServerResponse(grpc.Rating.RatingServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (serverResponse_ != null) {
+            serverResponse_ =
+              grpc.Rating.RatingServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
+          } else {
+            serverResponse_ = value;
+          }
+          onChanged();
+        } else {
+          serverResponseBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public Builder clearServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
+          onChanged();
+        } else {
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public grpc.Rating.RatingServerResponse.Builder getServerResponseBuilder() {
+        
+        onChanged();
+        return getServerResponseFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      public grpc.Rating.RatingServerResponseOrBuilder getServerResponseOrBuilder() {
+        if (serverResponseBuilder_ != null) {
+          return serverResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return serverResponse_ == null ?
+              grpc.Rating.RatingServerResponse.getDefaultInstance() : serverResponse_;
+        }
+      }
+      /**
+       * <code>.RatingServerResponse serverResponse = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          grpc.Rating.RatingServerResponse, grpc.Rating.RatingServerResponse.Builder, grpc.Rating.RatingServerResponseOrBuilder> 
+          getServerResponseFieldBuilder() {
+        if (serverResponseBuilder_ == null) {
+          serverResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              grpc.Rating.RatingServerResponse, grpc.Rating.RatingServerResponse.Builder, grpc.Rating.RatingServerResponseOrBuilder>(
+                  getServerResponse(),
+                  getParentForChildren(),
+                  isClean());
+          serverResponse_ = null;
+        }
+        return serverResponseBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:RatingRecipeResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:RatingRecipeResponse)
+    private static final grpc.Rating.RatingRecipeResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Rating.RatingRecipeResponse();
+    }
+
+    public static grpc.Rating.RatingRecipeResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RatingRecipeResponse>
+        PARSER = new com.google.protobuf.AbstractParser<RatingRecipeResponse>() {
+      @java.lang.Override
+      public RatingRecipeResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RatingRecipeResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RatingRecipeResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RatingRecipeResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Rating.RatingRecipeResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_EmptyRating_descriptor;
   private static final 
@@ -4525,6 +5740,11 @@ public final class Rating {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetRatingRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetRatingAvgRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetRatingAvgRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UserAndRecipeRatingRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -4534,6 +5754,11 @@ public final class Rating {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RatingsDTO_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RatingRecipeResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_RatingRecipeResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4550,17 +5775,22 @@ public final class Rating {
       "\"Y\n\014RatingObjDTO\022\032\n\006rating\030\001 \001(\0132\n.Ratin" +
       "gDTO\022-\n\016serverResponse\030\002 \001(\0132\025.RatingSer" +
       "verResponse\"$\n\020GetRatingRequest\022\020\n\010idRat" +
-      "ing\030\001 \001(\005\">\n\032UserAndRecipeRatingRequest\022" +
-      "\016\n\006idUser\030\001 \001(\005\022\020\n\010idRecipe\030\002 \001(\005\"X\n\nRat" +
-      "ingsDTO\022\033\n\007ratings\030\001 \003(\0132\n.RatingDTO\022-\n\016" +
-      "serverResponse\030\002 \001(\0132\025.RatingServerRespo" +
-      "nse2\334\001\n\020RatingController\022&\n\taddRating\022\n." +
-      "RatingDTO\032\r.RatingObjDTO\022)\n\014updateRating" +
-      "\022\n.RatingDTO\032\r.RatingObjDTO\022-\n\tgetRating" +
-      "\022\021.GetRatingRequest\032\r.RatingObjDTO\022F\n\030ge" +
-      "tRatingByUserAndRecipe\022\033.UserAndRecipeRa" +
-      "tingRequest\032\r.RatingObjDTOB\006\n\004grpcb\006prot" +
-      "o3"
+      "ing\030\001 \001(\005\"\'\n\023GetRatingAvgRequest\022\020\n\010idRe" +
+      "cipe\030\001 \001(\005\">\n\032UserAndRecipeRatingRequest" +
+      "\022\016\n\006idUser\030\001 \001(\005\022\020\n\010idRecipe\030\002 \001(\005\"X\n\nRa" +
+      "tingsDTO\022\033\n\007ratings\030\001 \003(\0132\n.RatingDTO\022-\n" +
+      "\016serverResponse\030\002 \001(\0132\025.RatingServerResp" +
+      "onse\"e\n\024RatingRecipeResponse\022\r\n\005count\030\001 " +
+      "\001(\001\022\017\n\007average\030\002 \001(\001\022-\n\016serverResponse\030\003" +
+      " \001(\0132\025.RatingServerResponse2\235\002\n\020RatingCo" +
+      "ntroller\022&\n\taddRating\022\n.RatingDTO\032\r.Rati" +
+      "ngObjDTO\022)\n\014updateRating\022\n.RatingDTO\032\r.R" +
+      "atingObjDTO\022-\n\tgetRating\022\021.GetRatingRequ" +
+      "est\032\r.RatingObjDTO\022?\n\020getAverageRating\022\024" +
+      ".GetRatingAvgRequest\032\025.RatingRecipeRespo" +
+      "nse\022F\n\030getRatingByUserAndRecipe\022\033.UserAn" +
+      "dRecipeRatingRequest\032\r.RatingObjDTOB\006\n\004g" +
+      "rpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4604,18 +5834,30 @@ public final class Rating {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetRatingRequest_descriptor,
         new java.lang.String[] { "IdRating", });
-    internal_static_UserAndRecipeRatingRequest_descriptor =
+    internal_static_GetRatingAvgRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
+    internal_static_GetRatingAvgRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetRatingAvgRequest_descriptor,
+        new java.lang.String[] { "IdRecipe", });
+    internal_static_UserAndRecipeRatingRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_UserAndRecipeRatingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserAndRecipeRatingRequest_descriptor,
         new java.lang.String[] { "IdUser", "IdRecipe", });
     internal_static_RatingsDTO_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_RatingsDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RatingsDTO_descriptor,
         new java.lang.String[] { "Ratings", "ServerResponse", });
+    internal_static_RatingRecipeResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_RatingRecipeResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_RatingRecipeResponse_descriptor,
+        new java.lang.String[] { "Count", "Average", "ServerResponse", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
