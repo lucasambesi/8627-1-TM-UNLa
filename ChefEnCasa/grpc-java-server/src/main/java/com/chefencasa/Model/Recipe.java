@@ -29,6 +29,10 @@ public class Recipe {
     @Type(type="int")
     private int preparationTime;
 
+    @Column(name = "active", nullable = false)
+    @Type(type="boolean")
+    private boolean active;
+
     @Column(name = "popularity", nullable = false)
     @Type(type="int")
     private int popularity;

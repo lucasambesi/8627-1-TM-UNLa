@@ -12,6 +12,8 @@
 
         public int PreparationTime { get; set; }
 
+        public bool Active { get; set; }
+
         public int IdCategory { get; set; }
 
         public int IdUser { get; set; }

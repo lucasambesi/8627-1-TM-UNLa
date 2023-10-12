@@ -35,6 +35,7 @@ public class RecipeService {
 
         Set<RecipeImage> images = toPersist.getImages();
         toPersist.setImages(new HashSet<>());
+        toPersist.setActive(true);
 
         List<Step> steps = toPersist.getSteps();
         toPersist.setSteps(new ArrayList<>());
@@ -68,30 +69,13 @@ public class RecipeService {
 
             Recipe toPersist = mapToEntity(recipeDTO);
 
-            Set<RecipeImage> images = toPersist.getImages();
-            List<Step> steps = toPersist.getSteps();
-
             recipe.setTitle(toPersist.getTitle());
             recipe.setDescription(toPersist.getDescription());
             recipe.setIngredients(toPersist.getIngredients());
             recipe.setPreparationTime(toPersist.getPreparationTime());
-            recipe.setImages(new HashSet<>());
-            recipe.setSteps(new ArrayList<>());
+            recipe.setActive(toPersist.isActive());
 
             recipe = recipeRepository.saveOrUpdateRecipe(recipe);
-
-            for(RecipeImage image : images ){
-                image.setRecipe(recipe);
-                recipeRepository.saveOrUpdateImage(image);
-            }
-
-            for(Step step : steps ){
-                step.setRecipe(recipe);
-                stepRepository.createStep(step);
-            }
-
-            recipe.setImages(images);
-            recipe.setSteps(steps);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -137,6 +121,7 @@ public class RecipeService {
         u.setUser(userService.getById(dto.getIdUser()));
         u.setCategory(categoryService.getById(dto.getIdCategory()));
         u.setPopularity(dto.getPopularity());
+        u.setActive(dto.getActive());
 
         List<Step> steps = new ArrayList<>();
         Set<RecipeImage> images = new HashSet<>();

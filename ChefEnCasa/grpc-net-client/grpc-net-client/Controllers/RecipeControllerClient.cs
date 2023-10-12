@@ -201,6 +201,7 @@ namespace grpc_net_client.Controllers
                     Description = recipe.Description,
                     Ingredients = recipe.Ingredients,
                     PreparationTime = recipe.PreparationTime,
+                    Active = recipe.Active,
                     IdCategory = recipe.IdCategory,
                     IdUser = recipe.IdUser,
                 };

@@ -86,14 +86,14 @@ public class RecipeRepository {
         return recipe;
     }
 
-    public List<Recipe> getAll() throws Exception{
-        List<Recipe> recipes = new ArrayList<Recipe>();
+    public List<Recipe> getAll() throws Exception {
+        List<Recipe> recipes = new ArrayList<>();
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Recipe> query = criteriaBuilder.createQuery(Recipe.class);
         Root<Recipe> root = query.from(Recipe.class);
-        query.select(root);
+        query.select(root).where(criteriaBuilder.equal(root.get("active"), true)); // Filtra por recetas activas
 
         try {
             recipes = em.createQuery(query).getResultList();
@@ -107,15 +107,15 @@ public class RecipeRepository {
         return recipes;
     }
 
-    public List<Recipe> getByUser(User user) throws Exception{
-        List<Recipe> recipes = new ArrayList<Recipe>();
+    public List<Recipe> getByUser(User user) throws Exception {
+        List<Recipe> recipes = new ArrayList<>();
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Recipe> query = criteriaBuilder.createQuery(Recipe.class);
-
         Root<Recipe> root = query.from(Recipe.class);
-        Predicate byUser = criteriaBuilder.equal(root.get("user"), user);
+        Predicate byUser = criteriaBuilder.and(criteriaBuilder.equal(root.get("user"), user),
+                criteriaBuilder.equal(root.get("active"), true)); // Filtra por recetas activas
         query.select(root).where(byUser);
 
         try {
@@ -133,7 +133,7 @@ public class RecipeRepository {
     public List<Recipe> getByFilter(Category category, String title, String ingredients, int timeSince, int timeUntil, int pageNumber, int pageSize) throws Exception {
         int startPosition = (pageNumber - 1) * pageSize;
 
-        List<Recipe> recipes = new ArrayList<Recipe>();
+        List<Recipe> recipes = new ArrayList<>();
         EntityManager em = JPAUtil.getEMF().createEntityManager();
 
         try {
@@ -142,6 +142,7 @@ public class RecipeRepository {
             Root<Recipe> root = query.from(Recipe.class);
 
             List<Predicate> predicates = new ArrayList<>();
+            predicates.add(criteriaBuilder.equal(root.get("active"), true)); // Filtra por recetas activas
 
             if (category != null) {
                 predicates.add(criteriaBuilder.equal(root.get("category"), category));
@@ -180,17 +181,21 @@ public class RecipeRepository {
     }
 
     public List<Recipe> getRecipesByPopularity(int pageSize, int pageNumber) throws Exception {
-        List<Recipe> recipessers = null;
+        List<Recipe> recipes = null;
         EntityManager em = JPAUtil.getEMF().createEntityManager();
 
         try {
-            String query = "SELECT r FROM Recipe r ORDER BY r.popularity DESC";
-            TypedQuery<Recipe> tq = em.createQuery(query, Recipe.class);
+            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+            CriteriaQuery<Recipe> query = criteriaBuilder.createQuery(Recipe.class);
+            Root<Recipe> root = query.from(Recipe.class);
+            query.select(root).where(criteriaBuilder.equal(root.get("active"), true)); // Filtra por recetas activas
+            query.orderBy(criteriaBuilder.desc(root.get("popularity")));
 
-            tq.setFirstResult((pageNumber - 1) * pageSize);
-            tq.setMaxResults(pageSize);
+            TypedQuery<Recipe> typedQuery = em.createQuery(query);
+            typedQuery.setFirstResult((pageNumber - 1) * pageSize);
+            typedQuery.setMaxResults(pageSize);
 
-            recipessers = tq.getResultList();
+            recipes = typedQuery.getResultList();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             throw new Exception("WARNING: Persistence error in getUsersByPopularity method");
@@ -198,6 +203,6 @@ public class RecipeRepository {
             em.close();
         }
 
-        return recipessers;
+        return recipes;
     }
 }
