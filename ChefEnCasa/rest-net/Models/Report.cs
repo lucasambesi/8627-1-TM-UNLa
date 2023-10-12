@@ -9,7 +9,7 @@ namespace rest_net.Models
         [BsonId]
         public ObjectId Id { get; set; }
 
-        public string ReportId { get; set; }
+        public string? ReportId { get; set; }
 
         public string UserId { get; set; }
 

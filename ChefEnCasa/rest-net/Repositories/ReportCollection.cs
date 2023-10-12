@@ -29,7 +29,8 @@ namespace rest_net.Repositories
 
         public async Task<List<Report>> GetReports()
         {
-            var reports = await Collection.FindAsync(new BsonDocument()).Result.ToListAsync();
+            var reports = await Collection.FindAsync(
+                new BsonDocument { { "Resolved", false } }).Result.ToListAsync();
 
             foreach (var report in reports)
             {
