@@ -1,5 +1,6 @@
 package com.chefencasa.service;
 
+import com.chefencasa.Model.Enums.RoleType;
 import com.chefencasa.Model.Recipe;
 import com.chefencasa.Model.User;
 import com.chefencasa.Repository.RecipeRepository;
@@ -155,6 +156,7 @@ public class UserService {
         u.setUsername(dto.getUsername());
         u.setPassword(dto.getPassword());
         u.setPopularity(dto.getPopularity());
+        u.setRole(RoleType.valueOf(dto.getRole()));
         return u;
     }
 }

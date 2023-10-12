@@ -78,7 +78,7 @@ namespace grpc_net_client.Controllers
             }
         }
 
-        [HttpGet("rating/average")]
+        [HttpGet("average")]
         public async Task<ActionResult> getAverageRating(int idRecipe)
         {
             try

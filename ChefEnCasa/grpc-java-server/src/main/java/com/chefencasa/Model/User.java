@@ -1,5 +1,6 @@
 package com.chefencasa.Model;
 
+import com.chefencasa.Model.Enums.RoleType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,6 +43,10 @@ public class User {
     @Column(name = "popularity", nullable = false)
     @Type(type="int")
     private int popularity;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RoleType role;
 
     @Setter(AccessLevel.NONE)
     @OneToMany(cascade = {
