@@ -12,10 +12,13 @@ import { RecipeTabs } from './pages/Recipes/TabsRecipes';
 import { SearchRecipe } from './pages/Recipes/SearchRecipe';
 import { Recipe } from './pages/Recipes/Recipe';
 import { CsvUploader } from './components/CsvUploader';
+import RoleType from './helpers/RoleType';
+import { Reports } from './pages/Reports/Reports';
 
 function App() {
 
   const [user, setUser] = useLocalStorage('user', '')
+  const [role, setRole] = useLocalStorage('role', '')
   
   return (
     <>    
@@ -32,6 +35,7 @@ function App() {
           <Route path="/recipes" element={<RecipeTabs user={user}/>} />        
           <Route path="/following" element={<Following user={user}/>} />
           <Route path="/drafts/uploader" element={<CsvUploader user={user}/>} />
+          <Route path="/reports" element={<Reports user={user} />} />
         </Routes>
       </BrowserRouter>
     </>

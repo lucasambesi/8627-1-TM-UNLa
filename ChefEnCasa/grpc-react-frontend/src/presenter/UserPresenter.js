@@ -82,7 +82,8 @@ export const userPresenter = () => {
                 "dni": user.dni,
                 "email": user.email,
                 "username": user.username,
-                "password": user.password
+                "password": user.password,
+                "role": "USER"
               }
             
             const res = await axios.post(`${baseUrl}/user/register`, body);

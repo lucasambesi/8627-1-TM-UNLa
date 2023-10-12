@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,10 +9,14 @@ import { useNavigate } from 'react-router'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import unlalogo from '../../assets/unla_logo.png';
+import { useLocalStorage } from '../../helpers/useLocalStorage';
+import RoleType from '../../helpers/RoleType';
 
 export const NavBar = (props) => {
 
   const { user, setUser } = props;
+  const [role, setRole] = useState(window.localStorage.getItem('role'))
+
   const navigate = useNavigate();
 
   const toRegister = () => { navigate("/register") }
@@ -21,10 +25,12 @@ export const NavBar = (props) => {
   const toRecipes = () => { navigate("/recipes") }
   const toHome = () => { navigate("/home") }
   const toSearch = () => { navigate("/search") }
+  const toReports = () => { navigate("/reports") }
 
   const logout = () => {
     setUser(null)
     localStorage.removeItem("user")
+    localStorage.removeItem("role")
     toLogin()
   }
 
@@ -66,6 +72,13 @@ export const NavBar = (props) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             { user ? (
                 <>                     
+                    {
+                      (role == RoleType.moderator)
+                      ?
+                      <Button onClick={toReports} sx={{ my: 2, color: 'white', display: 'block' }}>Denuncias</Button>
+                      :
+                      null
+                    }
                     <Button onClick={toSearch} sx={{ my: 2, color: 'white', display: 'block' }}>Explorar</Button>
                     <Button onClick={toRecipes} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Recetas</Button>
                     <Button onClick={toProfile} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Perfil</Button>

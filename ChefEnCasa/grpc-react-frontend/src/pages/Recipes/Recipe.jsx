@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { ModalRecipe } from "./ModalRecipe";
 import { Comments } from "./Recipe/Comments";
 import { CustomRating } from "./Recipe/Rating";
+import { ModalReport } from "../Reports/ModalReport";
 
 export const Recipe = () => {
 
@@ -88,7 +89,7 @@ export const Recipe = () => {
                 alert(`Seguiste a ${autor.name} ${autor.lastName}`)
             })
             .catch((err) => console.log(err));
-    } 
+    }
 
     const addToFavorite = (recipe) => {
         addToFavorites(user.idUser, recipe.idRecipe, recipe.idUser)
@@ -116,21 +117,34 @@ export const Recipe = () => {
                     <Typography id="modal-modal-title" align="center" variant="h4" component="h2">
                             {recipe.title}
                     </Typography>
-                    <Stack direction={"row"} spacing={3} alignItems={"center"}>
-                        <CustomRating idRecipe={recipeId} user={user} readOnly={"true"}/>
+                    <Stack spacing={3} alignItems={"center"}>                    
                         {
                             (user.idUser == autor.idUser) 
                             ? 
                             <Button variant="outlined" onClick={() => abrirModalEdicion(recipe)}>Editar</Button> 
                             : 
                             (
-                            (!isFavorite)
-                            ?
-                            <Button variant="outlined" onClick={() => addToFavorite(recipe)}>Agregar a Fav</Button>
-                            :
-                            <Button variant="outlined" onClick={() => deleteFavorite(recipe)}>Eliminar Fav</Button>
+                            <Stack direction={"row"} spacing={1}>
+                                {
+                                    (!isFavorite)
+                                    ?
+                                    <Button variant="outlined" onClick={() => addToFavorite(recipe)}>Agregar a Fav</Button>
+                                    :
+                                    <Button variant="outlined" onClick={() => deleteFavorite(recipe)}>Eliminar Fav</Button>
+                                }
+                                {
+                                    (recipe.idUser != user.idUser)
+                                    ?
+                                    (
+                                        <ModalReport recipeId={recipeId} user={user}/>
+                                    )
+                                    :
+                                    null
+                                }
+                            </Stack>
                             )
                         }
+                        <CustomRating idRecipe={recipeId} user={user} readOnly={"true"}/>
                     </Stack>
                 </Stack>  
                 <Typography id="modal-modal-description" sx={{ mt: 2, marginTop:"50px" }}>

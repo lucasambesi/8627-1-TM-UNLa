@@ -1,10 +1,7 @@
 import React, {useState } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { Grid, Stack, TextField } from '@mui/material';
-import { draftPresenter } from '../../../presenter/DraftPresenter'
+import { Stack, Box, FormControl, InputLabel, MenuItem, Select, Button, Typography, Modal, Grid, TextField } from '@mui/material';
+import { reportPresenter } from '../../presenter/ReportPresenter'
+import ReportType from '../../helpers/ReportType';
 
 const style = {
   position: 'absolute',
@@ -18,31 +15,44 @@ const style = {
   p: 4,
 };
 
-export const ModalDraftEdit = (props) => {
+export const ModalReport = (props) => {
   const [open, setOpen] = React.useState(false);
+
+  const ReportTypesArray = Object.values(ReportType);
+  const {recipeId, user} = props
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const {draft, updateDraft} = props
-  const [descriptionLength, setDescriptionLength] = useState(0);
+  const [commentLength, setCommentLength] = useState(0);
+  const [report, setReport] = useState({
+    "userId": user.idUser ?  user.idUser.toString() : null,
+    "recipeId": recipeId,
+    "type": 1,
+    "comment": null
+  });
 
-  const { updateDraft: update } = draftPresenter()
+  const { addReport } = reportPresenter()
 
   const close = () => {
     setOpen(false);
   }
 
-  const edit = async (event) => {
+  const handleTypeChange = (event) => {
+    const selectedType = event.target.value;
+    setReport({ ...report, type: selectedType.id });
+  };
+
+  const sendReport = async (event) => {
     event.preventDefault();
-  
+
     if (!validateFields()) {
       return;
     }
-  
-    update(draft)
+
+    addReport(report)
       .then((res) => {
-        alert("Borrador editado");
+        alert("Denuncia enviada");
       })
       .then(() => {
         close();
@@ -50,7 +60,7 @@ export const ModalDraftEdit = (props) => {
   };
 
   const validateFields = () => {
-    if (!draft.title || !draft.description || !draft.category || !draft.preparationTime) {
+    if (!report.type || !report.comment) {
       alert("Por favor, complete todos los campos obligatorios.");
       return false;
     }
@@ -64,21 +74,21 @@ export const ModalDraftEdit = (props) => {
         ? event.target.valueAsNumber : event.target.type === 'checkbox'
         ? event.target.checked : event.target.value
 
-    if (name == "description") {
+    if (name == "comment") {
         if(value > 250){
             return;
         }        
     }
 
-    let temp = { ...draft }
+    let temp = { ...report }
     temp[name] = value
-    updateDraft(draft.draftId ,temp)
+    setReport(temp)
  }
 
   return (
     <div>
       <Button onClick={handleOpen} variant="outlined">
-        Editar
+        Denunciar
       </Button>
       <Modal
         open={open}
@@ -89,47 +99,35 @@ export const ModalDraftEdit = (props) => {
         <Box sx={style}>
           <Stack spacing={3}>      
             <Typography id="modal-modal-title" align="center" variant="h5" component="h5">
-                Editar borrador
+                Denuncia
             </Typography>     
             <Grid item container>
-                <TextField
-                    fullWidth
-                    name="title"
-                    label="Titulo"
-                    variant="outlined"
-                    defaultValue={draft.title}
-                    onChange={handleInputChange}
-                />
+                <FormControl fullWidth variant="outlined">
+                <InputLabel id="type-label">Motivo</InputLabel>
+                <Select
+                    labelId="type-label"
+                    id="type"
+                    label="Motivo"
+                    value={ReportTypesArray.find((type) => type.id === report.type) || ""}
+                    onChange={handleTypeChange}
+                >
+                    {ReportTypesArray.map((type) => (
+                    <MenuItem key={type.id} value={type}>
+                        {type.description}
+                    </MenuItem>
+                    ))}
+                </Select>
+                </FormControl>
             </Grid>
             <Grid item container>
                 <TextField
                     fullWidth
-                    name="description"
                     multiline
                     rows={3}
-                    label="Descripcion"
+                    name="comment"
+                    label="Comentario"
                     variant="outlined"
-                    defaultValue={draft.description}
-                    onChange={handleInputChange}
-                />
-            </Grid>
-            <Grid item container>
-                <TextField
-                    fullWidth
-                    name="category"
-                    label="Categoria"
-                    variant="outlined"
-                    defaultValue={draft.category}
-                    onChange={handleInputChange}
-                />
-            </Grid>
-            <Grid item container>
-                <TextField
-                    fullWidth
-                    name="preparationTime"
-                    label="Tiempo de preparación"
-                    variant="outlined"
-                    defaultValue={draft.preparationTime}
+                    defaultValue={report.comment}
                     onChange={handleInputChange}
                 />
             </Grid>
@@ -137,8 +135,8 @@ export const ModalDraftEdit = (props) => {
                 <Button onClick={close} variant="outlined" color="primary">
                     Cancelar
                 </Button>
-                <Button onClick={edit} variant="contained" color="primary">
-                    Editar
+                <Button onClick={sendReport} variant="contained" color="primary">
+                    Enviar
                 </Button>
             </Box>
           </Stack>

@@ -72,6 +72,7 @@ const Login = (props) => {
             if(res){
               setUser(res.data)
               window.localStorage.setItem("id", res.data.idUser)
+              window.localStorage.setItem("role", res.data.role)
               navigate({
                 pathname:"/home",
                   }) 
