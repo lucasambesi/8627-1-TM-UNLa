@@ -11,7 +11,7 @@ export const Reports = (props) => {
   const {user } = props
   const navigate = useNavigate();
   const { getAll, updateReport } = reportPresenter()
-  const { getById } = recipePresenter()
+  const { getById, updateRecipe } = recipePresenter()
   const [reports, setReports] = useState(null);
   const [actualReport, setActualReport] = useState(null);
   const [recipe, setRecipe] = useState(null);
@@ -51,15 +51,34 @@ export const Reports = (props) => {
             setReports(updatedReports);
             setIdRecipe(updatedReports[0].recipeId)
             setActualReport(updatedReports[0])
+
+            alert("Denuncia ignorada");
         })
         .catch((err) => console.log(err));
     };
 
     const deleteRecipe = (recipe) => {
-    const updatedReports = reports.filter(report => report.recipeId != recipe.idRecipe);
-    setReports(updatedReports);
-    setIdRecipe(updatedReports[0].recipeId)
-    setActualReport(updatedReports[0])
+        recipe.active = false
+        console.log("🚀 ~ file: Reports.jsx:62 ~ deleteRecipe ~ recipe:", recipe)
+
+        updateRecipe(recipe, recipe.idUser)
+        .then((res) => {
+
+            actualReport.resolved = true
+
+            updateReport(actualReport)
+            .then((res) => {
+
+                const updatedReports = reports.filter(report => report.recipeId != recipe.idRecipe);
+                setReports(updatedReports);
+                setIdRecipe(updatedReports[0].recipeId)
+                setActualReport(updatedReports[0])
+    
+                alert("Receta eliminada");
+            })
+            .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
     };
 
    function GetType(report) {

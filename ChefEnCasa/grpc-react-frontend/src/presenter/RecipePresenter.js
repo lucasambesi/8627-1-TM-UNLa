@@ -235,7 +235,8 @@ export const recipePresenter = () => {
                 "idCategory": recipe.idCategory,
                 "preparationTime": recipe.preparationTime,
                 "images": recipe.images,
-                "steps": recipe.steps
+                "steps": recipe.steps,
+                "active": recipe.active
             }
 
             const res = await axios.put(`${baseUrl}/recipes`, body);
