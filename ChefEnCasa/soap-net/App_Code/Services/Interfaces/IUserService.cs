@@ -8,13 +8,16 @@ using System.Text;
 
 // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
 [ServiceContract]
-public interface IService
+public interface IUserService
 {
 
 	[OperationContract]
-	string GetData(int value);
+    List<User> GetUsers();
 
 	[OperationContract]
+	User GetUserById(string id);
+
+    [OperationContract]
 	CompositeType GetDataUsingDataContract(CompositeType composite);
 
 	// TODO: agregue aquí sus operaciones de servicio
