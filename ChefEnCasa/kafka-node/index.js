@@ -4,6 +4,8 @@ const cors = require('cors');
 
 const recipeRoutes = require('./src/routes/recipeRoutes');
 const userRoutes = require('./src/routes/userRoutes');
+const soapRoutes = require('./src/routes/soapRoutes');
+
 
 const myConnection = require('express-myconnection');
 const app = express();
@@ -31,6 +33,7 @@ const logger = (req, res, next) => {
 app.use(logger);
 app.use(recipeRoutes);
 app.use(userRoutes);
+app.use(soapRoutes);
 
 app.listen(app.get('port'), () => {
   console.log("Server started and listening on port ", app.get('port'));
