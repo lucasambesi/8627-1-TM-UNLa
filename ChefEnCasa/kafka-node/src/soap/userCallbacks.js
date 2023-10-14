@@ -2,7 +2,7 @@
 const soap = require('soap');
 const callback = {};
 
-const serviceUrl = 'http://localhost:63857/Service.svc?wsdl';
+const serviceUrl = 'http://localhost:63857/UserService.svc?wsdl';
 
 callback.GetUsers = async (req, res) => {
     const args = req.body;
@@ -22,8 +22,8 @@ callback.GetUsers = async (req, res) => {
 };
 
 callback.GetUserById = async (req, res) => {
-  const args = req.body;
-
+  const args = req.query;
+  console.log("🚀 ~ file: userCallbacks.js:26 ~ callback.GetUserById= ~ args:", args)
   try {
     const client = await soap.createClientAsync(serviceUrl);
 
