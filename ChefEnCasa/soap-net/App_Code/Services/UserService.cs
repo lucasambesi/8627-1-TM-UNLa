@@ -22,20 +22,7 @@ public class UserService : IUserService
     public User GetUserById(string id)
     {
         var user = userRepository.GetUserById(id);
-
+        List<User> users = new List<User>();
         return user;
     }
-
-    public CompositeType GetDataUsingDataContract(CompositeType composite)
-	{
-		if (composite == null)
-		{
-			throw new ArgumentNullException("composite");
-		}
-		if (composite.BoolValue)
-		{
-			composite.StringValue += "Suffix";
-		}
-		return composite;
-	}
 }
