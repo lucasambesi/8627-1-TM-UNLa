@@ -5,11 +5,6 @@ import React, {useEffect, useState} from 'react';
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBCardLink } from 'mdb-react-ui-kit';
 import '../../styles/profile.css'
 import { Button } from '@mui/material';
-import uno from '../../assets/recetas/uno.jpg'; 
-import dos from '../../assets/recetas/dos.jpg'; 
-import tres from '../../assets/recetas/tres.jpg'; 
-import cuatro from '../../assets/recetas/cuatro.jpg'; 
-import cinco from '../../assets/recetas/cinco.jpg'; 
 import { RecipeCard } from '../Recipes/RecipeCard';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 
@@ -18,7 +13,6 @@ import { useNavigate } from 'react-router'
 export const Profile = () => {
     const [user, setUser] = useLocalStorage('user')
     const [recipes, setRecipes] = useState([]);
-    const images = [uno, dos, tres, cuatro, cinco]
     const navigate = useNavigate();
     const {getRecipesByUserId} = recipePresenter()    
 

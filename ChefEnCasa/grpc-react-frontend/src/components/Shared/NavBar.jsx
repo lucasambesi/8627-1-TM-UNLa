@@ -11,6 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import unlalogo from '../../assets/unla_logo.png';
 import { useLocalStorage } from '../../helpers/useLocalStorage';
 import RoleType from '../../helpers/RoleType';
+import BasicMenu from './Menu';
 
 export const NavBar = (props) => {
 
@@ -19,20 +20,8 @@ export const NavBar = (props) => {
 
   const navigate = useNavigate();
 
-  const toRegister = () => { navigate("/register") }
-  const toLogin = () => { navigate("/login") }
-  const toProfile = () => { navigate("/profile") }
-  const toRecipes = () => { navigate("/recipes") }
-  const toHome = () => { navigate("/home") }
   const toSearch = () => { navigate("/search") }
   const toReports = () => { navigate("/reports") }
-
-  const logout = () => {
-    setUser(null)
-    localStorage.removeItem("user")
-    localStorage.removeItem("role")
-    toLogin()
-  }
 
   return (
     <AppBar position="static">
@@ -80,9 +69,7 @@ export const NavBar = (props) => {
                       null
                     }
                     <Button onClick={toSearch} sx={{ my: 2, color: 'white', display: 'block' }}>Explorar</Button>
-                    <Button onClick={toRecipes} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Recetas</Button>
-                    <Button onClick={toProfile} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Perfil</Button>
-                    <Button onClick={logout} sx={{ my: 2, color: 'white', display: 'block' }}>Cerrar Sesión</Button>
+                    <BasicMenu />
                 </>
             ) : (
                 <></>      

@@ -14,6 +14,7 @@ import { Recipe } from './pages/Recipes/Recipe';
 import { CsvUploader } from './components/CsvUploader';
 import RoleType from './helpers/RoleType';
 import { Reports } from './pages/Reports/Reports';
+import { Messages } from './pages/Messages/Messages';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/following" element={<Following user={user}/>} />
           <Route path="/drafts/uploader" element={<CsvUploader user={user}/>} />
           <Route path="/reports" element={<Reports user={user} />} />
+          <Route path="/messages" element={<Messages user={user} />} />
         </Routes>
       </BrowserRouter>
     </>
