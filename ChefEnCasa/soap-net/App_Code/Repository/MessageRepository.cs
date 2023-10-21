@@ -91,7 +91,12 @@ public class MessageRepository
         {
             connection.Open();
 
-            string sql = "SELECT * FROM messages WHERE idSender = @UserId OR idReceiver = @UserId ORDER BY idMessage desc";
+            string sql = 
+                "SELECT messages.*, users.* " +
+                "FROM messages " +
+                "INNER JOIN users ON (messages.idSender = users.idUser OR messages.idReceiver = users.idUser) " +
+                "WHERE (messages.idSender = @UserId OR messages.idReceiver = @UserId) " +
+                "AND users.idUser != @UserId ORDER BY messages.idMessage DESC;";
             using (MySqlCommand cmd = new MySqlCommand(sql, connection))
             {
                 cmd.Parameters.AddWithValue("@UserId", id);
@@ -100,7 +105,7 @@ public class MessageRepository
                 {
                     while (reader.Read())
                     {
-                        Message message = mapToEntity(reader);
+                        Message message = mapToEntity(reader, id);
 
                         messages.Add(message);
                     }
@@ -113,9 +118,9 @@ public class MessageRepository
         return messages;
     }
 
-    private static Message mapToEntity(MySqlDataReader reader)
+    private static Message mapToEntity(MySqlDataReader reader, string id)
     {
-        return new Message
+        var message = new Message
         {
             IdMessage = Convert.ToInt32(reader["idMessage"]),
             ReceiverId = Convert.ToInt32(reader["idReceiver"]),
@@ -125,5 +130,28 @@ public class MessageRepository
             Response = reader["response"].ToString(),
             Answered = Convert.ToBoolean(reader["answered"])
         };
+
+        if(id != message.SenderId.ToString())
+        {
+            message.Sender = new User()
+            {
+                IdUser = message.SenderId,
+                Username = reader["username"].ToString(),
+                Name = reader["name"].ToString(),
+                Lastname = reader["lastname"].ToString(),
+            };
+        }
+        else
+        {
+            message.Receiver = new User()
+            {
+                IdUser = message.ReceiverId,
+                Username = reader["username"].ToString(),
+                Name = reader["name"].ToString(),
+                Lastname = reader["lastname"].ToString(),
+            };
+        }
+
+        return message;
     }
 }

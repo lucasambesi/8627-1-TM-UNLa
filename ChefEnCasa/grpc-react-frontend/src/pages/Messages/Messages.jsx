@@ -157,11 +157,11 @@ export const Messages = (props) => {
                                                         message.SenderId == user.idUser
                                                         ?
                                                         <Typography variant="body1" component="body1" >
-                                                            {`A ${message.ReceiverId }`}
+                                                            {`A ${message.Receiver.Name} ${message.Receiver.Lastname}`}
                                                         </Typography>
                                                         :
                                                         <Typography variant="body1" component="body1" >
-                                                            {`De ${message.SenderId }`}
+                                                            {`De ${message.Sender.Name} ${message.Sender.Lastname}`}
                                                         </Typography>
                                                     }                 
                                                 </Stack>
@@ -194,11 +194,11 @@ export const Messages = (props) => {
                                             (actualMessage.SenderId != user.idUser)
                                             ?
                                             <Typography variant="h6" component="h6">
-                                                {`De ${actualMessage.SenderId } para ti`}
+                                                {`De ${actualMessage.Sender.Name} ${actualMessage.Sender.Lastname} para ti`}
                                             </Typography>
                                             :
                                             <Typography variant="h6" component="h6">
-                                                {`De ti para ${actualMessage.ReceiverId }`}
+                                                {`De ti para ${actualMessage.Receiver.Name} ${actualMessage.Receiver.Lastname}`}
                                             </Typography>
                                         }
                                         <Typography variant="body1" component="body1">
