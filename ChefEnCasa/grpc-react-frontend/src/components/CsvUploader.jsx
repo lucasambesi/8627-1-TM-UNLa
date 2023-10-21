@@ -119,15 +119,3 @@ export const CsvUploader = (props) => {
     </Container>
   );
 };
-
-{/* <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-  {csvData.map((row, index) => (
-  <li key={index}>
-      <strong>{"Receta " + (index + 1) + ": "}</strong>
-      <strong>Título:</strong> {row.title},{' '}
-      <strong>Descripción:</strong> {row.description},{' '}
-      <strong>Categoría:</strong> {row.category},{' '}
-      <strong>Tiempo de Preparación:</strong> {row.preparationTime},{' '}
-  </li>
-  ))}
-</Grid> */}

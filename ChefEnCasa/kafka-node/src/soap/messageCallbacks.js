@@ -22,8 +22,9 @@ callback.GetMessagesByUserId = async (req, res) => {
 callback.CreateMessage = async (req, res) => {
   const args = 
   {
-      "request" : req.body
+    "request" : req.body
   }
+  console.log("🚀 ~ file: messageCallbacks.js:24 ~ callback.CreateMessage= ~ args:", args)
 
   try {
     const client = await soap.createClientAsync(serviceUrl);

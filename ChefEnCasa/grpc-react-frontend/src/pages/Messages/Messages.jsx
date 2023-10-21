@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Chip, Container, Divider, Grid, List, ListItemButton, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Chip, Container, Divider, Fab, Grid, List, ListItemButton, Paper, Stack, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router'
 import { messagePresenter } from '../../presenter/MessagePresenter'
 import { userPresenter } from '../../presenter/UserPresenter'
@@ -7,6 +7,13 @@ import { userPresenter } from '../../presenter/UserPresenter'
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import SendIcon from '@mui/icons-material/Send';
 import EmailIcon from '@mui/icons-material/Email';
+import CallReceivedIcon from '@mui/icons-material/CallReceived';
+
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import AddIcon from '@mui/icons-material/Add';
 
 export const Messages = (props) => {
 
@@ -16,8 +23,14 @@ export const Messages = (props) => {
   const { getById } = userPresenter()
   const [messages, setMessages] = useState(null);
   const [actualMessage, setActualMessage] = useState(null);
-  const [message, setMessage] = useState(null);
   const [idMessage, setIdMessage] = useState(null);
+  const [filter, setFilter] = useState('todos');
+
+  const fabStyle = {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+  };
 
   useEffect(() => {
     getByUserId(user.idUser)
@@ -29,25 +42,22 @@ export const Messages = (props) => {
        .catch((err) => console.log(err));
    }, []);
 
-//    useEffect(() => {
-//     if(idMessage){
-//         getById(idMessage)
-//         .then((res) => {
-//          setRecipe(res)
-//         })
-//         .catch((err) => console.log(err));
-//     }
-//    }, [idMessage]);
+   const toSendMessage = () => { navigate("/send-message") }
 
    const handleClickMessage = (message) => {
         setActualMessage(message)
         setIdMessage(message.IdMessage)
     }
 
-   const checkMessage = () => {
-    };
-
-    const sendResponse = (recipe) => {
+    const sendResponse = (message) => {
+        console.log("🚀 ~ file: Messages.jsx:46 ~ sendResponse ~ message:", message)
+        updateMessage(message)
+        .then((res) => {
+            alert("Respuesta enviada")
+            message.Answered == "true"
+            setActualMessage(message)
+        })
+        .catch((err) => console.log(err));
     };
 
     const handleInputChange = (event) => {
@@ -57,12 +67,25 @@ export const Messages = (props) => {
             ? event.target.valueAsNumber : event.target.type === 'checkbox'
             ? event.target.checked : event.target.value
     
-        let temp = { ...report }
+        let temp = { ...actualMessage }
         temp[name] = value
         setActualMessage(temp)
-
-        //TODO: set el mensaje en la lista tmb
      }
+
+     const filteredMessages = messages
+        ? messages.filter((message) => {
+            if (filter == 'todos') {
+                return true;
+            } else if (filter == 'enviados') {
+                return message.SenderId == user.idUser;
+            } else if (filter == 'noLeidos') {
+                return message.Answered != 'true' && message.ReceiverId == user.idUser;
+            } else if (filter == 'recibidos') {
+                return message.ReceiverId == user.idUser;
+            }
+            return false;
+            })
+        : [];
 
   return (
     <Container sx={{  justifySelf:'center', alignSelf: 'center', marginTop:"40px"}}>
@@ -73,62 +96,89 @@ export const Messages = (props) => {
             </Typography>
             <Box sx={{ flexGrow: 1, marginLeft: 12, marginTop:10 ,alignContent:'center' }}>
                 <Stack spacing={3} direction={"row"} justifyContent={"center"}>
-                    <Paper elevation={3} sx={{ width:"40%", minHeight:"500px"}}>
-                        <Typography sx={{marginTop:"15px"}} id="modal-modal-title" align="center" variant="h5" component="h5">
-                            Mensajes
-                        </Typography>
-                        <Box sx={{ flexGrow: 1, marginTop: 2, alignContent:'center' }}>
-                            <List container rowSpacing={2} sx={{padding:"2%"}}>
-                            {
-                                messages ? messages.map((message) =>{
-                                return (
-                                    <Paper sx={{width:"100%", marginBottom: 1}} elevation={3}>
-                                        <ListItemButton onClick={(() => handleClickMessage(message))}>
-                                            <Stack spacing={1} sx={{padding:"1.5%"}}>
-                                                <Stack direction="row" spacing={1} alignItems={"center"}>
+                    <Paper elevation={3} sx={{ width:"40%", minHeight:"500px"}} alignItems="center" justifyContent="center">                    
+                        <Stack  sx={{marginTop:"15px"}} spacing={2} justifyContent={"center"} alignItems="center">
+                            <Typography id="modal-modal-title" align="center" variant="h5" component="h5">
+                                Mensajes
+                            </Typography>
+                            <FormControl alignSelf="center" justifySelf="center" margin='10px'>
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                    value={filter}
+                                    onChange={(e) => setFilter(e.target.value)}
+                                >
+                                    <FormControlLabel value="todos" control={<Radio />} label="Todo" />
+                                    <FormControlLabel value="enviados" control={<Radio />} label="Enviados" />
+                                    <FormControlLabel value="noLeidos" control={<Radio />} label="No Leídos" />
+                                    <FormControlLabel value="recibidos" control={<Radio />} label="Recibidos" />
+                                </RadioGroup>
+                            </FormControl>
+                        </Stack>
+                        <Paper elevation={0} sx={{ flexGrow: 1, alignContent:'center', height: '600px', overflowY: 'auto' }}>
+                            <Box sx={{ flexGrow: 1, marginTop: 2, alignContent:'center' }}>
+                                <List container rowSpacing={2} sx={{padding:"2%"}}>
+                                {
+                                    messages ? filteredMessages.map((message) =>{
+                                    return (
+                                        <Paper sx={{width:"100%", marginBottom: 1}} elevation={3}>
+                                            <ListItemButton onClick={(() => handleClickMessage(message))}>
+                                                <Stack spacing={1} sx={{padding:"1.5%"}}>
+                                                    <Stack direction="row" spacing={1} alignItems={"center"}>
+                                                        {
+                                                            message.SenderId == user.idUser
+                                                            ?                                                        
+                                                                <>
+                                                                <Chip icon={<SendIcon />}  label="enviado" color="info" variant="outlined" />
+                                                                {
+                                                                    message.Answered == "true"
+                                                                ?
+                                                                    <Chip icon={<CallReceivedIcon />} label="respondido" color="success" variant="outlined" />
+                                                                :
+                                                                    null
+                                                                }
+                                                                </>
+                                                            :
+                                                            <Chip icon={<EmailIcon />} label="recibido" color="default" variant="outlined" />
+                                                        }
+                                                        {
+                                                            message.Answered != "true" && message.SenderId != user.idUser
+                                                            ?
+                                                            <Chip icon={<MarkEmailUnreadIcon />} label="no leido" color="warning" variant="outlined" />
+                                                            :
+                                                            null
+                                                        }                                                                  
+                                                    </Stack>
+                                                    <Typography variant="body1" component="body1" sx={{fontWeight: "bold"}}>
+                                                        {`${message.Subject}`}
+                                                    </Typography>
                                                     {
                                                         message.SenderId == user.idUser
                                                         ?
-                                                        <Chip icon={<SendIcon />}  label="enviado" color="success" variant="outlined" />
+                                                        <Typography variant="body1" component="body1" >
+                                                            {`A ${message.ReceiverId }`}
+                                                        </Typography>
                                                         :
-                                                        <Chip icon={<EmailIcon />} label="recibido" color="default" variant="outlined" />
-                                                    }
-                                                    {
-                                                        message.Answered != "true"
-                                                        ?
-                                                        <Chip icon={<MarkEmailUnreadIcon />} label="no leido" color="warning" variant="outlined" />
-                                                        :
-                                                        null
-                                                    }                                                                  
+                                                        <Typography variant="body1" component="body1" >
+                                                            {`De ${message.SenderId }`}
+                                                        </Typography>
+                                                    }                 
                                                 </Stack>
-                                                <Typography variant="body1" component="body1" sx={{fontWeight: "bold"}}>
-                                                    {`${message.Subject}`}
-                                                </Typography>
-                                                {
-                                                    message.SenderId == user.idUser
-                                                    ?
-                                                    <Typography variant="body1" component="body1" >
-                                                        {`A ${message.ReceiverId }`}
-                                                    </Typography>
-                                                    :
-                                                    <Typography variant="body1" component="body1" >
-                                                        {`De ${message.SenderId }`}
-                                                    </Typography>
-                                                }                 
-                                            </Stack>
-                                        </ListItemButton>
-                                    </Paper>
-                                    )
-                                })
-                                : 
-                                <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
-                                    <h4>
-                                        No hay recetas creadas, puedes hacerlo desde el boton de abajo a la derecha!
-                                    </h4>
-                                </Box>
-                            }
-                            </List>
-                        </Box>
+                                            </ListItemButton>
+                                        </Paper>
+                                        )
+                                    })
+                                    : 
+                                    <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
+                                        <h4>
+                                            No hay recetas creadas, puedes hacerlo desde el boton de abajo a la derecha!
+                                        </h4>
+                                    </Box>
+                                }
+                                </List>
+                            </Box>
+                        </Paper>
                     </Paper>
                     <Divider orientation="vertical" flexItem />
                     <Paper  elevation={3} sx={{ width:"60%", minHeight:"70%", position: 'relative'}}>
@@ -158,14 +208,14 @@ export const Messages = (props) => {
                                     {
                                         (actualMessage.SenderId == user.idUser)
                                         ?
-                                            (actualMessage.Respone)
+                                            (actualMessage.Response)
                                             ?
                                                 <Stack spacing={2}>
                                                     <Typography variant="h6" component="h6">
                                                         Respuesta:
                                                     </Typography>
                                                     <Typography variant="body1" component="body1">
-                                                        {actualMessage.Respone}
+                                                        {actualMessage.Response}
                                                     </Typography>
                                                 </Stack>
                                             :
@@ -177,14 +227,14 @@ export const Messages = (props) => {
                                                 </Stack>
                                                 
                                         :
-                                            (actualMessage.Respone)
+                                            (actualMessage.Answered == 'true')
                                             ?      
                                                 <Stack spacing={2}>
                                                     <Typography variant="h6" component="h6">
                                                         Tu respusta fue:
                                                     </Typography>
                                                     <Typography variant="body1" component="body1">
-                                                        {actualMessage.Respone}
+                                                        {actualMessage.Response}
                                                     </Typography>
                                                 </Stack>
                                             :
@@ -198,7 +248,7 @@ export const Messages = (props) => {
                                                                 fullWidth
                                                                 multiline
                                                                 rows={3}
-                                                                name="Respone"
+                                                                name="Response"
                                                                 label="Respuesta"
                                                                 variant="outlined"
                                                                 value={actualMessage.Respone}
@@ -209,9 +259,6 @@ export const Messages = (props) => {
                                                     <Box pb={2} display="flex" justifyContent="center" alignItems="center">
                                                         <Stack alignContent={"start"} justifyContent={"start"} spacing={2}>
                                                             <Stack direction={"row"} spacing={5}>
-                                                                <Button onClick={(() => checkMessage())} variant="outlined" color="inherit">
-                                                                    Marcar como leido
-                                                                </Button>
                                                                 <Button onClick={(() => sendResponse(actualMessage))} variant="contained" color="info">
                                                                     Enviar respuesta
                                                                 </Button>
@@ -234,7 +281,10 @@ export const Messages = (props) => {
                 </Stack>
             </Box> 
           </Stack>
-        </Paper>        
+        </Paper>
+        <Fab color="primary" aria-label="add" sx={fabStyle} onClick={toSendMessage}>
+            <AddIcon />
+        </Fab>     
     </Container>
   );
 };

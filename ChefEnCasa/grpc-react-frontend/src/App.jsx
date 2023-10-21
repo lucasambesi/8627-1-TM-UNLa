@@ -15,6 +15,7 @@ import { CsvUploader } from './components/CsvUploader';
 import RoleType from './helpers/RoleType';
 import { Reports } from './pages/Reports/Reports';
 import { Messages } from './pages/Messages/Messages';
+import { CreateMenssage } from './pages/Messages/CreateMessage';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/drafts/uploader" element={<CsvUploader user={user}/>} />
           <Route path="/reports" element={<Reports user={user} />} />
           <Route path="/messages" element={<Messages user={user} />} />
+          <Route path="/send-message" element={<CreateMenssage user={user} />} />
         </Routes>
       </BrowserRouter>
     </>

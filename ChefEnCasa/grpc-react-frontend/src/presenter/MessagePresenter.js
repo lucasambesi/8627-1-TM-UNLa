@@ -6,16 +6,16 @@ export const messagePresenter = () => {
 
     const addMessage = async (message) => {
         try {
-
             const body ={
-                "IdReceiver": message.IdMessage,
-                "IdSender": message.IdMessage,
+                "IdReceiver": message.IdReceiver,
+                "IdSender": message.IdSender,
                 "Subject": message.Subject,
                 "Value": message.Value
             }
 
             const res = await axios.post(`${baseUrl}/soap/messages`, body);
 
+            console.log("🚀 ~ file: MessagePresenter.js:19 ~ addMessage ~ res:", res)
             const result = res.status === 200 ? await res.data : null;
             return result;
         } catch (err) {
@@ -23,13 +23,14 @@ export const messagePresenter = () => {
         }
     }
 
-    const updateMessage = async (messageId, response) => {
+    const updateMessage = async (message) => {
 
         const body = {
-            "IdMessage": messageId,
-            "Response": response
+            "IdMessage": message.IdMessage,
+            "Response": message.Response
         }
-
+        
+        console.log("🚀 ~ file: MessagePresenter.js:29 ~ updateMessage ~ body:", body)
         try {    
             const res = await axios.put(`${baseUrl}/soap/messages`, body);
 

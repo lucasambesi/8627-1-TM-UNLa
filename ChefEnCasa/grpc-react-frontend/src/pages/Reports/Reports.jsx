@@ -125,7 +125,7 @@ export const Reports = (props) => {
                                 : 
                                 <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
                                     <h4>
-                                        No hay recetas creadas, puedes hacerlo desde el boton de abajo a la derecha!
+                                        No hay denuncias creadas, puedes hacerlo desde el boton de abajo a la derecha!
                                     </h4>
                                 </Box>
                             }
@@ -184,7 +184,7 @@ export const Reports = (props) => {
                             : 
                             <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
                                 <h4>
-                                    Seleccionar una receta!
+                                    Seleccionar una denuncia!
                                 </h4>
                             </Box>
                         }

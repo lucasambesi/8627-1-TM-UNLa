@@ -11,8 +11,6 @@ callback.GetUsers = async (req, res) => {
       const client = await soap.createClientAsync(serviceUrl);
 
       const result = await client.GetUsersAsync(args); 
-
-      console.log("🚀 ~ file: soapCallback.js:15 ~ callback.getData= ~ result:", result)
   
       res.json(result[0]);
     } catch (error) {
@@ -23,13 +21,10 @@ callback.GetUsers = async (req, res) => {
 
 callback.GetUserById = async (req, res) => {
   const args = req.query;
-  console.log("🚀 ~ file: userCallbacks.js:26 ~ callback.GetUserById= ~ args:", args)
   try {
     const client = await soap.createClientAsync(serviceUrl);
 
     const result = await client.GetUserByIdAsync(args); 
-
-    console.log("🚀 ~ file: soapCallback.js:15 ~ callback.getData= ~ result:", result)
 
     res.json(result[0]);
   } catch (error) {

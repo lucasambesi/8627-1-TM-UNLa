@@ -8,6 +8,19 @@ export const userPresenter = () => {
 
     const { sendPopularityKafka: sendPopularityRecipeKafka } = recipePresenter()
 
+    const getUsersSoap = async () => {
+        try {
+            const res = await axios.get(`${baseKafkaUrl}/soap/users`);
+
+            const result = await res.data;
+            console.log("🚀 ~ file: UserPresenter.js:16 ~ getUsersSoap ~ result:", result)
+
+            return result.GetUsersResult.User
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     const sendPopularityKafka = async (idUser, score) => {
         try {
             const topic = import.meta.env.VITE_REACT_TOPIC_POPULARITY_USER
@@ -208,6 +221,7 @@ export const userPresenter = () => {
         deleteFollowing,
         isInFavorites,
         getUsersByPopularity,
-        sendPopularityKafka
+        sendPopularityKafka,
+        getUsersSoap
     }
 }
