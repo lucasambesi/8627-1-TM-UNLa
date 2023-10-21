@@ -25,7 +25,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<ApiConfig>(builder.Configuration.GetSection("ApiConfig"));
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

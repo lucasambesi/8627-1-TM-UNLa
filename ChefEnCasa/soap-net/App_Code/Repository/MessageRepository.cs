@@ -91,7 +91,7 @@ public class MessageRepository
         {
             connection.Open();
 
-            string sql = "SELECT * FROM messages WHERE idSender = @UserId OR idReceiver = @UserId";
+            string sql = "SELECT * FROM messages WHERE idSender = @UserId OR idReceiver = @UserId ORDER BY idMessage desc";
             using (MySqlCommand cmd = new MySqlCommand(sql, connection))
             {
                 cmd.Parameters.AddWithValue("@UserId", id);
