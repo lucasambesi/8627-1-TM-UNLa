@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { MyRecipes } from './Myrecipes';
 import { FavoriteRecipes } from './Favorites';
 import { Drafts } from './Drafts';
+import { Books } from './Books/Books';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,6 +56,7 @@ export const RecipeTabs = (props) => {
           <Tab label="Tus recetas" {...a11yProps(0)} />
           <Tab label="Tus favoritos" {...a11yProps(1)} />
           <Tab label="Borradores" {...a11yProps(2)} />
+          <Tab label="Recetarios" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -65,6 +67,9 @@ export const RecipeTabs = (props) => {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <Drafts user={user} />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        <Books user={user} />
       </CustomTabPanel>
     </Box>
   );
