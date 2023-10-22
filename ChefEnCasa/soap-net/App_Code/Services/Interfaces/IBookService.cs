@@ -12,4 +12,7 @@ public interface IBookService
 
     [OperationContract]
     List<Book> GetBooksByUserId(string id, bool withRecipes);
+
+    [OperationContract]
+    bool DeleteBook(int id);
 }

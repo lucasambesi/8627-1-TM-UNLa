@@ -31,6 +31,16 @@ public class BookService : IBookService
         return bookRepository.CreateBook(name, idUser);
     }
 
+    public bool DeleteBook(int id)
+    {
+        if (id == 0)
+        {
+            return false;
+        }
+
+        return bookRepository.DeleteBook(id);
+    }
+
     public List<Book> GetBooksByUserId(string id, bool withRecipes)
     {
         return bookRepository.GetBooksByUserId(id, withRecipes);

@@ -8,9 +8,10 @@ export const bookPresenter = () => {
         try {
             const body =
             {
-                "name": book.name,
-                "idUser": book.idUser
+                "name": book.Name,
+                "idUser": book.IdUser
             }
+            console.log("🚀 ~ file: BookPresenter.js:10 ~ addBook ~ body:", body)
 
             const res = await axios.post(`${baseUrl}/soap/books`, body);
 
@@ -40,7 +41,6 @@ export const bookPresenter = () => {
     }
 
     const getBooksByUserId = async (id, withRecipes) => {
-        console.log("🚀 ~ file: BookPresenter.js:42 ~ getBooksByUserId ~ id:", id)
         try {
             const res = await axios.get(`${baseUrl}/soap/books/user?id=${id}&withRecipes=${withRecipes}`);
             
@@ -51,9 +51,22 @@ export const bookPresenter = () => {
         }
     }
 
+    const deleteBook = async (id) => {
+        console.log("🚀 ~ file: BookPresenter.js:55 ~ deleteBook ~ id:", id)
+        try {
+            const res = await axios.delete(`${baseUrl}/soap/books?id=${id}`);
+            
+            const result = await res.data;
+            return result
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return {
         getBooksByUserId,
         addBook,
-        addRecipe
+        addRecipe,
+        deleteBook
     }
 }

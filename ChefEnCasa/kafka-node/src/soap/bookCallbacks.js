@@ -19,6 +19,22 @@ callback.GetBooksByUserId = async (req, res) => {
     }
 };
 
+callback.DeleteBook = async (req, res) => {
+    const args = req.query;
+    console.log("🚀 ~ file: bookCallbacks.js:24 ~ callback.DeleteBook ~ args:", args)
+
+    try {
+      const client = await soap.createClientAsync(serviceUrl);
+
+      const result = await client.DeleteBookAsync(args); 
+  
+      res.json(result[0]);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
 callback.CreateBook = async (req, res) => {
     const args = req.body
     

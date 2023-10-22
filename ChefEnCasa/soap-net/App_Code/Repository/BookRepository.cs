@@ -46,6 +46,40 @@ public class BookRepository
         }
     }
 
+    public bool DeleteBook(int idBook)
+    {
+        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                connection.Open();
+
+                string sql = "UPDATE books " +
+                             "SET active = @Active " +
+                             "WHERE idBook = @IdBook";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@IdBook", idBook);
+                    cmd.Parameters.AddWithValue("@Active", false);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar el recetario: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+    }
+
     public bool AddRecipe(int idRecipe, int idBook)
     {
         using (MySqlConnection connection = new MySqlConnection(connectionString))

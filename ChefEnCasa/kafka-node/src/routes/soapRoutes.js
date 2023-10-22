@@ -12,8 +12,9 @@ router.get('/api/soap/messages/user', messageCallbacks.GetMessagesByUserId);
 router.post('/api/soap/messages', messageCallbacks.CreateMessage);
 router.put('/api/soap/messages', messageCallbacks.UpdateMessage);
 
+router.get('/api/soap/books/user', bookCallbacks.GetBooksByUserId);
 router.post('/api/soap/books/recipe', bookCallbacks.AddRecipe);
 router.post('/api/soap/books', bookCallbacks.CreateBook);
-router.get('/api/soap/books/user', bookCallbacks.GetBooksByUserId);
+router.delete('/api/soap/books', bookCallbacks.DeleteBook);
 
 module.exports = router
