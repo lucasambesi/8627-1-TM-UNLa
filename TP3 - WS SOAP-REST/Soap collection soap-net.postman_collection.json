@@ -195,6 +195,32 @@
 					"response": []
 				},
 				{
+					"name": "/api/soap/books/user Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/soap/books?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"soap",
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "/api/soap/books/recipe",
 					"request": {
 						"method": "POST",
