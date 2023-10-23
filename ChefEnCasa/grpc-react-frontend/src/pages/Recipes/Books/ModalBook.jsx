@@ -26,7 +26,7 @@ export const CreateBook = (props) => {
     };
   
     
-  const { user, setBooks, books } = props
+  const { user, updateBooks, books } = props
 
   const [book, setBook] = useState({
       "Name": null,
@@ -37,9 +37,6 @@ export const CreateBook = (props) => {
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [users, setUsers] = useState(null);
-  const [receiver, setReceiver] = useState({});
 
   const { addBook } = bookPresenter()
 
@@ -54,10 +51,7 @@ export const CreateBook = (props) => {
 
     addBook(book)
     .then((res) => {
-        const temp = books
-        temp.push(book)
-        setBooks(temp)
-
+        updateBooks()
         handleClose();
         alert("Recetario creado con exito")
     })
@@ -65,7 +59,7 @@ export const CreateBook = (props) => {
   };
 
   const validateFields = () => {
-    if (!book.Name|| !book.IdUser) {      
+    if (!book.Name || !book.IdUser) {      
       alert("Por favor, complete todos los campos obligatorios.");
       return false;
     }

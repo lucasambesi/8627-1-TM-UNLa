@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Button, Stack } from '@mui/material';
 import { useNavigate } from 'react-router'
+import { bookPresenter } from '../../../presenter/BookPresenter'
 
 Row.propTypes = {
     row: PropTypes.shape({
@@ -35,7 +36,7 @@ Row.propTypes = {
   };
   
   function Row(props) {
-    const { row } = props;
+    const { row, updateBooks } = props;    
     const [open, setOpen] = React.useState(false);
 
     const navigate = useNavigate();
@@ -43,7 +44,22 @@ Row.propTypes = {
     const handleDetalles = (recipe) => {
       navigate(`/recipe/${recipe.IdRecipe}`)
     };
-  
+
+    const { deleteBook } = bookPresenter()
+
+    const handleDelete = (book) => {
+      deleteBook(book.IdBook)
+      .then((res) => {
+          updateBooks()
+          alert("Receta eliminada")
+      })
+      .catch((err) => console.log(err));
+    };  
+
+    useEffect(() => {    
+        console.log("🚀 ~ file: BooksTable.jsx:40 ~ Row ~ row:", row)
+    }, []);
+
     return (
       <React.Fragment>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -62,8 +78,8 @@ Row.propTypes = {
                 <Typography variant="body2" gutterBottom component="body2">
                     {
                         row.Recipes 
-                        ? 
-                        `(Hay ${row.Recipes.Recipe.length} recetas agregadas)` 
+                        ?
+                        `(Hay ${row.Recipes.Recipe.length > 1 ? row.Recipes.Recipe.length : "1"} recetas agregadas)` 
                         :
                         null
                     }
@@ -72,7 +88,7 @@ Row.propTypes = {
           </TableCell>
           <TableCell />
           <TableCell align="right">
-            <Button variant="outlined">
+            <Button variant="outlined" onClick={(() => handleDelete(row))}>
                 Eliminar
             </Button>
           </TableCell>
@@ -98,18 +114,31 @@ Row.propTypes = {
                             {
                             row.Recipes.Recipe
                             ?
+                            row.Recipes.Recipe.length > 1
+                            ?
                             row.Recipes.Recipe.map((recipe) => (
-                            <TableRow key={recipe.IdRecipe}>
+                                <TableRow key={recipe.IdRecipe}>
+                                    <TableCell component="th" scope="row">
+                                    {recipe.Title}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <Button variant="outlined" size='small' onClick={(() => handleDetalles(recipe))}>
+                                            Ver detalles
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                            :
+                            <TableRow key={row.Recipes.Recipe.IdRecipe}>
                                 <TableCell component="th" scope="row">
-                                {recipe.Title}
+                                {row.Recipes.Recipe.Title}
                                 </TableCell>
                                 <TableCell align="right">
-                                    <Button variant="outlined" size='small' onClick={(() => handleDetalles(recipe))}>
+                                    <Button variant="outlined" size='small' onClick={(() => handleDetalles(row.Recipes.Recipe))}>
                                         Ver detalles
                                     </Button>
                                 </TableCell>
-                            </TableRow>
-                            ))
+                            </TableRow>                            
                             :
                             null
                             }
@@ -132,7 +161,7 @@ Row.propTypes = {
 
 export const BooksTable = (props) => {
 
-  const { books } = props
+  const { books, updateBooks } = props
 
   return (
     <TableContainer component={Paper}>
@@ -151,7 +180,7 @@ export const BooksTable = (props) => {
         <TableBody>
           {
             books ? books.map((book) => (
-                <Row key={book.Name} row={book} />
+                <Row key={book.Name} row={book} updateBooks={updateBooks}/>
             ))
             :
             null

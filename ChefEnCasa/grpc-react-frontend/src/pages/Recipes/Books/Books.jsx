@@ -11,21 +11,37 @@ export const Books = (props) => {
     const {getBooksByUserId} = bookPresenter()
     const { user } = props;
 
-    const [open, setOpen] = useState(false);
-
     const [books, setBooks] = useState([]);
 
      useEffect(() => {
         getBooksByUserId(user.idUser, true)
-         .then((res) => {
-           setBooks(res)
-           console.log("🚀 ~ file: Books.jsx:28 ~ .then ~ res:", res)
-         })
-         .catch((err) => console.log(err));
+            .then((res) => {
+                if(res.length > 1){
+                    setBooks(res)
+                }else{
+                    let array = []
+                    array.push(res)
+                    setBooks(array)
+                }
+            })
+            .catch((err) => console.log(err));
      }, []);
 
-     const abrirModalCreacion = () => {
-        setOpen(true);
+     useEffect(() => {
+     }, [books]);
+
+     const updateBooks = () => {
+        getBooksByUserId(user.idUser, true)
+            .then((res) => {
+                if(res.length > 1){
+                    setBooks(res)
+                }else{
+                    let array = []
+                    array.push(res)
+                    setBooks(array)
+                }
+            })
+            .catch((err) => console.log(err));
       };
  
      return (
@@ -33,8 +49,8 @@ export const Books = (props) => {
             <Box sx={{ flexGrow: 1, marginTop:5,  marginLeft: 12, alignContent:'center' }}>
                 <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 {
-                    books ? 
-                        <BooksTable books={books}/>
+                    books.length > 0 ? 
+                        <BooksTable books={books} updateBooks={updateBooks}/>
                     : 
                         <Box sx={{ flexGrow: 1, margin: 12, alignContent:'center' }}>
                         <h4>
@@ -44,7 +60,7 @@ export const Books = (props) => {
                 }
                 </Grid>                
             </Box>
-            <CreateBook user={user} setBooks={setBooks} books={books} />            
+            <CreateBook user={user} updateBooks={updateBooks} books={books} />            
         </Container>
      );
    }

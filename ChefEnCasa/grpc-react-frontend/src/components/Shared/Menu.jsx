@@ -34,10 +34,9 @@ export default function BasicMenu() {
  }
 
   const logout = () => {
-    setUser(null)
     localStorage.removeItem("user")
     localStorage.removeItem("role")
-    toLogin()
+    navigate("/login")
   }
 
   return (

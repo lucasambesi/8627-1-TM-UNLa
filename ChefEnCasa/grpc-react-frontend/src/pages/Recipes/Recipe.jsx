@@ -16,6 +16,7 @@ import { ModalRecipe } from "./ModalRecipe";
 import { Comments } from "./Recipe/Comments";
 import { CustomRating } from "./Recipe/Rating";
 import { ModalReport } from "../Reports/ModalReport";
+import { ModalRecipeBook } from "./Books/ModalRecipeBook";
 
 export const Recipe = () => {
 
@@ -124,7 +125,7 @@ export const Recipe = () => {
                             <Button variant="outlined" onClick={() => abrirModalEdicion(recipe)}>Editar</Button> 
                             : 
                             (
-                            <Stack direction={"row"} spacing={1}>
+                            <Stack direction={"row"} spacing={1} alignItems={"center"}>
                                 {
                                     (!isFavorite)
                                     ?
@@ -136,7 +137,10 @@ export const Recipe = () => {
                                     (recipe.idUser != user.idUser)
                                     ?
                                     (
-                                        <ModalReport recipeId={recipeId} user={user}/>
+                                        <Stack direction={"row"} spacing={1} alignItems={"center"}>
+                                            <ModalRecipeBook recipeId={recipeId} user={user}/>
+                                            <ModalReport recipeId={recipeId} user={user}/>
+                                        </Stack>
                                     )
                                     :
                                     null

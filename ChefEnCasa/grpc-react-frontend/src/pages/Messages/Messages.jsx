@@ -21,7 +21,7 @@ export const Messages = (props) => {
   const navigate = useNavigate();
   const { getByUserId, updateMessage } = messagePresenter()
   const { getById } = userPresenter()
-  const [messages, setMessages] = useState(null);
+  const [messages, setMessages] = useState([]);
   const [actualMessage, setActualMessage] = useState(null);
   const [idMessage, setIdMessage] = useState(null);
   const [filter, setFilter] = useState('todos');
@@ -35,9 +35,17 @@ export const Messages = (props) => {
   useEffect(() => {
     getByUserId(user.idUser)
        .then((res) => {
-        setMessages(res)
-        setIdMessage(res[0].IdMessage)
-        setActualMessage(res[0])
+        if(res.length > 1){
+            setMessages(res)
+            setIdMessage(res[0].IdMessage)
+            setActualMessage(res[0])
+        }else{
+            let array = []
+            array.push(res)
+            setMessages(array)
+            setIdMessage(res.IdMessage)
+            setActualMessage(res)
+        }
        })
        .catch((err) => console.log(err));
    }, []);
@@ -72,7 +80,8 @@ export const Messages = (props) => {
         setActualMessage(temp)
      }
 
-     const filteredMessages = messages
+     const filteredMessages = 
+        messages.length > 0
         ? messages.filter((message) => {
             if (filter == 'todos') {
                 return true;
@@ -120,7 +129,7 @@ export const Messages = (props) => {
                             <Box sx={{ flexGrow: 1, marginTop: 2, alignContent:'center' }}>
                                 <List container rowSpacing={2} sx={{padding:"2%"}}>
                                 {
-                                    messages ? filteredMessages.map((message) =>{
+                                    messages.length > 0 ? filteredMessages.map((message) =>{
                                     return (
                                         <Paper sx={{width:"100%", marginBottom: 1}} elevation={3}>
                                             <ListItemButton onClick={(() => handleClickMessage(message))}>
