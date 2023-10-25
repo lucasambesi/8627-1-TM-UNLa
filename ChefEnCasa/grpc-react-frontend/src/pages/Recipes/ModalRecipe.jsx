@@ -89,7 +89,7 @@ export const ModalRecipe = (props) => {
       
         addRecipe({ ...recipe, idUser: user.idUser, steps: steps })
         .then((res) => {
-            if(draftMode == true && res.data){
+            if(draftMode == true){
                 deleteDraft(draft.draftId)
                 .then((res) => {console.log("borrador eliminado: " + draft.draftId)})
                 .catch((err) => console.log(err));
